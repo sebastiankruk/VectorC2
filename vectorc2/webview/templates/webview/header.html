@@ -1,23 +1,23 @@
         <header>
         <!-- Fixed navbar -->
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="#">Fixed navbar</a>
+            <a class="navbar-brand" href="#">Vector RC2</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link a-button-run" href="#">Run ▶</a>
                 </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <li class="nav-item active">
+                    <a class="nav-link a-button-remove" href="#">Remove all 🗑</a>
                 </li>
-                <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
+                <li class="nav-item disabled">
+                    <a class="nav-link a-button-link" href="#">Link 🔗</a>
                 </li>
             </ul>
-            
+
             {% include "webview/languageSelect.html" %}
 
             <form class="form-inline mt-2 mt-md-0">

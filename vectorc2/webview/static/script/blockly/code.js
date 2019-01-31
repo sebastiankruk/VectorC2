@@ -32,50 +32,8 @@ var Code = {};
  * Lookup for names of supported languages.  Keys should be in ISO 639 format.
  */
 Code.LANGUAGE_NAME = {
-  'ar': 'العربية',
-  'be-tarask': 'Taraškievica',
-  'br': 'Brezhoneg',
-  'ca': 'Català',
-  'cs': 'Česky',
-  'da': 'Dansk',
-  'de': 'Deutsch',
-  'el': 'Ελληνικά',
   'en': 'English',
-  'es': 'Español',
-  'et': 'Eesti',
-  'fa': 'فارسی',
-  'fr': 'Français',
-  'he': 'עברית',
-  'hrx': 'Hunsrik',
-  'hu': 'Magyar',
-  'ia': 'Interlingua',
-  'is': 'Íslenska',
-  'it': 'Italiano',
-  'ja': '日本語',
-  'kab': 'Kabyle',
-  'ko': '한국어',
-  'mk': 'Македонски',
-  'ms': 'Bahasa Melayu',
-  'nb': 'Norsk Bokmål',
-  'nl': 'Nederlands, Vlaams',
-  'oc': 'Lenga d\'òc',
-  'pl': 'Polski',
-  'pms': 'Piemontèis',
-  'pt-br': 'Português Brasileiro',
-  'ro': 'Română',
-  'ru': 'Русский',
-  'sc': 'Sardu',
-  'sk': 'Slovenčina',
-  'sr': 'Српски',
-  'sv': 'Svenska',
-  'ta': 'தமிழ்',
-  'th': 'ภาษาไทย',
-  'tlh': 'tlhIngan Hol',
-  'tr': 'Türkçe',
-  'uk': 'Українська',
-  'vi': 'Tiếng Việt',
-  'zh-hans': '简体中文',
-  'zh-hant': '正體中文'
+  'pl': 'Polski'
 };
 
 /**
@@ -238,7 +196,7 @@ Code.LANG = Code.getLang();
  * List of tab names.
  * @private
  */
-Code.TABS_ = ['blocks', 'javascript', 'php', 'python', 'dart', 'lua', 'xml'];
+Code.TABS_ = ['blocks', 'javascript', 'python', 'xml'];
 
 Code.selected = 'blocks';
 
@@ -307,12 +265,6 @@ Code.renderContent = function() {
     Code.attemptCodeGeneration(Blockly.JavaScript, 'js');
   } else if (content.id == 'content_python') {
     Code.attemptCodeGeneration(Blockly.Python, 'py');
-  } else if (content.id == 'content_php') {
-    Code.attemptCodeGeneration(Blockly.PHP, 'php');
-  } else if (content.id == 'content_dart') {
-    Code.attemptCodeGeneration(Blockly.Dart, 'dart');
-  } else if (content.id == 'content_lua') {
-    Code.attemptCodeGeneration(Blockly.Lua, 'lua');
   }
 };
 
@@ -429,19 +381,6 @@ Code.init = function() {
         zoom: false 
     });
     
-    // Blockly.inject('content_blocks',
-    //   {grid:
-    //       {spacing: 25,
-    //        length: 3,
-    //        colour: '#ccc',
-    //        snap: true},
-    //    media: '../../media/',
-    //    rtl: rtl,
-    //    toolbox: toolboxXml,
-    //    zoom:
-    //        {controls: true,
-    //         wheel: true}
-    //   });
 
   // Add to reserved word list: Local variables in execution environment (runJS)
   // and the infinite loop detection function.
@@ -520,8 +459,6 @@ Code.initLanguage = function() {
   languageMenu.addEventListener('change', Code.changeLanguage, true);
 
   // Inject language strings.
-  document.title += ' ' + MSG['title'];
-  // document.getElementById('title').textContent = MSG['title'];
   // document.getElementById('tab_blocks').textContent = MSG['blocks'];
 
   // document.getElementById('linkButton').title = MSG['linkTooltip'];
