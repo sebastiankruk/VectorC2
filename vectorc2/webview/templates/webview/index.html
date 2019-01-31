@@ -5,63 +5,34 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v3.8.5">
+    <meta name="author" content="Sebastian Kruk">
     <title>Vector GUI</title>
 
     {% bootstrap_javascript jquery='full' %}
-    {% comment %}
-    {% bootstrap_css %}
-    {% bootstrap_messages %}
-    {% endcomment %}
-
-
-    {# Display something #}
-    {# https://django-bootstrap4.readthedocs.io/en/latest/ #}
-    {# https://getbootstrap.com/docs/4.2/examples/sticky-footer-navbar/ #}
 
         <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-        }
-
         #blocklyArea {
             position: fixed;
             left: 0px;
             right: 0px;
-            top: 35px;
+            top: 30px;
             bottom: 40px; 
-            height: 100%;
-            width: 100%;
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;
         }
         </style>
 
-        <link href="{% static 'style/sticky-footer-navbar.css' %}" rel="stylesheet">
-
         <script src="{% static 'script/blockly/blockly_compressed.js' %}"></script>
         <script src="{% static 'script/blockly/blocks_compressed.js' %}"></script>
         <script src="{% static 'script/blockly/msg/js/en.js' %}"></script>
-
     </head>
-    <body >
-{# class="d-flex flex-column h-100" #}
+    <body>
 
-        {% comment %} 
-        {% include "webview/header.html" %}
-        {% endcomment %}
-
-        {% comment %} 
-        <main role="main" class="flex-shrink-0">
-            <div id="blocklyArea" class="container">
-            </div>
-        </main>
-        {% endcomment %}
-
+    <div id="blocklyArea">
         <div id="blocklyDiv" style="position: absolute"></div>
+    </div>
+
 
         <xml id="toolbox" style="display: none">
             <block type="controls_if"></block>
@@ -72,18 +43,11 @@
             <block type="text"></block>
             <block type="text_print"></block>
         </xml>
-        
-        {% comment %} 
-        <script>
-        var workspace = Blockly.inject('blocklyDiv',
-            {toolbox: document.getElementById('toolbox')});
-        </script> 
-        {% endcomment %}
 
         <script>
-            var blocklyArea = $('#blocklyArea');
-            var blocklyDiv = $('#blocklyDiv');
-            var toolbox = $('#toolbox');
+  var blocklyArea = $('#blocklyArea')[0];
+  var blocklyDiv = $('#blocklyDiv')[0];
+  var toolbox = $('#toolbox')[0];
             var workspace = Blockly.inject(blocklyDiv,
                 {
                     toolbox: toolbox,
@@ -93,7 +57,7 @@
                         length: 1,
                         colour: '#777',
                         snap: true },
-                    horizontalLayout: true,
+                    horizontalLayout: false,
                     oneBasedIndex: false,
                     scrollbars: true,
                     sounds: false,
@@ -122,10 +86,6 @@
             onresize();
             Blockly.svgResize(workspace);
         </script>        
-
-        {% comment %} 
-        {% include "webview/footer.html" %}
-        {% endcomment %} 
 
     </body>
 </html>
