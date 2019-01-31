@@ -63,7 +63,9 @@
 
         <div id="blocklyDiv" style="position: absolute"></div>
 
-        <xml id="toolbox" style="display: none">
+        {% include "webview/toolbox.xml" %}
+
+        {% comment %} <xml id="toolbox" style="display: none">
             <block type="controls_if"></block>
             <block type="controls_repeat_ext"></block>
             <block type="logic_compare"></block>
@@ -71,7 +73,7 @@
             <block type="math_arithmetic"></block>
             <block type="text"></block>
             <block type="text_print"></block>
-        </xml>
+        </xml> {% endcomment %}
         
         {% comment %} 
         <script>

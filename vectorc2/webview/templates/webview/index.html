@@ -1,7 +1,7 @@
 {% load bootstrap4 %}
 {% load static %}
 <html>
-    <head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -9,83 +9,95 @@
     <title>Vector GUI</title>
 
     {% bootstrap_javascript jquery='full' %}
+    {% bootstrap_css %}
+    {% bootstrap_messages %}
 
-        <style>
-        #blocklyArea {
-            position: fixed;
-            left: 0px;
-            right: 0px;
-            top: 30px;
-            bottom: 40px; 
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-        }
-        </style>
+    <style>
+      #blocklyArea {
+        position: fixed;
+        left: 0px;
+        right: 0px;
+        top: 35px;
+        bottom: 40px; 
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+      }
+    </style>
 
-        <script src="{% static 'script/blockly/blockly_compressed.js' %}"></script>
-        <script src="{% static 'script/blockly/blocks_compressed.js' %}"></script>
-        <script src="{% static 'script/blockly/msg/js/en.js' %}"></script>
-    </head>
-    <body>
+    <script src="{% static 'script/blockly/blockly_compressed.js' %}"></script>
+    <script src="{% static 'script/blockly/blocks_compressed.js' %}"></script>
+    <script src="{% static 'script/blockly/code.js' %}"></script>
+    {% comment %} <script src="{% static 'script/blockly/msg/js/en.js' %}"></script> {% endcomment %}
 
-    <div id="blocklyArea">
-        <div id="blocklyDiv" style="position: absolute"></div>
-    </div>
+    <link href="{% static 'style/sticky-footer-navbar.css' %}" rel="stylesheet">
+  </head>
+  <body class="d-flex flex-column h-100">
 
+    {% include "webview/header.html" %}
 
-        <xml id="toolbox" style="display: none">
-            <block type="controls_if"></block>
-            <block type="controls_repeat_ext"></block>
-            <block type="logic_compare"></block>
-            <block type="math_number"></block>
-            <block type="math_arithmetic"></block>
-            <block type="text"></block>
-            <block type="text_print"></block>
-        </xml>
+    <main role="main" id="blocklyArea" class="flex-shrink-0">
+    {% comment %} <div id="blocklyArea"> {% endcomment %}
+      <div id="blocklyDiv" style="position: absolute"></div>
+    {% comment %} </div> {% endcomment %}
+    </main>
 
-        <script>
-  var blocklyArea = $('#blocklyArea')[0];
-  var blocklyDiv = $('#blocklyDiv')[0];
-  var toolbox = $('#toolbox')[0];
-            var workspace = Blockly.inject(blocklyDiv,
-                {
-                    toolbox: toolbox,
-                    collapse: false,
-                    grid: {
-                        spacing: 20,
-                        length: 1,
-                        colour: '#777',
-                        snap: true },
-                    horizontalLayout: false,
-                    oneBasedIndex: false,
-                    scrollbars: true,
-                    sounds: false,
-                    trashcan: true,
-                    maxTrashcanContents: 10,
-                    zoom: false 
-                });
-            var onresize = function(e) {
-                // Compute the absolute coordinates and dimensions of blocklyArea.
-                var element = blocklyArea;
-                var x = 0;
-                var y = 0;
-                do {
-                    x += element.offsetLeft;
-                    y += element.offsetTop;
-                    element = element.offsetParent;
-                } while (element);
-                // Position blocklyDiv over blocklyArea.
-                blocklyDiv.style.left = x + 'px';
-                blocklyDiv.style.top = y + 'px';
-                blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
-                blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
-                Blockly.svgResize(workspace);
-            };
-            window.addEventListener('resize', onresize, false);
-            onresize();
-            Blockly.svgResize(workspace);
-        </script>        
+    {% include "webview/toolbox.xml" %}
 
-    </body>
+    {% comment %} <xml id="toolbox" style="display: none">
+        <block type="controls_if"></block>
+        <block type="controls_repeat_ext"></block>
+        <block type="logic_compare"></block>
+        <block type="math_number"></block>
+        <block type="math_arithmetic"></block>
+        <block type="text"></block>
+        <block type="text_print"></block>
+    </xml> {% endcomment %}
+
+    <script>
+      var blocklyArea = $('#blocklyArea')[0];
+      var blocklyDiv = $('#blocklyDiv')[0];
+      var toolbox = $('#toolbox')[0];
+/*      var workspace = Blockly.inject(blocklyDiv,
+          {
+              toolbox: toolbox,
+              collapse: false,
+              grid: {
+                  spacing: 20,
+                  length: 1,
+                  colour: '#777',
+                  snap: true },
+              horizontalLayout: false,
+              oneBasedIndex: false,
+              scrollbars: true,
+              sounds: false,
+              trashcan: true,
+              maxTrashcanContents: 10,
+              zoom: false 
+          }); */
+      var onresize = function(e) {
+          // Compute the absolute coordinates and dimensions of blocklyArea.
+          var element = blocklyArea;
+          var x = 0;
+          var y = 0;
+          do {
+              x += element.offsetLeft;
+              y += element.offsetTop;
+              element = element.offsetParent;
+          } while (element);
+          // Position blocklyDiv over blocklyArea.
+          blocklyDiv.style.left = x + 'px';
+          blocklyDiv.style.top = y + 'px';
+          blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
+          blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
+          Blockly.svgResize(workspace);
+      };
+      window.addEventListener('resize', onresize, false);
+      onresize();
+      Blockly.svgResize(workspace);
+    </script>        
+
+    {% include "webview/footer.html" %}
+
+  </body>
 </html>
