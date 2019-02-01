@@ -1,3 +1,6 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_language_info for LANGUAGE_CODE as lang %}
 {% load bootstrap4 %}
 {% load static %}
 <html>
@@ -27,18 +30,14 @@
 
     <script src="{% static 'script/blockly/blockly_compressed.js' %}"></script>
     <script src="{% static 'script/blockly/blocks_compressed.js' %}"></script>
-    <script src="{% static 'script/blockly/code.js' %}"></script>
+    <script src="{% static 'script/vector/vector_rc2.js' %}"></script>
 
-    {% with 'script/blockly/msg/code/js/'|add:request.LANGUAGE_CODE|add:'.gif' as image_static %}
-      {% static image_static %}
-    {% endwith %}
-
-    <script src="{% static 'script/blockly/msg/code/js/en.js' %}"></script>
-    <script src="{% static 'script/blockly/msg/js/en.js' %}"></script>
+    <script src="{% static 'script/blockly/msg/code/js/{{ lang.code }}.js' %}"></script>
+    <script src="{% static 'script/blockly/msg/js/{{ lang.code }}.js' %}"></script>
 
     <link href="{% static 'style/sticky-footer-navbar.css' %}" rel="stylesheet">
   </head>
-  <body class="d-flex flex-column h-100">
+  <body class="d-flex flex-column h-100" lang="{{ lang.code }}">
 
     {% include "webview/header.html" %}
 

@@ -87,7 +87,6 @@ const VectorRC2 = (function(){
         $.each(__elements, function (index, value) {
             __elements[index] = $('#'+index)[0];
         });
-
         
         // hook actions
         $('#languageMenu').change(__beforeLanguageChange);
@@ -160,7 +159,7 @@ const VectorRC2 = (function(){
     function __beforeLanguageChange(event) {
         var xml = Blockly.Xml.workspaceToDom(__workspace);
         var text = Blockly.Xml.domToText(xml);
-        SessionStorage.setItem('loadOnceBlocks') = text;
+        SessionStorage.setItem('loadOnceBlocks', text);
     }
 
     function __onAreaResize(e) {
@@ -223,11 +222,4 @@ const VectorRC2 = (function(){
 
 })();
 
-// Load the Code demo's language strings.
-document.write('<script src="/static/script/blockly/msg/code/' + Code.LANG + '.js"></script>\n');
-// Load Blockly's language strings.
-document.write('<script src="/static/script/blockly/msg/js/' + Code.LANG + '.js"></script>\n');
-
-Event.observe(document, DocumentMenu.MENU_INIT_EVENT, function(event){
-    VectorRC2.init();
-});
+$( document ).ready(VectorRC2.init)

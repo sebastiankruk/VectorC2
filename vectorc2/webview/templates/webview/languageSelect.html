@@ -1,4 +1,13 @@
-<select id="languageMenu" class="mt-1 mt-md-0">
-    <option value="en">English</option>
-    <option value="pl">Polski</option>
-</select>
+{% load i18n %}
+<form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+  <input name="next" type="hidden" value="{{ redirect_to }}" />
+
+  <select id="languageMenu" class="mt-1 mt-md-0" name="language" onchange="this.form.submit()">
+    {% get_current_language as LANGUAGE_CODE %}
+    {% get_available_languages as LANGUAGES %}
+    {% get_language_info_list for LANGUAGES as languages %}
+    {% for language in languages %}
+      <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>{{ language.name }}</option>
+    {% endfor %}
+  </select>
+</form>
