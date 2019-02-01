@@ -30,22 +30,11 @@ const SessionStorage = (function(){
 /**
  * Main class for managing UI for Vector Remote Control
  */
-const VectorRC2 = (function(){
+const VectorC2 = (function(){
 
     // ---------------------------------------------------------------------------
     //                                  constants 
     // ---------------------------------------------------------------------------
-    const __LANGS = {
-        'en': 'English',
-        'pl': 'Polski'
-    }
-
-    /**
-     * Currently selected language
-     * @type {string}
-     */
-    const __LANG = __getLang();
-
     /**
      * List of tab names.
      * @private
@@ -93,9 +82,6 @@ const VectorRC2 = (function(){
         $(window).resize(__onAreaResize);
 
         // initilize blockly
-        __onAreaResize();
-        __initilizeToolbox();
-
         __workspace =  Blockly.inject(__elements.blocklyDiv,
             {
                 toolbox: __elements.toolbox,
@@ -114,42 +100,10 @@ const VectorRC2 = (function(){
                 zoom: false 
             });        
 
-        Blockly.JavaScript.addReservedWords('code,timeouts,checkTimeout');
+        // Blockly.JavaScript.addReservedWords('code,timeouts,checkTimeout');
 
         __loadBlocks('');
-    }
-
-    /**
-     * Initlizes the toolbox
-     */
-    function __initilizeToolbox() {
-      for (var messageKey in MSG) {
-          if (messageKey.indexOf('cat') == 0) {
-            Blockly.Msg[messageKey.toUpperCase()] = MSG[messageKey];
-          }
-        }
-      
-      // Construct the toolbox XML, replacing translated variable names.
-      var toolboxText =__elements.toolbox.outerHTML;
-      toolboxText = toolboxText.replace(/(^|[^%]){(\w+)}/g,
-          function(m, p1, p2) {return p1 + MSG[p2];});
-      var toolboxXml = Blockly.Xml.textToDom(toolboxText);
-    }
-
-    /**
-     * Extracts value of the given query parameter
-     * @param {String} param 
-     */
-    function __urlParam(param, _default) {
-        var results = new RegExp('[\?&]' + param + '=([^&#]*)').exec(window.location.search);
-        return results ? decodeURIComponent(results[1].replace(/\+/g, '%20')) : _default;
-    }
-
-    /**
-     * returns currently selected language
-     */
-    function __getLang() {
-        return __urlParam('lang', 'en');
+        __onAreaResize();
     }
 
     /**
@@ -201,11 +155,11 @@ const VectorRC2 = (function(){
           // Language switching stores the blocks during the reload.
           delete window.sessionStorage.loadOnceBlocks;
           var xml = Blockly.Xml.textToDom(loadOnce);
-          Blockly.Xml.domToWorkspace(xml, Code.workspace);
+          Blockly.Xml.domToWorkspace(xml, __workspace);
         } else if (defaultXml) {
           // Load the editor with default starting blocks.
           var xml = Blockly.Xml.textToDom(defaultXml);
-          Blockly.Xml.domToWorkspace(xml, Code.workspace);
+          Blockly.Xml.domToWorkspace(xml, __workspace);
         } else if ('BlocklyStorage' in window) {
           // Restore saved blocks in a separate thread so that subsequent
           // initialization is not affected from a failed load.
@@ -222,4 +176,4 @@ const VectorRC2 = (function(){
 
 })();
 
-$( document ).ready(VectorRC2.init)
+$( document ).ready(VectorC2.init)

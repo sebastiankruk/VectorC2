@@ -1,13 +1,20 @@
 {% load i18n %}
-<form action="{% url 'set_language' %}" method="post">{% csrf_token %}
-  <input name="next" type="hidden" value="{{ redirect_to }}" />
+{% get_current_language as LANGUAGE_CODE %}
+{% get_language_info for LANGUAGE_CODE as lang %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
 
-  <select id="languageMenu" class="mt-1 mt-md-0" name="language" onchange="this.form.submit()">
-    {% get_current_language as LANGUAGE_CODE %}
-    {% get_available_languages as LANGUAGES %}
-    {% get_language_info_list for LANGUAGES as languages %}
-    {% for language in languages %}
-      <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>{{ language.name }}</option>
-    {% endfor %}
-  </select>
+<form action="{% url 'set_language' %}" method="post" class="form-inline mt-2 mt-md-0">
+  {% csrf_token %}
+  <input name="next" type="hidden" value="{{ redirect_to }}" />
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{ lang.name }}
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      {% for language in languages %}
+      <button class="dropdown-item" type="submit" name="language" value="{{ language.code }}">{{ language.name }}</button>
+      {% endfor %}
+    </div>
+  </div>
 </form>

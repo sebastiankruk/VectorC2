@@ -15,27 +15,16 @@
     {% bootstrap_css %}
     {% bootstrap_messages %}
 
-    <style>
-      #blocklyArea {
-        position: fixed;
-        left: 0px;
-        right: 0px;
-        top: 35px;
-        bottom: 40px; 
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-      }
-    </style>
+    <link href="{% static 'style/sticky-footer-navbar.css' %}" rel="stylesheet">
 
     <script src="{% static 'script/blockly/blockly_compressed.js' %}"></script>
     <script src="{% static 'script/blockly/blocks_compressed.js' %}"></script>
-    <script src="{% static 'script/vector/vector_rc2.js' %}"></script>
+    <script src="{% static 'script/vector/vector_c2.js' %}"></script>
 
-    <script src="{% static 'script/blockly/msg/code/js/{{ lang.code }}.js' %}"></script>
-    <script src="{% static 'script/blockly/msg/js/{{ lang.code }}.js' %}"></script>
+    <script src="{% static 'script/blockly/msg/code/en.js' %}"></script>
+    <script src="{% static 'script/blockly/msg/js/en.js' %}"></script>
 
-    <link href="{% static 'style/sticky-footer-navbar.css' %}" rel="stylesheet">
+    <link href="{% static 'style/vector-c2.css' %}" rel="stylesheet">
   </head>
   <body class="d-flex flex-column h-100" lang="{{ lang.code }}">
 

@@ -1,0 +1,20 @@
+.blocklyTreeRoot > div[role] > div[role=treeitem] > div > span,
+button.dropdown-item {
+  cursor: pointer;
+}
+
+#blocklyArea {
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  top: 35px;
+  bottom: 40px; 
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+}
+
+#navbarCollapse > form.form-inline {
+  position: relative;
+  top: 8px;
+}

@@ -173,8 +173,8 @@ BOOTSTRAP4 = {
 
     # The URL to the Popper.js JavaScript file (slim)
     "popper_url": {
-        "url": "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js",
-        "integrity": "sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49",
+        "url": "https://unpkg.com/popper.js/dist/umd/popper.min.js",
+        # "integrity": "sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49",
         "crossorigin": "anonymous",
     },
 
