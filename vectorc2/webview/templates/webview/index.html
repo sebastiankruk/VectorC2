@@ -28,7 +28,13 @@
     <script src="{% static 'script/blockly/blockly_compressed.js' %}"></script>
     <script src="{% static 'script/blockly/blocks_compressed.js' %}"></script>
     <script src="{% static 'script/blockly/code.js' %}"></script>
-    {% comment %} <script src="{% static 'script/blockly/msg/js/en.js' %}"></script> {% endcomment %}
+
+    {% with 'script/blockly/msg/code/js/'|add:request.LANGUAGE_CODE|add:'.gif' as image_static %}
+      {% static image_static %}
+    {% endwith %}
+
+    <script src="{% static 'script/blockly/msg/code/js/en.js' %}"></script>
+    <script src="{% static 'script/blockly/msg/js/en.js' %}"></script>
 
     <link href="{% static 'style/sticky-footer-navbar.css' %}" rel="stylesheet">
   </head>
@@ -37,65 +43,10 @@
     {% include "webview/header.html" %}
 
     <main role="main" id="blocklyArea" class="flex-shrink-0">
-    {% comment %} <div id="blocklyArea"> {% endcomment %}
       <div id="blocklyDiv" style="position: absolute"></div>
-    {% comment %} </div> {% endcomment %}
     </main>
 
     {% include "webview/toolbox.xml" %}
-
-    {% comment %} <xml id="toolbox" style="display: none">
-        <block type="controls_if"></block>
-        <block type="controls_repeat_ext"></block>
-        <block type="logic_compare"></block>
-        <block type="math_number"></block>
-        <block type="math_arithmetic"></block>
-        <block type="text"></block>
-        <block type="text_print"></block>
-    </xml> {% endcomment %}
-
-    <script>
-      var blocklyArea = $('#blocklyArea')[0];
-      var blocklyDiv = $('#blocklyDiv')[0];
-      var toolbox = $('#toolbox')[0];
-/*      var workspace = Blockly.inject(blocklyDiv,
-          {
-              toolbox: toolbox,
-              collapse: false,
-              grid: {
-                  spacing: 20,
-                  length: 1,
-                  colour: '#777',
-                  snap: true },
-              horizontalLayout: false,
-              oneBasedIndex: false,
-              scrollbars: true,
-              sounds: false,
-              trashcan: true,
-              maxTrashcanContents: 10,
-              zoom: false 
-          }); */
-      var onresize = function(e) {
-          // Compute the absolute coordinates and dimensions of blocklyArea.
-          var element = blocklyArea;
-          var x = 0;
-          var y = 0;
-          do {
-              x += element.offsetLeft;
-              y += element.offsetTop;
-              element = element.offsetParent;
-          } while (element);
-          // Position blocklyDiv over blocklyArea.
-          blocklyDiv.style.left = x + 'px';
-          blocklyDiv.style.top = y + 'px';
-          blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
-          blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
-          Blockly.svgResize(workspace);
-      };
-      window.addEventListener('resize', onresize, false);
-      onresize();
-      Blockly.svgResize(workspace);
-    </script>        
 
     {% include "webview/footer.html" %}
 
