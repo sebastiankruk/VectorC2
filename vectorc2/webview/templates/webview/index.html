@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Sebastian Kruk">
-    <title>Vector RC2</title>
+    <title>VectorC2</title>
 
     {% bootstrap_javascript jquery='full' %}
     {% bootstrap_css %}
@@ -19,6 +19,8 @@
 
     <script src="{% static 'script/blockly/blockly_compressed.js' %}"></script>
     <script src="{% static 'script/blockly/blocks_compressed.js' %}"></script>
+    <script src="{% static 'script/blockly/javascript_compressed.js' %}"></script>
+    <script src="{% static 'script/blockly/python_compressed.js' %}"></script>
     <script src="{% static 'script/vector/vector_c2.js' %}"></script>
 
     <script src="{% static 'script/blockly/msg/code/en.js' %}"></script>
@@ -26,13 +28,31 @@
 
     <link href="{% static 'style/vector-c2.css' %}" rel="stylesheet">
   </head>
-  <body class="d-flex flex-column h-100" lang="{{ lang.code }}">
+  <body class="d-flex flex-column h-100 w-100" lang="{{ lang.code }}">
 
     {% include "webview/header.html" %}
 
     <main role="main" id="blocklyArea" class="flex-shrink-0">
-      <div id="blocklyDiv" style="position: absolute"></div>
+      <div id="blocklyDiv"></div>
     </main>
+
+    <aside role="code" id="sourceCode" class="flex-shrink-0 d-none d-lg-block">
+      <div id="content_javascript" class="p-2 content collapse show" aria-labelledby="option_javascript" data-parent="#sourceCode">
+        <h3>JavaScript source:</h3>
+        <pre>
+function JavaScript() {
+
+}
+        </pre>
+      </div>
+      <div id="content_python" class="p-2 content collapse" aria-labelledby="option_python" data-parent="#sourceCode">
+        <h3>Python source:</h3>
+        <pre>
+def python:
+  pass
+        </pre>
+      </div>
+    </aside>    
 
     {% include "webview/toolbox.xml" %}
 

@@ -3,18 +3,43 @@ button.dropdown-item {
   cursor: pointer;
 }
 
+.nav-item.disabled > a {
+  cursor: default;
+}
+
 #blocklyArea {
   position: fixed;
   left: 0px;
   right: 0px;
-  top: 35px;
+  top: 70px;
   bottom: 40px; 
   margin-left: 0px;
   margin-right: 0px;
   margin-top: 0px;
 }
 
+#sourceCode {
+  position: fixed;
+  right: 0px;
+  top: 70px;
+  bottom: 40px; 
+  max-width: 50vw;
+  min-width: 300px;
+  width: 30vw;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  background: white;
+}
+
 #navbarCollapse > form.form-inline {
   position: relative;
   top: 8px;
+}
+
+.dropdown.a-options-sourcecode.a-option-selected-python .dropdown-item.a-option-javascript .octicon-check,
+.dropdown.a-options-sourcecode.a-option-selected-javascript .dropdown-item.a-option-python .octicon-check,
+.dropdown.a-options-sourcecode.a-option-selected-python #navbarDropdown span.label-javascript,
+.dropdown.a-options-sourcecode.a-option-selected-javascript #navbarDropdown span.label-python {
+  display: none;
 }

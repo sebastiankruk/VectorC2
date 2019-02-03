@@ -25,13 +25,17 @@ SECRET_KEY = '#9iml9@=i%x#i57qi1zm)&)p46hrf(g=pn7jioagsh*))6+z9('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "192.168.1.7"
+]
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'bootstrap4',
+    'octicons',
     'webview.apps.WebviewConfig',
     'django.contrib.admin',
     'django.contrib.auth',
