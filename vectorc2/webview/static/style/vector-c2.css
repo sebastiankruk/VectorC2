@@ -37,9 +37,11 @@ button.dropdown-item {
   top: 8px;
 }
 
-.dropdown.a-options-sourcecode.a-option-selected-python .dropdown-item.a-option-javascript .octicon-check,
-.dropdown.a-options-sourcecode.a-option-selected-javascript .dropdown-item.a-option-python .octicon-check,
-.dropdown.a-options-sourcecode.a-option-selected-python #navbarDropdown span.label-javascript,
-.dropdown.a-options-sourcecode.a-option-selected-javascript #navbarDropdown span.label-python {
+.dropdown.a-options-sourcecode.a-option-selected-python .dropdown-item:not(.a-option-python) .octicon-check,
+.dropdown.a-options-sourcecode.a-option-selected-javascript .dropdown-item:not(.a-option-javascript) .octicon-check,
+.dropdown.a-options-sourcecode.a-option-selected-xml .dropdown-item:not(.a-option-xml) .octicon-check,
+.dropdown.a-options-sourcecode.a-option-selected-python #navbarDropdown span:not(.label-python),
+.dropdown.a-options-sourcecode.a-option-selected-javascript #navbarDropdown span:not(.label-javascript),
+.dropdown.a-options-sourcecode.a-option-selected-xml #navbarDropdown span:not(.label-xml) {
   display: none;
 }

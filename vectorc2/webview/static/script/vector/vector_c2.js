@@ -26,6 +26,8 @@ const SessionStorage = (function(){
 
 })();
 
+const REDUCE_TO_MAP = function(prev,curr){prev[curr[0]]=curr[1];return prev;};
+
 
 /**
  * Main class for managing UI for Vector Remote Control
@@ -40,6 +42,25 @@ const VectorC2 = (function(){
    * @private
    */
   const __VIEWS = ['blocks', 'javascript', 'python', 'xml'];
+
+  /**
+   * Default configuration of Blockly used
+   */
+  const __BLOCKLY_CONFIG = {
+    collapse: false,
+    grid: {
+      spacing: 20,
+      length: 1,
+      colour: '#777',
+      snap: true },
+    horizontalLayout: false,
+    oneBasedIndex: false,
+    scrollbars: false,
+    sounds: false,
+    trashcan: true,
+    maxTrashcanContents: 10,
+    zoom: false 
+  }
 
   // ---------------------------------------------------------------------------
   //                                  variables 
@@ -64,6 +85,10 @@ const VectorC2 = (function(){
       sourceCode: null,
       toolbox: null
   }
+  /**
+   * Source code elements
+   */
+  var __sourceCode;
 
   // ---------------------------------------------------------------------------
   //                                  private methods 
@@ -77,35 +102,27 @@ const VectorC2 = (function(){
     $.each(__elements, function (index, value) {
         __elements[index] = $('#'+index)[0];
     });
+
+    __sourceCode = $('#sourceCode .content')
+                    .map(function(){ return [[this.id.replace(/content_/, ''), 
+                                              this]] })
+                    .get()
+                    .reduce(REDUCE_TO_MAP,{});
     
     // hook actions
     $('#languageMenu').change(__beforeLanguageChange);
     $('.dropdown.a-options-sourcecode .dropdown-item').mouseup(__onSourceCodeSelectionChange);
     $(window).resize(__onAreaResize);
-
+    
 
     // initilize blockly
     __workspace =  Blockly.inject(__elements.blocklyDiv,
-                                  {
-                                      toolbox: __elements.toolbox,
-                                      collapse: false,
-                                      grid: {
-                                          spacing: 20,
-                                          length: 1,
-                                          colour: '#777',
-                                          snap: true },
-                                      horizontalLayout: false,
-                                      oneBasedIndex: false,
-                                      scrollbars: false,
-                                      sounds: false,
-                                      trashcan: true,
-                                      maxTrashcanContents: 10,
-                                      zoom: false 
-                                  });        
-
+                                  $.extend(__BLOCKLY_CONFIG, {
+                                    toolbox: __elements.toolbox
+                                  }));        
+    
     Blockly.JavaScript.addReservedWords('code,timeouts,checkTimeout');
-
-    __loadBlocks('');
+    
     __onAreaResize();
   }
 
@@ -118,6 +135,8 @@ const VectorC2 = (function(){
     options.removeClass('a-option-selected-'+__selectedView);
     __selectedView = $(this).attr('class').replace(/dropdown-item.a-option-/, '');
     options.addClass('a-option-selected-'+__selectedView);
+
+    __updateSourceCode();
   }
 
   /**
@@ -155,36 +174,93 @@ const VectorC2 = (function(){
   // ------------------------------------------------------------------
 
   /**
-   * TODO!!!
-   * @param {*} defaultXml 
+   * Updates source code of 
    */
-  function __loadBlocks(defaultXml) {
+  function __updateSourceCode() {
+    if('xml' === __selectedView) {
+      var xmlText = __sourceCode.xml.value;
+      var xmlDom = null;
       try {
-        var loadOnce = window.sessionStorage.loadOnceBlocks;
-      } catch(e) {
-        // Firefox sometimes throws a SecurityError when accessing sessionStorage.
-        // Restarting Firefox fixes this, so it looks like a bug.
-        var loadOnce = null;
+        xmlDom = Blockly.Xml.textToDom(xmlText);
+      } catch (e) {
+        alert(MSG['badXml'].replace('%1', e));
       }
-      if ('BlocklyStorage' in window && window.location.hash.length > 1) {
-        // An href with #key trigers an AJAX call to retrieve saved blocks.
-        BlocklyStorage.retrieveXml(window.location.hash.substring(1));
-      } else if (loadOnce) {
-        // Language switching stores the blocks during the reload.
-        delete window.sessionStorage.loadOnceBlocks;
-        var xml = Blockly.Xml.textToDom(loadOnce);
-        Blockly.Xml.domToWorkspace(xml, __workspace);
-      } else if (defaultXml) {
-        // Load the editor with default starting blocks.
-        var xml = Blockly.Xml.textToDom(defaultXml);
-        Blockly.Xml.domToWorkspace(xml, __workspace);
-      } else if ('BlocklyStorage' in window) {
-        // Restore saved blocks in a separate thread so that subsequent
-        // initialization is not affected from a failed load.
-        window.setTimeout(BlocklyStorage.restoreBlocks, 0);
+      if (xmlDom) {
+        __workspace.clear();
+        Blockly.Xml.domToWorkspace(xmlDom, __workspace);
       }
-    };
-    
+    }
+    __renderContent();
+    Blockly.svgResize(__workspace);
+  };
+
+  /**
+   * Populate the currently selected pane with content generated from the blocks.
+   */
+  function __renderContent() {
+    switch(__selectedView) {
+      case 'xml':
+        var xmlDom = Blockly.Xml.workspaceToDom(__workspace);
+        var xmlText = Blockly.Xml.domToPrettyText(xmlDom);
+        __sourceCode.xml.value = xmlText;
+        __sourceCode.xml.focus();
+        break;
+      case 'python':
+        __generateCode(Blockly.Python, 'py');
+        break;
+      case 'javascript':
+      default:
+        __generateCode(Blockly.JavaScript, 'js');
+        break;
+    }
+  };
+
+
+  /**
+   * Attempt to generate the code and display it in the UI, pretty printed.
+   * @param generator {!Blockly.Generator} The generator to use.
+   * @param prettyPrintType {string} The file type key for the pretty printer.
+   */
+  function __generateCode(generator, prettyPrintType) {
+    var content = __sourceCode[__selectedView];
+    content.textContent = '';
+    if (__checkFunctionsAvailable(generator)) {
+      var code = generator.workspaceToCode(__workspace);
+
+      content.textContent = code;
+      if (typeof PR.prettyPrintOne == 'function') {
+        code = content.textContent;
+        code = PR.prettyPrintOne(code, prettyPrintType);
+        content.innerHTML = code;
+      }
+    }
+  };
+
+  /**
+   * Check whether all blocks in use have generator functions.
+   * @param generator {!Blockly.Generator} The generator to use.
+   */
+  function __checkFunctionsAvailable(generator) {
+    var blocks = __workspace.getAllBlocks(false);
+    var missingBlockGenerators = [];
+    for (var i = 0; i < blocks.length; i++) {
+      var blockType = blocks[i].type;
+      if (!generator[blockType]) {
+        if (missingBlockGenerators.indexOf(blockType) === -1) {
+          missingBlockGenerators.push(blockType);
+        }
+      }
+    }
+
+    var valid = missingBlockGenerators.length == 0;
+    if (!valid) {
+      var msg = 'The generator code for the following blocks not specified for '
+          + generator.name_ + ':\n - ' + missingBlockGenerators.join('\n - ');
+      Blockly.alert(msg);  // Assuming synchronous. No callback.
+    }
+    return valid;
+  };
+
 
   // ---------------------------------------------------------------------------
 

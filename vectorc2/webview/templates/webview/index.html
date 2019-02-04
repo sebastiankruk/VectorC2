@@ -35,25 +35,7 @@
     <main role="main" id="blocklyArea" class="flex-shrink-0">
       <div id="blocklyDiv"></div>
     </main>
-
-    <aside role="code" id="sourceCode" class="flex-shrink-0 d-none d-lg-block">
-      <div id="content_javascript" class="p-2 content collapse show" aria-labelledby="option_javascript" data-parent="#sourceCode">
-        <h3>JavaScript source:</h3>
-        <pre>
-function JavaScript() {
-
-}
-        </pre>
-      </div>
-      <div id="content_python" class="p-2 content collapse" aria-labelledby="option_python" data-parent="#sourceCode">
-        <h3>Python source:</h3>
-        <pre>
-def python:
-  pass
-        </pre>
-      </div>
-    </aside>    
-
+    {% include "webview/sourceCode.html" %}
     {% include "webview/toolbox.xml" %}
 
     {% include "webview/footer.html" %}
