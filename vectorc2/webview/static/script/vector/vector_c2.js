@@ -103,8 +103,8 @@ const VectorC2 = (function(){
         __elements[index] = $('#'+index)[0];
     });
 
-    __sourceCode = $('#sourceCode .content')
-                    .map(function(){ return [[this.id.replace(/content_/, ''), 
+    __sourceCode = $('#sourceCode .content .source')
+                    .map(function(){ return [[this.id.replace(/source_/, ''), 
                                               this]] })
                     .get()
                     .reduce(REDUCE_TO_MAP,{});
@@ -124,6 +124,7 @@ const VectorC2 = (function(){
     Blockly.JavaScript.addReservedWords('code,timeouts,checkTimeout');
     
     __onAreaResize();
+    prettyPrint();
   }
 
   /**
@@ -133,7 +134,7 @@ const VectorC2 = (function(){
   function __onSourceCodeSelectionChange(event) {
     var options = $('.dropdown.a-options-sourcecode');
     options.removeClass('a-option-selected-'+__selectedView);
-    __selectedView = $(this).attr('class').replace(/dropdown-item.a-option-/, '');
+    __selectedView = $(this).attr('class').replace(/dropdown-item.a-option-(\w+)\b.*/, '$1')
     options.addClass('a-option-selected-'+__selectedView);
 
     __updateSourceCode();
@@ -177,19 +178,19 @@ const VectorC2 = (function(){
    * Updates source code of 
    */
   function __updateSourceCode() {
-    if('xml' === __selectedView) {
-      var xmlText = __sourceCode.xml.value;
-      var xmlDom = null;
-      try {
-        xmlDom = Blockly.Xml.textToDom(xmlText);
-      } catch (e) {
-        alert(MSG['badXml'].replace('%1', e));
-      }
-      if (xmlDom) {
-        __workspace.clear();
-        Blockly.Xml.domToWorkspace(xmlDom, __workspace);
-      }
-    }
+    // if('xml' === __selectedView) {
+    //   var xmlText = __sourceCode.xml.value;
+    //   var xmlDom = null;
+    //   try {
+    //     xmlDom = Blockly.Xml.textToDom(xmlText);
+    //   } catch (e) {
+    //     alert(MSG['badXml'].replace('%1', e));
+    //   }
+    //   if (xmlDom) {
+    //     __workspace.clear();
+    //     Blockly.Xml.domToWorkspace(xmlDom, __workspace);
+    //   }
+    // }
     __renderContent();
     Blockly.svgResize(__workspace);
   };

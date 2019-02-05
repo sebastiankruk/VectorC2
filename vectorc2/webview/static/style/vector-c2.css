@@ -45,3 +45,25 @@ button.dropdown-item {
 .dropdown.a-options-sourcecode.a-option-selected-xml #navbarDropdown span:not(.label-xml) {
   display: none;
 }
+
+#sourceCode .content h5 {
+  background-color: black;
+  color: white;
+}
+
+#sourceCode .content .source {
+  width: calc(100% - 1rem);
+  height: calc(100vh - 3.5rem - 110px);  
+}
+#sourceCode .content textarea.source {
+  height: calc(100% - 4rem);  
+}
+
+pre code {
+  overflow: auto;
+  display: block;
+  line-height: 1.6em;
+  white-space: pre;
+  word-wrap: normal;
+  /*max-height: 600px;*/
+}
