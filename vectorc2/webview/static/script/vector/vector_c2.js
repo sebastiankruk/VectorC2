@@ -120,11 +120,14 @@ const VectorC2 = (function(){
                                   $.extend(__BLOCKLY_CONFIG, {
                                     toolbox: __elements.toolbox
                                   }));        
+
+    __workspace.addChangeListener(__onWorkspaceChange);
+
     
     Blockly.JavaScript.addReservedWords('code,timeouts,checkTimeout');
     
     __onAreaResize();
-    prettyPrint();
+    PR.prettyPrint();
   }
 
   /**
@@ -137,8 +140,18 @@ const VectorC2 = (function(){
     __selectedView = $(this).attr('class').replace(/dropdown-item.a-option-(\w+)\b.*/, '$1')
     options.addClass('a-option-selected-'+__selectedView);
 
-    __updateSourceCode();
+    __renderContent();
   }
+
+  /**
+   * Notified about any changes in the workspace
+   * @param {Blockly.Event} event 
+   */
+  function __onWorkspaceChange(event) {
+    if ([Blockly.Events.BLOCK_MOVE, Blockly.Events.UI].indexOf(event.type) < 0) {
+      __renderContent();
+    }
+  }  
 
   /**
    * 
@@ -199,12 +212,13 @@ const VectorC2 = (function(){
    * Populate the currently selected pane with content generated from the blocks.
    */
   function __renderContent() {
+    $(__sourceCode[__selectedView]).removeClass('prettyprinted')
     switch(__selectedView) {
       case 'xml':
-        var xmlDom = Blockly.Xml.workspaceToDom(__workspace);
-        var xmlText = Blockly.Xml.domToPrettyText(xmlDom);
-        __sourceCode.xml.value = xmlText;
-        __sourceCode.xml.focus();
+        let xmlDom = Blockly.Xml.workspaceToDom(__workspace);
+        let xmlText = Blockly.Xml.domToPrettyText(xmlDom);
+        __sourceCode.xml.textContent = $(__sourceCode.xml).text(xmlText).html();
+        __pretifyCode(__sourceCode.xml, 'xml');
         break;
       case 'python':
         __generateCode(Blockly.Python, 'py');
@@ -214,6 +228,7 @@ const VectorC2 = (function(){
         __generateCode(Blockly.JavaScript, 'js');
         break;
     }
+    // __sourceCode[__selectedView].innerHTML = PR.prettyPrintOne(__sourceCode[__selectedView].innerHTML);
   };
 
 
@@ -223,17 +238,24 @@ const VectorC2 = (function(){
    * @param prettyPrintType {string} The file type key for the pretty printer.
    */
   function __generateCode(generator, prettyPrintType) {
-    var content = __sourceCode[__selectedView];
+    let content = __sourceCode[__selectedView];
     content.textContent = '';
     if (__checkFunctionsAvailable(generator)) {
-      var code = generator.workspaceToCode(__workspace);
+      content.textContent = generator.workspaceToCode(__workspace);
+      __pretifyCode(content, prettyPrintType);
+    }
+  };
 
-      content.textContent = code;
-      if (typeof PR.prettyPrintOne == 'function') {
-        code = content.textContent;
-        code = PR.prettyPrintOne(code, prettyPrintType);
-        content.innerHTML = code;
-      }
+  /**
+   * Prettifies code
+   * @param {Element} content 
+   * @param {String} prettyPrintType one of: xml, py, js
+   */
+  function __pretifyCode(content, prettyPrintType) {
+    if (typeof PR.prettyPrintOne == 'function') {
+      let code = content.textContent;
+      code = PR.prettyPrintOne(code, prettyPrintType, true);
+      content.innerHTML = code;
     }
   };
 
@@ -242,10 +264,10 @@ const VectorC2 = (function(){
    * @param generator {!Blockly.Generator} The generator to use.
    */
   function __checkFunctionsAvailable(generator) {
-    var blocks = __workspace.getAllBlocks(false);
-    var missingBlockGenerators = [];
+    let blocks = __workspace.getAllBlocks(false);
+    let missingBlockGenerators = [];
     for (var i = 0; i < blocks.length; i++) {
-      var blockType = blocks[i].type;
+      let blockType = blocks[i].type;
       if (!generator[blockType]) {
         if (missingBlockGenerators.indexOf(blockType) === -1) {
           missingBlockGenerators.push(blockType);
