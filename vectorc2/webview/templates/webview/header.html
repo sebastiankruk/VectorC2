@@ -19,24 +19,14 @@
       <li class="nav-item disabled">
         <a class="nav-link a-button-link" href="#">{% trans 'Link 🔗' %}</a>
       </li>
-      {% comment %} <li class="nav-item dropdown a-options-sourcecode a-option-selected-javascript d-none d-lg-block">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {% trans 'Source code: ' %}<span class="label-javascript">{% trans 'JavaScript' %}</span><span class="label-python">{% trans 'Python' %}</span><span class="label-xml">{% trans 'XML' %}</span>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a id="option_javascript" class="dropdown-item a-option-javascript" href="#content_javascript" type="button" data-toggle="collapse" aria-expanded="true" aria-controls="content_javascript">{% trans 'JavaScript' %} {% octicon "check" %}</span></a>
-          <a id="option_python" class="dropdown-item a-option-python" href="#content_python" type="button" data-toggle="collapse" aria-expanded="true" aria-controls="content_python">{% trans 'Python' %} {% octicon "check" %}</a>
-          <a id="option_xml" class="dropdown-item a-option-xml" href="#content_xml" type="button" data-toggle="collapse" aria-expanded="true" aria-controls="content_xml">{% trans 'XML' %} {% octicon "check" %}</a>
-        </div>
-      </li> {% endcomment %}
-    </ul>
+     </ul>
 
   {% comment %} <form class="form-inline mt-2 mt-md-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" type="submit">Search</button>
   </form> {% endcomment %}
 
-  {% include "webview/languageSelect.html" %}
+  {% comment %} {% include "webview/languageSelect.html" %} {% endcomment %}
 
   </div>
 </nav>

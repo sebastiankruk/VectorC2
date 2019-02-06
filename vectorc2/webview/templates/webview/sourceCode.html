@@ -5,7 +5,7 @@
 <aside role="code" id="sourceCode" class="flex-shrink-0 d-none d-lg-block">
   <div class="nav-item dropdown a-options-sourcecode a-option-selected-javascript d-none d-lg-block">
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      {% trans 'Source code: ' %}<span class="label-javascript">{% trans 'JavaScript' %}</span><span class="label-python">{% trans 'Python' %}</span><span class="label-xml">{% trans 'XML' %}</span>
+      {% trans 'Source code: ' %}<span class="nav-label label-javascript">{% trans 'JavaScript' %}</span><span class="nav-label label-python">{% trans 'Python' %}</span><span class="nav-label label-xml">{% trans 'XML' %}</span>
     </a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
       <a id="option_javascript" class="dropdown-item a-option-javascript" href="#content_javascript" type="button" data-toggle="collapse" aria-expanded="true" aria-controls="content_javascript">{% trans 'JavaScript' %} {% octicon "check" %}</span></a>
@@ -15,20 +15,12 @@
   </div>
 
   <div id="content_javascript" class="content collapse show" aria-labelledby="option_javascript" data-parent="#sourceCode">
-    <pre class="m-2 p-2 prettyprint source" id="source_javascript">
-function JavaScript() {}
-    </pre>
+    <pre class="m-2 p-2 prettyprint source" id="source_javascript"></pre>
   </div>
   <div id="content_python" class="content collapse" aria-labelledby="option_python" data-parent="#sourceCode">
-    <pre class="m-2 p-2 prettyprint source" id="source_python">
-def python:
-pass
-    </pre>
+    <pre class="m-2 p-2 prettyprint source" id="source_python"></pre>
   </div>
   <div id="content_xml" class="content collapse" aria-labelledby="option_xml" data-parent="#sourceCode">
-    <pre class="m-2 p-2 prettyprint source" id="source_xml">
-<xml xmlns="http://www.w3.org/1999/xhtml">
-</xml>
-    </pre>
+    <pre class="m-2 p-2 prettyprint source" id="source_xml"></pre>
   </div>
 </aside>    

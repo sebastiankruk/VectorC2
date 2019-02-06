@@ -41,12 +41,12 @@ nav .navbar-brand img {
   top: 8px;
 }
 
-.dropdown.a-options-sourcecode.a-option-selected-python .dropdown-item:not(.a-option-python) .octicon-check,
-.dropdown.a-options-sourcecode.a-option-selected-javascript .dropdown-item:not(.a-option-javascript) .octicon-check,
-.dropdown.a-options-sourcecode.a-option-selected-xml .dropdown-item:not(.a-option-xml) .octicon-check,
-.dropdown.a-options-sourcecode.a-option-selected-python #navbarDropdown span:not(.label-python),
-.dropdown.a-options-sourcecode.a-option-selected-javascript #navbarDropdown span:not(.label-javascript),
-.dropdown.a-options-sourcecode.a-option-selected-xml #navbarDropdown span:not(.label-xml) {
+#sourceCode .dropdown.a-options-sourcecode.a-option-selected-python .dropdown-item:not(.a-option-python) .octicon-check,
+#sourceCode .dropdown.a-options-sourcecode.a-option-selected-javascript .dropdown-item:not(.a-option-javascript) .octicon-check,
+#sourceCode .dropdown.a-options-sourcecode.a-option-selected-xml .dropdown-item:not(.a-option-xml) .octicon-check,
+#sourceCode .dropdown.a-options-sourcecode.a-option-selected-python #navbarDropdown span:not(.label-python),
+#sourceCode .dropdown.a-options-sourcecode.a-option-selected-javascript #navbarDropdown span:not(.label-javascript),
+#sourceCode .dropdown.a-options-sourcecode.a-option-selected-xml #navbarDropdown span:not(.label-xml) {
   display: none;
 }
 
@@ -62,6 +62,18 @@ nav .navbar-brand img {
 #sourceCode .content textarea.source {
   height: calc(100% - 4rem);  
 }
+
+#sourceCode .nav-item .dropdown-toggle,
+#sourceCode .nav-item .dropdown-item,
+#sourceCode .nav-item .nav-label {
+  color: black;
+}
+#sourceCode .dropdown.a-options-sourcecode.a-option-selected-python .dropdown-item.a-option-python,
+#sourceCode .dropdown.a-options-sourcecode.a-option-selected-javascript .dropdown-item.a-option-javascript,
+#sourceCode .dropdown.a-options-sourcecode.a-option-selected-xml .dropdown-item.a-option-xml,
+#sourceCode .nav-item .nav-label {
+  font-weight: 700;
+} */
 
 pre code {
   overflow: auto;
