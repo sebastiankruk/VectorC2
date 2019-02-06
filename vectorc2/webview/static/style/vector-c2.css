@@ -7,6 +7,10 @@ button.dropdown-item {
   cursor: default;
 }
 
+nav .navbar-brand img {
+  height: 44px;
+}
+
 #blocklyArea {
   position: fixed;
   left: 0px;
