@@ -112,6 +112,8 @@ const VectorC2 = (function(){
     // hook actions
     $('#languageMenu').change(__beforeLanguageChange);
     $('.dropdown.a-options-sourcecode .dropdown-item').mouseup(__onSourceCodeSelectionChange);
+    $('.nav-link.a-button-test').mouseup(_testJavaScript);
+
     $(window).resize(__onAreaResize);
     
 
@@ -228,7 +230,6 @@ const VectorC2 = (function(){
         __generateCode(Blockly.JavaScript, 'js');
         break;
     }
-    // __sourceCode[__selectedView].innerHTML = PR.prettyPrintOne(__sourceCode[__selectedView].innerHTML);
   };
 
 
@@ -262,6 +263,7 @@ const VectorC2 = (function(){
   /**
    * Check whether all blocks in use have generator functions.
    * @param generator {!Blockly.Generator} The generator to use.
+   * @todo: review and reimplement
    */
   function __checkFunctionsAvailable(generator) {
     let blocks = __workspace.getAllBlocks(false);
@@ -284,11 +286,40 @@ const VectorC2 = (function(){
     return valid;
   };
 
+    // ---------------------------------------------------------------------------
+
+  /**
+   * Run user block in JavaScript.
+   * For quick and dirty test purposes
+   */
+  function _testJavaScript() {
+    Blockly.JavaScript.INFINITE_LOOP_TRAP = '  checkTimeout();\n';
+    var timeouts = 0;
+    var checkTimeout = function() {
+      if (timeouts++ > 1000000) {
+        throw MSG['timeout'];
+      }
+    };
+    var code = Blockly.JavaScript.workspaceToCode(__workspace);
+    Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+
+    if (code) {
+      try {
+        eval(code);
+      } catch (e) {
+        alert(MSG['badCode'].replace('%1', e));
+      }
+    } else {
+      alert('No code to run'); //TODO
+    }
+  };
+
 
   // ---------------------------------------------------------------------------
 
   return {
-      init: __init__
+      init: __init__,
+      testJavaScript: _testJavaScript
   }
 
 })();

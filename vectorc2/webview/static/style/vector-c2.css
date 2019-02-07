@@ -83,3 +83,13 @@ pre code {
   word-wrap: normal;
   /*max-height: 600px;*/
 }
+
+.nav-item.active .octicon {
+  fill: white;  
+}
+.nav-item.disabled .octicon {
+  fill: gray;  
+}
+.octicon {
+  vertical-align: text-bottom;
+}
