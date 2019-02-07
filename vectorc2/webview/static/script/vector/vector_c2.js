@@ -5,12 +5,12 @@
 
 'use strict';
 
-const SessionStorage = (function(){
+const LocalStorage = (function(){
 
   return (function(){
 
     try {
-        return window.sessionStorage;
+        return window.localStorage;
     } catch(e) {}
     return null;
 
@@ -110,7 +110,7 @@ const VectorC2 = (function(){
                     .reduce(REDUCE_TO_MAP,{});
     
     // hook actions
-    $('#languageMenu').change(__beforeLanguageChange);
+    $( window ).on('beforeunload', __beforeUnload);
     $('.dropdown.a-options-sourcecode .dropdown-item').mouseup(__onSourceCodeSelectionChange);
     
     // hook button actions
@@ -132,8 +132,8 @@ const VectorC2 = (function(){
     
     Blockly.JavaScript.addReservedWords('code,timeouts,checkTimeout');
     
+    __afterLoad();
     __onAreaResize();
-    PR.prettyPrint();
   }
 
   /**
@@ -163,10 +163,25 @@ const VectorC2 = (function(){
    * 
    * @param {Event} event 
    */
-  function __beforeLanguageChange(event) {
+  function __beforeUnload(event, blocks) {
       var xml = Blockly.Xml.workspaceToDom(__workspace);
       var text = Blockly.Xml.domToText(xml);
-      SessionStorage.setItem('loadOnceBlocks', text);
+      LocalStorage.setItem('VectorC2:workspace:current', text);
+
+      console.log('Current workspace state was saved to session storage'); //TODO i18n
+  }
+
+  /**
+   * Attempts to load workspace from session storage
+   * @param {*} event 
+   */
+  function __afterLoad(event) {
+    let workspaceBlocks = LocalStorage.getItem('VectorC2:workspace:current');
+    if (workspaceBlocks) {
+      __updateWorkspaceBlocks(workspaceBlocks);
+    } else {
+      console.log('No previously saved workspace was found'); //TODO i18n
+    }
   }
 
   /**
@@ -196,20 +211,17 @@ const VectorC2 = (function(){
   /**
    * Updates source code of 
    */
-  function __updateSourceCode() {
-    // if('xml' === __selectedView) {
-    //   var xmlText = __sourceCode.xml.value;
-    //   var xmlDom = null;
-    //   try {
-    //     xmlDom = Blockly.Xml.textToDom(xmlText);
-    //   } catch (e) {
-    //     alert(MSG['badXml'].replace('%1', e));
-    //   }
-    //   if (xmlDom) {
-    //     __workspace.clear();
-    //     Blockly.Xml.domToWorkspace(xmlDom, __workspace);
-    //   }
-    // }
+  function __updateWorkspaceBlocks(workspaceBlocks) {
+    let xmlDom = null;
+    try {
+      xmlDom = Blockly.Xml.textToDom(workspaceBlocks);
+    } catch (e) {
+      alert(MSG['badXml'].replace('%1', e));
+    }
+    if (xmlDom) {
+      __workspace.clear();
+      Blockly.Xml.domToWorkspace(xmlDom, __workspace);
+    }
     __renderContent();
     Blockly.svgResize(__workspace);
   };
