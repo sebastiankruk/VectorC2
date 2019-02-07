@@ -112,7 +112,11 @@ const VectorC2 = (function(){
     // hook actions
     $('#languageMenu').change(__beforeLanguageChange);
     $('.dropdown.a-options-sourcecode .dropdown-item').mouseup(__onSourceCodeSelectionChange);
+    
+    // hook button actions
     $('.nav-link.a-button-test').mouseup(_testJavaScript);
+    $('.nav-link.a-button-cleanup').mouseup(_cleanupWorkspace);
+
 
     $(window).resize(__onAreaResize);
     
@@ -286,7 +290,7 @@ const VectorC2 = (function(){
     return valid;
   };
 
-    // ---------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
 
   /**
    * Run user block in JavaScript.
@@ -314,12 +318,26 @@ const VectorC2 = (function(){
     }
   };
 
+  /**
+   * Cleaning up current workspace
+   */
+  function _cleanupWorkspace() {
+    var count = __workspace.getAllBlocks(false).length;
+    if (window.confirm(Blockly.Msg['DELETE_ALL_BLOCKS'].replace('%1', count))) {
+      __workspace.clear();
+      if (window.location.hash) {
+        window.location.hash = '';
+      }
+    }
+  };  
+
 
   // ---------------------------------------------------------------------------
 
   return {
       init: __init__,
-      testJavaScript: _testJavaScript
+      testJavaScript: _testJavaScript,
+      cleanupWorkspace: _cleanupWorkspace
   }
 
 })();
