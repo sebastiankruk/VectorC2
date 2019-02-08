@@ -5,30 +5,6 @@
 
 'use strict';
 
-const LocalStorage = (function(){
-
-  return (function(){
-
-    try {
-        return window.localStorage;
-    } catch(e) {}
-    return null;
-
-  })() || {
-
-    setItem: function(){},
-    getItem: function(){ return null },
-    removeItem: function(){},
-    clear: function(){},
-    key: function(){},
-    length: function(){ return 0; }
-  };
-
-})();
-
-const REDUCE_TO_MAP = function(prev,curr){prev[curr[0]]=curr[1];return prev;};
-
-
 /**
  * Main class for managing UI for Vector Remote Control
  */
@@ -37,12 +13,6 @@ const VectorC2 = (function(){
   // ---------------------------------------------------------------------------
   //                                  constants 
   // ---------------------------------------------------------------------------
-  /**
-   * List of tab names.
-   * @private
-   */
-  const __VIEWS = ['blocks', 'javascript', 'python', 'xml'];
-
   /**
    * Default configuration of Blockly used
    */
@@ -61,6 +31,11 @@ const VectorC2 = (function(){
     maxTrashcanContents: 10,
     zoom: false 
   }
+
+  /**
+   * Key used to set/retrieve stuff from local storage
+   */
+  const __LOCAL_STORAGE_KEY  = 'VectorC2:workspace:current';
 
   // ---------------------------------------------------------------------------
   //                                  variables 
@@ -91,7 +66,82 @@ const VectorC2 = (function(){
   var __sourceCode;
 
   // ---------------------------------------------------------------------------
-  //                                  private methods 
+  //                           event handler methods 
+  // ---------------------------------------------------------------------------
+
+
+  /**
+   * Called when source code shown is being changed
+   * @param {*} event 
+   */
+  function __onSourceCodeSelectionChange(event) {
+    var options = $('.dropdown.a-options-sourcecode');
+    options.removeClass('a-option-selected-'+__selectedView);
+    __selectedView = $(this).attr('class').replace(/dropdown-item.a-option-(\w+)\b.*/, '$1')
+    options.addClass('a-option-selected-'+__selectedView);
+
+    __renderContent();
+  }
+
+  /**
+   * Notified about any changes in the workspace
+   * @param {Blockly.Event} event 
+   */
+  function __onWorkspaceChange(event) {
+    if ([Blockly.Events.UI].indexOf(event.type) < 0) {
+      __renderContent();
+    }
+  }  
+
+  /**
+   * 
+   * @param {Event} event 
+   */
+  function __beforeUnload(event) {
+      var xml = Blockly.Xml.workspaceToDom(__workspace);
+      var text = Blockly.Xml.domToText(xml);
+      LocalStorage.setItem(__LOCAL_STORAGE_KEY, text);
+
+      console.log('Current workspace state was saved to session storage'); //TODO i18n
+  }
+
+  /**
+   * Attempts to load workspace from session storage
+   * @param {*} event 
+   */
+  function __afterLoad(event) {
+    let workspaceBlocks = LocalStorage.getItem(__LOCAL_STORAGE_KEY);
+    if (workspaceBlocks) {
+      __updateWorkspaceBlocks(workspaceBlocks);
+    } else {
+      console.log('No previously saved workspace was found'); //TODO i18n
+    }
+  }
+
+  /**
+   * Event handler called when the window resizes
+   * @param {*} e 
+   */
+  function __onAreaResize(event) {
+      // Compute the absolute coordinates and dimensions of blocklyArea.
+      var element = __elements.blocklyArea;
+      var x = 0;
+      var y = 0;
+      do {
+          x += element.offsetLeft;
+          y += element.offsetTop;
+          element = element.offsetParent;
+      } while (element);
+      // Position blocklyDiv over blocklyArea.
+      __elements.blocklyDiv.style.left = x + 'px';
+      __elements.blocklyDiv.style.top = y + 'px';
+      __elements.blocklyDiv.style.width = ( __elements.blocklyArea.offsetWidth - __elements.sourceCode.offsetWidth) + 'px';
+      __elements.blocklyDiv.style.height = __elements.blocklyArea.offsetHeight + 'px';
+      Blockly.svgResize(__workspace);      
+  }
+
+  // ---------------------------------------------------------------------------
+  //                              private methods 
   // ---------------------------------------------------------------------------
 
   /**
@@ -117,93 +167,19 @@ const VectorC2 = (function(){
     $('.nav-link.a-button-test').mouseup(_testJavaScript);
     $('.nav-link.a-button-cleanup').mouseup(_cleanupWorkspace);
 
-
     $(window).resize(__onAreaResize);
-    
 
     // initilize blockly
     __workspace =  Blockly.inject(__elements.blocklyDiv,
                                   $.extend(__BLOCKLY_CONFIG, {
                                     toolbox: __elements.toolbox
                                   }));        
-
     __workspace.addChangeListener(__onWorkspaceChange);
-
     
     Blockly.JavaScript.addReservedWords('code,timeouts,checkTimeout');
     
     __afterLoad();
     __onAreaResize();
-  }
-
-  /**
-   * Called when source code shown is being changed
-   * @param {*} event 
-   */
-  function __onSourceCodeSelectionChange(event) {
-    var options = $('.dropdown.a-options-sourcecode');
-    options.removeClass('a-option-selected-'+__selectedView);
-    __selectedView = $(this).attr('class').replace(/dropdown-item.a-option-(\w+)\b.*/, '$1')
-    options.addClass('a-option-selected-'+__selectedView);
-
-    __renderContent();
-  }
-
-  /**
-   * Notified about any changes in the workspace
-   * @param {Blockly.Event} event 
-   */
-  function __onWorkspaceChange(event) {
-    if ([Blockly.Events.BLOCK_MOVE, Blockly.Events.UI].indexOf(event.type) < 0) {
-      __renderContent();
-    }
-  }  
-
-  /**
-   * 
-   * @param {Event} event 
-   */
-  function __beforeUnload(event, blocks) {
-      var xml = Blockly.Xml.workspaceToDom(__workspace);
-      var text = Blockly.Xml.domToText(xml);
-      LocalStorage.setItem('VectorC2:workspace:current', text);
-
-      console.log('Current workspace state was saved to session storage'); //TODO i18n
-  }
-
-  /**
-   * Attempts to load workspace from session storage
-   * @param {*} event 
-   */
-  function __afterLoad(event) {
-    let workspaceBlocks = LocalStorage.getItem('VectorC2:workspace:current');
-    if (workspaceBlocks) {
-      __updateWorkspaceBlocks(workspaceBlocks);
-    } else {
-      console.log('No previously saved workspace was found'); //TODO i18n
-    }
-  }
-
-  /**
-   * Event handler called when the window resizes
-   * @param {*} e 
-   */
-  function __onAreaResize(e) {
-      // Compute the absolute coordinates and dimensions of blocklyArea.
-      var element = __elements.blocklyArea;
-      var x = 0;
-      var y = 0;
-      do {
-          x += element.offsetLeft;
-          y += element.offsetTop;
-          element = element.offsetParent;
-      } while (element);
-      // Position blocklyDiv over blocklyArea.
-      __elements.blocklyDiv.style.left = x + 'px';
-      __elements.blocklyDiv.style.top = y + 'px';
-      __elements.blocklyDiv.style.width = ( __elements.blocklyArea.offsetWidth - __elements.sourceCode.offsetWidth) + 'px';
-      __elements.blocklyDiv.style.height = __elements.blocklyArea.offsetHeight + 'px';
-      Blockly.svgResize(__workspace);      
   }
 
   // ------------------------------------------------------------------
@@ -236,14 +212,14 @@ const VectorC2 = (function(){
         let xmlDom = Blockly.Xml.workspaceToDom(__workspace);
         let xmlText = Blockly.Xml.domToPrettyText(xmlDom);
         __sourceCode.xml.textContent = $(__sourceCode.xml).text(xmlText).html();
-        __pretifyCode(__sourceCode.xml, 'xml');
+        __pretifyCode(__sourceCode.xml);
         break;
       case 'python':
-        __generateCode(Blockly.Python, 'py');
+        __generateCode(Blockly.Python);
         break;
       case 'javascript':
       default:
-        __generateCode(Blockly.JavaScript, 'js');
+        __generateCode(Blockly.JavaScript);
         break;
     }
   };
@@ -252,26 +228,26 @@ const VectorC2 = (function(){
   /**
    * Attempt to generate the code and display it in the UI, pretty printed.
    * @param generator {!Blockly.Generator} The generator to use.
-   * @param prettyPrintType {string} The file type key for the pretty printer.
    */
-  function __generateCode(generator, prettyPrintType) {
+  function __generateCode(generator) {
     let content = __sourceCode[__selectedView];
     content.textContent = '';
     if (__checkFunctionsAvailable(generator)) {
       content.textContent = generator.workspaceToCode(__workspace);
-      __pretifyCode(content, prettyPrintType);
+      __pretifyCode(content);
     }
   };
 
   /**
    * Prettifies code
    * @param {Element} content 
-   * @param {String} prettyPrintType one of: xml, py, js
    */
-  function __pretifyCode(content, prettyPrintType) {
-    if (typeof PR.prettyPrintOne == 'function') {
+  function __pretifyCode(content) {
+    if (typeof PR.prettyPrintOne == 'function' &&
+        typeof content.attr == 'function') {
       let code = content.textContent;
-      code = PR.prettyPrintOne(code, prettyPrintType, true);
+      let lang = content.attr('class').replace(/^.*lang[-](\w+)\b.*$/, '$1');
+      code = PR.prettyPrintOne(code, lang, true);
       content.innerHTML = code;
     }
   };
@@ -283,21 +259,12 @@ const VectorC2 = (function(){
    */
   function __checkFunctionsAvailable(generator) {
     let blocks = __workspace.getAllBlocks(false);
-    let missingBlockGenerators = [];
-    for (var i = 0; i < blocks.length; i++) {
-      let blockType = blocks[i].type;
-      if (!generator[blockType]) {
-        if (missingBlockGenerators.indexOf(blockType) === -1) {
-          missingBlockGenerators.push(blockType);
-        }
-      }
-    }
-
-    var valid = missingBlockGenerators.length == 0;
+    let missing = $.unique(blocks.filter(block => !generator[block.type]))
+    var valid = missing.length == 0;
     if (!valid) {
       var msg = 'The generator code for the following blocks not specified for '
-          + generator.name_ + ':\n - ' + missingBlockGenerators.join('\n - ');
-      Blockly.alert(msg);  // Assuming synchronous. No callback.
+          + generator.name_ + ':\n - ' + missing.join('\n - ');
+      console.log(msg);  // Assuming synchronous. No callback.
     }
     return valid;
   };
@@ -314,17 +281,20 @@ const VectorC2 = (function(){
     var checkTimeout = function() {
       if (timeouts++ > 1000000) {
         throw MSG['timeout'];
+        $('.a-button-test').parent().removeClass('disabled').addClass('active');
       }
     };
     var code = Blockly.JavaScript.workspaceToCode(__workspace);
     Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
 
     if (code) {
+      $('.a-button-test').parent().removeClass('active').addClass('disabled');
       try {
         eval(code);
       } catch (e) {
         alert(MSG['badCode'].replace('%1', e));
       }
+      $('.a-button-test').parent().removeClass('disabled').addClass('active');
     } else {
       alert('No code to run'); //TODO
     }

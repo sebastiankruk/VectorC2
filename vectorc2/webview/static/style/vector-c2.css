@@ -93,3 +93,7 @@ pre code {
 .octicon {
   vertical-align: text-bottom;
 }
+.nav-item.active .nav-link.a-button-test .octicon-flame,
+.nav-item.disabled .nav-link.a-button-test .octicon-beaker {
+  display: none;
+}
