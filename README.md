@@ -25,18 +25,11 @@ The idea behind Vector C2 project emerged when I realized that although Anki Vec
     ```
 1. Install [redis](https://redis.io/).
 1. [Run Redis](https://redis.io/topics/quickstart):
-    ```
+    ```bash
     redis-server
     ```
 1. Run Vector C2 server:
-    ```
-    cd vertorc2
+    ```bash
+    cd vectorc2
     python manage.py runserver
     ```
-
-
-
-
-
-
-
