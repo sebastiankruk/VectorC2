@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'chat',
     'bootstrap4',
     'octicons',
     'webview.apps.WebviewConfig',
