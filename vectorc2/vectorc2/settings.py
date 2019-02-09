@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -219,3 +220,5 @@ BOOTSTRAP4 = {
         'inline': 'bootstrap4.renderers.InlineFieldRenderer',
     },
 }
+
+ASGI_APPLICATION = "vectorc2.routing.application"
