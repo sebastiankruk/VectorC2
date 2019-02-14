@@ -35,7 +35,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    'chat',
+    'vectorc2',
     'bootstrap4',
     'octicons',
     'webview.apps.WebviewConfig',

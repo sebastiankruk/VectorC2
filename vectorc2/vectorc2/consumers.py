@@ -2,10 +2,10 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 import json
 import time
 
-class ChatConsumer(AsyncWebsocketConsumer):
+class ChannelConsumer(AsyncWebsocketConsumer):
     async def connect(self):
-        self.room_name = self.scope['url_route']['kwargs']['room_name']
-        self.room_group_name = 'chat_%s' % self.room_name
+        self.channel_name = self.scope['url_route']['kwargs']['channel_name']
+        self.room_group_name = 'channel_%s' % self.channel_name
 
         # Join room group
         await self.channel_layer.group_add(
@@ -31,14 +31,14 @@ class ChatConsumer(AsyncWebsocketConsumer):
         await self.channel_layer.group_send(
             self.room_group_name,
             {
-                'type': 'chat_message',
+                'type': 'channel_message',
                 'message': message
             }
         )
 
 
     # Receive message from room group
-    async def chat_message(self, event):
+    async def channel_message(self, event):
         message = event['message']
 
         # Send message to WebSocket

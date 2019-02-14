@@ -23,11 +23,12 @@ const LogPanel = (function(){
   // ---------------------------------------------------------------------------
 
   function _clear() {
-
+    //TODO
   }
 
   function _addText(text) {
-
+    //TODO
+    console.log(text);
   }
 
 
