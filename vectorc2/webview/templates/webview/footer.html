@@ -1,6 +1,16 @@
+{% load i18n %}
+{% load static %}
+{% load octicons %}
 <footer class="footer mt-auto py-2">
   <div class="container m-0">
-      <span class="text-muted">Place sticky footer content here.</span>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <span class="pull-right clickable panel-collapsed">{% octicon "chevron-up" %}</span>
+        <span class="pull-right clickable panel-expanded">{% octicon "chevron-down" %}</span>
+        <div class="panel-title">Open up to get more details</div>
+        <span class="pull-right clickable panel-clear">{% octicon "trashcan" %}</span>
+      </div>
+    </div>
   </div>
 </footer>
 

@@ -122,7 +122,7 @@ const VectorC2 = (function(){
    * Event handler called when the window resizes
    * @param {*} e 
    */
-  function __onAreaResize(event) {
+  function _onAreaResize(event) {
       // Compute the absolute coordinates and dimensions of blocklyArea.
       var element = __elements.blocklyArea;
       var x = 0;
@@ -167,7 +167,7 @@ const VectorC2 = (function(){
     $('.nav-link.a-button-test').mouseup(_testJavaScript);
     $('.nav-link.a-button-cleanup').mouseup(_cleanupWorkspace);
 
-    $(window).resize(__onAreaResize);
+    $(window).resize(_onAreaResize);
 
     // initilize blockly
     __workspace =  Blockly.inject(__elements.blocklyDiv,
@@ -179,7 +179,7 @@ const VectorC2 = (function(){
     Blockly.JavaScript.addReservedWords('code,timeouts,checkTimeout');
     
     __afterLoad();
-    __onAreaResize();
+    _onAreaResize();
   }
 
   // ------------------------------------------------------------------
@@ -319,7 +319,8 @@ const VectorC2 = (function(){
   return {
       init: __init__,
       testJavaScript: _testJavaScript,
-      cleanupWorkspace: _cleanupWorkspace
+      cleanupWorkspace: _cleanupWorkspace,
+      resizeArea: _onAreaResize
   }
 
 })();
