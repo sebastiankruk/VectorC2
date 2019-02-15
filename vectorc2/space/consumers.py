@@ -49,9 +49,10 @@ class SpaceConsumer(WebsocketConsumer):
         message = event['message']
         self.commander.run(message)
 
-    def send_message(self, message):
+    def send_message(self, message, _type='text'):
         text_data = json.dumps({
-            'message': message
+            'message': message,
+            'type': _type
         })
         # Send message to WebSocket
         self.send(text_data=text_data)

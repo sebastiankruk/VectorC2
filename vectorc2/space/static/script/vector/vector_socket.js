@@ -19,7 +19,13 @@ const VectorSocket = function(spaceName){
   function __onMessage(e) {
     var data = JSON.parse(e.data);
     var message = data['message'];
-    LogPanel.logText(message);
+    var type = data['type'];
+    if (type == 'error') {
+      LogPanel.logError(message);
+    } else {
+      LogPanel.logText(message);
+    }
+    
   };
 
   function __onClose(e) {
