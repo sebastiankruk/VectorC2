@@ -6,24 +6,30 @@ The idea behind Vector C2 project emerged when I realized that although Anki Vec
 
 ## Installing Vector C2
 
-1. You will need Python 3.7+ 
-1. Checkout out source code from github:
-1. Prepare virtual environment: 
+1. You will need Python 3.7+.
+1. Checkout out source code from [github](https://github.com/sebastiankruk/vectorc2):
+    ```bash
+    git clone https://github.com/sebastiankruk/vectorc2.git
+    ```
+1. Prepare virtual environment:
     ```bash
     virtualenv -p /usr/local/bin/python3 --no-site-packages .env
     ```
 1. Start using virtual environment:
     ```bash
-    . .env/bin/activate
+    source .env/bin/activate
     ```
 1. Install requirements:
     ```bash
     pip install -r requirements.txt
     ```
-
-
-
-
-
-
-
+1. Install [redis](https://redis.io/).
+1. [Run Redis](https://redis.io/topics/quickstart):
+    ```bash
+    redis-server
+    ```
+1. Run Vector C2 server:
+    ```bash
+    cd vectorc2
+    python manage.py runserver
+    ```

@@ -26,6 +26,7 @@ SECRET_KEY = '#9iml9@=i%x#i57qi1zm)&)p46hrf(g=pn7jioagsh*))6+z9('
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    "localhost",
     "127.0.0.1",
     "192.168.1.7"
 ]
@@ -34,6 +35,8 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'space',
+    'command',
     'bootstrap4',
     'octicons',
     'webview.apps.WebviewConfig',
@@ -43,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -115,13 +119,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
 LANGUAGE_CODE = 'en'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
@@ -217,5 +217,15 @@ BOOTSTRAP4 = {
     'field_renderers': {
         'default': 'bootstrap4.renderers.FieldRenderer',
         'inline': 'bootstrap4.renderers.InlineFieldRenderer',
+    },
+}
+
+ASGI_APPLICATION = "vectorc2.routing.application"
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
     },
 }

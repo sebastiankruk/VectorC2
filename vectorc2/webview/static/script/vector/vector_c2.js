@@ -65,6 +65,11 @@ const VectorC2 = (function(){
    */
   var __sourceCode;
 
+  /**
+   * 
+   */
+  var _vectorSocket;
+
   // ---------------------------------------------------------------------------
   //                           event handler methods 
   // ---------------------------------------------------------------------------
@@ -122,7 +127,7 @@ const VectorC2 = (function(){
    * Event handler called when the window resizes
    * @param {*} e 
    */
-  function __onAreaResize(event) {
+  function _onAreaResize(event) {
       // Compute the absolute coordinates and dimensions of blocklyArea.
       var element = __elements.blocklyArea;
       var x = 0;
@@ -165,9 +170,10 @@ const VectorC2 = (function(){
     
     // hook button actions
     $('.nav-link.a-button-test').mouseup(_testJavaScript);
+    $('.nav-link.a-button-run').mouseup(_runPython);
     $('.nav-link.a-button-cleanup').mouseup(_cleanupWorkspace);
 
-    $(window).resize(__onAreaResize);
+    $(window).resize(_onAreaResize);
 
     // initilize blockly
     __workspace =  Blockly.inject(__elements.blocklyDiv,
@@ -176,10 +182,12 @@ const VectorC2 = (function(){
                                   }));        
     __workspace.addChangeListener(__onWorkspaceChange);
     
+    VectorC2.vectorSocket = VectorSocket('c2');
+
     Blockly.JavaScript.addReservedWords('code,timeouts,checkTimeout');
     
     __afterLoad();
-    __onAreaResize();
+    _onAreaResize();
   }
 
   // ------------------------------------------------------------------
@@ -269,34 +277,51 @@ const VectorC2 = (function(){
     return valid;
   };
 
+  /**
+   * Callback function called by Commander
+   * @param {String} state callback information 
+   */
+  function __commanderCallback(lang, state) {
+    var but = null;
+    switch(lang) {
+      case 'js': but = '.a-button-test'; break;
+      case 'py': but = '.a-button-run'; break;
+    }
+
+    return function(state) {
+      if (but) {
+        $(but).parent().removeClass('disabled').addClass('active');
+      }
+    }
+  }
+
+
   // ---------------------------------------------------------------------------
+
+  /**
+   * Run user block in Python, server-side.
+   */
+  function _runPython() {
+    var code = Blockly.Python.workspaceToCode(__workspace);
+
+    if (code) {
+      $('.a-button-run').parent().removeClass('active').addClass('disabled');
+
+      Commander.run['py'](code, __commanderCallback('py'))
+    }
+  }
 
   /**
    * Run user block in JavaScript.
    * For quick and dirty test purposes
    */
   function _testJavaScript() {
-    Blockly.JavaScript.INFINITE_LOOP_TRAP = '  checkTimeout();\n';
-    var timeouts = 0;
-    var checkTimeout = function() {
-      if (timeouts++ > 1000000) {
-        throw MSG['timeout'];
-        $('.a-button-test').parent().removeClass('disabled').addClass('active');
-      }
-    };
     var code = Blockly.JavaScript.workspaceToCode(__workspace);
-    Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
 
     if (code) {
       $('.a-button-test').parent().removeClass('active').addClass('disabled');
-      try {
-        eval(code);
-      } catch (e) {
-        alert(MSG['badCode'].replace('%1', e));
-      }
-      $('.a-button-test').parent().removeClass('disabled').addClass('active');
-    } else {
-      alert('No code to run'); //TODO
+
+      Commander.run['js'](code, __commanderCallback('js'))
     }
   };
 
@@ -319,7 +344,9 @@ const VectorC2 = (function(){
   return {
       init: __init__,
       testJavaScript: _testJavaScript,
-      cleanupWorkspace: _cleanupWorkspace
+      cleanupWorkspace: _cleanupWorkspace,
+      resizeArea: _onAreaResize,
+      vectorSocket: _vectorSocket
   }
 
 })();

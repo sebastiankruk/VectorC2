@@ -1,0 +1,71 @@
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+main > .container {
+  padding: 60px 15px 0;
+}
+
+.footer {
+  background-color: #f5f5f5;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+.footer .container {
+  max-width: calc(100vw);
+}
+
+.footer .container .panel .clickable {
+  cursor: pointer;   
+  padding-right: 10px;
+}
+.footer .container .panel .clickable svg {
+  cursor: pointer;   
+  transform:scale(1.8);
+  -webkit-transform:scale(1.8); 
+  -moz-transform:scale(1.8); 
+  -ms-transform:scale(1.8); 
+  -o-transform:scale(1.8); 
+}
+
+.panel-heading span {
+  margin-top: -20px;
+  font-size: 15px;
+}
+
+body.panel-expanded .panel .clickable.panel-collapsed,
+body:not(.panel-expanded) .panel .clickable.panel-expanded {
+  display: none;
+}
+
+body.panel-expanded footer {
+  height: 200px !important;
+}
+
+body.panel-expanded #blocklyArea,
+body.panel-expanded #sourceCode {
+  bottom: 200px; 
+}
+
+body.panel-expanded #sourceCode .content .source {
+  height: calc(100vh - 3.5rem - 270px);  
+}
+body.panel-expanded #sourceCode .content textarea.source {
+  height: calc(100% - 4rem - 200px);  
+}
+footer .panel-title {
+  display: inline-block;
+  width: calc(100vw - 85px);
+}
+body.panel-expanded footer .panel-title {
+  height: 180px;
+}
+

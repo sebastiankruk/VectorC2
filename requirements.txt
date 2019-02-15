@@ -1,3 +1,4 @@
 django-octicons>=1.0.2
 django-bootstrap4==0.0.7
-
+channels==2.1.7
+channels-redis==2.3.3
