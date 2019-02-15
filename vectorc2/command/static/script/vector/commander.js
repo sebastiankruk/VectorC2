@@ -9,8 +9,13 @@
  */
 const Commander = (function(){
 
+  var _vectorSocket;
+
   function _runPython(code, _callback) {
-    console.log(code);
+    // console.log(code);
+
+    _vectorSocket.sendMessage(code);
+
     _callback('finished');
   }
 
@@ -42,7 +47,7 @@ const Commander = (function(){
    * 
    */
   function __init__() {
-
+    _vectorSocket = VectorSocket('c2');
   }
 
   // ---------------------------------------------------------------------------

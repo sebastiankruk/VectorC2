@@ -19,11 +19,17 @@ const VectorSocket = function(spaceName){
   function __onMessage(e) {
     var data = JSON.parse(e.data);
     var message = data['message'];
-    LogPanel.addText(message);
+    var type = data['type'];
+    if (type == 'error') {
+      LogPanel.logError(message);
+    } else {
+      LogPanel.logText(message);
+    }
+    
   };
 
   function __onClose(e) {
-    console.error('Chat socket closed unexpectedly');
+    LogPanel.logError('Chat socket closed unexpectedly');
   };
 
   // ---------------------------------------------------------------------------

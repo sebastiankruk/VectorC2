@@ -65,11 +65,6 @@ const VectorC2 = (function(){
    */
   var __sourceCode;
 
-  /**
-   * 
-   */
-  var _vectorSocket;
-
   // ---------------------------------------------------------------------------
   //                           event handler methods 
   // ---------------------------------------------------------------------------
@@ -182,8 +177,6 @@ const VectorC2 = (function(){
                                   }));        
     __workspace.addChangeListener(__onWorkspaceChange);
     
-    VectorC2.vectorSocket = VectorSocket('c2');
-
     Blockly.JavaScript.addReservedWords('code,timeouts,checkTimeout');
     
     __afterLoad();
@@ -345,8 +338,7 @@ const VectorC2 = (function(){
       init: __init__,
       testJavaScript: _testJavaScript,
       cleanupWorkspace: _cleanupWorkspace,
-      resizeArea: _onAreaResize,
-      vectorSocket: _vectorSocket
+      resizeArea: _onAreaResize
   }
 
 })();
