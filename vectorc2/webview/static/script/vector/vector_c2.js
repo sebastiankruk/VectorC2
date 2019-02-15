@@ -212,7 +212,7 @@ const VectorC2 = (function(){
       case 'xml':
         let xmlDom = Blockly.Xml.workspaceToDom(__workspace);
         let xmlText = Blockly.Xml.domToPrettyText(xmlDom);
-        __sourceCode.xml.textContent = $(__sourceCode.xml).text(xmlText).html();
+        __sourceCode.xml.textContent = xmlText;
         __pretifyCode(__sourceCode.xml);
         break;
       case 'python':
