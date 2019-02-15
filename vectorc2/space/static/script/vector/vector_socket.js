@@ -7,7 +7,7 @@
 /**
  * Main class for managing UI for Vector Remote Control
  */
-const VectorSocket = function(channel){
+const VectorSocket = function(spaceName){
 
   /**
    * 
@@ -36,10 +36,10 @@ const VectorSocket = function(channel){
 
   // /**
   //  * 
-  //  * @param {String} channel name of the channel to use  
+  //  * @param {String} spaceName name of the spaceName to use  
   //  */
-  // function __init__(channel) {
-  __chatSocket = new WebSocket('ws://' + window.location.host + '/ws/channel/' + channel + '/');
+  // function __init__(spaceName) {
+  __chatSocket = new WebSocket('ws://' + window.location.host + '/ws/space/' + spaceName + '/');
   __chatSocket.onmessage = __onMessage;
   __chatSocket.onclose = __onClose;
   // }

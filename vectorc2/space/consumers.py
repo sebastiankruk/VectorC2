@@ -2,14 +2,14 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 import json
 import time
 
-class ChannelConsumer(AsyncWebsocketConsumer):
+class SpaceConsumer(AsyncWebsocketConsumer):
     async def connect(self):
-        self.channel_name = self.scope['url_route']['kwargs']['channel_name']
-        self.room_group_name = 'channel_%s' % self.channel_name
+        self.space_name = self.scope['url_route']['kwargs']['space_name']
+        self.space_group_name = 'space_%s' % self.space_name
 
         # Join room group
         await self.channel_layer.group_add(
-            self.room_group_name,
+            self.space_group_name,
             self.channel_name
         )
 
@@ -18,7 +18,7 @@ class ChannelConsumer(AsyncWebsocketConsumer):
     async def disconnect(self, close_code):
         # Leave room group
         await self.channel_layer.group_discard(
-            self.room_group_name,
+            self.space_group_name,
             self.channel_name
         )
 
@@ -29,16 +29,16 @@ class ChannelConsumer(AsyncWebsocketConsumer):
 
         # Send message to room group
         await self.channel_layer.group_send(
-            self.room_group_name,
+            self.space_group_name,
             {
-                'type': 'channel_message',
+                'type': 'space_message',
                 'message': message
             }
         )
 
 
     # Receive message from room group
-    async def channel_message(self, event):
+    async def space_message(self, event):
         message = event['message']
 
         # Send message to WebSocket

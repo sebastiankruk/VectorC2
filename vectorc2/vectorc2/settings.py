@@ -35,7 +35,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    'vectorc2',
+    'space',
     'bootstrap4',
     'octicons',
     'webview.apps.WebviewConfig',
