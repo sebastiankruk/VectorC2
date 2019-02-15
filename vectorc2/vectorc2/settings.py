@@ -36,6 +36,7 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     'space',
+    'command',
     'bootstrap4',
     'octicons',
     'webview.apps.WebviewConfig',

@@ -26,9 +26,17 @@ const LogPanel = (function(){
     //TODO
   }
 
-  function _addText(text) {
+  function _logText(text) {
     //TODO
     console.log(text);
+  }
+
+  /**
+   * 
+   * @param {String} error 
+   */
+  function _logError(error) {
+    console.error(error);
   }
 
 
@@ -49,7 +57,8 @@ const LogPanel = (function(){
   return {
       init: __init__,
       clear: _clear,
-      addText: _addText
+      logText: _logText,
+      logError: _logError
   }
 
 })();

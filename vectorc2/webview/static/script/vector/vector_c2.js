@@ -170,6 +170,7 @@ const VectorC2 = (function(){
     
     // hook button actions
     $('.nav-link.a-button-test').mouseup(_testJavaScript);
+    $('.nav-link.a-button-run').mouseup(_runPython);
     $('.nav-link.a-button-cleanup').mouseup(_cleanupWorkspace);
 
     $(window).resize(_onAreaResize);
@@ -276,34 +277,51 @@ const VectorC2 = (function(){
     return valid;
   };
 
+  /**
+   * Callback function called by Commander
+   * @param {String} state callback information 
+   */
+  function __commanderCallback(lang, state) {
+    var but = null;
+    switch(lang) {
+      case 'js': but = '.a-button-test'; break;
+      case 'py': but = '.a-button-run'; break;
+    }
+
+    return function(state) {
+      if (but) {
+        $(but).parent().removeClass('disabled').addClass('active');
+      }
+    }
+  }
+
+
   // ---------------------------------------------------------------------------
+
+  /**
+   * Run user block in Python, server-side.
+   */
+  function _runPython() {
+    var code = Blockly.Python.workspaceToCode(__workspace);
+
+    if (code) {
+      $('.a-button-run').parent().removeClass('active').addClass('disabled');
+
+      Commander.run['py'](code, __commanderCallback('py'))
+    }
+  }
 
   /**
    * Run user block in JavaScript.
    * For quick and dirty test purposes
    */
   function _testJavaScript() {
-    Blockly.JavaScript.INFINITE_LOOP_TRAP = '  checkTimeout();\n';
-    var timeouts = 0;
-    var checkTimeout = function() {
-      if (timeouts++ > 1000000) {
-        throw MSG['timeout'];
-        $('.a-button-test').parent().removeClass('disabled').addClass('active');
-      }
-    };
     var code = Blockly.JavaScript.workspaceToCode(__workspace);
-    Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
 
     if (code) {
       $('.a-button-test').parent().removeClass('active').addClass('disabled');
-      try {
-        eval(code);
-      } catch (e) {
-        alert(MSG['badCode'].replace('%1', e));
-      }
-      $('.a-button-test').parent().removeClass('disabled').addClass('active');
-    } else {
-      alert('No code to run'); //TODO
+
+      Commander.run['js'](code, __commanderCallback('js'))
     }
   };
 
