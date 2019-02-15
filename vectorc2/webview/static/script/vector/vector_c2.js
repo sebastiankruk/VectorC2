@@ -181,7 +181,7 @@ const VectorC2 = (function(){
                                   }));        
     __workspace.addChangeListener(__onWorkspaceChange);
     
-    _vectorSocket = VectorSocket('c2');
+    VectorC2.vectorSocket = VectorSocket('c2');
 
     Blockly.JavaScript.addReservedWords('code,timeouts,checkTimeout');
     

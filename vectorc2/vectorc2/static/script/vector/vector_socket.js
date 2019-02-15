@@ -12,7 +12,7 @@ const VectorSocket = function(channel){
   /**
    * 
    */
-  let __chatSocket;
+  var __chatSocket;
 
   // ---------------------------------------------------------------------------
 
