@@ -48,7 +48,9 @@ code {
 }
 
 body.panel-expanded .panel .clickable.panel-collapsed,
-body:not(.panel-expanded) .panel .clickable.panel-expanded {
+body:not(.panel-expanded) .panel .clickable.panel-expanded,
+body.panel-expanded .panel pre.panel-title,
+body:not(.panel-expanded) .panel pre.panel-body {
   display: none;
 }
 
@@ -72,16 +74,19 @@ body.panel-expanded #sourceCode .content .source {
 body.panel-expanded #sourceCode .content textarea.source {
   height: calc(100% - 4rem - 200px);  
 }
-footer .panel-title {
+footer .panel pre {
   display: inline-block;
   width: calc(100vw - 85px);
   margin-bottom: -5px;
   font-size: 15px;
   padding-top: 10px;  
 }
-body.panel-expanded footer .panel-title {
+footer pre.panel-body {
   height: 180px;
   font-size: 12px;
   margin-bottom: 0px;  
+}
+footer .panel pre code strong {
+  color: red;
 }
 
