@@ -308,4 +308,6 @@
     <sep></sep>
     <category name="{% trans 'Variables' %}" colour="330" custom="VARIABLE"></category>
     <category name="{% trans 'Functions' %}" colour="290" custom="PROCEDURE"></category>
+    <sep></sep>
+    {% include "blockly/vector.xml" %}
 </xml>

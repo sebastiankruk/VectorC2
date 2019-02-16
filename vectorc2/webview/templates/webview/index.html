@@ -3,7 +3,6 @@
 {% get_language_info for LANGUAGE_CODE as lang %}
 {% load bootstrap4 %}
 {% load static %}
-{% load compress %}
 <html>
   <head>
     <meta charset="utf-8">
@@ -16,19 +15,22 @@
     {% bootstrap_css %}
     {% bootstrap_messages %}
 
-    {% compress js %}
     <script src="{% static 'script/blockly/blockly_compressed.js' %}"></script>
     <script src="{% static 'script/blockly/blocks_compressed.js' %}"></script>
+    <script src="{% static 'script/blockly/blocks/vector_say_text.js' %}"></script>
+
+    <script src="{% static 'script/blockly/msg/code/en.js' %}"></script>
+    <script src="{% static 'script/blockly/msg/js/en.js' %}"></script>
+
     <script src="{% static 'script/blockly/generators/javascript_compressed.js' %}"></script>
+    <script src="{% static 'script/blockly/generators/javascript/vector_say_text.js' %}"></script>
+
     <script src="{% static 'script/blockly/generators/python_compressed.js' %}"></script>
-    {% endcompress %}
+    <script src="{% static 'script/blockly/generators/python/vector_say_text.js' %}"></script>
 
     <link href="{% static 'style/prettify/prettify.css' %}" rel="stylesheet">
     <link href="{% static 'style/prettify/atelier-seaside-light.min.css' %}" rel="stylesheet">
     <script src="{% static 'script/prettify/prettify.js' %}"></script>
-
-    <script src="{% static 'script/blockly/msg/code/en.js' %}"></script>
-    <script src="{% static 'script/blockly/msg/js/en.js' %}"></script>
 
     <link href="{% static 'style/vector-c2.css' %}" rel="stylesheet">
     <link href="{% static 'style/log-panel.css' %}" rel="stylesheet">
