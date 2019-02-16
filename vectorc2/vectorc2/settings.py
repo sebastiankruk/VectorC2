@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'channels',
+    'compressor'
 ]
 
 MIDDLEWARE = [
@@ -229,3 +230,10 @@ CHANNEL_LAYERS = {
         },
     },
 }
+
+STATICFILES_FINDERS = [
+    'compressor.finders.CompressorFinder'
+]
+
+COMPRESS_ENABLED = False #TODO
+COMPRESS_ROOT = os.path.join(BASE_DIR, 'static_collected')
