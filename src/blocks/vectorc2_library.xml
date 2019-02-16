@@ -1,8 +1,8 @@
 <xml xmlns="http://www.w3.org/1999/xhtml"><block type="factory_base" id="ln]-ve{@[)wGys*XbPo^" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="NONE"></mutation>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">vector_say_text</field>
     <field name="INLINE">EXT</field>
-    <field name="CONNECTIONS">NONE</field>
+    <field name="CONNECTIONS">BOTH</field>
     <statement name="INPUTS">
       <block type="input_value" id="15`v+gtvqz$-i5Y}e~@M">
         <field name="INPUTNAME">text</field>
@@ -73,6 +73,12 @@
       <block type="text" id="4T^EQ@~AiUPMf1%D4*-$" deletable="false" movable="false">
         <field name="TEXT">https://developer.anki.com/vector/docs/generated/anki_vector.robot.html#anki_vector.robot.Robot.say_text</field>
       </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="!jx]NMlXiHjG%*V|u2~}"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="cXLrxy565LFjH1~##ho^"></shadow>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="lCebo10Xf$9Liorc9xXZ">
