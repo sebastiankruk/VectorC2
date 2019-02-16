@@ -1,0 +1,36 @@
+[{
+  "type": "vector_say_text",
+  "message0": "Vector %1 say: %2 with vector voice %3 %4 at relative speed %5",
+  "args0": [
+    {
+      "type": "field_variable",
+      "name": "robot_var",
+      "variable": "robot"
+    },
+    {
+      "type": "input_value",
+      "name": "text",
+      "check": "String"
+    },
+    {
+      "type": "field_checkbox",
+      "name": "use_vector_voice",
+      "checked": true
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "field_number",
+      "name": "duration_scalar",
+      "value": 1,
+      "min": 0.1,
+      "max": 2,
+      "precision": 0.1
+    }
+  ],
+  "inputsInline": false,
+  "colour": 150,
+  "tooltip": "Vector will say something",
+  "helpUrl": "https://developer.anki.com/vector/docs/generated/anki_vector.robot.html#anki_vector.robot.Robot.say_text"
+}]
