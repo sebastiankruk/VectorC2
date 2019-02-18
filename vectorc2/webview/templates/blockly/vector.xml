@@ -1,4 +1,7 @@
 <category name="Vector" colour="#80a55b">
+  <block type="vector_robot">
+    <field name="robot_var" id="mm-K_3;;D5xLp(_Em[/S" variabletype="">robot</field>
+  </block>
   <block type="vector_say_text">
     <field name="robot_var" id="mm-K_3;;D5xLp(_Em[/S" variabletype="">robot</field>
     <field name="use_vector_voice">TRUE</field>

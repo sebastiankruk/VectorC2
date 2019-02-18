@@ -9,7 +9,7 @@ Blockly.JavaScript['vector_say_text'] = function(block) {
   var checkbox_use_vector_voice = block.getFieldValue('use_vector_voice') == 'TRUE';
   var number_duration_scalar = block.getFieldValue('duration_scalar');
 
-  var code = `Vectorex.sayText(${value_text}, ${checkbox_use_vector_voice}, ${number_duration_scalar});`
+  var code = `${variable_robot_var}.sayText(${value_text}, ${checkbox_use_vector_voice}, ${number_duration_scalar});`
 
   return code;
 };

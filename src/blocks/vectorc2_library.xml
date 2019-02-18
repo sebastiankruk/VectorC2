@@ -86,4 +86,65 @@
         <field name="HUE">150</field>
       </block>
     </value>
+  </block><block type="factory_base" id=".UJNMXhn9./n9Nus|:uI" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="NONE"></mutation>
+    <field name="NAME">vector_robot</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">NONE</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id=".xgiiU86/*MsDJZ0u/y8">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="xAY)+nx%(bNc,e3{3Zy|">
+            <field name="TEXT">Use Vector</field>
+            <next>
+              <block type="field_variable" id="Mk,iJ_*sqY0@P]-,GS6Q">
+                <field name="TEXT">robot</field>
+                <field name="FIELDNAME">robot_var</field>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="input_value" id="$Qo_0d;iC`$jD6+XI-gj">
+            <field name="INPUTNAME">serial_var</field>
+            <field name="ALIGN">LEFT</field>
+            <statement name="FIELDS">
+              <block type="field_static" id="3YfjV[q8Dv@C^B@d*+{x">
+                <field name="TEXT">of (optional) serial</field>
+              </block>
+            </statement>
+            <value name="TYPE">
+              <shadow type="type_null" id="i=p3@L0O)/5mdVW]GqPV"></shadow>
+              <block type="type_string" id="%k@`!NMA(w#X$or76^3W"></block>
+            </value>
+            <next>
+              <block type="input_statement" id="/TdQE`ZPztL*ZZN]^rnP">
+                <field name="INPUTNAME">wrapped_code</field>
+                <field name="ALIGN">LEFT</field>
+                <value name="TYPE">
+                  <shadow type="type_null" id="j-+4o@prX[*OOWX!(B[D"></shadow>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="Hiutls!Q(~T~i$rYDogw" deletable="false" movable="false">
+        <field name="TEXT">Wrap all Vector calls around</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="aDANOJk5qhSw[9lw%`ac" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="?7TQaeYU;L.9.5QO#]H)">
+        <mutation colour="#5b5ba5"></mutation>
+        <field name="HUE">240</field>
+      </block>
+    </value>
   </block></xml>

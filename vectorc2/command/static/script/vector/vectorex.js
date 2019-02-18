@@ -9,11 +9,16 @@
  */
 const Vectorex = (function(){
 
+  var __serial;
+
   /**
    * Initializes Vectorex
    */
-  function __init__() {
+  function __init__(serial) {
     //TODO any initialization that might be required in the future
+    __serial = serial;
+
+    LogPanel.logText(`Running Vector with serial number = ${__serial}`);
   }
 
 

@@ -5,7 +5,6 @@ Blockly.Python['vector_say_text'] = function(block) {
   var number_duration_scalar = block.getFieldValue('duration_scalar');
   // TODO: Assemble Python into code variable.
 
-  var code = `import anki_vector\nwith anki_vector.Robot() as robot:\n\trobot.say_text(${value_text}, ${checkbox_use_vector_voice}, ${number_duration_scalar})`
-  // var code = `import anki_vector\nwith anki_vector.Robot() as robot:\n\trobot.say_text(${value_text})`
+  var code = `${variable_robot_var}.say_text(${value_text}, ${checkbox_use_vector_voice}, ${number_duration_scalar})`
   return code;
 };
