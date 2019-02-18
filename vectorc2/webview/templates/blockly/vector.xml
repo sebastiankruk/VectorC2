@@ -1,10 +1,18 @@
-<category name="Vector" colour="#80a55b">
-  <block type="vector_robot">
-    <field name="robot_var" id="mm-K_3;;D5xLp(_Em[/S" variabletype="">robot</field>
-  </block>
+<category name="(V) Behavior" colour="#80a55b">
   <block type="vector_say_text">
     <field name="robot_var" id="mm-K_3;;D5xLp(_Em[/S" variabletype="">robot</field>
     <field name="use_vector_voice">TRUE</field>
     <field name="duration_scalar">1</field>
+  </block>
+  <block type="vector_behavior_drive_off_charger">
+    <field name="robot_var" id="mm-K_3;;D5xLp(_Em[/S" variabletype="">robot</field>
+  </block>
+  <block type="vector_behavior_drive_on_charger">
+    <field name="robot_var" id="mm-K_3;;D5xLp(_Em[/S" variabletype="">robot</field>
+  </block>
+  <block type="vector_behavior_drive_straight">
+    <field name="robot_var" id="mm-K_3;;D5xLp(_Em[/S" variabletype="">robot</field>
+    <field name="should_play_anim">TRUE</field>
+    <field name="num_retries">0</field>
   </block>
 </category>

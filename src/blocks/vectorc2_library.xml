@@ -195,4 +195,248 @@
         <field name="HUE">345</field>
       </block>
     </value>
+  </block><block type="factory_base" id="a4djnbchx^cRAif`+iA/" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">vector_behavior_drive_on_charger</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="BFBXe%C|My3|4PK_Im(T">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="}W=|BO8573Q98^xjMfZ=">
+            <field name="TEXT">Drive</field>
+            <next>
+              <block type="field_variable" id="X$2=v/OYH9!)V{*B8hTD">
+                <field name="TEXT">robot</field>
+                <field name="FIELDNAME">robot_var</field>
+                <next>
+                  <block type="field_static" id="d=.V}V?~[+9zU2)D}^3Z">
+                    <field name="TEXT">on charger</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="4Igg{bM$%nfl#V_e+}AD" deletable="false" movable="false">
+        <field name="TEXT">Drive Vector onto the charger</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="oI~oisSqY0$0@D#HR_xe" deletable="false" movable="false">
+        <field name="TEXT">https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html#anki_vector.behavior.BehaviorComponent.drive_on_charger</field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="q;[8w?eCAn:zuu?g:#;:"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="6NKR5?KlP!#|Bfo1/5,u"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="R]7pC*2#LYz9sjLiqno^">
+        <mutation colour="#a55b6d"></mutation>
+        <field name="HUE">345</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="4TS=!1vGOQ]{_RH+n/58" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">vector_behavior_drive_straight</field>
+    <field name="INLINE">EXT</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_value" id="7x3)rL/Ffwgq^)k5/+ft">
+        <field name="INPUTNAME">distance</field>
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="G-WRMyXQgUk~pO1Ii[A[">
+            <field name="TEXT">Vector</field>
+            <next>
+              <block type="field_variable" id="VNVN(b=./JWHXW=[]mL_">
+                <field name="TEXT">robot</field>
+                <field name="FIELDNAME">robot_var</field>
+                <next>
+                  <block type="field_static" id="Z~LK}1nW)poGs:Ws!4@P">
+                    <field name="TEXT">drives straight</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <value name="TYPE">
+          <shadow type="type_null" id="lsi.c$pgo9/tC8F`W2X0"></shadow>
+          <block type="type_other" id="[@C`PCn,n,,pH@Ih-Ud5">
+            <field name="TYPE">Distance</field>
+          </block>
+        </value>
+        <next>
+          <block type="input_value" id=")b6KPHOO0Q];2MS?/RIX">
+            <field name="INPUTNAME">speed</field>
+            <field name="ALIGN">RIGHT</field>
+            <statement name="FIELDS">
+              <block type="field_static" id=")X^`THs7_bvpt59Hz;#=">
+                <field name="TEXT">at speed</field>
+              </block>
+            </statement>
+            <value name="TYPE">
+              <shadow type="type_null" id="xr3v(f4KXNn,T:kvVJl@"></shadow>
+              <block type="type_other" id="pk-}3LXJ)@KvB_JBr8M!">
+                <field name="TYPE">Speed</field>
+              </block>
+            </value>
+            <next>
+              <block type="input_dummy" id="}IbDih.j^M$F)x:)v3}2">
+                <field name="ALIGN">RIGHT</field>
+                <statement name="FIELDS">
+                  <block type="field_checkbox" id="BgR|jz6+=[R3G[Up}=Im">
+                    <field name="CHECKED">TRUE</field>
+                    <field name="FIELDNAME">should_play_anim</field>
+                    <next>
+                      <block type="field_static" id="1U1qiW.d8XN:|x]wH$@:">
+                        <field name="TEXT">and plays animation</field>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <next>
+                  <block type="input_dummy" id="g5Wa!BC0ef9eTaVc$]Hi">
+                    <field name="ALIGN">RIGHT</field>
+                    <statement name="FIELDS">
+                      <block type="field_static" id="#yQ|d)tjY)Z+zN*EK4mk">
+                        <field name="TEXT">Repeat attempts</field>
+                        <next>
+                          <block type="field_number" id="bzeBh^Qj_.?YJ;_Wc7%)">
+                            <field name="VALUE">0</field>
+                            <field name="FIELDNAME">num_retries</field>
+                            <field name="MIN">0</field>
+                            <field name="MAX">10</field>
+                            <field name="PRECISION">1</field>
+                            <next>
+                              <block type="field_static" id=",d*T,]G)pRd.0Elh,cd!">
+                                <field name="TEXT">times</field>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="Ks@ilTXLa_90-Sc$j?)S" deletable="false" movable="false">
+        <field name="TEXT">Tells Vector to drive in a straight line.</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="xF.(Bb2JL8g$b0?4;SBH" deletable="false" movable="false">
+        <field name="TEXT">https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html#anki_vector.behavior.BehaviorComponent.drive_straight</field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="$;K}$1=P`dW847E3[pkT"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="%Pm_Z:6/SS4ZtGGfm%wq"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="sZntt~3yqfmv9X?8p|}R">
+        <mutation colour="#a5805b"></mutation>
+        <field name="HUE">30</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="bi7X|FD57ksXueCP[G%." deletable="false" movable="false" x="10" y="10">
+    <mutation connections="LEFT"></mutation>
+    <field name="NAME">vector_utils_distance_mm</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">LEFT</field>
+    <statement name="INPUTS">
+      <block type="input_value" id="V9}mwdMoy2tV~x?+_6q]">
+        <field name="INPUTNAME">value</field>
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="Cz}po1PH%vi{i:eY-DZ@">
+            <field name="TEXT">distance in mm</field>
+          </block>
+        </statement>
+        <value name="TYPE">
+          <shadow type="type_null" id=".Us:qdRZwi?YyScCz8)2"></shadow>
+          <block type="type_number" id="~i*A/u~[M(%2J@$oKL31"></block>
+        </value>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="Q}Hd[foG,{Xn`ecfK9F]" deletable="false" movable="false">
+        <field name="TEXT">distance_mm</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="%3jyg#o}dImG2S*|$1+|" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="OUTPUTTYPE">
+      <shadow type="type_null" id="7dhI:]4Mz7muKIF-Tjq#"></shadow>
+      <block type="type_other" id="Q`*.k|-{OONxoXAH.xF4">
+        <field name="TYPE">Distance</field>
+      </block>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="vZT/Z#$v```E=?UBsrBx">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id=":x(Sy(v8LK$3p2XKg;K5" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="LEFT"></mutation>
+    <field name="NAME">vector_utils_speed_mmps</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">LEFT</field>
+    <statement name="INPUTS">
+      <block type="input_value" id="jJAtqvNVTCvI!VS[6+~,">
+        <field name="INPUTNAME">value</field>
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="-UH9BFf[95oB~=lcEV;)">
+            <field name="TEXT">speed in mm/s</field>
+          </block>
+        </statement>
+        <value name="TYPE">
+          <shadow type="type_null" id="?]dd8k:g+.%)do/`7),q"></shadow>
+          <block type="type_number" id="WM.A(]e?LtFtDiC+RZlO"></block>
+        </value>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="Psp4{:rO[G)#xi/=%lIm" deletable="false" movable="false">
+        <field name="TEXT">speed_mmps</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="+72IdA`$r9H!WM;wo--r" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="OUTPUTTYPE">
+      <shadow type="type_null" id="wUai:./O/0TxmfVu@FYx"></shadow>
+      <block type="type_other" id="P{F,p.WV{=@!Er-USxf?">
+        <field name="TYPE">Speed</field>
+      </block>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="}F!LA5-m?YN$-!.1%gXz">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
   </block></xml>

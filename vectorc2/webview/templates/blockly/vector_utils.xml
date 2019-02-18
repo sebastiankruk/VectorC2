@@ -1,0 +1,7 @@
+<category name="(V) Utils" colour="#00a55b">
+  <block type="vector_robot">
+    <field name="robot_var" id="mm-K_3;;D5xLp(_Em[/S" variabletype="">robot</field>
+  </block>
+  <block type="vector_utils_distance_mm"></block>
+  <block type="vector_utils_speed_mmps"></block>
+</category>
