@@ -32,6 +32,9 @@ const Vectorex = (function(){
   function _driveStraight(distance, speed, should_play_anim, num_retries) {
     LogPanel.logText(`Vector drives ${distance} at ${speed}. (Plays animation: ${should_play_anim}. Retries: ${num_retries})`);
   }
+  function _turnInPlace(angle, speed, accel, angle_tolerance, is_absolute, num_retries) {
+    LogPanel.logText(`Vector rotates ${angle} at speed ${speed} with acceleration ${accel}, at tolerance ${angle_tolerance}. Angle is absolute: ${is_absolute}. Retries:  ${num_retries}`)  
+  }
 
 
   /**
@@ -56,7 +59,8 @@ const Vectorex = (function(){
     behavior: {
       driveOffCharger: _driveOffCharger,
       driveOnCharger: _driveOnCharger,
-      driveStraight: _driveStraight
+      driveStraight: _driveStraight,
+      turnInPlace: _turnInPlace
     }
   }
 })();

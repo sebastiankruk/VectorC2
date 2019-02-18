@@ -54,3 +54,41 @@ Blockly.Blocks['vector_behavior_drive_straight'] = {
  this.setHelpUrl("https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html#anki_vector.behavior.BehaviorComponent.drive_straight");
   }
 };
+
+Blockly.Blocks['vector_behavior_turn_in_place'] = {
+  init: function() {
+    this.appendValueInput("angle")
+        .setCheck("Angle")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Rotate")
+        .appendField(new Blockly.FieldVariable("robot"), "robot_var")
+        .appendField("by");
+    this.appendValueInput("speed")
+        .setCheck("Angle")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("angle at speed");
+    this.appendValueInput("accel")
+        .setCheck("Angle")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("with acceleration");
+    this.appendValueInput("angle_tolerance")
+        .setCheck("Angle")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("complete at toleration");
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(new Blockly.FieldCheckbox("TRUE"), "is_absolute")
+        .appendField("Angle is absolute");
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Repeat attempts")
+        .appendField(new Blockly.FieldNumber(0, 0, 10, 1), "num_retries")
+        .appendField("times");
+    this.setInputsInline(false);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(30);
+ this.setTooltip("Turn the robot around its current position.");
+ this.setHelpUrl("https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html#anki_vector.behavior.BehaviorComponent.turn_in_place");
+  }
+};

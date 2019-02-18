@@ -15,4 +15,9 @@
     <field name="should_play_anim">TRUE</field>
     <field name="num_retries">0</field>
   </block>
+  <block type="vector_behavior_turn_in_place">
+    <field name="robot_var" id="mm-K_3;;D5xLp(_Em[/S" variabletype="">robot</field>
+    <field name="is_absolute">TRUE</field>
+    <field name="num_retries">0</field>
+  </block>
 </category>

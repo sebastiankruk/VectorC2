@@ -4,4 +4,5 @@
   </block>
   <block type="vector_utils_distance_mm"></block>
   <block type="vector_utils_speed_mmps"></block>
+  <block type="vector_utils_degrees"></block>
 </category>

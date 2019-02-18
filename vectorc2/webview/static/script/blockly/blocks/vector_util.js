@@ -21,3 +21,15 @@ Blockly.Blocks['vector_utils_speed_mmps'] = {
  this.setHelpUrl("");
   }
 };
+
+Blockly.Blocks['vector_utils_degrees'] = {
+  init: function() {
+    this.appendValueInput("value")
+        .setCheck("Number")
+        .appendField("degrees");
+    this.setOutput(true, "Angle");
+    this.setColour(230);
+ this.setTooltip("degrees");
+ this.setHelpUrl("");
+  }
+};
