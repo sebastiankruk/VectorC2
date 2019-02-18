@@ -25,7 +25,8 @@ class OuputProxy(object):
     """
     self._stdout.write(data)
     self._stringio.write(data)
-    self._consumer.send_message(data, _type=self._type)
+    if self._type is not None:
+      self._consumer.send_message(data, _type=self._type)
 
 
 class Commander(object):
@@ -47,7 +48,8 @@ class Commander(object):
     if stderr is None:
       stderr = StringIO()
     sys.stdout = OuputProxy(sys.stdout, stdout, self.consumer, 'text')
-    sys.stderr = OuputProxy(sys.stderr, stderr, self.consumer, 'error')
+    # sys.stderr = OuputProxy(sys.stderr, stderr, self.consumer, 'error')
+    sys.stderr = OuputProxy(sys.stderr, stderr, self.consumer, None)
     yield sys.stdout, sys.stderr
     sys.stdout, sys.stderr = oldout, olderr
 
