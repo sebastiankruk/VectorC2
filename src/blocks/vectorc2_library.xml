@@ -147,4 +147,52 @@
         <field name="HUE">240</field>
       </block>
     </value>
+  </block><block type="factory_base" id="Cp;;i$Mq2vu;S1HW$t[q" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">vector_behavior_drive_off_charger</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="KiSf_)z7FYE;3`arPSGS">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="7-W2GXTQo^+svg,pPdK|">
+            <field name="TEXT">Drive</field>
+            <next>
+              <block type="field_variable" id="JhxIwWv5NUXP2^/k-Z-r">
+                <field name="TEXT">robot</field>
+                <field name="FIELDNAME">robot_var</field>
+                <next>
+                  <block type="field_static" id="+qQI6,uCtQrUB4?5{+xm">
+                    <field name="TEXT">off charger</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="fW.i=w]hVWJb@@RIiX*;" deletable="false" movable="false">
+        <field name="TEXT">Drive Vector off the charger</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="Rw~)S4Xa~h^uU2ZOU+7h" deletable="false" movable="false">
+        <field name="TEXT">https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html#anki_vector.behavior.BehaviorComponent.drive_off_charger</field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="_ARz/%@]~#./zedLOFBf"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="BxBKr=1EnRj}S=jDJc2/"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="-WJ_O4f*vt~`Ufc$V~b6">
+        <mutation colour="#a55b6d"></mutation>
+        <field name="HUE">345</field>
+      </block>
+    </value>
   </block></xml>
