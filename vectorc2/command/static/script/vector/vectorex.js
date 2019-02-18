@@ -21,8 +21,18 @@ const Vectorex = (function(){
     LogPanel.logText(`Running Vector with serial number = ${__serial}`);
   }
 
-
   // -----------------------------------
+
+  function _driveOffCharger() {
+    LogPanel.logText('Vector drives off charger');
+  }
+  function _driveOnCharger() {
+    LogPanel.logText('Vector drives on charger');
+  }
+  function _driveStraight(distance, speed, should_play_anim, num_retries) {
+    LogPanel.logText(`Vector drives ${distance} at ${speed}. (Plays animation: ${should_play_anim}. Retries: ${num_retries})`);
+  }
+
 
   /**
    * Implementation of the anki_vector.robot.say_text(text, use_vector_voice=True, duration_scalar=1.0)
@@ -42,7 +52,12 @@ const Vectorex = (function(){
    */
   return {
     init: __init__,
-    sayText: _sayText
+    sayText: _sayText,
+    behavior: {
+      driveOffCharger: _driveOffCharger,
+      driveOnCharger: _driveOnCharger,
+      driveStraight: _driveStraight
+    }
   }
 })();
 
