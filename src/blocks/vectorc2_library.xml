@@ -627,4 +627,57 @@
         <field name="HUE">30</field>
       </block>
     </value>
+  </block><block type="factory_base" id="ln]-ve{@[)wGys*XbPo^" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">vector_say_text_simple</field>
+    <field name="INLINE">EXT</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_value" id="15`v+gtvqz$-i5Y}e~@M">
+        <field name="INPUTNAME">text</field>
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="shYlH:}]-po8R;m/4MbO">
+            <field name="TEXT">Vector</field>
+            <next>
+              <block type="field_variable" id="Y+Y^mT;XTqzZ6n*QnL9I">
+                <field name="TEXT">robot</field>
+                <field name="FIELDNAME">robot_var</field>
+                <next>
+                  <block type="field_static" id="E%6-#.L+ra]i=2ivgKFn">
+                    <field name="TEXT">say</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <value name="TYPE">
+          <shadow type="type_null" id="NJh,~W=TAmCEW[s0,YX("></shadow>
+          <block type="type_string" id="])8zK%PtMYsM-fFkJO(u"></block>
+        </value>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="(CBDO;b%`Yi?b1DxLt/a" deletable="false" movable="false">
+        <field name="TEXT">Vector will say something</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="4T^EQ@~AiUPMf1%D4*-$" deletable="false" movable="false">
+        <field name="TEXT">https://developer.anki.com/vector/docs/generated/anki_vector.robot.html#anki_vector.robot.Robot.say_text</field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="!jx]NMlXiHjG%*V|u2~}"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="cXLrxy565LFjH1~##ho^"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="lCebo10Xf$9Liorc9xXZ">
+        <mutation colour="#5ba580"></mutation>
+        <field name="HUE">150</field>
+      </block>
+    </value>
   </block></xml>
