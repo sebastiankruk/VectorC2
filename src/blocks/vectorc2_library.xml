@@ -439,4 +439,192 @@
         <field name="HUE">230</field>
       </block>
     </value>
+  </block><block type="factory_base" id="iZte=U[X02/3P_hu2NbP" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="LEFT"></mutation>
+    <field name="NAME">vector_utils_degrees</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">LEFT</field>
+    <statement name="INPUTS">
+      <block type="input_value" id="Bnz/))7-.u*FhN?B:f%U">
+        <field name="INPUTNAME">value</field>
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="#51=mPUtyE]2#g+iE+PA">
+            <field name="TEXT">degrees</field>
+          </block>
+        </statement>
+        <value name="TYPE">
+          <shadow type="type_null" id="G9-FZ_%wO3mRTqzA{5+5"></shadow>
+          <block type="type_number" id="CRH{h+:TB,uTKM5xnrDY"></block>
+        </value>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="N(`[pUGO%:inNNA)BOmv" deletable="false" movable="false">
+        <field name="TEXT">degrees</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="f:m{ImA2OVXz2z3M!17$" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="OUTPUTTYPE">
+      <shadow type="type_null" id="[O%=?;%ER@r33}iG/B!K"></shadow>
+      <block type="type_other" id="c5f@M|PHWTEz5QQwvA5^">
+        <field name="TYPE">Angle</field>
+      </block>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="X%hFd0k:av[Be0jk#%67">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="(FNUj%Avky]#)M!Vk1m*" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">vector_behavior_turn_in_place</field>
+    <field name="INLINE">EXT</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_value" id="agwviOjy[1,8FUf5tL%u">
+        <field name="INPUTNAME">angle</field>
+        <field name="ALIGN">RIGHT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="w`fs(%s3Knc5q4llV^aS">
+            <field name="TEXT">Rotate</field>
+            <next>
+              <block type="field_variable" id="gJy!tX7etDh=L!*}Cu5X">
+                <field name="TEXT">robot</field>
+                <field name="FIELDNAME">robot_var</field>
+                <next>
+                  <block type="field_static" id="G=r6_@,7Ysiz;7tH+4rB">
+                    <field name="TEXT">by</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <value name="TYPE">
+          <shadow type="type_null" id="#6*N?*9Ej9x[*V~8oP:x"></shadow>
+          <block type="type_other" id="W]Vebkqd/epR4vKUExyT">
+            <field name="TYPE">Angle</field>
+          </block>
+        </value>
+        <next>
+          <block type="input_value" id="[q(J8v=JzQ8:guD^Jf-_">
+            <field name="INPUTNAME">speed</field>
+            <field name="ALIGN">RIGHT</field>
+            <statement name="FIELDS">
+              <block type="field_static" id="eO_Xo].gdw!`cHJ{w@1N">
+                <field name="TEXT">angle at speed</field>
+              </block>
+            </statement>
+            <value name="TYPE">
+              <shadow type="type_null" id="f1[U(^)O_TtN^RbBnuPv"></shadow>
+              <block type="type_other" id="`mw0B=Ou1AW=/ZfD;Il-">
+                <field name="TYPE">Angle</field>
+              </block>
+            </value>
+            <next>
+              <block type="input_value" id="EyP%?DT;u^wxY76jWU~r">
+                <field name="INPUTNAME">accel</field>
+                <field name="ALIGN">RIGHT</field>
+                <statement name="FIELDS">
+                  <block type="field_static" id="?*:%U7Q|fc)H(aM^oC]3">
+                    <field name="TEXT">with acceleration</field>
+                  </block>
+                </statement>
+                <value name="TYPE">
+                  <shadow type="type_null" id="aH`G2*od2mxWYAOx|Q]`"></shadow>
+                  <block type="type_other" id=";diS)Dg#)1^Vw9#RNTW6">
+                    <field name="TYPE">Angle</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="input_value" id="#=v-Sv8,i~sCH]N.$n1{">
+                    <field name="INPUTNAME">angle_tolerance</field>
+                    <field name="ALIGN">RIGHT</field>
+                    <statement name="FIELDS">
+                      <block type="field_static" id="JWbSuYc^)EpNZmN;NU%b">
+                        <field name="TEXT">complete at toleration</field>
+                      </block>
+                    </statement>
+                    <value name="TYPE">
+                      <shadow type="type_null" id="o.FmXa01kv1qkM:9gV}w"></shadow>
+                      <block type="type_other" id="Xq#:rEP9S-t+T-H9?Co3">
+                        <field name="TYPE">Angle</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="input_dummy" id="#M$S{e2ky]VkoxmeFy`N">
+                        <field name="ALIGN">RIGHT</field>
+                        <statement name="FIELDS">
+                          <block type="field_checkbox" id="tj..;3NJnYYLIi4~,JAO">
+                            <field name="CHECKED">TRUE</field>
+                            <field name="FIELDNAME">is_absolute</field>
+                            <next>
+                              <block type="field_static" id="_JC#=[c*gDG8dtPUku5n">
+                                <field name="TEXT">Angle is absolute</field>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="input_dummy" id="G64WF:8)Px@$cdm!V3:W">
+                            <field name="ALIGN">RIGHT</field>
+                            <statement name="FIELDS">
+                              <block type="field_static" id="j!,IXI}M#!+-pipH%E#{">
+                                <field name="TEXT">Repeat attempts</field>
+                                <next>
+                                  <block type="field_number" id="$@oVEsJuNoBAooOVb:y@">
+                                    <field name="VALUE">0</field>
+                                    <field name="FIELDNAME">num_retries</field>
+                                    <field name="MIN">0</field>
+                                    <field name="MAX">10</field>
+                                    <field name="PRECISION">1</field>
+                                    <next>
+                                      <block type="field_static" id="b_R=EXGpn^]1K1WH]*3Q">
+                                        <field name="TEXT">times</field>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="9HihKxq2^eI/SjZQ#=#s" deletable="false" movable="false">
+        <field name="TEXT">Turn the robot around its current position.</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id=")=ZDnn@(o`F]=={-I8FD" deletable="false" movable="false">
+        <field name="TEXT">https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html#anki_vector.behavior.BehaviorComponent.turn_in_place</field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id=")unQ]ZvK5W}`NKqcM+]a"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="o0YS?/zX%yVg*P~-h`C?"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="9;,HeG|J_hnK$;cqiE#w">
+        <mutation colour="#a5805b"></mutation>
+        <field name="HUE">30</field>
+      </block>
+    </value>
   </block></xml>

@@ -29,7 +29,8 @@ Blockly.Python['vector_behavior_turn_in_place'] = function(block) {
   var checkbox_is_absolute = GeneratorUtils.getPythonBooleanValue(block, 'is_absolute');
   var number_num_retries = block.getFieldValue('num_retries');
   
-  var code = `${variable_robot_var}.behavior.turn_in_place(${value_angle}${value_speed}${value_accel}${value_angle_tolerance}, ${checkbox_is_absolute}, ${number_num_retries});\n`;
+  // var code = `${variable_robot_var}.behavior.turn_in_place(${value_angle}${value_speed}${value_accel}${value_angle_tolerance}, ${checkbox_is_absolute}, ${number_num_retries});\n`;
+  var code = `${variable_robot_var}.behavior.turn_in_place(${value_angle}${value_speed}${value_accel}${value_angle_tolerance});\n`;
 
   return code;
 };
