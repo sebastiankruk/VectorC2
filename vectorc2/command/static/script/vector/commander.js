@@ -9,14 +9,19 @@
  */
 const Commander = (function(){
 
+  /**
+   * Reference to VectorSocket object
+   */
   var _vectorSocket;
 
+  /**
+   * Temporary reference to the callback method
+   */
+  var __onCommandCallback = null;
+
   function _runPython(code, _callback) {
-    // console.log(code);
-
     _vectorSocket.sendMessage(code);
-
-    _callback('finished');
+    __onCommandCallback = _callback;
   }
 
   /**
@@ -50,10 +55,21 @@ const Commander = (function(){
     _vectorSocket = VectorSocket('c2');
   }
 
+  /**
+   * Called by the 
+   * @param {String} message 
+   */
+  function _onCommand(message) {
+    if (__onCommandCallback !== null) {
+      __onCommandCallback(message);
+      __onCommandCallback = null;
+    }
+  }
   // ---------------------------------------------------------------------------
 
   return {
       init: __init__,
+      onCommand: _onCommand,
       run: {
         'js': _runJavaScript,
         'py': _runPython

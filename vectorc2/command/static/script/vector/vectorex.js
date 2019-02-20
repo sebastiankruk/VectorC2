@@ -64,5 +64,3 @@ const Vectorex = (function(){
     }
   }
 })();
-
-$( document ).ready(Vectorex.init)

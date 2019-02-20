@@ -60,5 +60,10 @@ class Commander(object):
     # TODO: add protection against imports, __* type of stuff
 
     with self._stdoutIO() as (sout, serr):
-      exec(code)
-  
+      try:
+        exec(code)
+      except:
+        e = sys.exc_info()[0]
+        self.consumer.send_message(e, _type="error")
+      finally:
+        self.consumer.send_message("finished", _type="command")

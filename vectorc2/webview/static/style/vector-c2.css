@@ -90,10 +90,15 @@ pre code {
 .nav-item.disabled .octicon {
   fill: gray;  
 }
+.nav-item.disabled .octicon.octicon-flame {
+  fill: red;
+}
 .octicon {
   vertical-align: text-bottom;
 }
 .nav-item.active .nav-link.a-button-test .octicon-flame,
-.nav-item.disabled .nav-link.a-button-test .octicon-beaker {
+.nav-item.active .nav-link.a-button-run .octicon-flame,
+.nav-item.disabled .nav-link.a-button-test .octicon-beaker,
+.nav-item.disabled .nav-link.a-button-run .octicon-rocket {
   display: none;
 }

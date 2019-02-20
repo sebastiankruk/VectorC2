@@ -52,7 +52,7 @@ class SpaceConsumer(WebsocketConsumer):
     def send_message(self, message, _type='text'):
         text_data = json.dumps({
             'message': message,
-            'type': _type
+            'type': _type if isinstance(_type, str) else 'text'
         })
         # Send message to WebSocket
         self.send(text_data=text_data)
