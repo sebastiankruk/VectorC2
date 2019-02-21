@@ -680,4 +680,59 @@
         <field name="HUE">150</field>
       </block>
     </value>
+  </block><block type="factory_base" id="593vx-4Q_g3zyvB#fNn2" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">set_eye_color</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_value" id="V){`HEP]EL!tZ?825HBn">
+        <field name="INPUTNAME">color_rgb</field>
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="gv*6QLh#{}L5@L}+0yN`">
+            <field name="TEXT">Set Vector</field>
+            <next>
+              <block type="field_variable" id="^.M|Sy!5.YcM,6ja=(]=">
+                <field name="TEXT">robot</field>
+                <field name="FIELDNAME">robot_var</field>
+                <next>
+                  <block type="field_static" id="zE@QNzo0NfyW?s%p%M~K">
+                    <field name="TEXT">eye color to</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <value name="TYPE">
+          <shadow type="type_null" id=")R[@D%/[`-Nc35%H9p@1"></shadow>
+          <block type="type_other" id=".NiwANAdEdDPFu+vF@;c">
+            <field name="TYPE">Colour</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="0poZhhw#{VxDiCPUlf#G" deletable="false" movable="false">
+        <field name="TEXT">Set Vector’s eye color.</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="*_aAe`c?cQd8;@wyKe4B" deletable="false" movable="false">
+        <field name="TEXT">https://sdk-resources.anki.com/vector/docs/generated/anki_vector.behavior.html#anki_vector.behavior.BehaviorComponent.set_eye_color</field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id=":?ulhkp$)]5@i?s#Z5Oy"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="m!;c@FG}[Ieba-W).xOx"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="4W8VqOLys6RQZ3#V!*xN">
+        <mutation colour="#a5935b"></mutation>
+        <field name="HUE">45</field>
+      </block>
+    </value>
   </block></xml>

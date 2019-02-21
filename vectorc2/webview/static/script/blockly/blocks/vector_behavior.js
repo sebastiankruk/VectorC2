@@ -92,3 +92,18 @@ Blockly.Blocks['vector_behavior_turn_in_place'] = {
  this.setHelpUrl("https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html#anki_vector.behavior.BehaviorComponent.turn_in_place");
   }
 };
+
+Blockly.Blocks['set_eye_color'] = {
+  init: function() {
+    this.appendValueInput("color_rgb")
+        .setCheck("Colour")
+        .appendField("Set Vector")
+        .appendField(new Blockly.FieldVariable("robot"), "robot_var")
+        .appendField("eye color to");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(45);
+ this.setTooltip("Set Vector’s eye color.");
+ this.setHelpUrl("https://sdk-resources.anki.com/vector/docs/generated/anki_vector.behavior.html#anki_vector.behavior.BehaviorComponent.set_eye_color");
+  }
+};

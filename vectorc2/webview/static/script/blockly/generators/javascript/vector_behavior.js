@@ -31,3 +31,10 @@ Blockly.JavaScript['vector_behavior_turn_in_place'] = function(block) {
   var code = `${variable_robot_var}.behavior.turnInPlace(${value_angle}${value_speed}${value_accel}${value_angle_tolerance}, ${checkbox_is_absolute}, ${number_num_retries});\n`;
   return code;
 };
+
+Blockly.JavaScript['set_eye_color'] = function(block) {
+  var variable_robot_var = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
+  var value_color_rgb = Blockly.JavaScript.valueToCode(block, 'color_rgb', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = `${variable_robot_var}.behavior.setEyeColor(${value_color_rgb});\n`;
+  return code;
+};

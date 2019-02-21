@@ -3,6 +3,7 @@ from channels.generic.websocket import AsyncWebsocketConsumer, WebsocketConsumer
 from command.commander import Commander
 import json
 import time
+import sys
 
 class SpaceConsumer(WebsocketConsumer):
 
@@ -50,9 +51,16 @@ class SpaceConsumer(WebsocketConsumer):
         self.commander.run(message)
 
     def send_message(self, message, _type='text'):
-        text_data = json.dumps({
-            'message': message,
-            'type': _type if isinstance(_type, str) else 'text'
-        })
-        # Send message to WebSocket
-        self.send(text_data=text_data)
+        try:
+            text_data = json.dumps({
+                'message': message,
+                'type': _type if isinstance(_type, str) else 'text'
+            })
+            # Send message to WebSocket
+            self.send(text_data=text_data)
+        except:
+            import traceback
+            e = sys.exc_info()[0]
+            print(e)
+            print(_type)
+            traceback.print_exc()

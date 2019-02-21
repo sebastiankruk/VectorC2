@@ -23,4 +23,7 @@
     <field name="is_absolute">TRUE</field>
     <field name="num_retries">0</field>
   </block>
+  <block type="set_eye_color">
+    <field name="robot_var" id="mm-K_3;;D5xLp(_Em[/S" variabletype="">robot</field>
+  </block>  
 </category>

@@ -18,7 +18,11 @@ const Vectorex = (function(){
     //TODO any initialization that might be required in the future
     __serial = serial;
 
-    LogPanel.logText(`Running Vector with serial number = ${__serial}`);
+    if (serial) {
+      LogPanel.logText(`Running Vector with serial number = ${__serial}`);
+    } else {
+      LogPanel.logText('Running Vector');
+    }
   }
 
   // -----------------------------------
@@ -34,6 +38,9 @@ const Vectorex = (function(){
   }
   function _turnInPlace(angle, speed, accel, angle_tolerance, is_absolute, num_retries) {
     LogPanel.logText(`Vector rotates ${angle} at speed ${speed} with acceleration ${accel}, at tolerance ${angle_tolerance}. Angle is absolute: ${is_absolute}. Retries:  ${num_retries}`)  
+  }
+  function _setEyeColor(color) {
+    LogPanel.logTextWithStyle(`Vector eyes color set to ${color}`, `color: ${color}`);
   }
 
 
@@ -60,7 +67,8 @@ const Vectorex = (function(){
       driveOffCharger: _driveOffCharger,
       driveOnCharger: _driveOnCharger,
       driveStraight: _driveStraight,
-      turnInPlace: _turnInPlace
+      turnInPlace: _turnInPlace,
+      setEyeColor: _setEyeColor
     }
   }
 })();

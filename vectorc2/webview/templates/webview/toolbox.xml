@@ -310,5 +310,5 @@
     <category name="{% trans 'Functions' %}" colour="290" custom="PROCEDURE"></category>
     <sep></sep>
     {% include "blockly/vector_utils.xml" %}
-    {% include "blockly/vector.xml" %}
+    {% include "blockly/vector_behavior.xml" %}
 </xml>

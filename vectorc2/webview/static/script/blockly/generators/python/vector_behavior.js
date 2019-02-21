@@ -34,3 +34,11 @@ Blockly.Python['vector_behavior_turn_in_place'] = function(block) {
 
   return code;
 };
+
+Blockly.Python['set_eye_color'] = function(block) {
+  var variable_robot_var = Blockly.Python.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
+  var value_color_rgb = Blockly.Python.valueToCode(block, 'color_rgb', Blockly.Python.ORDER_ATOMIC);
+  // TODO: Assemble Python into code variable.
+  var code = `${variable_robot_var}.behavior.set_eye_color(*rgb_to_hs(${value_color_rgb}))\n`;
+  return code;
+};

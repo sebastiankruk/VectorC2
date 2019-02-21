@@ -2,6 +2,15 @@ import sys
 from io import StringIO
 import contextlib
 
+def rgb_to_hs(rgbstr):
+  """
+  Convert RGB color to (hue, saturation)
+  """
+  import colorsys
+  r, g, b = bytes.fromhex(rgbstr[1:])
+  h, l, s = colorsys.rgb_to_hls(r, g, b)
+  
+  return h, s
 
 class OuputProxy(object):
   """

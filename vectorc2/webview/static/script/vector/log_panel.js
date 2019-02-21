@@ -46,13 +46,26 @@ const LogPanel = (function(){
   function _logError(error) {
     let serror = $.trim(error);
     if (serror.length > 0) {
-      let herror = '<strong>'+error+'</strong>';
+      let herror = '<strong>'+error+'</strong>\n';
       __panel.append(herror);
       __title.html(herror);
       console.error(error);
     }
   }
 
+  /**
+   * 
+   * @param {String} error 
+   */
+  function _logTextWithStyle(text, style) {
+    let stext = $.trim(text);
+    if (stext.length > 0) {
+      let htext = `<strong style='${style}'>`+text+'</strong>\n';
+      __panel.append(htext);
+      __title.html(htext);
+      console.log(text);
+    }
+  }
 
   // ---------------------------------------------------------------------------
 
@@ -75,7 +88,8 @@ const LogPanel = (function(){
       init: __init__,
       clear: _clear,
       logText: _logText,
-      logError: _logError
+      logError: _logError,
+      logTextWithStyle: _logTextWithStyle
   }
 
 })();
