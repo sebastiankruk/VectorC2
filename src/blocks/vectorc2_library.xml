@@ -680,61 +680,6 @@
         <field name="HUE">150</field>
       </block>
     </value>
-  </block><block type="factory_base" id="593vx-4Q_g3zyvB#fNn2" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"></mutation>
-    <field name="NAME">set_eye_color</field>
-    <field name="INLINE">AUTO</field>
-    <field name="CONNECTIONS">BOTH</field>
-    <statement name="INPUTS">
-      <block type="input_value" id="V){`HEP]EL!tZ?825HBn">
-        <field name="INPUTNAME">color_rgb</field>
-        <field name="ALIGN">LEFT</field>
-        <statement name="FIELDS">
-          <block type="field_static" id="gv*6QLh#{}L5@L}+0yN`">
-            <field name="TEXT">Set Vector</field>
-            <next>
-              <block type="field_variable" id="^.M|Sy!5.YcM,6ja=(]=">
-                <field name="TEXT">robot</field>
-                <field name="FIELDNAME">robot_var</field>
-                <next>
-                  <block type="field_static" id="zE@QNzo0NfyW?s%p%M~K">
-                    <field name="TEXT">eye color to</field>
-                  </block>
-                </next>
-              </block>
-            </next>
-          </block>
-        </statement>
-        <value name="TYPE">
-          <shadow type="type_null" id=")R[@D%/[`-Nc35%H9p@1"></shadow>
-          <block type="type_other" id=".NiwANAdEdDPFu+vF@;c">
-            <field name="TYPE">Colour</field>
-          </block>
-        </value>
-      </block>
-    </statement>
-    <value name="TOOLTIP">
-      <block type="text" id="0poZhhw#{VxDiCPUlf#G" deletable="false" movable="false">
-        <field name="TEXT">Set Vector’s eye color.</field>
-      </block>
-    </value>
-    <value name="HELPURL">
-      <block type="text" id="*_aAe`c?cQd8;@wyKe4B" deletable="false" movable="false">
-        <field name="TEXT">https://sdk-resources.anki.com/vector/docs/generated/anki_vector.behavior.html#anki_vector.behavior.BehaviorComponent.set_eye_color</field>
-      </block>
-    </value>
-    <value name="TOPTYPE">
-      <shadow type="type_null" id=":?ulhkp$)]5@i?s#Z5Oy"></shadow>
-    </value>
-    <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="m!;c@FG}[Ieba-W).xOx"></shadow>
-    </value>
-    <value name="COLOUR">
-      <block type="colour_hue" id="4W8VqOLys6RQZ3#V!*xN">
-        <mutation colour="#a5935b"></mutation>
-        <field name="HUE">45</field>
-      </block>
-    </value>
   </block><block type="factory_base" id="N:RhJxOFD)$Iq.mB-*R#" deletable="false" movable="false" x="10" y="10">
     <mutation connections="BOTH"></mutation>
     <field name="NAME">vector_utils_sleep</field>
@@ -788,7 +733,110 @@
     </value>
   </block><block type="factory_base" id="593vx-4Q_g3zyvB#fNn2" deletable="false" movable="false" x="10" y="10">
     <mutation connections="BOTH"></mutation>
-    <field name="NAME">set_eye_color_hue_saturation</field>
+    <field name="NAME">vector_dock_with_cube</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="%}jh`vZ[!zn85e8ih2JP">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="gv*6QLh#{}L5@L}+0yN`">
+            <field name="TEXT">Tell Vector</field>
+            <next>
+              <block type="field_variable" id="^.M|Sy!5.YcM,6ja=(]=">
+                <field name="TEXT">robot</field>
+                <field name="FIELDNAME">robot_var</field>
+                <next>
+                  <block type="field_static" id="zE@QNzo0NfyW?s%p%M~K">
+                    <field name="TEXT">to dock with cube</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="0poZhhw#{VxDiCPUlf#G" deletable="false" movable="false">
+        <field name="TEXT">Tells Vector to dock with a light cube, optionally using a given approach angle and distance.</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="*_aAe`c?cQd8;@wyKe4B" deletable="false" movable="false">
+        <field name="TEXT">https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html?highlight=sleep#anki_vector.behavior.BehaviorComponent.dock_with_cube</field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id=":?ulhkp$)]5@i?s#Z5Oy"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="m!;c@FG}[Ieba-W).xOx"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="4W8VqOLys6RQZ3#V!*xN">
+        <mutation colour="#a55b6d"></mutation>
+        <field name="HUE">345</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="593vx-4Q_g3zyvB#fNn2" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">vector_set_eye_color</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_value" id="V){`HEP]EL!tZ?825HBn">
+        <field name="INPUTNAME">color_rgb</field>
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="gv*6QLh#{}L5@L}+0yN`">
+            <field name="TEXT">Set Vector</field>
+            <next>
+              <block type="field_variable" id="^.M|Sy!5.YcM,6ja=(]=">
+                <field name="TEXT">robot</field>
+                <field name="FIELDNAME">robot_var</field>
+                <next>
+                  <block type="field_static" id="zE@QNzo0NfyW?s%p%M~K">
+                    <field name="TEXT">eye color to</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <value name="TYPE">
+          <shadow type="type_null" id=")R[@D%/[`-Nc35%H9p@1"></shadow>
+          <block type="type_other" id=".NiwANAdEdDPFu+vF@;c">
+            <field name="TYPE">Colour</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="0poZhhw#{VxDiCPUlf#G" deletable="false" movable="false">
+        <field name="TEXT">Set Vector’s eye color.</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="*_aAe`c?cQd8;@wyKe4B" deletable="false" movable="false">
+        <field name="TEXT">https://sdk-resources.anki.com/vector/docs/generated/anki_vector.behavior.html#anki_vector.behavior.BehaviorComponent.set_eye_color</field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id=":?ulhkp$)]5@i?s#Z5Oy"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="m!;c@FG}[Ieba-W).xOx"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="4W8VqOLys6RQZ3#V!*xN">
+        <mutation colour="#a5935b"></mutation>
+        <field name="HUE">45</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="593vx-4Q_g3zyvB#fNn2" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">vector_set_eye_color_hue_saturation</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">BOTH</field>
     <statement name="INPUTS">
@@ -857,6 +905,258 @@
       <block type="colour_hue" id="4W8VqOLys6RQZ3#V!*xN">
         <mutation colour="#a5935b"></mutation>
         <field name="HUE">45</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="593vx-4Q_g3zyvB#fNn2" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">vector_set_head_angle</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_value" id="A_$4`N2T!n.Egw,QFmKo">
+        <field name="INPUTNAME">angle</field>
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="gv*6QLh#{}L5@L}+0yN`">
+            <field name="TEXT">Tell Vector</field>
+            <next>
+              <block type="field_variable" id="^.M|Sy!5.YcM,6ja=(]=">
+                <field name="TEXT">robot</field>
+                <field name="FIELDNAME">robot_var</field>
+                <next>
+                  <block type="field_static" id="zE@QNzo0NfyW?s%p%M~K">
+                    <field name="TEXT">to set head angle to</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <value name="TYPE">
+          <shadow type="type_null" id="sUJLDIVz+)w*OZtAr~x1"></shadow>
+          <block type="type_other" id="odcuKK!+1%XltZ7p^eX=">
+            <field name="TYPE">Angle</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="0poZhhw#{VxDiCPUlf#G" deletable="false" movable="false">
+        <field name="TEXT">Tells Vector to dock with a light cube, optionally using a given approach angle and distance.</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="*_aAe`c?cQd8;@wyKe4B" deletable="false" movable="false">
+        <field name="TEXT">https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html?highlight=sleep#anki_vector.behavior.BehaviorComponent.dock_with_cube</field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id=":?ulhkp$)]5@i?s#Z5Oy"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="m!;c@FG}[Ieba-W).xOx"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="4W8VqOLys6RQZ3#V!*xN">
+        <mutation colour="#a5935b"></mutation>
+        <field name="HUE">45</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="593vx-4Q_g3zyvB#fNn2" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="LEFT"></mutation>
+    <field name="NAME">vector_const_MIN_HEAD_ANGLE</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">LEFT</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="m`X~u(sE1t)0;)}XIM!.">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="N]Iqo2KG}:ve6%d;#[VB">
+            <field name="TEXT">MIN_HEAD_ANGLE</field>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="0poZhhw#{VxDiCPUlf#G" deletable="false" movable="false">
+        <field name="TEXT">The minimum angle the robot’s head can be set to.</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="*_aAe`c?cQd8;@wyKe4B" deletable="false" movable="false">
+        <field name="TEXT">https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html?highlight=sleep#anki_vector.behavior.MIN_HEAD_ANGLE</field>
+      </block>
+    </value>
+    <value name="OUTPUTTYPE">
+      <shadow type="type_null" id="Xi(YR?7-764k8m7_Q.Pj"></shadow>
+      <block type="type_other" id="|L7t99`Mu=AKEuwp:009">
+        <field name="TYPE">Angle</field>
+      </block>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="4W8VqOLys6RQZ3#V!*xN">
+        <mutation colour="#5b93a5"></mutation>
+        <field name="HUE">195</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="593vx-4Q_g3zyvB#fNn2" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="LEFT"></mutation>
+    <field name="NAME">vector_const_MAX_HEAD_ANGLE</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">LEFT</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="m`X~u(sE1t)0;)}XIM!.">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="N]Iqo2KG}:ve6%d;#[VB">
+            <field name="TEXT">MAX_HEAD_ANGLE</field>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="0poZhhw#{VxDiCPUlf#G" deletable="false" movable="false">
+        <field name="TEXT">The maximum angle the robot’s head can be set to</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="*_aAe`c?cQd8;@wyKe4B" deletable="false" movable="false">
+        <field name="TEXT">https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html?highlight=sleep#anki_vector.behavior.MAX_HEAD_ANGLE</field>
+      </block>
+    </value>
+    <value name="OUTPUTTYPE">
+      <shadow type="type_null" id="Xi(YR?7-764k8m7_Q.Pj"></shadow>
+      <block type="type_other" id="KZ*)@u+,P29m#)Bu~#}k">
+        <field name="TYPE">Angle</field>
+      </block>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="4W8VqOLys6RQZ3#V!*xN">
+        <mutation colour="#5b93a5"></mutation>
+        <field name="HUE">195</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="593vx-4Q_g3zyvB#fNn2" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">vector_set_lift_height</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_value" id="A_$4`N2T!n.Egw,QFmKo">
+        <field name="INPUTNAME">height</field>
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="gv*6QLh#{}L5@L}+0yN`">
+            <field name="TEXT">Tell Vector</field>
+            <next>
+              <block type="field_variable" id="^.M|Sy!5.YcM,6ja=(]=">
+                <field name="TEXT">robot</field>
+                <field name="FIELDNAME">robot_var</field>
+                <next>
+                  <block type="field_static" id="zE@QNzo0NfyW?s%p%M~K">
+                    <field name="TEXT">to set lift height to</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <value name="TYPE">
+          <shadow type="type_null" id="sUJLDIVz+)w*OZtAr~x1"></shadow>
+          <block type="type_number" id="MK0oL7dPYb8cq7YpnHU,"></block>
+        </value>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="0poZhhw#{VxDiCPUlf#G" deletable="false" movable="false">
+        <field name="TEXT">Tells Vector to dock with a light cube, optionally using a given approach angle and distance.</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="*_aAe`c?cQd8;@wyKe4B" deletable="false" movable="false">
+        <field name="TEXT">https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html?highlight=sleep#anki_vector.behavior.BehaviorComponent.dock_with_cube</field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id=":?ulhkp$)]5@i?s#Z5Oy"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="m!;c@FG}[Ieba-W).xOx"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="4W8VqOLys6RQZ3#V!*xN">
+        <mutation colour="#a5935b"></mutation>
+        <field name="HUE">45</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="593vx-4Q_g3zyvB#fNn2" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="LEFT"></mutation>
+    <field name="NAME">vector_const_MAX_LIFT_HEIGHT</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">LEFT</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="m`X~u(sE1t)0;)}XIM!.">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="N]Iqo2KG}:ve6%d;#[VB">
+            <field name="TEXT">MAX_LIFT_HEIGHT</field>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="0poZhhw#{VxDiCPUlf#G" deletable="false" movable="false">
+        <field name="TEXT">The largest height-above-ground that lift can be moved to</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="*_aAe`c?cQd8;@wyKe4B" deletable="false" movable="false">
+        <field name="TEXT">https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html?highlight=sleep#anki_vector.behavior.MAX_LIFT_HEIGHT</field>
+      </block>
+    </value>
+    <value name="OUTPUTTYPE">
+      <shadow type="type_null" id="Xi(YR?7-764k8m7_Q.Pj"></shadow>
+      <block type="type_number" id="RB|d]Oi%q^GU[,tT{TuL"></block>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="4W8VqOLys6RQZ3#V!*xN">
+        <mutation colour="#5b93a5"></mutation>
+        <field name="HUE">195</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="593vx-4Q_g3zyvB#fNn2" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="LEFT"></mutation>
+    <field name="NAME">vector_const_MIN_LIFT_HEIGHT </field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">LEFT</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="m`X~u(sE1t)0;)}XIM!.">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="N]Iqo2KG}:ve6%d;#[VB">
+            <field name="TEXT">MIN_LIFT_HEIGHT </field>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="0poZhhw#{VxDiCPUlf#G" deletable="false" movable="false">
+        <field name="TEXT">The lowest height-above-ground that lift can be moved to</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="*_aAe`c?cQd8;@wyKe4B" deletable="false" movable="false">
+        <field name="TEXT">https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html?highlight=sleep#anki_vector.behavior.MIN_LIFT_HEIGHT</field>
+      </block>
+    </value>
+    <value name="OUTPUTTYPE">
+      <shadow type="type_null" id="Xi(YR?7-764k8m7_Q.Pj"></shadow>
+      <block type="type_number" id="+C1xQ.Vt1ph|wjk|nFVQ"></block>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="4W8VqOLys6RQZ3#V!*xN">
+        <mutation colour="#5b93a5"></mutation>
+        <field name="HUE">195</field>
       </block>
     </value>
   </block></xml>

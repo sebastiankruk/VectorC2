@@ -22,3 +22,23 @@ Blockly.Python['vector_utils_sleep'] = function(block) {
   var code = `time.sleep(${number_sleep_var})\n`;
   return code;
 };
+
+Blockly.Python['vector_const_min_head_angle'] = function(block) {
+  var code = 'anki_vector.behavior.MIN_HEAD_ANGLE';
+  return [code, Blockly.Python.ORDER_NONE];
+};
+
+Blockly.Python['vector_const_max_head_angle'] = function(block) {
+  var code = 'anki_vector.behavior.MAX_HEAD_ANGLE';
+  return [code, Blockly.Python.ORDER_NONE];
+};
+
+Blockly.Python['vector_const_max_lift_height'] = function(block) {
+  var code = 'anki_vector.behavior.MAX_LIFT_HEIGHT';
+  return [code, Blockly.Python.ORDER_NONE];
+};
+
+Blockly.Python['vector_const_min_lift_height'] = function(block) {
+  var code = 'anki_vector.behavior.MIN_LIFT_HEIGHT';
+  return [code, Blockly.Python.ORDER_NONE];
+};

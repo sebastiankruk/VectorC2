@@ -93,7 +93,7 @@ Blockly.Blocks['vector_behavior_turn_in_place'] = {
   }
 };
 
-Blockly.Blocks['set_eye_color'] = {
+Blockly.Blocks['vector_set_eye_color'] = {
   init: function() {
     this.appendValueInput("color_rgb")
         .setCheck("Colour")
@@ -108,7 +108,7 @@ Blockly.Blocks['set_eye_color'] = {
   }
 };
 
-Blockly.Blocks['set_eye_color_hue_saturation'] = {
+Blockly.Blocks['vector_set_eye_color_hue_saturation'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("Set Vector")
@@ -126,3 +126,46 @@ Blockly.Blocks['set_eye_color_hue_saturation'] = {
   }
 };
 
+Blockly.Blocks['vector_dock_with_cube'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Tell Vector")
+        .appendField(new Blockly.FieldVariable("robot"), "robot_var")
+        .appendField("to dock with cube");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(345);
+ this.setTooltip("Tells Vector to dock with a light cube, optionally using a given approach angle and distance.");
+ this.setHelpUrl("https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html?highlight=sleep#anki_vector.behavior.BehaviorComponent.dock_with_cube");
+  }
+};
+
+Blockly.Blocks['vector_set_head_angle'] = {
+  init: function() {
+    this.appendValueInput("angle")
+        .setCheck("Angle")
+        .appendField("Tell Vector")
+        .appendField(new Blockly.FieldVariable("robot"), "robot_var")
+        .appendField("to set head angle to");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(45);
+ this.setTooltip("Tell Vector’s head to move to a given angle.");
+ this.setHelpUrl("https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html?highlight=sleep#anki_vector.behavior.BehaviorComponent.set_head_angle");
+  }
+};
+
+Blockly.Blocks['vector_set_lift_height'] = {
+  init: function() {
+    this.appendValueInput("height")
+        .setCheck("Number")
+        .appendField("Tell Vector")
+        .appendField(new Blockly.FieldVariable("robot"), "robot_var")
+        .appendField("to set lift height to");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(45);
+ this.setTooltip("Tell Vector’s lift to move to a given height.");
+ this.setHelpUrl("https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html?highlight=sleep#anki_vector.behavior.BehaviorComponent.set_lift_height");
+  }
+};

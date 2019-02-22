@@ -35,17 +35,37 @@ Blockly.Python['vector_behavior_turn_in_place'] = function(block) {
   return code;
 };
 
-Blockly.Python['set_eye_color'] = function(block) {
+Blockly.Python['vector_set_eye_color'] = function(block) {
   var variable_robot_var = Blockly.Python.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
   var value_color_rgb = Blockly.Python.valueToCode(block, 'color_rgb', Blockly.Python.ORDER_ATOMIC);
   var code = `${variable_robot_var}.behavior.set_eye_color(**rgb_to_hs(${value_color_rgb}))\n`;
   return code;
 };
 
-Blockly.Python['set_eye_color_hue_saturation'] = function(block) {
+Blockly.Python['vector_set_eye_color_hue_saturation'] = function(block) {
   var variable_robot_var = Blockly.Python.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
   var angle_hue = block.getFieldValue('hue');
   var number_saturation = block.getFieldValue('saturation');
   var code = `${variable_robot_var}.behavior.set_eye_color(hue=${angle_hue/360}, saturation=${number_saturation})\n`;
+  return code;
+};
+
+Blockly.Python['vector_dock_with_cube'] = function(block) {
+  var variable_robot_var = Blockly.Python.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
+  var code = `${variable_robot_var}.behavior.dock_with_cube(${variable_robot_var}.world.connected_light_cube)\n`;
+  return code;
+};
+
+Blockly.Python['vector_set_head_angle'] = function(block) {
+  var variable_robot_var = Blockly.Python.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
+  var value_angle = Blockly.Python.valueToCode(block, 'angle', Blockly.Python.ORDER_ATOMIC);
+  var code = `${variable_robot_var}.behavior.set_head_angle(${value_angle})\n`;
+  return code;
+};
+
+Blockly.Python['vector_set_lift_height'] = function(block) {
+  var variable_robot_var = Blockly.Python.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
+  var value_height = Blockly.Python.valueToCode(block, 'height', Blockly.Python.ORDER_ATOMIC);
+  var code = `${variable_robot_var}.behavior.set_lift_height(${value_height})\n`;
   return code;
 };

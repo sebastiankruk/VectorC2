@@ -5,6 +5,10 @@
   <block type="vector_utils_distance_mm"></block>
   <block type="vector_utils_speed_mmps"></block>
   <block type="vector_utils_degrees"></block>
+  <block type="vector_const_min_head_angle"></block>
+  <block type="vector_const_max_head_angle"></block>
+  <block type="vector_const_max_lift_height"></block>
+  <block type="vector_const_min_lift_height"></block>
   <block type="vector_utils_sleep">
     <field name="sleep_var">5</field>
   </block>

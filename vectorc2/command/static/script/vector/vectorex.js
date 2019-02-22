@@ -57,7 +57,15 @@ const Vectorex = (function(){
   function _setEyeColorHS(hue, saturation) {
     LogPanel.logText(`Vector eyes color set with hue=${hue} and saturation=${saturation}`);
   }
-
+  function _dockWithCube() {
+    LogPanel.logText(`Vector will dock with cube`);
+  }
+  function _setHeadAngle(angle) {
+    LogPanel.logText(`Vector will set head angle to ${angle}`);
+  }
+  function _setLiftHeight(height) {
+    LogPanel.logText(`Vector will lift to ${height}`);
+  }
 
   /**
    * Implementation of the anki_vector.robot.say_text(text, use_vector_voice=True, duration_scalar=1.0)
@@ -85,7 +93,16 @@ const Vectorex = (function(){
       driveStraight: _driveStraight,
       turnInPlace: _turnInPlace,
       setEyeColor: _setEyeColor,
-      setEyeColorHS: _setEyeColorHS
+      setEyeColorHS: _setEyeColorHS,
+      dockWithCube: _dockWithCube,
+      setHeadAngle: _setHeadAngle,
+      setLiftHeight: _setLiftHeight
+    },
+    const: {
+      MIN_HEAD_ANGLE: -22.0,
+      MAX_HEAD_ANGLE: 45.0,
+      MAX_LIFT_HEIGHT: 1.0,
+      MIN_LIFT_HEIGHT: 0.0
     }
   }
 })();

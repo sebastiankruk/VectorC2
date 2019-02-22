@@ -32,14 +32,14 @@ Blockly.JavaScript['vector_behavior_turn_in_place'] = function(block) {
   return code;
 };
 
-Blockly.JavaScript['set_eye_color'] = function(block) {
+Blockly.JavaScript['vector_set_eye_color'] = function(block) {
   var variable_robot_var = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
   var value_color_rgb = Blockly.JavaScript.valueToCode(block, 'color_rgb', Blockly.JavaScript.ORDER_ATOMIC);
   var code = `${variable_robot_var}.behavior.setEyeColor(${value_color_rgb});\n`;
   return code;
 };
 
-Blockly.JavaScript['set_eye_color_hue_saturation'] = function(block) {
+Blockly.JavaScript['vector_set_eye_color_hue_saturation'] = function(block) {
   var variable_robot_var = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
   var angle_hue = block.getFieldValue('hue');
   var number_saturation = block.getFieldValue('saturation');
@@ -47,3 +47,22 @@ Blockly.JavaScript['set_eye_color_hue_saturation'] = function(block) {
   return code;
 };
 
+Blockly.JavaScript['vector_dock_with_cube'] = function(block) {
+  var variable_robot_var = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
+  var code = `${variable_robot_var}.behavior.dockWithCube();\n`;
+  return code;
+};
+
+Blockly.JavaScript['vector_set_head_angle'] = function(block) {
+  var variable_robot_var = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
+  var value_angle = Blockly.JavaScript.valueToCode(block, 'angle', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = `${variable_robot_var}.behavior.setHeadAngle(${value_angle});\n`;
+  return code;
+};
+
+Blockly.JavaScript['vector_set_lift_height'] = function(block) {
+  var variable_robot_var = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
+  var value_height = Blockly.JavaScript.valueToCode(block, 'height', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = `${variable_robot_var}.behavior.setLiftHeight(${value_height});\n`;
+  return code;
+};
