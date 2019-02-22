@@ -33,3 +33,18 @@ Blockly.Blocks['vector_utils_degrees'] = {
  this.setHelpUrl("");
   }
 };
+
+Blockly.Blocks['vector_utils_sleep'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Sleep for")
+        .appendField(new Blockly.FieldNumber(5, 0, 120, 1), "sleep_var")
+        .appendField("seconds");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(240);
+ this.setTooltip("Will sleep/wait for given amount seconds");
+ this.setHelpUrl("");
+  }
+};

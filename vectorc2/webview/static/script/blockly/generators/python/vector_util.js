@@ -15,3 +15,10 @@ Blockly.Python['vector_utils_degrees'] = function(block) {
   var code = `degrees(${value_value})`;
   return [code, Blockly.Python.ORDER_NONE];
 };
+
+Blockly.Python['vector_utils_sleep'] = function(block) {
+  var number_sleep_var = block.getFieldValue('sleep_var');
+  // TODO: Assemble Python into code variable.
+  var code = `time.sleep(${number_sleep_var})\n`;
+  return code;
+};

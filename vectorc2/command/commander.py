@@ -9,8 +9,11 @@ def rgb_to_hs(rgbstr):
   import colorsys
   r, g, b = bytes.fromhex(rgbstr[1:])
   h, l, s = colorsys.rgb_to_hls(r, g, b)
-  
-  return h, s
+
+  print(360*h)
+  print(1+s)
+
+  return 360*h, 1+s
 
 class OuputProxy(object):
   """

@@ -15,3 +15,10 @@ Blockly.JavaScript['vector_utils_degrees'] = function(block) {
   var code = `${value_value}/*deg*/`;
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
+
+Blockly.JavaScript['vector_utils_sleep'] = function(block) {
+  var number_sleep_var = block.getFieldValue('sleep_var');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `Vectorex.wait(${number_sleep_var});\n`;
+  return code;
+};

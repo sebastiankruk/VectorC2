@@ -11,6 +11,8 @@ const Vectorex = (function(){
 
   var __serial;
 
+  const __wait = ms => new Promise((r, j)=>setTimeout(r, ms))
+
   /**
    * Initializes Vectorex
    */
@@ -26,6 +28,16 @@ const Vectorex = (function(){
   }
 
   // -----------------------------------
+
+  /**
+   * Wait given number of seconds
+   * @param {Number} seconds 
+   */
+  function _wait(seconds) {
+    var prom = __wait(2000)  // prom, is a promise
+    var showdone = ()=>LogPanel.logText(`Should have waited ${seconds}s`)
+    prom.then(showdone)
+  } 
 
   function _driveOffCharger() {
     LogPanel.logText('Vector drives off charger');
@@ -63,6 +75,7 @@ const Vectorex = (function(){
   return {
     init: __init__,
     sayText: _sayText,
+    wait: _wait,
     behavior: {
       driveOffCharger: _driveOffCharger,
       driveOnCharger: _driveOnCharger,

@@ -5,4 +5,7 @@
   <block type="vector_utils_distance_mm"></block>
   <block type="vector_utils_speed_mmps"></block>
   <block type="vector_utils_degrees"></block>
+  <block type="vector_utils_sleep">
+    <field name="sleep_var">5</field>
+  </block>
 </category>

@@ -735,4 +735,55 @@
         <field name="HUE">45</field>
       </block>
     </value>
+  </block><block type="factory_base" id="N:RhJxOFD)$Iq.mB-*R#" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">vector_utils_sleep</field>
+    <field name="INLINE">INT</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="MCZx8PU3cH1H@PD#pdZG">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id=")T`Q2d|6juC{5;(j0Lvw">
+            <field name="TEXT">Sleep for</field>
+            <next>
+              <block type="field_number" id="N3=pw7daJsm)q6Ls:Q`e">
+                <field name="VALUE">5</field>
+                <field name="FIELDNAME">sleep_var</field>
+                <field name="MIN">0</field>
+                <field name="MAX">120</field>
+                <field name="PRECISION">1</field>
+                <next>
+                  <block type="field_static" id="R?e[@%A_8Y2hiLaZ^2W.">
+                    <field name="TEXT">seconds</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="z/]}OT;q,dbWBfk}0_U|" deletable="false" movable="false">
+        <field name="TEXT">Will sleep/wait for given amount seconds</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="aZeGLYXn).;_cII^YZ7^" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="b:5mC|[1,.GmW;Pp]f~h"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="pd?Y)?S{p(O%ABwj3s!?"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="si~Tl;5ne-!$1EJQR+z3">
+        <mutation colour="#5b5ba5"></mutation>
+        <field name="HUE">240</field>
+      </block>
+    </value>
   </block></xml>
