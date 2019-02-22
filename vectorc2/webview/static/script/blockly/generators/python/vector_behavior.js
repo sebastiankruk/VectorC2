@@ -52,7 +52,7 @@ Blockly.Python['vector_set_eye_color_hue_saturation'] = function(block) {
 
 Blockly.Python['vector_dock_with_cube'] = function(block) {
   var variable_robot_var = Blockly.Python.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
-  var code = `${variable_robot_var}.behavior.dock_with_cube(${variable_robot_var}.world.connected_light_cube)\n`;
+  var code = `${variable_robot_var}.behavior.dock_with_cube(target_object=con${variable_robot_var}.world.connected_light_cube)\n`;
   return code;
 };
 
