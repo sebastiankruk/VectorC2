@@ -7,13 +7,13 @@ def rgb_to_hs(rgbstr):
   Convert RGB color to (hue, saturation)
   """
   import colorsys
+  import math
   r, g, b = bytes.fromhex(rgbstr[1:])
-  h, l, s = colorsys.rgb_to_hls(r, g, b)
+  h, s, v = colorsys.rgb_to_hsv(r, g, b)
 
-  print(360*h)
-  print(1+s)
+  s2 = 0.5+(255-v)/512
 
-  return 360*h, 1+s
+  return {'hue':h, 'saturation':s2}
 
 class OuputProxy(object):
   """
