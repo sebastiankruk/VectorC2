@@ -26,4 +26,9 @@
   <block type="set_eye_color">
     <field name="robot_var" id="mm-K_3;;D5xLp(_Em[/S" variabletype="">robot</field>
   </block>  
+  <block type="set_eye_color_hue_saturation">
+    <field name="robot_var" id="mm-K_3;;D5xLp(_Em[/S" variabletype="">robot</field>
+    <field name="hue">90</field>
+    <field name="saturation">0</field>
+  </block>
 </category>

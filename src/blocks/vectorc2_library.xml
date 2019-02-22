@@ -786,4 +786,77 @@
         <field name="HUE">240</field>
       </block>
     </value>
+  </block><block type="factory_base" id="593vx-4Q_g3zyvB#fNn2" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">set_eye_color_hue_saturation</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="%}jh`vZ[!zn85e8ih2JP">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="gv*6QLh#{}L5@L}+0yN`">
+            <field name="TEXT">Set Vector</field>
+            <next>
+              <block type="field_variable" id="^.M|Sy!5.YcM,6ja=(]=">
+                <field name="TEXT">robot</field>
+                <field name="FIELDNAME">robot_var</field>
+                <next>
+                  <block type="field_static" id="zE@QNzo0NfyW?s%p%M~K">
+                    <field name="TEXT">eye color with</field>
+                    <next>
+                      <block type="field_static" id="L_ggq97!r{nq+|8dR2FX">
+                        <field name="TEXT">hue</field>
+                        <next>
+                          <block type="field_angle" id="S+b4c!RKX{2:XrJSN:.z">
+                            <field name="ANGLE">90</field>
+                            <field name="FIELDNAME">hue</field>
+                            <next>
+                              <block type="field_static" id="[6yK%hFJc5d/AT?YYg?h">
+                                <field name="TEXT">saturation</field>
+                                <next>
+                                  <block type="field_number" id="^?TX~LUBv:=]Kbs1vkUb">
+                                    <field name="VALUE">1</field>
+                                    <field name="FIELDNAME">saturation</field>
+                                    <field name="MIN">0</field>
+                                    <field name="MAX">1</field>
+                                    <field name="PRECISION">0.01</field>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="0poZhhw#{VxDiCPUlf#G" deletable="false" movable="false">
+        <field name="TEXT">Set Vector’s eye color.</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="*_aAe`c?cQd8;@wyKe4B" deletable="false" movable="false">
+        <field name="TEXT">https://sdk-resources.anki.com/vector/docs/generated/anki_vector.behavior.html#anki_vector.behavior.BehaviorComponent.set_eye_color</field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id=":?ulhkp$)]5@i?s#Z5Oy"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="m!;c@FG}[Ieba-W).xOx"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="4W8VqOLys6RQZ3#V!*xN">
+        <mutation colour="#a5935b"></mutation>
+        <field name="HUE">45</field>
+      </block>
+    </value>
   </block></xml>

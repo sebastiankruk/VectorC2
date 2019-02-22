@@ -38,3 +38,12 @@ Blockly.JavaScript['set_eye_color'] = function(block) {
   var code = `${variable_robot_var}.behavior.setEyeColor(${value_color_rgb});\n`;
   return code;
 };
+
+Blockly.JavaScript['set_eye_color_hue_saturation'] = function(block) {
+  var variable_robot_var = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
+  var angle_hue = block.getFieldValue('hue');
+  var number_saturation = block.getFieldValue('saturation');
+  var code = `${variable_robot_var}.behavior.setEyeColorHS(${angle_hue/360}, ${number_saturation});\n`;
+  return code;
+};
+

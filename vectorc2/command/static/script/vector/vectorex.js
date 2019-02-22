@@ -54,6 +54,9 @@ const Vectorex = (function(){
   function _setEyeColor(color) {
     LogPanel.logTextWithStyle(`Vector eyes color set to ${color}`, `color: ${color}`);
   }
+  function _setEyeColorHS(hue, saturation) {
+    LogPanel.logText(`Vector eyes color set with hue=${hue} and saturation=${saturation}`);
+  }
 
 
   /**
@@ -81,7 +84,8 @@ const Vectorex = (function(){
       driveOnCharger: _driveOnCharger,
       driveStraight: _driveStraight,
       turnInPlace: _turnInPlace,
-      setEyeColor: _setEyeColor
+      setEyeColor: _setEyeColor,
+      setEyeColorHS: _setEyeColorHS
     }
   }
 })();

@@ -107,3 +107,22 @@ Blockly.Blocks['set_eye_color'] = {
  this.setHelpUrl("https://sdk-resources.anki.com/vector/docs/generated/anki_vector.behavior.html#anki_vector.behavior.BehaviorComponent.set_eye_color");
   }
 };
+
+Blockly.Blocks['set_eye_color_hue_saturation'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Set Vector")
+        .appendField(new Blockly.FieldVariable("robot"), "robot_var")
+        .appendField("eye color with")
+        .appendField("hue")
+        .appendField(new Blockly.FieldAngle(90), "hue")
+        .appendField("saturation")
+        .appendField(new Blockly.FieldNumber(0, 0, 1, 0.01), "saturation");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(45);
+ this.setTooltip("Set Vector’s eye color.");
+ this.setHelpUrl("https://sdk-resources.anki.com/vector/docs/generated/anki_vector.behavior.html#anki_vector.behavior.BehaviorComponent.set_eye_color");
+  }
+};
+

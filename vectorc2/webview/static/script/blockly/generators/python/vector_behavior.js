@@ -41,3 +41,11 @@ Blockly.Python['set_eye_color'] = function(block) {
   var code = `${variable_robot_var}.behavior.set_eye_color(**rgb_to_hs(${value_color_rgb}))\n`;
   return code;
 };
+
+Blockly.Python['set_eye_color_hue_saturation'] = function(block) {
+  var variable_robot_var = Blockly.Python.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
+  var angle_hue = block.getFieldValue('hue');
+  var number_saturation = block.getFieldValue('saturation');
+  var code = `${variable_robot_var}.behavior.set_eye_color(hue=${angle_hue/360}, saturation=${number_saturation})\n`;
+  return code;
+};
