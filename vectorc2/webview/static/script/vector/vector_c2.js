@@ -47,7 +47,7 @@ const VectorC2 = (function(){
    */
   var __workspace = null;
   /**
-   * 
+   * Code view selected by default
    */
   var __selectedView = 'javascript';
 
@@ -120,7 +120,6 @@ const VectorC2 = (function(){
 
   /**
    * Event handler called when the window resizes
-   * @param {*} e 
    */
   function _onAreaResize(event) {
       // Compute the absolute coordinates and dimensions of blocklyArea.
@@ -153,6 +152,7 @@ const VectorC2 = (function(){
         __elements[index] = $('#'+index)[0];
     });
 
+    // instead of predefining list of supported laguages - let's read it from HTML 
     __sourceCode = $('#sourceCode .content .source')
                     .map(function(){ return [[this.id.replace(/source_/, ''), this]] })
                     .get()
@@ -167,6 +167,7 @@ const VectorC2 = (function(){
     $('.nav-link.a-button-run').mouseup(_runPython);
     $('.nav-link.a-button-cleanup').mouseup(_cleanupWorkspace);
 
+    // initilizes auto-resize
     $(window).resize(_onAreaResize);
 
     // initilize blockly
@@ -185,7 +186,7 @@ const VectorC2 = (function(){
   // ------------------------------------------------------------------
 
   /**
-   * Updates source code of 
+   * Updates blocks definitions from given source
    */
   function __updateWorkspaceBlocks(workspaceBlocks) {
     let xmlDom = null;
@@ -246,6 +247,7 @@ const VectorC2 = (function(){
     if (typeof PR.prettyPrintOne == 'function' &&
         typeof content.attr == 'function') {
       let code = content.textContent;
+      //automatically determine which language to generate
       let lang = content.attr('class').replace(/^.*lang[-](\w+)\b.*$/, '$1');
       code = PR.prettyPrintOne(code, lang, true);
       content.innerHTML = code;
@@ -262,9 +264,9 @@ const VectorC2 = (function(){
     let missing = $.unique(blocks.filter(block => !generator[block.type]))
     var valid = missing.length == 0;
     if (!valid) {
-      var msg = 'The generator code for the following blocks not specified for '
-          + generator.name_ + ':\n - ' + missing.join('\n - ');
-      console.log(msg);  // Assuming synchronous. No callback.
+      let missingJoined = missing.join('\n - ');
+      let msg = `The generator code for the following blocks not specified for ${generator.name_}:\n - ${missingJoined}`; //TODO i18n
+      console.log(msg);  
     }
     return valid;
   };
