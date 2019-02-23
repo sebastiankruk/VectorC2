@@ -19,6 +19,12 @@ const Commander = (function(){
    */
   var __onCommandCallback = null;
 
+  /**
+   * Sends given code over to Server to execute against Vector API. 
+   * Once the code is done executing _callback function is called.
+   * @param {String} code 
+   * @param {Function} _callback 
+   */
   function _runPython(code, _callback) {
     _vectorSocket.sendMessage(code);
     __onCommandCallback = _callback;
@@ -49,14 +55,14 @@ const Commander = (function(){
 
 
   /**
-   * 
+   * Initializes Commander by starting WebSocket 
    */
   function __init__() {
     _vectorSocket = VectorSocket('c2');
   }
 
   /**
-   * Called by the 
+   * Called by the server
    * @param {String} message 
    */
   function _onCommand(message) {

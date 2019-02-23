@@ -10,7 +10,7 @@
 const VectorSocket = function(spaceName, commander){
 
   /**
-   * 
+   * Reference to chat socket
    */
   var __chatSocket;
   /**
@@ -20,7 +20,11 @@ const VectorSocket = function(spaceName, commander){
 
   // ---------------------------------------------------------------------------
 
-  function __onMessage(e) {
+  /**
+   * Handling WebSocket messages when their arive
+   * @param {WebSocket Message}  
+   */
+  async function __onMessage(e) {
     var data = JSON.parse(e.data);
     var message = data['message'];
     var type = data['type'];
@@ -34,14 +38,21 @@ const VectorSocket = function(spaceName, commander){
     
   };
 
-  function __onClose(e) {
+  /**
+   * In case socket is closed, log this even and restart the socket.
+   */
+  async function __onClose(e) {
     console.log('Chat socket closed unexpectedly. Restarting connection.');
-    __init__(spaceName); //TODO CHECK ???
+    await __init__(spaceName); //TODO CHECK ???
   };
 
   // ---------------------------------------------------------------------------
 
-  function _sendMessage(message) {
+  /**
+   * Send given message over WebSocket channel
+   * @param {String} message 
+   */
+  async function _sendMessage(message) {
     __chatSocket.send(JSON.stringify({
       'message': message
     }));    
@@ -51,7 +62,7 @@ const VectorSocket = function(spaceName, commander){
    * 
    * @param {String} spaceName name of the spaceName to use  
    */
-  function __init__(spaceName) {
+  async function __init__(spaceName) {
     __spaceName = spaceName;
     __chatSocket = new WebSocket('ws://' + window.location.host + '/ws/space/' + spaceName + '/');
     __chatSocket.onmessage = __onMessage;

@@ -9,15 +9,20 @@
  */
 const Vectorex = (function(){
 
+  /**
+   * Serial number for "fake" Vector calls
+   */
   var __serial;
-
+  /**
+   * Delays execution by given number of milliseconds
+   * @param {Number} ms 
+   */  
   const __wait = ms => new Promise((r, j)=>setTimeout(r, ms))
 
   /**
    * Initializes Vectorex
    */
   function __init__(serial) {
-    //TODO any initialization that might be required in the future
     __serial = serial;
 
     if (serial) {
@@ -27,7 +32,9 @@ const Vectorex = (function(){
     }
   }
 
-  // -----------------------------------
+  // ------------------------------------------------------------------------------------------------
+  // Implementation of fake Vector API
+  // ------------------------------------------------------------------------------------------------
 
   /**
    * Wait given number of seconds
@@ -81,7 +88,7 @@ const Vectorex = (function(){
   // -----------------------------------
 
   /**
-   * The API
+   * The fake  API
    */
   return {
     init: __init__,

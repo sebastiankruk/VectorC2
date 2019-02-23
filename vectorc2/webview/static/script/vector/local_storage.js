@@ -1,5 +1,13 @@
+/**
+ * 
+ * @author sebastian@kruk.me
+ */
 'use strict';
 
+/**
+ * Wrapper class for window.localStorage
+ * When window.localStorage is not available a fake object is used to avoid exceptions thrown
+ */
 const LocalStorage = (function(){
 
   return (function(){

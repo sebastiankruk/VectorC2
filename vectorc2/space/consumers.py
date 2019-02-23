@@ -7,60 +7,60 @@ import sys
 
 class SpaceConsumer(WebsocketConsumer):
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.commander = Commander(self)
+  def __init__(self, *args, **kwargs):
+    super().__init__(*args, **kwargs)
+    self.commander = Commander(self)
 
-    def connect(self):
-        self.space_name = self.scope['url_route']['kwargs']['space_name']
-        self.space_group_name = 'space_%s' % self.space_name
+  def connect(self):
+    self.space_name = self.scope['url_route']['kwargs']['space_name']
+    self.space_group_name = 'space_%s' % self.space_name
 
-        # Join room group
-        async_to_sync(self.channel_layer.group_add)(
-            self.space_group_name,
-            self.channel_name
-        )
+    # Join room group
+    async_to_sync(self.channel_layer.group_add)(
+      self.space_group_name,
+      self.channel_name
+    )
 
-        self.accept()
+    self.accept()
 
-    def disconnect(self, close_code):
-        # Leave room group
-        async_to_sync(self.channel_layer.group_discard)(
-            self.space_group_name,
-            self.channel_name
-        )
+  def disconnect(self, close_code):
+    # Leave room group
+    async_to_sync(self.channel_layer.group_discard)(
+      self.space_group_name,
+      self.channel_name
+    )
 
-    # Receive message from WebSocket
-    def receive(self, text_data):
-        text_data_json = json.loads(text_data)
-        message = text_data_json['message']
+  # Receive message from WebSocket
+  def receive(self, text_data):
+    text_data_json = json.loads(text_data)
+    message = text_data_json['message']
 
-        # Send message to room group
-        async_to_sync(self.channel_layer.group_send)(
-            self.space_group_name,
-            {
-                'type': 'space_message',
-                'message': message
-            }
-        )
+    # Send message to room group
+    async_to_sync(self.channel_layer.group_send)(
+      self.space_group_name,
+      {
+        'type': 'space_message',
+        'message': message
+      }
+    )
 
 
-    # Receive message from room group
-    def space_message(self, event):
-        message = event['message']
-        self.commander.run(message)
+  # Receive message from room group
+  def space_message(self, event):
+    message = event['message']
+    self.commander.run(message)
 
-    def send_message(self, message, _type='text'):
-        try:
-            text_data = json.dumps({
-                'message': message,
-                'type': _type if isinstance(_type, str) else 'text'
-            })
-            # Send message to WebSocket
-            self.send(text_data=text_data)
-        except:
-            import traceback
-            e = sys.exc_info()[0]
-            print(e)
-            print(_type)
-            traceback.print_exc()
+  def send_message(self, message, _type='text'):
+    try:
+      text_data = json.dumps({
+        'message': message,
+        'type': _type if isinstance(_type, str) else 'text'
+      })
+      # Send message to WebSocket
+      self.send(text_data=text_data)
+    except:
+      import traceback
+      e = sys.exc_info()[0]
+      print(e)
+      print(_type)
+      traceback.print_exc()

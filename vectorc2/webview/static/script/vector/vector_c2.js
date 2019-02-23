@@ -154,10 +154,9 @@ const VectorC2 = (function(){
     });
 
     __sourceCode = $('#sourceCode .content .source')
-                    .map(function(){ return [[this.id.replace(/source_/, ''), 
-                                              this]] })
+                    .map(function(){ return [[this.id.replace(/source_/, ''), this]] })
                     .get()
-                    .reduce(REDUCE_TO_MAP,{});
+                    .reduce((p,c)=>{p[c[0]]=c[1]; return p},{});
     
     // hook actions
     $( window ).on('beforeunload', __beforeUnload);
