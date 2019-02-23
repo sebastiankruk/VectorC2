@@ -102,7 +102,7 @@ const VectorC2 = (function(){
       var text = Blockly.Xml.domToText(xml);
       LocalStorage.setItem(__LOCAL_STORAGE_KEY, text);
 
-      console.log('Current workspace state was saved to session storage'); //TODO i18n
+      console.log(gettext('Current workspace state was saved to local storage'));
   }
 
   /**
@@ -114,7 +114,7 @@ const VectorC2 = (function(){
     if (workspaceBlocks) {
       __updateWorkspaceBlocks(workspaceBlocks);
     } else {
-      console.log('No previously saved workspace was found'); //TODO i18n
+      console.log(gettext('No previously saved workspace was found')); 
     }
   }
 
@@ -193,7 +193,8 @@ const VectorC2 = (function(){
     try {
       xmlDom = Blockly.Xml.textToDom(workspaceBlocks);
     } catch (e) {
-      alert(MSG['badXml'].replace('%1', e));
+      let msg = gettext('Error parsing XML:\n%(error)\n\nSelect "OK" to abandon your changes or "Cancel" to further edit the XML.'); 
+      alert(interpolate(msg, {error: e}, true));
     }
     if (xmlDom) {
       __workspace.clear();
@@ -264,9 +265,12 @@ const VectorC2 = (function(){
     let missing = $.unique(blocks.filter(block => !generator[block.type]))
     var valid = missing.length == 0;
     if (!valid) {
-      let missingJoined = missing.join('\n - ');
-      let msg = `The generator code for the following blocks not specified for ${generator.name_}:\n - ${missingJoined}`; //TODO i18n
-      console.log(msg);  
+      let d = {
+        generatorName: generator.name_,
+        missingJoined: missing.join('\n - ')
+      }
+      let msg = gettext('The generator code for the following blocks not specified for %(generatorName):\n - %(missingJoined)'); 
+      console.log(interpolate(msg, d, true));  
     }
     return valid;
   };

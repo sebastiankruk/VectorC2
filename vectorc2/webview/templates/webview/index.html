@@ -15,6 +15,8 @@
     {% bootstrap_css %}
     {% bootstrap_messages %}
 
+    <script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>    
+
     <script src="{% static 'script/blockly/blockly_compressed.js' %}"></script>
     <script src="{% static 'script/blockly/blocks_compressed.js' %}"></script>
 
@@ -23,8 +25,7 @@
     <script src="{% static 'script/vector/blocks/vector_behavior.js' %}"></script>
     <script src="{% static 'script/vector/blocks/vector_util.js' %}"></script>
 
-    <script src="{% static 'script/blockly/msg/code/en.js' %}"></script>
-    <script src="{% static 'script/blockly/msg/js/en.js' %}"></script>
+    <script src="{% static 'script/blockly/msg/js/' %}{{ lang.code }}.js"></script>
 
     <script src="{% static 'script/vector/generators/generator_utils.js' %}"></script>
 
@@ -64,7 +65,7 @@
     <main role="main" id="blocklyArea" class="flex-shrink-0">
       <div id="blocklyDiv"></div>
     </main>
-    
+
     {% include "webview/sourceCode.html" %}
     {% include "webview/toolbox.xml" %}
 

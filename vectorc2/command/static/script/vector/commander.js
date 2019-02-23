@@ -39,7 +39,7 @@ const Commander = (function(){
     var timeouts = 0;
     var checkTimeout = function() {
       if (timeouts++ > 1000000) {
-        throw MSG['timeout'];
+        throw gettext('Maximum execution iterations exceeded.');
         _callback('timeout');
       }
     };
@@ -48,7 +48,8 @@ const Commander = (function(){
     try {
       eval(code);
     } catch (e) {
-      LogPanel.logError(MSG['badCode'].replace('%1', e));
+      let msg = gettext('Program error:\n%(error)'); 
+      LogPanel.logError(interpolate(msg, {error: e}, true));
     }
     _callback('finished');
   };
