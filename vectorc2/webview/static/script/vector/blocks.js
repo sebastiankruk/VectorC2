@@ -10,26 +10,31 @@
  */
 const VectorBlocks = (function(){
 
-  const JSON_BLOCK_SPECS = [
-    'vector_robot',
-    'vector_util',
-    'vector_say_text'
-  ]
+  const JSON_BLOCK_SPECS = {
+    'vector_robot':false,
+    'vector_util':false,
+    'vector_say_text':false,
+    'vector_behavior':false
+  }
 
   /**
-   * Function called back when a single JSON file is successfully fetched.
-   * It will process that JSON spec of custom blocks with Blockly.Blocks.jsonInit
-   * @param {JSON} data 
+   * Function creates a callback that is called back when a single JSON file is successfully fetched.
+   * It will process that JSON spec of custom blocks with Blockly.Blocks.jsonInit.
+   * After processing JSON spec the given json file is noted as processed
+   * @param {String} jsonFile file name that is being initialized
    */
-  function __loadCustomBlocks(data) {
-    if (Array.isArray(data)) {
-      for ( let block of data ) {
-        __initializeSingleBlock(block);
+  function __loadCustomBlocks(jsonFile) {
+    return function(data) {
+      if (Array.isArray(data)) {
+        for ( let block of data ) {
+          __initializeSingleBlock(block);
+        }
+      } else {
+        __initializeSingleBlock(data);
       }
-    } else {
-      __initializeSingleBlock(data);
+      JSON_BLOCK_SPECS[jsonFile] = true;
+      __isInitialized();
     }
-    // Blockly.Block.jsonInit(data);
   }
 
   /**
@@ -45,11 +50,20 @@ const VectorBlocks = (function(){
   }
 
   /**
+   * Called to check whethere all JSON files are initialized and we can initialize VectorC2
+   */
+  function __isInitialized() {
+    if (Object.values(JSON_BLOCK_SPECS).every(Boolean)) { // if all JSON files are initialized
+      VectorC2.init();
+    }
+  }
+
+  /**
    * Initializes custom Vector blocks by reading them from JSON files
    */
   function __init__(){
-    for ( let jsonFile of JSON_BLOCK_SPECS ) {
-      $.getJSON(`/static/script/vector/blocks/${jsonFile}.json`, __loadCustomBlocks);
+    for ( let jsonFile in JSON_BLOCK_SPECS ) {
+      $.getJSON(`/static/script/vector/blocks/${jsonFile}.json`, __loadCustomBlocks(jsonFile));
     }
   }
 

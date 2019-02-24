@@ -9,11 +9,11 @@
   <input name="next" type="hidden" value="{{ redirect_to }}" />
   <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      {{ lang.name }}
+      {{ lang.name_local }}
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       {% for language in languages %}
-      <button class="dropdown-item" type="submit" name="language" value="{{ language.code }}">{{ language.name }}</button>
+      <button class="dropdown-item" type="submit" name="language" value="{{ language.code }}">{{ language.name_local }}</button>
       {% endfor %}
     </div>
   </div>

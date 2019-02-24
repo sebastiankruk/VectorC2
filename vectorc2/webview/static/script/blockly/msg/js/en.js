@@ -434,7 +434,7 @@ Blockly.Msg["PROCEDURES_HUE"] = "290";
 Blockly.Msg["COLOUR_HUE"] = "20";  
 Blockly.Msg["VARIABLES_DYNAMIC_HUE"] = "310";  
 
-Blockly.Msg["VECTOR_ROBOT_MESSAGE"] = "Use Vector %1 %2 of (optional) serial %3 %4 %5";
+Blockly.Msg["VECTOR_ROBOT_MESSAGE"] = "Use Vector %1 %2 of (optional) serial %3 %4";
 Blockly.Msg["VECTOR_ROBOT_TOOLTIP"] = "Wrap all Vector calls around";
 
 Blockly.Msg["VECTOR_UTILS_DISTANCE_MM_MESSAGE"] = "distance in mm %1";
@@ -459,3 +459,21 @@ Blockly.Msg["VECTOR_SAY_TEXT_TOOLTIP"] = "Vector will say something";
 Blockly.Msg["VECTOR_SAY_TEXT_SIMPLE_MESSAGE"] = "Vector %1 say %2";
 Blockly.Msg["VECTOR_SAY_TEXT_SIMPLE_TOOLTIP"] = "Vector will say something";
 
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_OFF_CHARGER_MESSAGE"] = "Drive %1 off charger";
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_OFF_CHARGER_TOOLTIP"] = "Drive Vector off the charger";
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_ON_CHARGER_MESSAGE"] = "Drive %1 on charger";
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_ON_CHARGER_TOOLTIP"] = "Drive Vector onto the charger";
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_MESSAGE"] = "Vector %1 drives straight %2 at speed %3 %4 and plays animation %5 Repeat attempts %6 times";
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_TOOLTIP"] = "Tells Vector to drive in a straight line.";
+Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_MESSAGE"] = "Rotate %1 by %2 angle at speed %3 with acceleration %4 complete at toleration %5 %6 Angle is absolute %7 Repeat attempts %8 times";
+Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_TOOLTIP"] = "Turn the robot around its current position.";
+Blockly.Msg["VECTOR_DOCK_WITH_CUBE_MESSAGE"] = "Tell Vector %1 to dock with cube";
+Blockly.Msg["VECTOR_DOCK_WITH_CUBE_TOOLTIP"] = "Tells Vector to dock with a light cube, optionally using a given approach angle and distance.";
+Blockly.Msg["VECTOR_SET_EYE_COLOR_MESSAGE"] = "Set Vector %1 eye color to %2";
+Blockly.Msg["VECTOR_SET_EYE_COLOR_TOOLTIP"] = "Set Vector’s eye color.";
+Blockly.Msg["VECTOR_SET_EYE_COLOR_HUE_SATURATION_MESSAGE"] = "Set Vector %1 eye color with hue %2 saturation %3";
+Blockly.Msg["VECTOR_SET_EYE_COLOR_HUE_SATURATION_TOOLTIP"] = "Set Vector’s eye color.";
+Blockly.Msg["VECTOR_SET_HEAD_ANGLE_MESSAGE"] = "Tell Vector %1 to set head angle to %2";
+Blockly.Msg["VECTOR_SET_HEAD_ANGLE_TOOLTIP"] = "Tell Vector’s head to move to a given angle.";
+Blockly.Msg["VECTOR_SET_LIFT_HEIGHT_MESSAGE"] = "Tell Vector %1 to set lift height to %2";
+Blockly.Msg["VECTOR_SET_LIFT_HEIGHT_TOOLTIP"] = "Tell Vector’s lift to move to a given height.";

@@ -348,4 +348,4 @@ const VectorC2 = (function(){
 
 })();
 
-$( document ).ready(VectorC2.init)
+//We need to move that to Blocks.__isInitialized $( document ).ready(VectorC2.init)

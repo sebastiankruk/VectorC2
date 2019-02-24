@@ -1,0 +1,245 @@
+[{
+  "type": "vector_behavior_drive_off_charger",
+  "message0": "%{BKY_VECTOR_BEHAVIOR_DRIVE_OFF_CHARGER_MESSAGE}",
+  "args0": [
+    {
+      "type": "field_variable",
+      "name": "robot_var",
+      "variable": "robot"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 345,
+  "tooltip": "%{BKY_VECTOR_BEHAVIOR_DRIVE_OFF_CHARGER_TOOLTIP}",
+  "helpUrl": "https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html#anki_vector.behavior.BehaviorComponent.drive_off_charger"
+},
+{
+  "type": "vector_behavior_drive_on_charger",
+  "message0": "%{BKY_VECTOR_BEHAVIOR_DRIVE_ON_CHARGER_MESSAGE}",
+  "args0": [
+    {
+      "type": "field_variable",
+      "name": "robot_var",
+      "variable": "robot"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 345,
+  "tooltip": "%{BKY_VECTOR_BEHAVIOR_DRIVE_ON_CHARGER_TOOLTIP}",
+  "helpUrl": "https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html#anki_vector.behavior.BehaviorComponent.drive_on_charger"
+},
+{
+  "type": "vector_behavior_drive_straight",
+  "message0": "%{BKY_VECTOR_BEHAVIOR_DRIVE_STRAIGHT_MESSAGE}",
+  "lastDummyAlign0": "RIGHT",
+  "args0": [
+    {
+      "type": "field_variable",
+      "name": "robot_var",
+      "variable": "robot"
+    },
+    {
+      "type": "input_value",
+      "name": "distance",
+      "check": "Distance"
+    },
+    {
+      "type": "input_value",
+      "name": "speed",
+      "check": "Speed",
+      "align": "RIGHT"
+    },
+    {
+      "type": "field_checkbox",
+      "name": "should_play_anim",
+      "checked": true
+    },
+    {
+      "type": "input_dummy",
+      "align": "RIGHT"
+    },
+    {
+      "type": "field_number",
+      "name": "num_retries",
+      "value": 0,
+      "min": 0,
+      "max": 10,
+      "precision": 1
+    }
+  ],
+  "inputsInline": false,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 30,
+  "tooltip": "%{BKY_VECTOR_BEHAVIOR_DRIVE_STRAIGHT_TOOLTIP}",
+  "helpUrl": "https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html#anki_vector.behavior.BehaviorComponent.drive_straight"
+},
+{
+  "type": "vector_behavior_turn_in_place",
+  "message0": "%{BKY_VECTOR_BEHAVIOR_TURN_IN_PLACE_MESSAGE}",
+  "lastDummyAlign0": "RIGHT",
+  "args0": [
+    {
+      "type": "field_variable",
+      "name": "robot_var",
+      "variable": "robot"
+    },
+    {
+      "type": "input_value",
+      "name": "angle",
+      "check": "Angle",
+      "align": "RIGHT"
+    },
+    {
+      "type": "input_value",
+      "name": "speed",
+      "check": "Angle",
+      "align": "RIGHT"
+    },
+    {
+      "type": "input_value",
+      "name": "accel",
+      "check": "Angle",
+      "align": "RIGHT"
+    },
+    {
+      "type": "input_value",
+      "name": "angle_tolerance",
+      "check": "Angle",
+      "align": "RIGHT"
+    },
+    {
+      "type": "field_checkbox",
+      "name": "is_absolute",
+      "checked": true
+    },
+    {
+      "type": "input_dummy",
+      "align": "RIGHT"
+    },
+    {
+      "type": "field_number",
+      "name": "num_retries",
+      "value": 0,
+      "min": 0,
+      "max": 10,
+      "precision": 1
+    }
+  ],
+  "inputsInline": false,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 30,
+  "tooltip": "%{BKY_VECTOR_BEHAVIOR_TURN_IN_PLACE_TOOLTIP}",
+  "helpUrl": "https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html#anki_vector.behavior.BehaviorComponent.turn_in_place"
+},
+{
+  "type": "vector_dock_with_cube",
+  "message0": "%{BKY_VECTOR_DOCK_WITH_CUBE_MESSAGE}",
+  "args0": [
+    {
+      "type": "field_variable",
+      "name": "robot_var",
+      "variable": "robot"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 345,
+  "tooltip": "%{BKY_VECTOR_DOCK_WITH_CUBE_TOOLTIP}",
+  "helpUrl": "https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html?highlight=sleep#anki_vector.behavior.BehaviorComponent.dock_with_cube"
+},
+{
+  "type": "vector_set_eye_color",
+  "message0": "%{BKY_VECTOR_SET_EYE_COLOR_MESSAGE}",
+  "args0": [
+    {
+      "type": "field_variable",
+      "name": "robot_var",
+      "variable": "robot"
+    },
+    {
+      "type": "input_value",
+      "name": "color_rgb",
+      "check": "Colour"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 45,
+  "tooltip": "%{BKY_VECTOR_SET_EYE_COLOR_TOOLTIP}",
+  "helpUrl": "https://sdk-resources.anki.com/vector/docs/generated/anki_vector.behavior.html#anki_vector.behavior.BehaviorComponent.set_eye_color"
+},
+{
+  "type": "vector_set_eye_color_hue_saturation",
+  "message0": "%{BKY_VECTOR_SET_EYE_COLOR_HUE_SATURATION_MESSAGE}",
+  "args0": [
+    {
+      "type": "field_variable",
+      "name": "robot_var",
+      "variable": "robot"
+    },
+    {
+      "type": "field_angle",
+      "name": "hue",
+      "angle": 90
+    },
+    {
+      "type": "field_number",
+      "name": "saturation",
+      "value": 1,
+      "min": 0,
+      "max": 1,
+      "precision": 0.01
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 45,
+  "tooltip": "%{BKY_VECTOR_SET_EYE_COLOR_HUE_SATURATION_TOOLTIP}",
+  "helpUrl": "https://sdk-resources.anki.com/vector/docs/generated/anki_vector.behavior.html#anki_vector.behavior.BehaviorComponent.set_eye_color"
+},
+{
+  "type": "vector_set_head_angle",
+  "message0": "%{BKY_VECTOR_SET_HEAD_ANGLE_MESSAGE}",
+  "args0": [
+    {
+      "type": "field_variable",
+      "name": "robot_var",
+      "variable": "robot"
+    },
+    {
+      "type": "input_value",
+      "name": "angle",
+      "check": "Angle"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 45,
+  "tooltip": "%{BKY_VECTOR_SET_HEAD_ANGLE_TOOLTIP}",
+  "helpUrl": "https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html?highlight=sleep#anki_vector.behavior.BehaviorComponent.set_head_angle"
+},
+{
+  "type": "vector_set_lift_height",
+  "message0": "%{BKY_VECTOR_SET_LIFT_HEIGHT_MESSAGE}",
+  "args0": [
+    {
+      "type": "field_variable",
+      "name": "robot_var",
+      "variable": "robot"
+    },
+    {
+      "type": "input_value",
+      "name": "height",
+      "check": "Distance"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 45,
+  "tooltip": "%{BKY_VECTOR_SET_LIFT_HEIGHT_TOOLTIP}",
+  "helpUrl": "https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html?highlight=sleep#anki_vector.behavior.BehaviorComponent.set_lift_height"
+}]
