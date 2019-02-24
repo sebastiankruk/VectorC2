@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-24 00:25+0100\n"
+"POT-Creation-Date: 2019-02-24 13:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,69 +20,77 @@ msgstr ""
 "%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: vectorc2/webview/templates/webview/header.html:14
+#: webview/templates/blockly/vector_behavior.xml:1
+msgid "(V) Behavior"
+msgstr "(V) Zachowanie"
+
+#: webview/templates/blockly/vector_utils.xml:1
+msgid "(V) Utils"
+msgstr "(V) Narzędzia"
+
+#: webview/templates/webview/header.html:14
 msgid "Test"
 msgstr "Testuj"
 
-#: vectorc2/webview/templates/webview/header.html:17
+#: webview/templates/webview/header.html:17
 msgid "Run"
 msgstr "Uruchom"
 
-#: vectorc2/webview/templates/webview/header.html:20
+#: webview/templates/webview/header.html:20
 msgid "Cleanup"
 msgstr "Wyczyść"
 
-#: vectorc2/webview/templates/webview/header.html:23
+#: webview/templates/webview/header.html:23
 msgid "Upload"
 msgstr "Upload"
 
-#: vectorc2/webview/templates/webview/sourceCode.html:8
+#: webview/templates/webview/sourceCode.html:8
 msgid "Source code: "
 msgstr "Kod źródłowy: "
 
-#: vectorc2/webview/templates/webview/sourceCode.html:8
-#: vectorc2/webview/templates/webview/sourceCode.html:11
+#: webview/templates/webview/sourceCode.html:8
+#: webview/templates/webview/sourceCode.html:11
 msgid "JavaScript"
 msgstr "JavaScript"
 
-#: vectorc2/webview/templates/webview/sourceCode.html:8
-#: vectorc2/webview/templates/webview/sourceCode.html:12
+#: webview/templates/webview/sourceCode.html:8
+#: webview/templates/webview/sourceCode.html:12
 msgid "Python"
 msgstr "Python"
 
-#: vectorc2/webview/templates/webview/sourceCode.html:8
-#: vectorc2/webview/templates/webview/sourceCode.html:13
+#: webview/templates/webview/sourceCode.html:8
+#: webview/templates/webview/sourceCode.html:13
 msgid "XML"
 msgstr "XML"
 
-#: vectorc2/webview/templates/webview/toolbox.xml:3
+#: webview/templates/webview/toolbox.xml:3
 msgid "Logic"
 msgstr "Logiczne"
 
-#: vectorc2/webview/templates/webview/toolbox.xml:12
+#: webview/templates/webview/toolbox.xml:12
 msgid "Loops"
 msgstr "Pętle"
 
-#: vectorc2/webview/templates/webview/toolbox.xml:41
+#: webview/templates/webview/toolbox.xml:41
 msgid "Math"
 msgstr "Matematyka"
 
-#: vectorc2/webview/templates/webview/toolbox.xml:142
+#: webview/templates/webview/toolbox.xml:142
 msgid "Text"
 msgstr "Tekst"
 
-#: vectorc2/webview/templates/webview/toolbox.xml:219
+#: webview/templates/webview/toolbox.xml:219
 msgid "Lists"
 msgstr "Listy"
 
-#: vectorc2/webview/templates/webview/toolbox.xml:270
+#: webview/templates/webview/toolbox.xml:270
 msgid "Colour"
 msgstr "Kolor"
 
-#: vectorc2/webview/templates/webview/toolbox.xml:309
+#: webview/templates/webview/toolbox.xml:309
 msgid "Variables"
 msgstr "Zmienne"
 
-#: vectorc2/webview/templates/webview/toolbox.xml:310
+#: webview/templates/webview/toolbox.xml:310
 msgid "Functions"
 msgstr "Funkcje"
