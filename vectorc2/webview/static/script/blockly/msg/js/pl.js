@@ -433,3 +433,25 @@ Blockly.Msg["TEXTS_HUE"] = "160";
 Blockly.Msg["PROCEDURES_HUE"] = "290";
 Blockly.Msg["COLOUR_HUE"] = "20";
 Blockly.Msg["VARIABLES_DYNAMIC_HUE"] = "310";
+
+Blockly.Msg["VECTOR_ROBOT_MESSAGE"] = "Używaj Vectora %1 %2 z (opcjonalnym) numerem seryjnym %3 %4";
+Blockly.Msg["VECTOR_ROBOT_TOOLTIP"] = "Opakowuje wszystkie komendy dla Vectora";
+
+Blockly.Msg["VECTOR_UTILS_DISTANCE_MM_MESSAGE"] = "odległość w mm %1";
+Blockly.Msg["VECTOR_UTILS_DISTANCE_MM_TOOLTIP"] = "odległość w milimetrach";
+Blockly.Msg["VECTOR_UTILS_SPEED_MMPS_MESSAGE"] = "prędkość w mm/s %1";
+Blockly.Msg["VECTOR_UTILS_SPEED_MMPS_TOOLTIP"] = "prędkość w milimetrach na sekundę";
+Blockly.Msg["VECTOR_UTILS_DEGREES_MESSAGE"] = "kąt (stopnie) %1";
+Blockly.Msg["VECTOR_UTILS_DEGREES_TOOLTIP"] = "kąt w stopniach";
+Blockly.Msg["VECTOR_UTILS_SLEEP_MESSAGE"] = "Zatrzymaj przetwarzanie na %1 sekund";
+Blockly.Msg["VECTOR_UTILS_SLEEP_TOOLTIP"] = "Zatrzyma wykonanie zadań na zadaną liczbę sekund";
+Blockly.Msg["VECTOR_CONST_MIN_HEAD_ANGLE_MESSAGE"] = "MIN_HEAD_ANGLE";
+Blockly.Msg["VECTOR_CONST_MIN_HEAD_ANGLE_TOOLTIP"] = "Minimalny kąt nachylenia głowy Vectora.";
+Blockly.Msg["VECTOR_CONST_MAX_HEAD_ANGLE_MESSAGE"] = "MAX_HEAD_ANGLE";
+Blockly.Msg["VECTOR_CONST_MAX_HEAD_ANGLE_TOOLTIP"] = "Maksymalny kąt nachylenia głowy Vectora.";
+Blockly.Msg["VECTOR_CONST_MAX_LIFT_HEIGHT_MESSAGE"] = "MAX_LIFT_HEIGHT";
+Blockly.Msg["VECTOR_CONST_MAX_LIFT_HEIGHT_TOOLTIP"] = "Największa wysokość na jaką Vector może podnieść ramiona.";
+Blockly.Msg["VECTOR_CONST_MIN_LIFT_HEIGHT_MESSAGE"] = "MIN_LIFT_HEIGHT ";
+Blockly.Msg["VECTOR_CONST_MIN_LIFT_HEIGHT_TOOLTIP"] = "Najniższa wysokość na jaką Vector może opuścić ramiona.";
+
+

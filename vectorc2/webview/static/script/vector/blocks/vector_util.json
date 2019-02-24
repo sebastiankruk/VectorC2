@@ -1,0 +1,97 @@
+[{
+  "type": "vector_utils_distance_mm",
+  "message0": "%{BKY_VECTOR_UTILS_DISTANCE_MM_MESSAGE}",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "value",
+      "check": "Number"
+    }
+  ],
+  "output": "Distance",
+  "colour": 230,
+  "tooltip": "%{BKY_VECTOR_UTILS_DISTANCE_MM_TOOLTIP}",
+  "helpUrl": ""
+},
+{
+  "type": "vector_utils_speed_mmps",
+  "message0": "%{BKY_VECTOR_UTILS_SPEED_MMPS_MESSAGE}",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "value",
+      "check": "Number"
+    }
+  ],
+  "output": "Speed",
+  "colour": 230,
+  "tooltip": "%{BKY_VECTOR_UTILS_SPEED_MMPS_TOOLTIP}",
+  "helpUrl": ""
+},
+{
+  "type": "vector_utils_degrees",
+  "message0": "%{BKY_VECTOR_UTILS_DEGREES_MESSAGE}",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "value",
+      "check": "Number"
+    }
+  ],
+  "output": "Angle",
+  "colour": 230,
+  "tooltip": "%{BKY_VECTOR_UTILS_DEGREES_TOOLTIP}",
+  "helpUrl": ""
+},
+{
+  "type": "vector_utils_sleep",
+  "message0": "%{BKY_VECTOR_UTILS_SLEEP_MESSAGE}",
+  "args0": [
+    {
+      "type": "field_number",
+      "name": "sleep_var",
+      "value": 5,
+      "min": 0,
+      "max": 120,
+      "precision": 1
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 240,
+  "tooltip": "%{BKY_VECTOR_UTILS_SLEEP_TOOLTIP}",
+  "helpUrl": ""
+},
+{
+  "type": "vector_const_min_head_angle",
+  "message0": "%{BKY_VECTOR_CONST_MIN_HEAD_ANGLE_MESSAGE}",
+  "output": "Angle",
+  "colour": 195,
+  "tooltip": "%{BKY_VECTOR_CONST_MIN_HEAD_ANGLE_TOOLTIP}",
+  "helpUrl": "https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html?highlight=sleep#anki_vector.behavior.MIN_HEAD_ANGLE"
+},
+{
+  "type": "vector_const_max_head_angle",
+  "message0": "%{BKY_VECTOR_CONST_MAX_HEAD_ANGLE_MESSAGE}",
+  "output": "Angle",
+  "colour": 195,
+  "tooltip": "%{BKY_VECTOR_CONST_MAX_HEAD_ANGLE_TOOLTIP}",
+  "helpUrl": "https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html?highlight=sleep#anki_vector.behavior.MAX_HEAD_ANGLE"
+},
+{
+  "type": "vector_const_max_lift_height",
+  "message0": "%{BKY_VECTOR_CONST_MAX_LIFT_HEIGHT_MESSAGE}",
+  "output": "Distance",
+  "colour": 195,
+  "tooltip": "%{BKY_VECTOR_CONST_MAX_LIFT_HEIGHT_TOOLTIP}",
+  "helpUrl": "https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html?highlight=sleep#anki_vector.behavior.MAX_LIFT_HEIGHT"
+},
+{
+  "type": "vector_const_min_lift_height",
+  "message0": "%{BKY_VECTOR_CONST_MIN_LIFT_HEIGHT_MESSAGE}",
+  "output": "Distance",
+  "colour": 195,
+  "tooltip": "%{BKY_VECTOR_CONST_MIN_LIFT_HEIGHT_TOOLTIP}",
+  "helpUrl": "https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html?highlight=sleep#anki_vector.behavior.MIN_LIFT_HEIGHT"
+}]

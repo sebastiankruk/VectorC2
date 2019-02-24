@@ -1,0 +1,26 @@
+[{
+  "type": "vector_robot",
+  "message0": "%{BKY_VECTOR_ROBOT_MESSAGE}",
+  "args0": [
+    {
+      "type": "field_variable",
+      "name": "robot_var",
+      "variable": "robot"
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "serial_var",
+      "check": "String"
+    },
+    {
+      "type": "input_statement",
+      "name": "wrapped_code"
+    }
+  ],
+  "colour": 240,
+  "tooltip": "%{BKY_VECTOR_ROBOT_TOOLTIP}",
+  "helpUrl": ""
+}]

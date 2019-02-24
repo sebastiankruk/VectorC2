@@ -433,3 +433,25 @@ Blockly.Msg["TEXTS_HUE"] = "160";
 Blockly.Msg["PROCEDURES_HUE"] = "290";  
 Blockly.Msg["COLOUR_HUE"] = "20";  
 Blockly.Msg["VARIABLES_DYNAMIC_HUE"] = "310";  
+
+Blockly.Msg["VECTOR_ROBOT_MESSAGE"] = "Use Vector %1 %2 of (optional) serial %3 %4 %5";
+Blockly.Msg["VECTOR_ROBOT_TOOLTIP"] = "Wrap all Vector calls around";
+
+Blockly.Msg["VECTOR_UTILS_DISTANCE_MM_MESSAGE"] = "distance in mm %1";
+Blockly.Msg["VECTOR_UTILS_DISTANCE_MM_TOOLTIP"] = "distance in millimeters";
+Blockly.Msg["VECTOR_UTILS_SPEED_MMPS_MESSAGE"] = "speed in mm/s %1";
+Blockly.Msg["VECTOR_UTILS_SPEED_MMPS_TOOLTIP"] = "speed in millimeters per second";
+Blockly.Msg["VECTOR_UTILS_DEGREES_MESSAGE"] = "degrees %1";
+Blockly.Msg["VECTOR_UTILS_DEGREES_TOOLTIP"] = "degrees";
+Blockly.Msg["VECTOR_UTILS_SLEEP_MESSAGE"] = "Sleep for %1 seconds";
+Blockly.Msg["VECTOR_UTILS_SLEEP_TOOLTIP"] = "Will sleep/wait for given amount seconds";
+Blockly.Msg["VECTOR_CONST_MIN_HEAD_ANGLE_MESSAGE"] = "MIN_HEAD_ANGLE";
+Blockly.Msg["VECTOR_CONST_MIN_HEAD_ANGLE_TOOLTIP"] = "The minimum angle the robot’s head can be set to.";
+Blockly.Msg["VECTOR_CONST_MAX_HEAD_ANGLE_MESSAGE"] = "MAX_HEAD_ANGLE";
+Blockly.Msg["VECTOR_CONST_MAX_HEAD_ANGLE_TOOLTIP"] = "The maximum angle the robot’s head can be set to";
+Blockly.Msg["VECTOR_CONST_MAX_LIFT_HEIGHT_MESSAGE"] = "MAX_LIFT_HEIGHT";
+Blockly.Msg["VECTOR_CONST_MAX_LIFT_HEIGHT_TOOLTIP"] = "The largest height-above-ground that lift can be moved to";
+Blockly.Msg["VECTOR_CONST_MIN_LIFT_HEIGHT_MESSAGE"] = "MIN_LIFT_HEIGHT ";
+Blockly.Msg["VECTOR_CONST_MIN_LIFT_HEIGHT_TOOLTIP"] = "The lowest height-above-ground that lift can be moved to";
+
+
