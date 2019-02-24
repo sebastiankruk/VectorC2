@@ -193,7 +193,7 @@ const VectorC2 = (function(){
     try {
       xmlDom = Blockly.Xml.textToDom(workspaceBlocks);
     } catch (e) {
-      let msg = gettext('Error parsing XML:\n%(error)\n\nSelect "OK" to abandon your changes or "Cancel" to further edit the XML.'); 
+      let msg = gettext('Error parsing XML:\n%(error)s\n\nSelect "OK" to abandon your changes or "Cancel" to further edit the XML.'); 
       alert(interpolate(msg, {error: e}, true));
     }
     if (xmlDom) {
@@ -269,7 +269,7 @@ const VectorC2 = (function(){
         generatorName: generator.name_,
         missingJoined: missing.join('\n - ')
       }
-      let msg = gettext('The generator code for the following blocks not specified for %(generatorName):\n - %(missingJoined)'); 
+      let msg = gettext('The generator code for the following blocks not specified for %(generatorName)s:\n - %(missingJoined)s'); 
       console.log(interpolate(msg, d, true));  
     }
     return valid;

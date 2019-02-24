@@ -26,9 +26,10 @@ const Vectorex = (function(){
     __serial = serial;
 
     if (serial) {
-      LogPanel.logText(`Running Vector with serial number = ${__serial}`);
+      let msg = gettext('Running Vector with serial number = %(serial)s'); 
+      LogPanel.logError(interpolate(msg, {serial: __serial}, true));
     } else {
-      LogPanel.logText('Running Vector');
+      LogPanel.logText(gettext('Running Vector'));
     }
   }
 
@@ -42,36 +43,51 @@ const Vectorex = (function(){
    */
   function _wait(seconds) {
     var prom = __wait(2000)  // prom, is a promise
-    var showdone = ()=>LogPanel.logText(`Should have waited ${seconds}s`)
+    let msg = gettext('Should have waited $(seconds)s'); 
+    var showdone = ()=>LogPanel.logText(interpolate(msg, {seconds: seconds}, true))
     prom.then(showdone)
   } 
 
   function _driveOffCharger() {
-    LogPanel.logText('Vector drives off charger');
+    LogPanel.logText(gettext('Vector drives off charger'));
   }
   function _driveOnCharger() {
-    LogPanel.logText('Vector drives on charger');
+    LogPanel.logText(gettext('Vector drives on charger'));
   }
   function _driveStraight(distance, speed, should_play_anim, num_retries) {
-    LogPanel.logText(`Vector drives ${distance} at ${speed}. (Plays animation: ${should_play_anim}. Retries: ${num_retries})`);
+    let msg = gettext('Vector drives %(distance)s at %(speed)s. (Plays animation: %(should_play_anim)s. Retries: %(num_retries)s)'); 
+    LogPanel.logText(interpolate(msg, { distance:distance, 
+                                         speed:speed, 
+                                         should_play_anim:should_play_anim, 
+                                         num_retries:num_retries }, true));
   }
   function _turnInPlace(angle, speed, accel, angle_tolerance, is_absolute, num_retries) {
-    LogPanel.logText(`Vector rotates ${angle} at speed ${speed} with acceleration ${accel}, at tolerance ${angle_tolerance}. Angle is absolute: ${is_absolute}. Retries:  ${num_retries}`)  
+    let msg = gettext('Vector rotates %(angle)s at speed %(speed)s with acceleration %(accel)s, at tolerance %(angle_tolerance)s. Angle is absolute: %(is_absolute)s. Retries:  %(num_retries)s'); 
+    LogPanel.logText(interpolate(msg, { angle: angle, 
+                                        speed: speed, 
+                                        accel: accel, 
+                                        angle_tolerance: angle_tolerance, 
+                                        is_absolute: is_absolute, 
+                                        num_retries: num_retries }, true));
   }
   function _setEyeColor(color) {
-    LogPanel.logTextWithStyle(`Vector eyes color set to ${color}`, `color: ${color}`);
+    let msg = gettext('Vector eyes color set to %(color)s'); 
+    LogPanel.logTextWithStyle(interpolate(msg, { color: color }, true), `color: ${color}`);
   }
   function _setEyeColorHS(hue, saturation) {
-    LogPanel.logText(`Vector eyes color set with hue=${hue} and saturation=${saturation}`);
+    let msg = gettext('Vector eyes color set with hue=%(hue)s and saturation=%(saturation)s'); 
+    LogPanel.logText(interpolate(msg, { hue: hue, saturation: saturation }, true));
   }
   function _dockWithCube() {
-    LogPanel.logText(`Vector will dock with cube`);
+    LogPanel.logText(gettext('Vector will dock with cube'));
   }
   function _setHeadAngle(angle) {
-    LogPanel.logText(`Vector will set head angle to ${angle}`);
+    let msg = gettext('Vector will set head angle to %(angle)s'); 
+    LogPanel.logText(interpolate(msg, { angle: angle }, true));
   }
   function _setLiftHeight(height) {
-    LogPanel.logText(`Vector will lift to ${height}`);
+    let msg = gettext('Vector will lift to %(height)s'); 
+    LogPanel.logText(interpolate(msg, { height: height }, true));
   }
 
   /**

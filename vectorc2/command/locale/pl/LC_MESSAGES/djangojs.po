@@ -1,0 +1,90 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-02-24 12:40+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+#: command/static/script/vector/commander.js:42
+msgid "Maximum execution iterations exceeded."
+msgstr "Przekroczony maksymalną ilość powtórzeń"
+
+#: command/static/script/vector/commander.js:51
+msgid ""
+"Program error:\n"
+"%(error)s"
+msgstr ""
+"Błąd programu:\n"
+"%(error)s"
+
+#: command/static/script/vector/vectorex.js:29
+msgid "Running Vector with serial number = %(serial)s"
+msgstr "Uruchamianie Vectora z numerem seryjnym = %(serial)s"
+
+#: command/static/script/vector/vectorex.js:32
+msgid "Running Vector"
+msgstr "Uruchamianie Vectora"
+
+#: command/static/script/vector/vectorex.js:46
+msgid "Should have waited $(seconds)s"
+msgstr "Powinniśmy czekać $(seconds)s"
+
+#: command/static/script/vector/vectorex.js:52
+msgid "Vector drives off charger"
+msgstr "Vector zjeżdża ze stacji bazowej"
+
+#: command/static/script/vector/vectorex.js:55
+msgid "Vector drives on charger"
+msgstr "Vector wjeżdza na stację bazową"
+
+#: command/static/script/vector/vectorex.js:58
+msgid ""
+"Vector drives %(distance)s at %(speed)s. (Plays animation: "
+"%(should_play_anim)s. Retries: %(num_retries)s)"
+msgstr ""
+"Vector przejedzie %(distance)s przy prędkości %(speed)s. (Odegra animację: "
+"%(should_play_anim)s. Ilość prób: %(num_retries)s)"
+
+#: command/static/script/vector/vectorex.js:65
+msgid ""
+"Vector rotates %(angle)s at speed %(speed)s with acceleration %(accel)s, at "
+"tolerance %(angle_tolerance)s. Angle is absolute: %(is_absolute)s. Retries:  "
+"%(num_retries)s"
+msgstr ""
+"Vector obróci się o kąt %(angle)s przy prędkości %(speed)s z przyspieszeniem %(accel)s, z "
+"dokładnością %(angle_tolerance)s. Podany kąt jest bezwzględny: %(is_absolute)s. Ilość prób:  "
+"%(num_retries)s"
+
+#: command/static/script/vector/vectorex.js:74
+msgid "Vector eyes color set to %(color)s"
+msgstr "Kolor oczu Vectora ustawiony na %(color)s"
+
+#: command/static/script/vector/vectorex.js:78
+msgid "Vector eyes color set with hue=%(hue)s and saturation=%(saturation)s"
+msgstr "Kolor oczu Vectora ustawiony dla koloru %(hue)s i nasycenia %(saturation)s"
+
+#: command/static/script/vector/vectorex.js:82
+msgid "Vector will dock with cube"
+msgstr "Vector uda się do stacji bazowej z kostką"
+
+#: command/static/script/vector/vectorex.js:85
+msgid "Vector will set head angle to %(angle)s"
+msgstr "Vector ustawi głowę pod kątem %(angle)s"
+
+#: command/static/script/vector/vectorex.js:89
+msgid "Vector will lift to %(height)s"
+msgstr "Vector podniesie ramiona do wysokości %(height)s"

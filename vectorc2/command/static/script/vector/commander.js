@@ -48,7 +48,7 @@ const Commander = (function(){
     try {
       eval(code);
     } catch (e) {
-      let msg = gettext('Program error:\n%(error)'); 
+      let msg = gettext('Program error:\n%(error)s'); 
       LogPanel.logError(interpolate(msg, {error: e}, true));
     }
     _callback('finished');
