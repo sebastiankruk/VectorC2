@@ -16,19 +16,18 @@
  @author vectorc2@kruk.me
 {% endcomment %}
 {% load i18n %}
-{% load static %}
-{% load octicons %}
-<footer class="footer mt-auto py-2">
-  <div class="container m-0">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <span class="pull-right clickable panel-collapsed">{% octicon "chevron-up" %}</span>
-        <span class="pull-right clickable panel-expanded">{% octicon "chevron-down" %}</span>
-        <pre class="panel-title"><code></code></pre>
-        <pre class="panel-body"><code></code></pre>
-        <span class="pull-left clickable panel-clear">{% octicon "trashcan" %}</span>
-      </div>
-    </div>
-  </div>
-</footer>
-
+<category name="{% trans '(V) Utils' %}" colour="#00a55b">
+  <block type="vector_robot">
+    <field name="robot_var" id="mm-K_3;;D5xLp(_Em[/S" variabletype="">robot</field>
+  </block>
+  <block type="vector_utils_distance_mm"></block>
+  <block type="vector_utils_speed_mmps"></block>
+  <block type="vector_utils_degrees"></block>
+  <block type="vector_const_min_head_angle"></block>
+  <block type="vector_const_max_head_angle"></block>
+  <block type="vector_const_max_lift_height"></block>
+  <block type="vector_const_min_lift_height"></block>
+  <block type="vector_utils_sleep">
+    <field name="sleep_var">5</field>
+  </block>
+</category>
