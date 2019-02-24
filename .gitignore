@@ -2,3 +2,4 @@
 .vscode
 *.pyc
 dump.rdb
+vectorc2/db.sqlite3
