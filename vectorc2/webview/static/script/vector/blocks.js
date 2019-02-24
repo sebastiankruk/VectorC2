@@ -11,8 +11,9 @@
 const VectorBlocks = (function(){
 
   const JSON_BLOCK_SPECS = [
-    'vector_robot.json',
-    'vector_util.json'
+    'vector_robot',
+    'vector_util',
+    'vector_say_text'
   ]
 
   /**
@@ -48,7 +49,7 @@ const VectorBlocks = (function(){
    */
   function __init__(){
     for ( let jsonFile of JSON_BLOCK_SPECS ) {
-      $.getJSON(`/static/script/vector/blocks/${jsonFile}`, __loadCustomBlocks);
+      $.getJSON(`/static/script/vector/blocks/${jsonFile}.json`, __loadCustomBlocks);
     }
   }
 

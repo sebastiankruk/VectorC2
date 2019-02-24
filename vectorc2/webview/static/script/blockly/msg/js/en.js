@@ -454,4 +454,8 @@ Blockly.Msg["VECTOR_CONST_MAX_LIFT_HEIGHT_TOOLTIP"] = "The largest height-above-
 Blockly.Msg["VECTOR_CONST_MIN_LIFT_HEIGHT_MESSAGE"] = "MIN_LIFT_HEIGHT ";
 Blockly.Msg["VECTOR_CONST_MIN_LIFT_HEIGHT_TOOLTIP"] = "The lowest height-above-ground that lift can be moved to";
 
+Blockly.Msg["VECTOR_SAY_TEXT_MESSAGE"] = "Vector %1 say: %2 with vector voice %3 %4 at relative speed %5";
+Blockly.Msg["VECTOR_SAY_TEXT_TOOLTIP"] = "Vector will say something";
+Blockly.Msg["VECTOR_SAY_TEXT_SIMPLE_MESSAGE"] = "Vector %1 say %2";
+Blockly.Msg["VECTOR_SAY_TEXT_SIMPLE_TOOLTIP"] = "Vector will say something";
 

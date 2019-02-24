@@ -454,4 +454,7 @@ Blockly.Msg["VECTOR_CONST_MAX_LIFT_HEIGHT_TOOLTIP"] = "Największa wysokość na
 Blockly.Msg["VECTOR_CONST_MIN_LIFT_HEIGHT_MESSAGE"] = "MIN_LIFT_HEIGHT ";
 Blockly.Msg["VECTOR_CONST_MIN_LIFT_HEIGHT_TOOLTIP"] = "Najniższa wysokość na jaką Vector może opuścić ramiona.";
 
-
+Blockly.Msg["VECTOR_SAY_TEXT_MESSAGE"] = "Vector %1 powiedz: %2 swoim głosem %3 %4 z relatywną prędkością %5";
+Blockly.Msg["VECTOR_SAY_TEXT_TOOLTIP"] = "Vector coś powie";
+Blockly.Msg["VECTOR_SAY_TEXT_SIMPLE_MESSAGE"] = "Vector %1 powiedz %2";
+Blockly.Msg["VECTOR_SAY_TEXT_SIMPLE_TOOLTIP"] = "Vector coś powie";

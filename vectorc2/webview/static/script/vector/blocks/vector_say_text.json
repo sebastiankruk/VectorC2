@@ -1,0 +1,60 @@
+[{
+  "type": "vector_say_text",
+  "message0": "%{BKY_VECTOR_SAY_TEXT_MESSAGE}",
+  "args0": [
+    {
+      "type": "field_variable",
+      "name": "robot_var",
+      "variable": "robot"
+    },
+    {
+      "type": "input_value",
+      "name": "text",
+      "check": "String"
+    },
+    {
+      "type": "field_checkbox",
+      "name": "use_vector_voice",
+      "checked": true
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "field_number",
+      "name": "duration_scalar",
+      "value": 1,
+      "min": 0.1,
+      "max": 2,
+      "precision": 0.1
+    }
+  ],
+  "inputsInline": false,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 150,
+  "tooltip": "%{BKY_VECTOR_SAY_TEXT_TOOLTIP}",
+  "helpUrl": "https://developer.anki.com/vector/docs/generated/anki_vector.robot.html#anki_vector.robot.Robot.say_text"
+},
+{
+  "type": "vector_say_text_simple",
+  "message0": "%{BKY_VECTOR_SAY_TEXT_SIMPLE_MESSAGE}",
+  "args0": [
+    {
+      "type": "field_variable",
+      "name": "robot_var",
+      "variable": "robot"
+    },
+    {
+      "type": "input_value",
+      "name": "text",
+      "check": "String"
+    }
+  ],
+  "inputsInline": false,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 150,
+  "tooltip": "%{BKY_VECTOR_SAY_TEXT_SIMPLE_TOOLTIP}",
+  "helpUrl": "https://developer.anki.com/vector/docs/generated/anki_vector.robot.html#anki_vector.robot.Robot.say_text"
+}]
