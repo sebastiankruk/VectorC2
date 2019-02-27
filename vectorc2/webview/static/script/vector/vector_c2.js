@@ -193,6 +193,8 @@ const VectorC2 = (function(){
     
     __afterLoad();
     _onAreaResize();
+
+    VectorStatus.init();
   }
 
   // ------------------------------------------------------------------
@@ -348,6 +350,10 @@ const VectorC2 = (function(){
     }
   };  
 
+  function _readVectorStatus() {
+    VectorStatus.readStatus();
+  }
+
 
   // ---------------------------------------------------------------------------
 
@@ -355,7 +361,8 @@ const VectorC2 = (function(){
       init: __init__,
       testJavaScript: _testJavaScript,
       cleanupWorkspace: _cleanupWorkspace,
-      resizeArea: _onAreaResize
+      resizeArea: _onAreaResize,
+      readVectorStatus: _readVectorStatus
   }
 
 })();

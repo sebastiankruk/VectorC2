@@ -18,18 +18,14 @@
 'use strict';
 
 /**
- * Class for main WebSocket communication with Vector server
+ * Class for getting Vector status over WebSocket channel
  */
-const VectorSocket = function(spaceName, commander){
+const VectorStatus = (function(commander){
 
   /**
    * Reference to chat socket
    */
   var __chatSocket;
-  /**
-   * Space name to be remembered and reused in the future if necessary
-   */
-  var __spaceName;
 
   // ---------------------------------------------------------------------------
 
@@ -38,25 +34,16 @@ const VectorSocket = function(spaceName, commander){
    * @param {WebSocket Message}  
    */
   async function __onMessage(e) {
-    var data = JSON.parse(e.data);
-    var message = data['message'];
-    var type = data['type'];
-    if (type == 'error') {
-      LogPanel.logError(message);
-    } else if (type == 'command') {
-      Commander.onCommand(message);
-    } else {
-      LogPanel.logText(message);
-    }
-    
+    var statusData = JSON.parse(e.data);
+    console.log(statusData);
   };
 
   /**
    * In case socket is closed, log this even and restart the socket.
    */
   async function __onClose(e) {
-    console.log('Chat socket closed unexpectedly. Restarting connection.');
-    await __init__(spaceName); //TODO CHECK ???
+    console.log('Status communication socket closed unexpectedly. Restarting connection.');
+    await __init__(); //TODO CHECK ???
   };
 
   // ---------------------------------------------------------------------------
@@ -65,29 +52,24 @@ const VectorSocket = function(spaceName, commander){
    * Send given message over WebSocket channel
    * @param {String} message 
    */
-  async function _sendMessage(message) {
+  async function _readStatus(statuses) {
     __chatSocket.send(JSON.stringify({
-      'message': message
+      'statuses': statuses
     }));    
   }
 
   /**
-   * 
-   * @param {String} spaceName name of the spaceName to use  
+   * Initializes this communication channel
    */
-  async function __init__(spaceName) {
-    __spaceName = spaceName;
-    __chatSocket = new WebSocket('ws://' + window.location.host + '/ws/space/' + spaceName + '/');
+  function __init__() {
+    __chatSocket = new WebSocket('ws://' + window.location.host + '/ws/vector/state/');
     __chatSocket.onmessage = __onMessage;
     __chatSocket.onclose = __onClose;
   }
 
-  // ---------------------------------------------------------------------------
-
-  __init__(spaceName);
-
   return {
-      sendMessage: _sendMessage
+      init: __init__,
+      readStatus: _readStatus
   }
 
-};
+})();
