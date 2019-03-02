@@ -95,7 +95,6 @@ class StateConsumer(WebsocketConsumer):
   def connect(self):
     # self.space_name = self.scope['url_route']['kwargs']['space_name']
     self.space_group_name = 'space_vector_status'
-    self.vector_status.connect()
 
     async_to_sync(self.channel_layer.group_add)(
       self.space_group_name,
@@ -103,6 +102,7 @@ class StateConsumer(WebsocketConsumer):
     )
 
     self.accept()
+    self.vector_status.connect()
 
   def disconnect(self, close_code):
     async_to_sync(self.channel_layer.group_discard)(

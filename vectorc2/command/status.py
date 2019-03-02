@@ -13,6 +13,7 @@
 #  limitations under the License.
 import sys
 import anki_vector
+from concurrent import futures
 
 class VectorStatus(object):
   """
@@ -34,10 +35,50 @@ class VectorStatus(object):
     """
     # self.connect()
 
-    state = {}
+    state = {
+      'current': {
+        'are_motors_moving': self._robot.status.are_motors_moving,
+        'are_wheels_moving': self._robot.status.are_wheels_moving,
+        'is_animating': self._robot.status.is_animating,
+        'is_being_held': self._robot.status.is_being_held,
+        'is_button_pressed': self._robot.status.is_button_pressed,
+        'is_carrying_block': self._robot.status.is_carrying_block,
+        'is_charging': self._robot.status.is_charging,
+        'is_cliff_detected': self._robot.status.is_cliff_detected,
+        'is_docking_to_marker': self._robot.status.is_docking_to_marker,
+        'is_falling': self._robot.status.is_falling,
+        'is_head_in_pos': self._robot.status.is_head_in_pos,
+        'is_in_calm_power_mode': self._robot.status.is_in_calm_power_mode,
+        'is_on_charger': self._robot.status.is_on_charger,
+        'is_pathing': self._robot.status.is_pathing,
+        'is_picked_up': self._robot.status.is_picked_up,
+        'is_robot_moving': self._robot.status.is_robot_moving,
+      },
+      'robot': {
+        'head_angle_rad': self._robot.head_angle_rad,
+        'lift_height_mm': self._robot.lift_height_mm,
+        'pose_angle_rad': self._robot.pose_angle_rad,
+        'pose_pitch_rad': self._robot.pose_pitch_rad,
+        'right_wheel_speed_mmps': self._robot.right_wheel_speed_mmps,
+        'x_y_z': self._robot.gyro.x_y_z,
+      }
+    }
 
-    battery_state = self._robot.get_battery_state().result()
-    if battery_state:
+    future_battery_state = self._robot.get_battery_state()
+    future_network_state = self._robot.get_network_state()
+    future_version_state = self._robot.get_version_state()
+
+    
+    (fdone, fnot_done) = futures.wait([
+                                        future_battery_state,
+                                        future_network_state,
+                                        future_version_state
+                                      ], 
+                                      timeout=1.5, 
+                                      return_when=futures.ALL_COMPLETED)
+
+    if future_battery_state in fdone:
+      battery_state = future_battery_state.result()
       state['battery'] = {
         'battery_volts': battery_state.battery_volts, 
         'battery_level': battery_state.battery_level, 
@@ -46,13 +87,18 @@ class VectorStatus(object):
         'suggested_charger_sec': battery_state.suggested_charger_sec, 
       }
 
-      print("Robot battery voltage: {0}".format(battery_state.battery_volts))
-      print("Robot battery Level: {0}".format(battery_state.battery_level))
-      print("Robot battery is charging: {0}".format(battery_state.is_charging))
-      print("Robot is on charger platform: {0}".format(battery_state.is_on_charger_platform))
-      print("Robot's suggested charger time: {0}".format(battery_state.suggested_charger_sec))
+    if future_network_state in fdone:
+      network_state = future_network_state.result()
+      state['network'] = str(network_state.network_stats)
 
-      self._consumer.send_status(state)
+    if future_version_state in fdone:
+      version_state = future_version_state.result()
+      state['version'] = {
+        'os_version': version_state.os_version,
+        'engine_build_id': version_state.engine_build_id,
+      }
+
+    self._consumer.send_status(state)
 
     # self.disconnect()
   
