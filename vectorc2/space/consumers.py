@@ -101,14 +101,14 @@ class StateConsumer(WebsocketConsumer):
     )
 
     self.accept()
-    self.vector_status.connect()
+    # self.vector_status.connect()
 
   def disconnect(self, close_code):
     async_to_sync(self.channel_layer.group_discard)(
       self.space_group_name,
       self.channel_name
     )
-    self.vector_status.disconnect()
+    # self.vector_status.disconnect()
 
   # Receive message from WebSocket
   def receive(self, text_data):

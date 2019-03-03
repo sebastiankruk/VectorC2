@@ -22,4 +22,34 @@
  */
 const VectorBattery = (function(){
 
+  var __battery;
+
+  var __state;
+
+  /**
+   * Initializes the UI component
+   */
+  function __init__() {
+    $('[data-toggle="tooltip"]').tooltip();
+    __battery = $('ul.navbar-nav li.nav-item a.i-battery');
+    __state = 'unknown'
+  }
+
+  /**
+   * Shows given battery state
+   * @param {String} state 
+   */
+  function _setState(state) {
+    if ( ['charging', 'empty', 'full', 'half', 'low', 'unknown'].includes(state) ){
+      __battery.removeClass(`battery-${__state}`).addClass(`battery-${state}`);
+      __state = state;
+    }
+  }
+
+  return {
+    init: __init__,
+    setState: _setState
+  }
 })()
+
+$( document ).ready(VectorBattery.init)

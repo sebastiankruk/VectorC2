@@ -1,3 +1,13 @@
 ul.navbar-nav li.nav-item a.i-battery svg.octicon {
-  transform: rotate(270deg);
+  fill-opacity: 0.8;
+  display: none;
+}
+
+ul.navbar-nav li.nav-item a.i-battery.battery-charging svg.octicon.octicon-battery-charging,
+ul.navbar-nav li.nav-item a.i-battery.battery-empty svg.octicon.octicon-battery-empty,
+ul.navbar-nav li.nav-item a.i-battery.battery-full svg.octicon.octicon-battery-full,
+ul.navbar-nav li.nav-item a.i-battery.battery-half svg.octicon.octicon-battery-half,
+ul.navbar-nav li.nav-item a.i-battery.battery-low svg.octicon.octicon-battery-low,
+ul.navbar-nav li.nav-item a.i-battery.battery-unknown svg.octicon.octicon-battery-unknown {
+  display: inline;
 }
