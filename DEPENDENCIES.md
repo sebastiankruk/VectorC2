@@ -9,6 +9,7 @@
 1. [Django Channels](https://github.com/django/channels/): [BSD License](https://github.com/django/channels/blob/master/LICENSE)
 1. [Django Channels Redis](https://github.com/django/channels_redis): [BSD License](https://github.com/django/channels_redis/blob/master/LICENSE)
 1. [Django Compressor](https://github.com/django-compressor/django-compressor): [Multiple licenses: MIT, BSD, Apache 2.0](https://github.com/django-compressor/django-compressor/blob/develop/LICENSE)
+1. [Django Octicons](https://github.com/sanketsaurav/django-octicons/): [MIT License](https://github.com/sanketsaurav/django-octicons/blob/master/LICENSE) (Used to create a derived template tag *nonicon*)
 1. [Prettify](https://github.com/google/code-prettify): [Apache License 2.0](https://github.com/google/code-prettify/blob/master/COPYING)
 1. [Redis](https://redis.io/): [BSD License](https://redis.io/topics/license)
 

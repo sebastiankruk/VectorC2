@@ -1,13 +1,14 @@
-ul.navbar-nav li.nav-item a.i-battery svg.octicon {
+ul.navbar-nav li.nav-item a.i-battery svg.nonicon {
   fill-opacity: 0.8;
+  fill: white;
   display: none;
 }
 
-ul.navbar-nav li.nav-item a.i-battery.battery-charging svg.octicon.octicon-battery-charging,
-ul.navbar-nav li.nav-item a.i-battery.battery-empty svg.octicon.octicon-battery-empty,
-ul.navbar-nav li.nav-item a.i-battery.battery-full svg.octicon.octicon-battery-full,
-ul.navbar-nav li.nav-item a.i-battery.battery-half svg.octicon.octicon-battery-half,
-ul.navbar-nav li.nav-item a.i-battery.battery-low svg.octicon.octicon-battery-low,
-ul.navbar-nav li.nav-item a.i-battery.battery-unknown svg.octicon.octicon-battery-unknown {
+ul.navbar-nav li.nav-item a.i-battery.battery-charging svg.nonicon.nonicon-battery-charging,
+ul.navbar-nav li.nav-item a.i-battery.battery-empty svg.nonicon.nonicon-battery-empty,
+ul.navbar-nav li.nav-item a.i-battery.battery-full svg.nonicon.nonicon-battery-full,
+ul.navbar-nav li.nav-item a.i-battery.battery-half svg.nonicon.nonicon-battery-half,
+ul.navbar-nav li.nav-item a.i-battery.battery-low svg.nonicon.nonicon-battery-low,
+ul.navbar-nav li.nav-item a.i-battery.battery-unknown svg.nonicon.nonicon-battery-unknown {
   display: inline;
 }
