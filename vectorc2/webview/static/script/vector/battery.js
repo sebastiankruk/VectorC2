@@ -44,6 +44,8 @@ const VectorBattery = (function(){
     __state = 'unknown'
 
     VectorStatus.init(__onStateChecked);
+
+    _startStateChecking();
   }
 
   /**
@@ -60,7 +62,7 @@ const VectorBattery = (function(){
   /**
    * Call to check the current Vector state
    */
-  function _checkState() {
+  async function _checkState() {
     VectorStatus.readStatus();
   }
 
@@ -70,6 +72,25 @@ const VectorBattery = (function(){
    */
   function __onStateChecked(data) {
     console.log(data);
+
+    let state = 'unknown';
+    try {
+      if (data.battery.is_charging) {
+        state = 'charging'
+      } else {
+        switch (data.battery.battery_level) {
+          case 3: state = 'full'; break;
+          case 2: state = 'half'; break;
+          case 1: state = 'low'; break;
+          default:
+            state = 'empty'
+        }
+      }
+    } catch (e) {
+      console.warn('Could not retrieve Vector state');
+    }
+
+    _setState(state);
   }
 
   /**
@@ -78,9 +99,12 @@ const VectorBattery = (function(){
    * @param {Number} frequency in ms
    */
   function _startStateChecking(frequency) {
-    if ( $.isEmptyObject(__stateCheckerInterval) ) {
+    if ( !$.isEmptyObject(__stateCheckerInterval) ) {
       _stopStateChecking()
+    } else {
+      setTimeout(_checkState, 100);
     }
+
     let _freq = frequency || 60000;
     __stateCheckerInterval = setInterval(_checkState, _freq);
     console.info(`Starting periodical Vector state checking at frequency every ${_freq}ms`)

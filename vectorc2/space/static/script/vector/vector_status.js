@@ -60,9 +60,16 @@ const VectorStatus = (function(commander){
    * @param {String} message 
    */
   async function _readStatus(statuses) {
-    __chatSocket.send(JSON.stringify({
-      'statuses': statuses
-    }));    
+    if ( [WebSocket.CLOSED, WebSocket.CLOSING].includes(__chatSocket.readyState) ) {
+      await __onClose();
+    } else if ( __chatSocket.readyState === WebSocket.CONNECTING ) {
+      console.warn('Delaying _readStatus by 100ms until WebSocket is ready');
+      setTimeout(_readStatus, 100, statuses);
+    } else {
+      __chatSocket.send(JSON.stringify({
+        'statuses': statuses
+      }));    
+    }
   }
 
   /**
