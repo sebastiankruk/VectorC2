@@ -12,3 +12,8 @@ ul.navbar-nav li.nav-item a.i-battery.battery-low svg.nonicon.nonicon-battery-lo
 ul.navbar-nav li.nav-item a.i-battery.battery-unknown svg.nonicon.nonicon-battery-unknown {
   display: inline;
 }
+
+.tooltip-inner {
+  min-width: 400px;
+  max-width: 100%; 
+}

@@ -39,13 +39,19 @@ const VectorBattery = (function(){
    * Initializes the UI component
    */
   function __init__() {
-    $('[data-toggle="tooltip"]').tooltip();
+    __state = 'unknown';
     __battery = $('ul.navbar-nav li.nav-item a.i-battery');
-    __state = 'unknown'
+    __battery.tooltip({ 
+      boundary: 'window',
+      delay: { 
+        "show": 100, 
+        "hide": 1000000 
+      } 
+    });
 
     VectorStatus.init(__onStateChecked);
 
-    _startStateChecking();
+    // _startStateChecking();
   }
 
   /**
@@ -91,6 +97,24 @@ const VectorBattery = (function(){
     }
 
     _setState(state);
+
+    __battery.attr('data-original-title', __generateTooltip(data));
+  }
+
+  /**
+   * Generates status tooltip based on status data
+   * @param {StatusObject} data 
+   */
+  function __generateTooltip(data) {
+    let tooltip = '<div class="container">' +
+        '<h4>Battery:</h4>'+
+        `<div class='row'><b class='col-md-8'>Level:</b><span class='col-md-4'>${data.battery.battery_level}</span></div>` +
+        `<div class='row'><b class='col-md-8'>Volts:</b><span class='col-md-4'>${data.battery.battery_volts.toFixed(2)}</span></div>` +
+        `<div class='row'><b class='col-md-8'>Charging:</b><span class='col-md-4'>${data.battery.is_charging}</span></div>` +
+        `<div class='row'><b class='col-md-8'>Chargein:</b><span class='col-md-4'>${data.battery.suggested_charger_sec}s</span></div>` +
+    '</div>';
+
+    return tooltip;
   }
 
   /**
