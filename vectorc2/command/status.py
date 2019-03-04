@@ -33,7 +33,7 @@ class VectorStatus(object):
     """
     Will read Vector status and 
     """
-    # self.connect()
+    self.connect()
 
     state = {
       'current': {
@@ -100,7 +100,7 @@ class VectorStatus(object):
 
     self._consumer.send_status(state)
 
-    # self.disconnect()
+    self.disconnect()
   
 
 

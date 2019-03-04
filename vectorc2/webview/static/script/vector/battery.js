@@ -22,9 +22,18 @@
  */
 const VectorBattery = (function(){
 
+  /**
+   * Reference to the battery HTML wrapper element
+   */
   var __battery;
-
+  /**
+   * Name of the current state
+   */
   var __state;
+  /**
+   * Handle for the last executed setInterval
+   */
+  var __stateCheckerInterval;
 
   /**
    * Initializes the UI component
@@ -33,6 +42,8 @@ const VectorBattery = (function(){
     $('[data-toggle="tooltip"]').tooltip();
     __battery = $('ul.navbar-nav li.nav-item a.i-battery');
     __state = 'unknown'
+
+    VectorStatus.init(__onStateChecked);
   }
 
   /**
@@ -46,9 +57,49 @@ const VectorBattery = (function(){
     }
   }
 
+  /**
+   * Call to check the current Vector state
+   */
+  function _checkState() {
+    VectorStatus.readStatus();
+  }
+
+  /**
+   * Function called as VectorStatus.onMessage callback
+   * @param {StateObject} data 
+   */
+  function __onStateChecked(data) {
+    console.log(data);
+  }
+
+  /**
+   * Start checking state at given frequency in ms.
+   * Will close previous state checking interval if present
+   * @param {Number} frequency in ms
+   */
+  function _startStateChecking(frequency) {
+    if ( $.isEmptyObject(__stateCheckerInterval) ) {
+      _stopStateChecking()
+    }
+    let _freq = frequency || 60000;
+    __stateCheckerInterval = setInterval(_checkState, _freq);
+    console.info(`Starting periodical Vector state checking at frequency every ${_freq}ms`)
+  }
+
+  /**
+   * Stops state checking
+   */
+  function _stopStateChecking() {
+    console.info("Will stop checking for Vector state");
+    clearInterval(__stateCheckerInterval);
+  }
+
   return {
     init: __init__,
-    setState: _setState
+    setState: _setState,
+    checkState: _checkState,
+    startStateChecking: _startStateChecking,
+    stopStateChecking: _stopStateChecking
   }
 })()
 

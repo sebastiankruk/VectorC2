@@ -27,6 +27,11 @@ const VectorStatus = (function(commander){
    */
   var __chatSocket;
 
+  /**
+   * Reference to the callback method (if provided), defaults to console.log
+   */
+  var __onMessageCallback = console.log;
+
   // ---------------------------------------------------------------------------
 
   /**
@@ -35,7 +40,9 @@ const VectorStatus = (function(commander){
    */
   async function __onMessage(e) {
     var statusData = JSON.parse(e.data);
-    console.log(statusData);
+    if (__onMessageCallback) {
+      __onMessageCallback(statusData);
+    }
   };
 
   /**
@@ -61,10 +68,14 @@ const VectorStatus = (function(commander){
   /**
    * Initializes this communication channel
    */
-  function __init__() {
+  function __init__(callback) {
     __chatSocket = new WebSocket('ws://' + window.location.host + '/ws/vector/state/');
     __chatSocket.onmessage = __onMessage;
     __chatSocket.onclose = __onClose;
+
+    if($.isFunction(callback)) {
+      __onMessageCallback = callback
+    }
   }
 
   return {
