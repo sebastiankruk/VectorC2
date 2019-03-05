@@ -45,13 +45,13 @@ const VectorBattery = (function(){
       boundary: 'window',
       delay: { 
         "show": 100, 
-        "hide": 1000000 
+        "hide": 500 
       } 
     });
 
     VectorStatus.init(__onStateChecked);
 
-    // _startStateChecking();
+    _startStateChecking();
   }
 
   /**

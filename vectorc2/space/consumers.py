@@ -90,7 +90,7 @@ class StateConsumer(WebsocketConsumer):
   '''
   def __init__(self, *args, **kwargs):
     super().__init__(*args, **kwargs)
-    self.vector_status = VectorStatus(self)
+    self.vector_status = VectorStatus()
 
   def connect(self):
     self.space_group_name = 'space_vector_status'
@@ -101,14 +101,12 @@ class StateConsumer(WebsocketConsumer):
     )
 
     self.accept()
-    # self.vector_status.connect()
 
   def disconnect(self, close_code):
     async_to_sync(self.channel_layer.group_discard)(
       self.space_group_name,
       self.channel_name
     )
-    # self.vector_status.disconnect()
 
   # Receive message from WebSocket
   def receive(self, text_data):
@@ -127,7 +125,7 @@ class StateConsumer(WebsocketConsumer):
   # Receive message from room group
   def space_message(self, event):
     statuses = event['statuses']
-    self.vector_status.read(statuses)
+    self.vector_status.read(self, statuses)
 
   def send_status(self, status):
     try:
