@@ -35,6 +35,7 @@ class VectorStatus(metaclass=Singleton):
     self._robot = anki_vector.AsyncRobot()
     self._state = None
     self._rnd = random.random()
+    self._countdown = 10
     threading.Timer(10.0, self._check_state).start()
 
   def _check_state(self, _from_init=True):
@@ -106,11 +107,11 @@ class VectorStatus(metaclass=Singleton):
         }
       self._state = state
     finally:
-      if _from_init:
+      if _from_init and self._countdown > 0:
+        self._countdown -= 1
         threading.Timer(30.0, self._check_state).start()
-      self._disconnect()
 
-    
+      self._disconnect()
 
   def _connect(self):
     try:
@@ -122,7 +123,6 @@ class VectorStatus(metaclass=Singleton):
   def _disconnect(self):
     self._robot.disconnect()
 
-
   def read(self, consumer, states):
     """
     Will read Vector status and 
@@ -130,6 +130,7 @@ class VectorStatus(metaclass=Singleton):
     """
     if self._state is None:
       self._check_state(_from_init=False)
+    self._countdown = 10
     consumer.send_status(self._state)
 
 
