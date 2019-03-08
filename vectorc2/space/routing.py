@@ -18,4 +18,5 @@ from . import consumers
 
 websocket_urlpatterns = [
     url(r'^ws/space/(?P<space_name>[^/]+)/$', consumers.SpaceConsumer),
+    url(r'^ws/vector/state/$', consumers.StateConsumer),
 ]

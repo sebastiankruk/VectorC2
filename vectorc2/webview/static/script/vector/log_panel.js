@@ -72,7 +72,7 @@ const LogPanel = (function(){
     let stext = $.trim(text);
     if (stext.length > 0) {
       __panel.append(text+'\n');
-      __title.text(text);
+      __title.text(text.trim().split('\n').pop().replace(/<[^>]+>/g, ''));
       console.log(text);
     }
   }
