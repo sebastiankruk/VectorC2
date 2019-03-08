@@ -126,10 +126,10 @@ const VectorBattery = (function(){
     if ( !$.isEmptyObject(__stateCheckerInterval) ) {
       _stopStateChecking()
     } else {
-      setTimeout(_checkState, 100);
+      setTimeout(_checkState, 500);
     }
 
-    let _freq = frequency || 60000;
+    let _freq = frequency || 6000;
     __stateCheckerInterval = setInterval(_checkState, _freq);
     console.info(`Starting periodical Vector state checking at frequency every ${_freq}ms`)
   }

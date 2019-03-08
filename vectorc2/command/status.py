@@ -14,6 +14,8 @@
 import sys
 import anki_vector
 import threading
+import random
+import datetime
 from concurrent import futures
 
 class Singleton(type):
@@ -32,15 +34,14 @@ class VectorStatus(metaclass=Singleton):
   def __init__(self):
     self._robot = anki_vector.AsyncRobot()
     self._state = None
+    self._rnd = random.random()
+    threading.Timer(10.0, self._check_state).start()
 
-    threading.Timer(30.0, self._check_state).start()
-
-  def _check_state(self):
+  def _check_state(self, _from_init=True):
     """
     Used to call update Vector state
     """
     try:
-      print("Checking state")
       self._connect()
       state = {
         'current': {
@@ -105,7 +106,8 @@ class VectorStatus(metaclass=Singleton):
         }
       self._state = state
     finally:
-      threading.Timer(30.0, self._check_state).start()
+      if _from_init:
+        threading.Timer(30.0, self._check_state).start()
       self._disconnect()
 
     
@@ -127,8 +129,7 @@ class VectorStatus(metaclass=Singleton):
     #TODO implement support for selective 'states'
     """
     if self._state is None:
-      print("State is empty; send_status() called")
-      self._check_state()
+      self._check_state(_from_init=False)
     consumer.send_status(self._state)
 
 
