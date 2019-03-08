@@ -92,7 +92,6 @@ class StateConsumer(WebsocketConsumer):
     self.vector_status = VectorStatus(self)
 
   def connect(self):
-    # self.space_name = self.scope['url_route']['kwargs']['space_name']
     self.space_group_name = 'space_vector_status'
 
     async_to_sync(self.channel_layer.group_add)(
@@ -125,7 +124,7 @@ class StateConsumer(WebsocketConsumer):
   # Receive message from room group
   def space_message(self, event):
     message = event['statuses']
-    self.vector_status.read(statuses)
+    self.vector_status.read(self, statuses)
 
   def send_status(self, status):
     try:
