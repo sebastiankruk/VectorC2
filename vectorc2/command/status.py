@@ -132,5 +132,3 @@ class VectorStatus(metaclass=Singleton):
       self._check_state(_from_init=False)
     self._countdown = 10
     consumer.send_status(self._state)
-
-
