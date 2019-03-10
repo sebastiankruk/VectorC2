@@ -95,9 +95,9 @@ class VectorStatus(metaclass=Singleton):
           'suggested_charger_sec': battery_state.suggested_charger_sec, 
         }
 
-      if future_network_state in fdone:
-        network_state = future_network_state.result()
-        state['network'] = str(network_state.network_stats)
+      # if future_network_state in fdone:
+      #   network_state = future_network_state.result()
+      #   state['network'] = str(network_state.network_stats)
 
       if future_version_state in fdone:
         version_state = future_version_state.result()
@@ -118,7 +118,7 @@ class VectorStatus(metaclass=Singleton):
       self._robot.connect()
     except:
       e = sys.exc_info()[0]
-      print("Could not connect: "+e)
+      print("Could not connect: "+str(e))
 
   def _disconnect(self):
     self._robot.disconnect()
