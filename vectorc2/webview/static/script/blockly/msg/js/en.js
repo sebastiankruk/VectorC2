@@ -436,6 +436,11 @@ Blockly.Msg["VARIABLES_DYNAMIC_HUE"] = "310";
 
 Blockly.Msg["VECTOR_ROBOT_MESSAGE"] = "Use Vector %1 %2 of (optional) serial %3 %4";
 Blockly.Msg["VECTOR_ROBOT_TOOLTIP"] = "Wrap all Vector calls around";
+Blockly.Msg["VECTOR_ROBOT_VARIABLE_TITLE"] = "Use Vector";
+Blockly.Msg["VECTOR_ROBOT_VARIABLE_TOOLTIP"] = "Add, remove, or reorder sections to reconfigure this if block.";  
+Blockly.Msg["VECTOR_ROBOT_SERIAL_TITLE"] = "[vector]";
+Blockly.Msg["VECTOR_ROBOT_SERIAL_TOOLTIP"] = "Add block to control which vector to use";  
+
 
 Blockly.Msg["VECTOR_UTILS_DISTANCE_MM_MESSAGE"] = "distance in mm %1";
 Blockly.Msg["VECTOR_UTILS_DISTANCE_MM_TOOLTIP"] = "distance in millimeters";
