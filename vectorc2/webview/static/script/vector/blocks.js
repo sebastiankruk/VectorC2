@@ -22,11 +22,11 @@
  */
 const VectorBlocks = (function(){
 
+    // 'vector_robot':'VectorUtils',
   const JSON_BLOCK_SPECS = {
-    'vector_robot':false,
-    'vector_util':false,
-    'vector_say_text':false,
-    'vector_behavior':false
+    'vector_util':'VectorUtils',
+    'vector_say_text':'VectorBehavior',
+    'vector_behavior':'VectorBehavior'
   }
 
   /**
@@ -75,6 +75,9 @@ const VectorBlocks = (function(){
    */
   function __init__(){
     for ( let jsonFile in JSON_BLOCK_SPECS ) {
+      if ( !(JSON_BLOCK_SPECS[jsonFile] in Blockly.Constants) ) {
+        Blockly.Constants[ JSON_BLOCK_SPECS[jsonFile] ] = {};
+      }
       $.getJSON(`/static/script/vector/blocks/${jsonFile}.json`, __loadCustomBlocks(jsonFile));
     }
   }

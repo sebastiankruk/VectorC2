@@ -436,6 +436,10 @@ Blockly.Msg["VARIABLES_DYNAMIC_HUE"] = "310";
 
 Blockly.Msg["VECTOR_ROBOT_MESSAGE"] = "Używaj Vectora %1 %2 z (opcjonalnym) numerem seryjnym %3 %4";
 Blockly.Msg["VECTOR_ROBOT_TOOLTIP"] = "Opakowuje wszystkie komendy dla Vectora";
+Blockly.Msg["VECTOR_ROBOT_VARIABLE_TITLE"] = "Używaj Vectora";
+Blockly.Msg["VECTOR_ROBOT_VARIABLE_TOOLTIP"] = "Add, remove, or reorder sections to reconfigure this if block.";  //TODO-i18n
+Blockly.Msg["VECTOR_ROBOT_SERIAL_TITLE"] = "[vector]";
+Blockly.Msg["VECTOR_ROBOT_SERIAL_TOOLTIP"] = "Add block to control which vector to use";  //TODO-i18n
 
 Blockly.Msg["VECTOR_UTILS_DISTANCE_MM_MESSAGE"] = "odległość w mm %1";
 Blockly.Msg["VECTOR_UTILS_DISTANCE_MM_TOOLTIP"] = "odległość w milimetrach";
