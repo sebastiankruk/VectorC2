@@ -22,8 +22,8 @@
  */
 const VectorBlocks = (function(){
 
-    // 'vector_robot':'VectorUtils',
   const JSON_BLOCK_SPECS = {
+    'vector_robot':'VectorUtils',
     'vector_util':'VectorUtils',
     'vector_say_text':'VectorBehavior',
     'vector_behavior':'VectorBehavior'
