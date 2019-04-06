@@ -42,6 +42,10 @@ class VectorStatus(metaclass=Singleton):
     """
     Used to call update Vector state
     """
+    if not self._robot:
+      self._countdown = -1
+      return
+
     try:
       self._connect()
       state = {
@@ -106,12 +110,15 @@ class VectorStatus(metaclass=Singleton):
           'engine_build_id': version_state.engine_build_id,
         }
       self._state = state
+    except Exception:
+      self._countdown = -1
     finally:
       if _from_init and self._countdown > 0:
         self._countdown -= 1
         threading.Timer(30.0, self._check_state).start()
 
-      self._disconnect()
+      if not self._disconnect():
+        self._countdown = -1
 
   def _connect(self):
     try:
@@ -121,7 +128,15 @@ class VectorStatus(metaclass=Singleton):
       print("Could not connect: "+str(e))
 
   def _disconnect(self):
-    self._robot.disconnect()
+    """
+    Will return False if cound not disconnect
+    """
+    try:
+      self._robot.disconnect()
+    except Exception as ex:
+      return False
+
+    return True
 
   def read(self, consumer, states):
     """

@@ -60,6 +60,7 @@ Blockly.defineBlocksWithJsonArray([ // Mutator blocks. Do not extract.
  * @package
  * @readonly
  */
+Blockly.Constants.VectorUtils = {}
 Blockly.Constants.VectorUtils.CONTROLS_VROBOT_MUTATOR_MIXIN = {
   selectCount_: 0,
 
@@ -274,7 +275,7 @@ Blockly.Extensions.registerMutator('controls_vrobot_mutator',
 //     }
 //     Blockly.Mutator.reconnect(elseStatementConnection, this, 'ELSE');
 //   }
-};
+// };
 
 
 

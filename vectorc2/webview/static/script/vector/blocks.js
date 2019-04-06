@@ -23,10 +23,10 @@
 const VectorBlocks = (function(){
 
   const JSON_BLOCK_SPECS = {
-    'vector_robot':'VectorUtils',
-    'vector_util':'VectorUtils',
-    'vector_say_text':'VectorBehavior',
-    'vector_behavior':'VectorBehavior'
+    'vector_robot':false /*'Blockly.Constants.VectorUtils'*/,
+    'vector_util':false /*'Blockly.Constants.VectorUtils'*/,
+    'vector_say_text':false /*'Blockly.Constants.VectorBehavior'*/,
+    'vector_behavior':false /*'Blockly.Constants.VectorBehavior'*/
   }
 
   /**
