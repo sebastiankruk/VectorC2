@@ -155,14 +155,14 @@ BOOTSTRAP4 = {
     # or a dict like the default value below.
     "css_url": {
         "href": "/static/style/bootstrap/bootstrap.min.css",
-        "integrity": "sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB",
+        # "integrity": "sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB",
         "crossorigin": "anonymous",
     },
 
     # The complete URL to the Bootstrap JavaScript file
     "javascript_url": {
         "url": "/static/script/bootstrap/bootstrap.min.js",
-        "integrity": "sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T",
+        # "integrity": "sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T",
         "crossorigin": "anonymous",
     },
 
@@ -172,14 +172,14 @@ BOOTSTRAP4 = {
     # The URL to the jQuery JavaScript file (full)
     "jquery_url": {
         "url": "/static/script/bootstrap/jquery-3.3.1.min.js",
-        "integrity": "sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT",
+        # "integrity": "sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT",
         "crossorigin": "anonymous",
     },
 
     # The URL to the jQuery JavaScript file (slim)
     "jquery_slim_url": {
         "url": "/static/script/bootstrap/jquery-3.3.1.slim.min.js",
-        "integrity": "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo",
+        # "integrity": "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo",
         "crossorigin": "anonymous",
     },
 
