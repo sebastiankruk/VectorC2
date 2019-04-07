@@ -1,5 +1,5 @@
 Blockly.defineBlocksWithJsonArray([{
-  "type": "vector_robot",
+  "type": "vector_robot_ex",
   "message0": "%{BKY_VECTOR_ROBOT_MESSAGE}",
   "args0": [
     {
@@ -12,15 +12,15 @@ Blockly.defineBlocksWithJsonArray([{
   ],
   "colour": 240,
   "tooltip": "%{BKY_VECTOR_ROBOT_TOOLTIP}",
-  "mutator": "controls_vrobot_mutator",
-  "extensions": ["controls_vrobot_vector_robot"],
+  "mutator": "controls_vector_robot_ex_mutator",
+  "extensions": ["controls_vector_robot_vector_ext_variable"],
   "helpUrl": ""
 }])
 
 Blockly.defineBlocksWithJsonArray([ // Mutator blocks. Do not extract.
   // Block representing robot variable
   {
-    "type": "controls_vrobot_robot_variable",
+    "type": "controls_vector_robot_vector_ext_variable",
     "message0": "%{BKY_VECTOR_ROBOT_VARIABLE_TITLE}",
     "args0": [
       {
@@ -61,7 +61,7 @@ Blockly.defineBlocksWithJsonArray([ // Mutator blocks. Do not extract.
  * @readonly
  */
 Blockly.Constants.VectorUtils = {}
-Blockly.Constants.VectorUtils.CONTROLS_VROBOT_MUTATOR_MIXIN = {
+Blockly.Constants.VectorUtils.controls_vector_robot_ex_mutator_MIXIN = {
   selectCount_: 0,
 
   /**
@@ -91,8 +91,8 @@ Blockly.Constants.VectorUtils.CONTROLS_VROBOT_MUTATOR_MIXIN = {
   },
 };
 
-Blockly.Extensions.registerMutator('controls_vrobot_mutator',
-    Blockly.Constants.VectorUtils.CONTROLS_VROBOT_MUTATOR_MIXIN, 
+Blockly.Extensions.registerMutator('controls_vector_robot_ex_mutator',
+    Blockly.Constants.VectorUtils.controls_vector_robot_ex_mutator_MIXIN, 
     null, //opt_helperFn
     ['controls_vrobot_robot_variable', 'controls_vrobot_robot_serial']);
 
@@ -100,7 +100,7 @@ Blockly.Extensions.registerMutator('controls_vrobot_mutator',
 
 
 // --------
-// Blockly.Constants.VectorUtils.CONTROLS_VROBOT_MUTATOR_MIXIN = {
+// Blockly.Constants.VectorUtils.controls_vector_robot_ex_mutator_MIXIN = {
 //   selectCount_: 0,
 
 //   /**
@@ -134,7 +134,7 @@ Blockly.Extensions.registerMutator('controls_vrobot_mutator',
 //    * @this Blockly.Block
 //    */
 //   decompose: function(workspace) {
-//     var containerBlock = workspace.newBlock('controls_vrobot_vector_robot');
+//     var containerBlock = workspace.newBlock('controls_vector_robot_vector_ext_variable');
 //     containerBlock.initSvg();
 //     var connection = containerBlock.nextConnection;
 //     for (var i = 1; i <= this.selectCount_; i++) {
