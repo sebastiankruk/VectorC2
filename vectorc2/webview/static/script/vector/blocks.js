@@ -23,10 +23,26 @@
 const VectorBlocks = (function(){
 
   const JSON_BLOCK_SPECS = {
-    'vector_robot':false /*'Blockly.Constants.VectorUtils'*/,
-    'vector_util':false /*'Blockly.Constants.VectorUtils'*/,
-    'vector_say_text':false /*'Blockly.Constants.VectorBehavior'*/,
-    'vector_behavior':false /*'Blockly.Constants.VectorBehavior'*/
+    'vector_robot': {
+      'initiazed': false,
+      'mutators': true,
+      'constants': 'VectorUtils'
+    },
+    'vector_util': {
+      'initiazed': false,
+      'mutators': false,
+      'constants': 'VectorUtils'
+    },
+    'vector_say_text': {
+      'initiazed': false,
+      'mutators': false,
+      'constants': 'VectorBehavior'
+    },
+    'vector_behavior': {
+      'initiazed': false,
+      'mutators': false,
+      'constants': 'VectorBehavior'
+    }
   }
 
   /**
@@ -44,7 +60,7 @@ const VectorBlocks = (function(){
       } else {
         __initializeSingleBlock(data);
       }
-      JSON_BLOCK_SPECS[jsonFile] = true;
+      JSON_BLOCK_SPECS[jsonFile].initiazed = true;
       __isInitialized();
     }
   }
@@ -65,20 +81,43 @@ const VectorBlocks = (function(){
    * Called to check whethere all JSON files are initialized and we can initialize VectorC2
    */
   function __isInitialized() {
-    if (Object.values(JSON_BLOCK_SPECS).every(Boolean)) { // if all JSON files are initialized
+    if (Object.values(JSON_BLOCK_SPECS).map( o => o.initiazed ).every(Boolean)) { // if all JSON files are initialized
       VectorC2.init();
     }
   }
+
+  /**
+   * Loads given script with caching enabled
+   * @param {*} url Script URL to be loaded
+   * @param {*} options additional options to the ajax call
+   */
+  function __cachedScript( url, options ) {
+ 
+    // Allow user to set any option except for dataType, cache, and url
+    options = $.extend( options || {}, {
+      dataType: "script",
+      cache: true,
+      url: url
+    });
+   
+    // Use $.ajax() since it is more flexible than $.getScript
+    // Return the jqXHR object so we can chain callbacks
+    return $.ajax( options );
+  };
+   
 
   /**
    * Initializes custom Vector blocks by reading them from JSON files
    */
   function __init__(){
     for ( let jsonFile in JSON_BLOCK_SPECS ) {
-      if ( !(JSON_BLOCK_SPECS[jsonFile] in Blockly.Constants) ) {
-        Blockly.Constants[ JSON_BLOCK_SPECS[jsonFile] ] = {};
+      if ( !(JSON_BLOCK_SPECS[jsonFile].constants in Blockly.Constants) ) {
+        Blockly.Constants[ JSON_BLOCK_SPECS[jsonFile].constants ] = {};
       }
       $.getJSON(`/static/script/vector/blocks/${jsonFile}.json`, __loadCustomBlocks(jsonFile));
+      if (JSON_BLOCK_SPECS[jsonFile].mutators) {
+        __cachedScript(`/static/script/vector/blocks/${jsonFile}.js`);
+      }
     }
   }
 

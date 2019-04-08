@@ -441,6 +441,13 @@ Blockly.Msg["VECTOR_ROBOT_VARIABLE_TOOLTIP"] = "Add, remove, or reorder sections
 Blockly.Msg["VECTOR_ROBOT_SERIAL_TITLE"] = "[vector]";
 Blockly.Msg["VECTOR_ROBOT_SERIAL_TOOLTIP"] = "Add block to control which vector to use";  
 
+Blockly.Msg["VECTOR_ROBOT_EX_MESSAGE"] = "Use Vector %1 %2";
+Blockly.Msg["VECTOR_ROBOT_EX_TOOLTIP"] = "Wrap all Vector calls around";
+Blockly.Msg["VECTOR_ROBOT_EX_VARIABLE_TITLE"] = "Use Vector";
+Blockly.Msg["VECTOR_ROBOT_EX_VARIABLE_TOOLTIP"] = "Add, remove, or reorder sections to reconfigure this if block.";  
+Blockly.Msg["VECTOR_ROBOT_EX_SERIAL_TITLE"] = "[vector]";
+Blockly.Msg["VECTOR_ROBOT_EX_SERIAL_TOOLTIP"] = "Add block to control which vector to use";  
+
 
 Blockly.Msg["VECTOR_UTILS_DISTANCE_MM_MESSAGE"] = "distance in mm %1";
 Blockly.Msg["VECTOR_UTILS_DISTANCE_MM_TOOLTIP"] = "distance in millimeters";
