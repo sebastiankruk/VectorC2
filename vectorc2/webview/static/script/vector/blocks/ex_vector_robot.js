@@ -1,6 +1,6 @@
 Blockly.defineBlocksWithJsonArray([{
-  "type": "vector_robot_ex",
-  "message0": "%{BKY_VECTOR_ROBOT_EX_MESSAGE}",
+  "type": "ex_vector_robot",
+  "message0": "%{BKY_VECTOR_ROBOT_MESSAGE}",
   "args0": [
     {
       "type": "input_dummy"
@@ -11,17 +11,17 @@ Blockly.defineBlocksWithJsonArray([{
     }
   ],
   "colour": 240,
-  "tooltip": "%{BKY_VECTOR_ROBOT_EX_TOOLTIP}",
-  "mutator": "controls_vector_robot_ex_mutator",
-  "extensions": [], //["controls_vector_robot_vector_ext_variable", "controls_vector_robot_vector_ext_serial"],
+  "tooltip": "%{BKY_VECTOR_ROBOT_TOOLTIP}",
+  "mutator": "controls_vrobot_mutator",
+  "extensions": ["controls_vrobot_vector_robot"],
   "helpUrl": ""
 }])
 
 Blockly.defineBlocksWithJsonArray([ // Mutator blocks. Do not extract.
   // Block representing robot variable
   {
-    "type": "controls_vector_robot_vector_ext_variable",
-    "message0": "%{BKY_VECTOR_ROBOT_EX_VARIABLE_TITLE}",
+    "type": "controls_vrobot_robot_variable",
+    "message0": "%{BKY_VECTOR_ROBOT_VARIABLE_TITLE}",
     "args0": [
       {
         "type": "field_variable",
@@ -32,12 +32,12 @@ Blockly.defineBlocksWithJsonArray([ // Mutator blocks. Do not extract.
     "nextStatement": null,
     "enableContextMenu": false,
     "colour": "240",
-    "tooltip": "%{BKY_VECTOR_ROBOT_EX_VARIABLE_TOOLTIP}"
+    "tooltip": "%{BKY_VECTOR_ROBOT_VARIABLE_TOOLTIP}"
   },
   // Block representing robot serial number
   {
-    "type": "controls_vector_robot_vector_ext_serial",
-    "message0": "%{BKY_VECTOR_ROBOT_EX_SERIAL_TITLE}",
+    "type": "controls_vrobot_robot_serial",
+    "message0": "%{BKY_VECTOR_ROBOT_SERIAL_TITLE}",
     "args0": [
       {
         "type": "input_value",
@@ -49,7 +49,7 @@ Blockly.defineBlocksWithJsonArray([ // Mutator blocks. Do not extract.
     "nextStatement": null,
     "enableContextMenu": false,
     "colour": "240",
-    "tooltip": "%{BKY_VECTOR_ROBOT_EX_SERIAL_TOOLTIP}"
+    "tooltip": "%{BKY_VECTOR_ROBOT_SERIAL_TOOLTIP}"
   }
 ]);
 
@@ -60,22 +60,26 @@ Blockly.defineBlocksWithJsonArray([ // Mutator blocks. Do not extract.
  * @package
  * @readonly
  */
-Blockly.Constants.VectorUtils.CONTROLS_VECTOR_ROBOT_EX_MUTATOR_MIXIN = {
-  selectCount_: 0,
+Blockly.Constants.VectorUtils.CONTROLS_VROBOT_MUTATOR_MIXIN = {
+  robot_var_: false,
+  serial_var_: false,
 
   /**
-   * Create XML to represent the number of else-if and else inputs.
+   * Create XML to represent the existance of robot and serial variables.
    * @return {Element} XML storage element.
    * @this Blockly.Block
    */
   mutationToDom: function() {
 
-    if (!this.selectCount_) {
+    if (!this.robot_var_ && !this.serial_var_) {
       return null;
     }
     var container = document.createElement('mutation');
-    if (this.selectCount_) {
-      container.setAttribute('selectRobot', this.selectCount_);
+    if (this.robot_var_) {
+      container.setAttribute('robotVar', this.robot_var_);
+    }
+    if (this.serial_var_) {
+      container.setAttribute('serialVar', this.serial_var_);
     }
     return container;
   },
@@ -85,21 +89,23 @@ Blockly.Constants.VectorUtils.CONTROLS_VECTOR_ROBOT_EX_MUTATOR_MIXIN = {
    * @this Blockly.Block
    */
   domToMutation: function(xmlElement) {
-    this.selectCount_ = parseInt(xmlElement.getAttribute('selectRobot'), 10) || 0;
+    this.robot_var_ = xmlElement.getAttribute('robotVar');
+    this.serial_var_ = xmlElement.getAttribute('serialVar');
+
     this.rebuildShape_();
   },
 };
 
-Blockly.Extensions.registerMutator('controls_vector_robot_ex_mutator',
-    Blockly.Constants.VectorUtils.CONTROLS_VECTOR_ROBOT_EX_MUTATOR_MIXIN, 
+Blockly.Extensions.registerMutator('controls_vrobot_mutator',
+    Blockly.Constants.VectorUtils.CONTROLS_VROBOT_MUTATOR_MIXIN, 
     null, //opt_helperFn
-    ['controls_vector_robot_vector_ext_variable', 'controls_vector_robot_vector_ext_serial']);
+    ['controls_vrobot_robot_variable', 'controls_vrobot_robot_serial']);
 
 
 
 
 // --------
-// Blockly.Constants.VectorUtils.controls_vector_robot_ex_mutator_MIXIN = {
+// Blockly.Constants.VectorUtils.CONTROLS_VROBOT_MUTATOR_MIXIN = {
 //   selectCount_: 0,
 
 //   /**
@@ -133,7 +139,7 @@ Blockly.Extensions.registerMutator('controls_vector_robot_ex_mutator',
 //    * @this Blockly.Block
 //    */
 //   decompose: function(workspace) {
-//     var containerBlock = workspace.newBlock('controls_vector_robot_vector_ext_variable');
+//     var containerBlock = workspace.newBlock('controls_vrobot_vector_robot');
 //     containerBlock.initSvg();
 //     var connection = containerBlock.nextConnection;
 //     for (var i = 1; i <= this.selectCount_; i++) {
