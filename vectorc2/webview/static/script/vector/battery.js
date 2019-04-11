@@ -58,7 +58,7 @@ const VectorBattery = (function(){
 
     VectorStatus.init(__onStateChecked);
 
-    _startStateChecking();
+    // TODO #25 _startStateChecking();
   }
 
   /**
