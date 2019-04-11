@@ -32,7 +32,7 @@ class VectorStatus(metaclass=Singleton):
   The class used to read Vector's status
   """
   def __init__(self):
-    self._robot = anki_vector.AsyncRobot()
+    self._robot = None #TODO #25 anki_vector.AsyncRobot()
     self._state = None
     self._rnd = random.random()
     self._countdown = 10

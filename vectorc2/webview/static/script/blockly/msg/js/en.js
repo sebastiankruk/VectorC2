@@ -443,9 +443,9 @@ Blockly.Msg["VECTOR_ROBOT_SERIAL_TOOLTIP"] = "Add block to control which vector 
 
 Blockly.Msg["VECTOR_ROBOT_EX_MESSAGE"] = "Use Vector %1 %2";
 Blockly.Msg["VECTOR_ROBOT_EX_TOOLTIP"] = "Wrap all Vector calls around";
-Blockly.Msg["VECTOR_ROBOT_EX_VARIABLE_TITLE"] = "Use Vector";
+Blockly.Msg["VECTOR_ROBOT_EX_VARIABLE_TITLE"] = "variable: %1";
 Blockly.Msg["VECTOR_ROBOT_EX_VARIABLE_TOOLTIP"] = "Add, remove, or reorder sections to reconfigure this if block.";  
-Blockly.Msg["VECTOR_ROBOT_EX_SERIAL_TITLE"] = "[vector]";
+Blockly.Msg["VECTOR_ROBOT_EX_SERIAL_TITLE"] = "serial number: %1";
 Blockly.Msg["VECTOR_ROBOT_EX_SERIAL_TOOLTIP"] = "Add block to control which vector to use";  
 
 

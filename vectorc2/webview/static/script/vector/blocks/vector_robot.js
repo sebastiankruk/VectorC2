@@ -88,6 +88,24 @@ Blockly.Constants.VectorUtils.CONTROLS_VECTOR_ROBOT_EX_MUTATOR_MIXIN = {
     this.selectCount_ = parseInt(xmlElement.getAttribute('selectRobot'), 10) || 0;
     this.rebuildShape_();
   },
+
+  decompose: function(workspace) {
+    var topBlock = Blockly.Block.obtain(workspace, 'controls_if_if');
+    topBlock.initSvg();
+
+    //TODO
+    console.log("De-Composing");
+
+    return topBlock;
+  },
+
+  compose: function(topBlock) {
+    //TODO
+    console.log("Composing");
+  }
+
+
+
 };
 
 Blockly.Extensions.registerMutator('controls_vector_robot_ex_mutator',
