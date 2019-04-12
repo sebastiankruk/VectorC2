@@ -441,6 +441,13 @@ Blockly.Msg["VECTOR_ROBOT_VARIABLE_TOOLTIP"] = "Add, remove, or reorder sections
 Blockly.Msg["VECTOR_ROBOT_SERIAL_TITLE"] = "[vector]";
 Blockly.Msg["VECTOR_ROBOT_SERIAL_TOOLTIP"] = "Add block to control which vector to use";  
 
+Blockly.Msg["VECTOR_ROBOT_EX_OPT_MESSAGE"] = "Use Vector %1";
+Blockly.Msg["VECTOR_ROBOT_EX_OPT_TOOLTIP"] = "Basic code wrapper; drop extensions from the left panel to enable more options";
+Blockly.Msg["VECTOR_ROBOT_EX_VARIABLE_OPT_TITLE"] = "with vector robot variable";
+Blockly.Msg["VECTOR_ROBOT_EX_VARIABLE_OPT_TOOLTIP"] = "Add to code wrapper to enable to define own Vector robot variable";  
+Blockly.Msg["VECTOR_ROBOT_EX_SERIAL_OPT_TITLE"] = "with serial number";
+Blockly.Msg["VECTOR_ROBOT_EX_SERIAL_OPT_TOOLTIP"] = "Add to code wrapper to enable to define a custom serial number";  
+
 Blockly.Msg["VECTOR_ROBOT_EX_MESSAGE"] = "Use Vector %1 %2";
 Blockly.Msg["VECTOR_ROBOT_EX_TOOLTIP"] = "Wrap all Vector calls around";
 Blockly.Msg["VECTOR_ROBOT_EX_VARIABLE_TITLE"] = "variable: %1";

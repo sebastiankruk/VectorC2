@@ -18,6 +18,40 @@ Blockly.defineBlocksWithJsonArray([{
 }])
 
 Blockly.defineBlocksWithJsonArray([ // Mutator blocks. Do not extract.
+  // Block represeting mutator UI wrapper
+  {
+    "type": "controls_vector_robot_vector_opt_wrapper",
+    "message0": "%{BKY_VECTOR_ROBOT_EX_OPT_MESSAGE}",
+    "args0": [
+      {
+        "type": "input_dummy"
+      }
+    ],
+    "nextStatement": null,
+    "colour": 240,
+    "tooltip": "%{BKY_VECTOR_ROBOT_EX_OPT_TOOLTIP}",
+  },
+  // Block representing mutator UI robot variable option
+  {
+    "type": "controls_vector_robot_vector_ext_variable_opt",
+    "message0": "%{BKY_VECTOR_ROBOT_EX_VARIABLE_OPT_TITLE}",
+    "args0": [],
+    "previousStatement": null,
+    "nextStatement": null,
+    "enableContextMenu": false,
+    "colour": "240",
+    "tooltip": "%{BKY_VECTOR_ROBOT_EX_VARIABLE_OPT_TOOLTIP}"
+  },
+  // Block representing mutator UI robot serial number option
+  {
+    "type": "controls_vector_robot_vector_ext_serial_opt",
+    "message0": "%{BKY_VECTOR_ROBOT_EX_SERIAL_OPT_TITLE}",
+    "args0": [],
+    "previousStatement": null,
+    "enableContextMenu": false,
+    "colour": "240",
+    "tooltip": "%{BKY_VECTOR_ROBOT_EX_SERIAL_OPT_TOOLTIP}"
+  },
   // Block representing robot variable
   {
     "type": "controls_vector_robot_vector_ext_variable",
@@ -90,7 +124,7 @@ Blockly.Constants.VectorUtils.CONTROLS_VECTOR_ROBOT_EX_MUTATOR_MIXIN = {
   },
 
   decompose: function(workspace) {
-    var topBlock = Blockly.Block.obtain(workspace, 'controls_if_if');
+    var topBlock = Blockly.Block.obtain(workspace, 'controls_vector_robot_vector_opt_wrapper');
     topBlock.initSvg();
 
     //TODO
@@ -111,7 +145,7 @@ Blockly.Constants.VectorUtils.CONTROLS_VECTOR_ROBOT_EX_MUTATOR_MIXIN = {
 Blockly.Extensions.registerMutator('controls_vector_robot_ex_mutator',
     Blockly.Constants.VectorUtils.CONTROLS_VECTOR_ROBOT_EX_MUTATOR_MIXIN, 
     null, //opt_helperFn
-    ['controls_vector_robot_vector_ext_variable', 'controls_vector_robot_vector_ext_serial']);
+    ['controls_vector_robot_vector_ext_variable_opt', 'controls_vector_robot_vector_ext_serial_opt']);
 
 
 
