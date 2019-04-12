@@ -1,3 +1,7 @@
+if (typeof Blockly.Constants.VectorUtils === 'undefined') {
+  Blockly.Constants.VectorUtils = {};
+}
+
 Blockly.defineBlocksWithJsonArray([{
   "type": "vector_robot_ex",
   "message0": "%{BKY_VECTOR_ROBOT_EX_MESSAGE}",
@@ -95,7 +99,8 @@ Blockly.defineBlocksWithJsonArray([ // Mutator blocks. Do not extract.
  * @readonly
  */
 Blockly.Constants.VectorUtils.CONTROLS_VECTOR_ROBOT_EX_MUTATOR_MIXIN = {
-  selectCount_: 0,
+  robotVar_: false,
+  serialNumber_: false,
 
   /**
    * Create XML to represent the number of else-if and else inputs.
@@ -104,13 +109,12 @@ Blockly.Constants.VectorUtils.CONTROLS_VECTOR_ROBOT_EX_MUTATOR_MIXIN = {
    */
   mutationToDom: function() {
 
-    if (!this.selectCount_) {
+    if (!this.robotVar_ && !this.serialNumber_) {
       return null;
     }
     var container = document.createElement('mutation');
-    if (this.selectCount_) {
-      container.setAttribute('selectRobot', this.selectCount_);
-    }
+    container.setAttribute('robotVar', this.robotVar_);
+    container.setAttribute('serialNumber', this.serialNumber_);
     return container;
   },
   /**
@@ -119,12 +123,14 @@ Blockly.Constants.VectorUtils.CONTROLS_VECTOR_ROBOT_EX_MUTATOR_MIXIN = {
    * @this Blockly.Block
    */
   domToMutation: function(xmlElement) {
-    this.selectCount_ = parseInt(xmlElement.getAttribute('selectRobot'), 10) || 0;
+    this.robotVar_ = xmlElement.getAttribute('robotVar');
+    this.serialNumber_ = xmlElement.getAttribute('serialNumer');
+
     this.rebuildShape_();
   },
 
   decompose: function(workspace) {
-    var topBlock = Blockly.Block.obtain(workspace, 'controls_vector_robot_vector_opt_wrapper');
+    var topBlock = workspace.newBlock('controls_vector_robot_vector_opt_wrapper');
     topBlock.initSvg();
 
     //TODO
