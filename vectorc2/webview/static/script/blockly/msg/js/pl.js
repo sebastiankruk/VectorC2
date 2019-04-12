@@ -441,6 +441,13 @@ Blockly.Msg["VECTOR_ROBOT_VARIABLE_TOOLTIP"] = "Add, remove, or reorder sections
 Blockly.Msg["VECTOR_ROBOT_SERIAL_TITLE"] = "[vector]";
 Blockly.Msg["VECTOR_ROBOT_SERIAL_TOOLTIP"] = "Add block to control which vector to use";  //TODO-i18n
 
+Blockly.Msg["VECTOR_ROBOT_EX_OPT_MESSAGE"] = "Używaj Vectora %1";
+Blockly.Msg["VECTOR_ROBOT_EX_OPT_TOOLTIP"] = "Podstawowe opakowanie kodu; przenieś elementy z lewego panelu żeby uaktywnić dodatkowe opcje";
+Blockly.Msg["VECTOR_ROBOT_EX_VARIABLE_OPT_TITLE"] = "ze zmienną Vector robot";
+Blockly.Msg["VECTOR_ROBOT_EX_VARIABLE_OPT_TOOLTIP"] = "Dodaj do opakowania kodu, aby umożliwić zdefiniowanie własnej zmiennej Vector robot";  
+Blockly.Msg["VECTOR_ROBOT_EX_SERIAL_OPT_TITLE"] = "z numerem seryjnym";
+Blockly.Msg["VECTOR_ROBOT_EX_SERIAL_OPT_TOOLTIP"] = "Dodaj do opakowania kodu, aby umożliwić zdefioniowane własnego numery seryjnego";  
+
 Blockly.Msg["VECTOR_ROBOT_EX_MESSAGE"] = "Używaj Vectora %1 %2";
 Blockly.Msg["VECTOR_ROBOT_EX_TOOLTIP"] = "Opakowuje wszystkie komendy dla Vectora";
 Blockly.Msg["VECTOR_ROBOT_EX_VARIABLE_TITLE"] = "zmienna: %1";
