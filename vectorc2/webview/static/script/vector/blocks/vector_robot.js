@@ -17,7 +17,7 @@ Blockly.defineBlocksWithJsonArray([{
   "colour": 240,
   "tooltip": "%{BKY_VECTOR_ROBOT_EX_TOOLTIP}",
   "mutator": "controls_vector_robot_ex_mutator",
-  "extensions": [], //["controls_vector_robot_vector_ext_variable", "controls_vector_robot_vector_ext_serial"],
+  "extensions": [],//["controls_vector_robot_vector_ext_variable", "controls_vector_robot_vector_ext_serial"],
   "helpUrl": ""
 }])
 
@@ -31,7 +31,7 @@ Blockly.defineBlocksWithJsonArray([ // Mutator blocks. Do not extract.
         "type": "input_dummy"
       }
     ],
-    "nextStatement": null,
+    "nextStatement": ["controls_vector_robot_vector_ext_variable_opt", "controls_vector_robot_vector_ext_serial_opt"],
     "colour": 240,
     "tooltip": "%{BKY_VECTOR_ROBOT_EX_OPT_TOOLTIP}",
   },
@@ -51,7 +51,7 @@ Blockly.defineBlocksWithJsonArray([ // Mutator blocks. Do not extract.
     "type": "controls_vector_robot_vector_ext_serial_opt",
     "message0": "%{BKY_VECTOR_ROBOT_EX_SERIAL_OPT_TITLE}",
     "args0": [],
-    "previousStatement": null,
+    "previousStatement": ["controls_vector_robot_vector_opt_wrapper", "controls_vector_robot_vector_ext_variable_opt"],
     "enableContextMenu": false,
     "colour": "240",
     "tooltip": "%{BKY_VECTOR_ROBOT_EX_SERIAL_OPT_TOOLTIP}"
@@ -133,9 +133,6 @@ Blockly.Constants.VectorUtils.CONTROLS_VECTOR_ROBOT_EX_MUTATOR_MIXIN = {
     let topBlock = workspace.newBlock('controls_vector_robot_vector_opt_wrapper');
     topBlock.initSvg();
 
-    //TODO
-    console.log("De-Composing");
-
     var connection = topBlock.nextConnection;
     if (this.robotVar_) {
       let robotVarBlock = workspace.newBlock('controls_vector_robot_vector_ext_variable_opt')
@@ -154,8 +151,42 @@ Blockly.Constants.VectorUtils.CONTROLS_VECTOR_ROBOT_EX_MUTATOR_MIXIN = {
   },
 
   compose: function(topBlock) {
-    //TODO
-    console.log("Composing");
+    var clauseBlock = topBlock.nextConnection.targetBlock();
+    
+    // Reset and detect options
+    this.robotVar_ = false;
+    this.serialNumber_ = false;
+
+    // var valueConnections = [null];
+    // var statementConnections = [null];
+    // var elseStatementConnection = null;
+
+    while (clauseBlock) {
+      switch (clauseBlock.type) {
+        case 'controls_vector_robot_vector_ext_variable_opt':
+          if (!this.robotVar_) {
+            this.robotVar_ = true;
+            // valueConnections.push(clauseBlock.valueConnection_);
+            // statementConnections.push(clauseBlock.statementConnection_);
+          }
+          break;
+        case 'controls_vector_robot_vector_ext_serial_opt':
+          if (!this.serialNumber_) {
+            this.serialNumber_ = true;
+            // elseStatementConnection = clauseBlock.statementConnection_;
+          }
+          break;
+        default:
+          throw TypeError('Unknown block type: ' + clauseBlock.type);
+      }
+      clauseBlock = clauseBlock.nextConnection &&
+          clauseBlock.nextConnection.targetBlock();
+    }
+    this.updateShape_();
+    // // Reconnect any child blocks.
+    // this.reconnectChildBlocks_(valueConnections, statementConnections,
+    //     elseStatementConnection);
+
   }
 
 
