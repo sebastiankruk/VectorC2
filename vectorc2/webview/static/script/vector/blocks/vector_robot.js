@@ -112,7 +112,7 @@ Blockly.Constants.VectorUtils.CONTROLS_VECTOR_ROBOT_EX_MUTATOR_MIXIN = {
     if (!this.robotVar_ && !this.serialNumber_) {
       return null;
     }
-    var container = document.createElement('mutation');
+    let container = document.createElement('mutation');
     container.setAttribute('robotVar', this.robotVar_);
     container.setAttribute('serialNumber', this.serialNumber_);
     return container;
@@ -123,18 +123,32 @@ Blockly.Constants.VectorUtils.CONTROLS_VECTOR_ROBOT_EX_MUTATOR_MIXIN = {
    * @this Blockly.Block
    */
   domToMutation: function(xmlElement) {
-    this.robotVar_ = xmlElement.getAttribute('robotVar');
-    this.serialNumber_ = xmlElement.getAttribute('serialNumer');
+    this.robotVar_ = xmlElement.getAttribute('robotVar') === 'true';
+    this.serialNumber_ = xmlElement.getAttribute('serialNumer') === 'true';
 
     this.rebuildShape_();
   },
 
   decompose: function(workspace) {
-    var topBlock = workspace.newBlock('controls_vector_robot_vector_opt_wrapper');
+    let topBlock = workspace.newBlock('controls_vector_robot_vector_opt_wrapper');
     topBlock.initSvg();
 
     //TODO
     console.log("De-Composing");
+
+    var connection = topBlock.nextConnection;
+    if (this.robotVar_) {
+      let robotVarBlock = workspace.newBlock('controls_vector_robot_vector_ext_variable_opt')
+      robotVarBlock.initSvg();
+      connection.connect(robotVarBlock.previousConnection);
+      connection = robotVarBlock.nextConnection;
+    }
+    if (this.serialNumber_) {
+      let serialNumberBlock = workspace.newBlock('controls_vector_robot_vector_ext_serial_opt');
+      serialNumberBlock.initSvg();
+      connection.connect(serialNumberBlock.previousConnection);
+    }
+
 
     return topBlock;
   },
