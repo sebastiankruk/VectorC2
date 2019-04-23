@@ -63,8 +63,9 @@ Blockly.defineBlocksWithJsonArray([ // Mutator blocks. Do not extract.
     "args0": [
       {
         "type": "field_variable",
-        "name": "robot_var",
-        "variable": "robot"
+        "name": "ROBOT_VAR",
+        "variable": "robot",
+        "check": "String"
       }
     ],
     "nextStatement": null,
@@ -79,7 +80,7 @@ Blockly.defineBlocksWithJsonArray([ // Mutator blocks. Do not extract.
     "args0": [
       {
         "type": "input_value",
-        "name": "serial_var",
+        "name": "SERIAL_VAR",
         "check": "String"
       }
     ],
@@ -184,11 +185,67 @@ Blockly.Constants.VectorUtils.CONTROLS_VECTOR_ROBOT_EX_MUTATOR_MIXIN = {
     }
     this.updateShape_();
     // // Reconnect any child blocks.
-    // this.reconnectChildBlocks_(valueConnections, statementConnections,
+    // TODO this.reconnectChildBlocks_(valueConnections, statementConnections,
     //     elseStatementConnection);
 
-  }
+  },
+  /**
+   * Modify this block to have the correct number of inputs.
+   * @this Blockly.Block
+   * @private
+   */
+  updateShape_: function() {
+    // Delete everything.
+    if (this.getInput('ROBOT_VAR')) {
+      this.removeInput('ROBOT_VAR');
+    }
+    if (this.getInput('SERIAL_VAR')) {
+      this.removeInput('SERIAL_VAR');
+    }
 
+    /*
+    "message0": "Use Vector %1 %2 of (optional) serial %3 %4",
+    "args0": [
+      {
+        "type": "field_variable",
+        "name": "robot_var",
+        "variable": "robot"
+      },
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "input_value",
+        "name": "serial_var",
+        "check": "String"
+      },
+      {
+        "type": "input_statement",
+        "name": "wrapped_code"
+      }
+    ],
+
+    */
+    if (this.robotVar_) {
+      this.appendInput_(new Blockly.FieldVariable('robot_var'), 'ROBOT_VAR')
+          .setCheck('String')
+          .appendField(Blockly.Msg['VECTOR_ROBOT_EX_VARIABLE_TITLE']);
+    }
+    if (this.serialNumber_) {
+      this.appendValueInput('SERIAL_VAR')
+          .setCheck('String')
+          .appendField(Blockly.Msg['VECTOR_ROBOT_EX_SERIAL_TITLE']);
+    }
+
+    if (this.robotVar_ && this.serialNumber_) {
+      this.setTooltip("Use Vector %1 %2 with serial %3 %4");
+    } else if (this.robotVar_ && !this.serialNumber_) {
+      this.setTooltip("Use Vector %1 %2 %3");
+    } else if (!this.robotVar_ && this.serialNumber_) {
+      this.setTooltip("Use Vector %1 with serial %2 %3");
+    }
+
+  }
 
 
 };
