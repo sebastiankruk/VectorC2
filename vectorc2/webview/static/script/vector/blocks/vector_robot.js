@@ -174,8 +174,6 @@
       var extVariableConnection = null;
       var extSerialConnection = null;
 
-      console.log(clauseBlock);
-
       while (clauseBlock) {
         switch (clauseBlock.type) {
           case 'controls_vector_robot_vector_ext_variable_opt':
@@ -244,24 +242,19 @@
      * Reconstructs the block with all child blocks attached.
      */
     rebuildShape_: function() {
-      /*
-      var valueConnections = [null];
-      var statementConnections = [null];
-      var elseStatementConnection = null;
 
-      if (this.getInput('ELSE')) {
-        elseStatementConnection = this.getInput('ELSE').connection.targetConnection;
+      var extVariableConnection = null;
+      var extSerialConnection = null;
+
+      if (this.getInput('SERIAL_VAR')) {
+        extSerialConnection = this.getInput('SERIAL_VAR').connection.targetConnection;
       }
-      var i = 1;
-      while (this.getInput('IF' + i)) {
-        var inputIf = this.getInput('IF' + i);
-        var inputDo = this.getInput('DO' + i);
-        valueConnections.push(inputIf.connection.targetConnection);
-        statementConnections.push(inputDo.connection.targetConnection);
-        i++;
-      }*/
+      if (this.getInput('ROBOT_VAR_DUMMY')) {
+        extVariableConnection = this.getInput('ROBOT_VAR_DUMMY').fieldRow[1].connection.targetConnection;
+      }
+
       this.updateShape_();
-      // this.reconnectChildBlocks_(valueConnections, statementConnections, elseStatementConnection);
+      this.reconnectChildBlocks_(extVariableConnection, extSerialConnection);
     },
       
     /**
