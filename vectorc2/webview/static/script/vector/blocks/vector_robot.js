@@ -118,8 +118,8 @@
         return null;
       }
       let container = document.createElement('mutation');
-      container.setAttribute('robotVar', this.robotVar_);
-      container.setAttribute('serialNumber', this.serialNumber_);
+      container.setAttribute('robotvar', this.robotVar_);
+      container.setAttribute('serialnumber', this.serialNumber_);
       return container;
     },
     /**
@@ -128,8 +128,8 @@
      * @this Blockly.Block
      */
     domToMutation: function(xmlElement) {
-      this.robotVar_ = xmlElement.getAttribute('robotVar') === 'true';
-      this.serialNumber_ = xmlElement.getAttribute('serialNumer') === 'true';
+      this.robotVar_ = xmlElement.getAttribute('robotvar') === 'true';
+      this.serialNumber_ = xmlElement.getAttribute('serialnumber') === 'true';
 
       this.rebuildShape_();
     },
