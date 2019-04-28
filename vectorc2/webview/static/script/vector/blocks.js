@@ -15,17 +15,19 @@
  * 
  * @author vectorc2@kruk.me
  */
-'use strict';
+/*jshint esversion: 6 */
 
 /**
  * Class used to initialize custom blocks based on the definitions in JSON
  */
 const VectorBlocks = (function(){
 
+  'use strict';
+
   const JSON_BLOCK_SPECS = {
     'vector_robot': {
       'initiazed': false,
-      'mutators': true,
+      'mutators': false,
       'constants': 'VectorUtils'
     },
     'vector_util': {
@@ -43,7 +45,7 @@ const VectorBlocks = (function(){
       'mutators': false,
       'constants': 'VectorBehavior'
     }
-  }
+  };
 
   /**
    * Function creates a callback that is called back when a single JSON file is successfully fetched.
@@ -62,7 +64,7 @@ const VectorBlocks = (function(){
       }
       JSON_BLOCK_SPECS[jsonFile].initiazed = true;
       __isInitialized();
-    }
+    };
   }
 
   /**
@@ -72,9 +74,9 @@ const VectorBlocks = (function(){
   function __initializeSingleBlock(block) {
     Blockly.Blocks[block.type] = {
       init: function() {
-        this.jsonInit(block)
+        this.jsonInit(block);
       }
-    }
+    };
   }
 
   /**
@@ -103,8 +105,7 @@ const VectorBlocks = (function(){
     // Use $.ajax() since it is more flexible than $.getScript
     // Return the jqXHR object so we can chain callbacks
     return $.ajax( options );
-  };
-   
+  }
 
   /**
    * Initializes custom Vector blocks by reading them from JSON files
@@ -123,8 +124,8 @@ const VectorBlocks = (function(){
 
   return {
     init: __init__
-  }
+  };
 
 })();
 
-$( document ).ready(VectorBlocks.init)
+$( document ).ready(VectorBlocks.init);
