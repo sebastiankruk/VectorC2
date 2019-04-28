@@ -450,9 +450,9 @@ Blockly.Msg["VECTOR_ROBOT_EX_SERIAL_OPT_TOOLTIP"] = "Dodaj do opakowania kodu, a
 
 Blockly.Msg["VECTOR_ROBOT_EX_MESSAGE"] = "Używaj Vectora %1 %2";
 Blockly.Msg["VECTOR_ROBOT_EX_TOOLTIP"] = "Opakowuje wszystkie komendy dla Vectora";
-Blockly.Msg["VECTOR_ROBOT_EX_VARIABLE_TITLE"] = "zmienna: %1";
+Blockly.Msg["VECTOR_ROBOT_EX_VARIABLE_TITLE"] = "jako zmienną";
 Blockly.Msg["VECTOR_ROBOT_EX_VARIABLE_TOOLTIP"] = "Add, remove, or reorder sections to reconfigure this if block.";  //TODO-i18n
-Blockly.Msg["VECTOR_ROBOT_EX_SERIAL_TITLE"] = "numer seryjny: %1";
+Blockly.Msg["VECTOR_ROBOT_EX_SERIAL_TITLE"] = "z numerem seryjnym";
 Blockly.Msg["VECTOR_ROBOT_EX_SERIAL_TOOLTIP"] = "Add block to control which vector to use";  //TODO-i18n
 
 Blockly.Msg["VECTOR_UTILS_DISTANCE_MM_MESSAGE"] = "odległość w mm %1";
