@@ -37,7 +37,7 @@ const VectorBlocks = (function(){
     },
     'vector_say_text': {
       'initiazed': false,
-      'mutators': false,
+      'mutators': true,
       'constants': 'VectorBehavior'
     },
     'vector_behavior': {

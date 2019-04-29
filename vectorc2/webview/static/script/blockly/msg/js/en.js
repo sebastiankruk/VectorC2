@@ -455,6 +455,12 @@ Blockly.Msg["VECTOR_ROBOT_EX_VARIABLE_TOOLTIP"] = "Add, remove, or reorder secti
 Blockly.Msg["VECTOR_ROBOT_EX_SERIAL_TITLE"] = "with serial number";
 Blockly.Msg["VECTOR_ROBOT_EX_SERIAL_TOOLTIP"] = "Add block to control which vector to use";  
 
+Blockly.Msg["VECTOR_SAY_TEXT_EX_OPT_MESSAGE"] = "Vector say %1";
+Blockly.Msg["VECTOR_SAY_TEXT_EX_OPT_TOOLTIP"] = "Basic code wrapper; drop extensions from the left panel to enable more options";
+Blockly.Msg["VECTOR_SAY_TEXT_EX_VOICE_OPT_TITLE"] = "with voice control"
+Blockly.Msg["VECTOR_SAY_TEXT_EX_VOICE_OPT_TOOLTIP"] = "Add to code wrapper to enable to control vector voice"
+Blockly.Msg["VECTOR_SAY_TEXT_EX_SPEED_OPT_TITLE"] = "with speed control"
+Blockly.Msg["VECTOR_SAY_TEXT_EX_SPEED_OPT_TOOLTIP"] = "Add to code wrapper to enable to control relative speed"
 
 Blockly.Msg["VECTOR_UTILS_DISTANCE_MM_MESSAGE"] = "distance in mm %1";
 Blockly.Msg["VECTOR_UTILS_DISTANCE_MM_TOOLTIP"] = "distance in millimeters";
@@ -473,7 +479,7 @@ Blockly.Msg["VECTOR_CONST_MAX_LIFT_HEIGHT_TOOLTIP"] = "The largest height-above-
 Blockly.Msg["VECTOR_CONST_MIN_LIFT_HEIGHT_MESSAGE"] = "MIN_LIFT_HEIGHT ";
 Blockly.Msg["VECTOR_CONST_MIN_LIFT_HEIGHT_TOOLTIP"] = "The lowest height-above-ground that lift can be moved to";
 
-Blockly.Msg["VECTOR_SAY_TEXT_MESSAGE"] = "Vector %1 say: %2 with vector voice %3 %4 at relative speed %5";
+Blockly.Msg["VECTOR_SAY_TEXT_MESSAGE"] = "Say: %1"; // with vector voice %3 %4 at relative speed %5";
 Blockly.Msg["VECTOR_SAY_TEXT_TOOLTIP"] = "Vector will say something";
 Blockly.Msg["VECTOR_SAY_TEXT_SIMPLE_MESSAGE"] = "Vector %1 say %2";
 Blockly.Msg["VECTOR_SAY_TEXT_SIMPLE_TOOLTIP"] = "Vector will say something";

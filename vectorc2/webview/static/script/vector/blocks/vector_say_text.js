@@ -3,39 +3,44 @@
   'use strict';
 
   /**
-   * Mutator methods added to vector_robot blocks.
+   * Mutator methods added to vector_say_text blocks.
    * @mixin
    * @augments Blockly.Block
    * @package
    * @readonly
    */
-  Blockly.Constants.VectorUtils.CONTROLS_VECTOR_ROBOT_EX_MUTATOR_MIXIN = {
+  Blockly.Constants.VectorUtils.CONTROLS_VECTOR_SAY_TEXT_EX_MUTATOR_MIXIN = {
     robotVar_: false,
-    serialNumber_: false,
+    voiceVar_: false,
+    speedVar_: false,
 
     /**
-     * Create XML to represent the vector_robot mutations
+     * Create XML to represent the vector_say_text mutations
      * @return {Element} XML storage element.
      * @this Blockly.Block
      */
     mutationToDom: function() {
 
-      if (!this.robotVar_ && !this.serialNumber_) {
+      if (!this.robotVar_ && 
+          !this.voiceVar_ &&
+          !this.speedVar_) {
         return null;
       }
       let container = document.createElement('mutation');
       container.setAttribute('robotvar', this.robotVar_);
-      container.setAttribute('serialnumber', this.serialNumber_);
+      container.setAttribute('voicevar', this.voiceVar_);
+      container.setAttribute('speedvar', this.speedVar_);
       return container;
     },
     /**
-     * Parse XML to restore the vector_robot mutations
+     * Parse XML to restore vector_say_text mutations
      * @param {!Element} xmlElement XML storage element.
      * @this Blockly.Block
      */
     domToMutation: function(xmlElement) {
       this.robotVar_ = xmlElement.getAttribute('robotvar') === 'true';
-      this.serialNumber_ = xmlElement.getAttribute('serialnumber') === 'true';
+      this.voiceVar_ = xmlElement.getAttribute('voicevar') === 'true';
+      this.speedVar_ = xmlElement.getAttribute('speedvar') === 'true';
 
       this.rebuildShape_();
     },
@@ -46,22 +51,27 @@
      * @this Blockly.Block
      */
     decompose: function(workspace) {
-      let topBlock = workspace.newBlock('controls_vector_robot_vector_opt_wrapper');
+      let topBlock = workspace.newBlock('controls_vector_say_text_opt_wrapper');
       topBlock.initSvg();
 
       var connection = topBlock.nextConnection;
       if (this.robotVar_) {
         let robotVarBlock = workspace.newBlock('controls_vector_robot_vector_ext_variable_opt');
+        robotVarBlock.setColour('#5ba580');
         robotVarBlock.initSvg();
         connection.connect(robotVarBlock.previousConnection);
         connection = robotVarBlock.nextConnection;
       }
-      if (this.serialNumber_) {
-        let serialNumberBlock = workspace.newBlock('controls_vector_robot_vector_ext_serial_opt');
-        serialNumberBlock.initSvg();
-        connection.connect(serialNumberBlock.previousConnection);
+      if (this.voiceVar_) {
+        let voiceVarBlock = workspace.newBlock('controls_vector_say_text_ext_voice_opt');
+        voiceVarBlock.initSvg();
+        connection.connect(voiceVarBlock.previousConnection);
       }
-
+      if (this.speedVar_) {
+        let speedVarBlock = workspace.newBlock('controls_vector_say_text_ext_speed_opt');
+        speedVarBlock.initSvg();
+        connection.connect(speedVarBlock.previousConnection);
+      }
 
       return topBlock;
     },
@@ -75,10 +85,12 @@
       
       // Reset and detect options
       this.robotVar_ = false;
-      this.serialNumber_ = false;
+      this.voiceVar_ = false;
+      this.speedVar_ = false;
 
       var extVariableConnection = null;
-      var extSerialConnection = null;
+      var extVoiceConnection = null;
+      var extSpeedConnection = null;
 
       while (clauseBlock) {
         switch (clauseBlock.type) {
@@ -88,10 +100,16 @@
               extVariableConnection = clauseBlock.statementConnection_;
             }
             break;
-          case 'controls_vector_robot_vector_ext_serial_opt':
-            if (!this.serialNumber_) {
-              this.serialNumber_ = true;
-              extSerialConnection = clauseBlock.statementConnection_;
+          case 'controls_vector_say_text_ext_voice_opt':
+            if (!this.voiceVar_) {
+              this.voiceVar_ = true;
+              extVoiceConnection = clauseBlock.statementConnection_;
+            }
+            break;
+          case 'controls_vector_say_text_ext_speed_opt':
+            if (!this.speedVar_) {
+              this.speedVar_ = true;
+              extSpeedConnection = clauseBlock.statementConnection_;
             }
             break;
           default:
@@ -103,7 +121,7 @@
       this.updateShape_();
 
       // Reconnect any child blocks.
-      this.reconnectChildBlocks_(extVariableConnection, extSerialConnection);
+      this.reconnectChildBlocks_(extVariableConnection, extVoiceConnection, extSpeedConnection);
 
     },
     /**
@@ -116,25 +134,35 @@
       if (this.getInput('ROBOT_VAR_DUMMY')) {
         this.removeInput('ROBOT_VAR_DUMMY');
       }
-      if (this.getInput('SERIAL_VAR')) {
-        this.removeInput('SERIAL_VAR');
+      if (this.getInput('VOICE_VAR_DUMMY')) {
+        this.removeInput('VOICE_VAR_DUMMY');
+      }
+      if (this.getInput('SPEED_VAR_DUMMY')) {
+        this.removeInput('SPEED_VAR_DUMMY');
       }
 
-      if (this.serialNumber_) {
-        this.appendValueInput('SERIAL_VAR')
-            .setCheck('String')
-            .appendField(Blockly.Msg.VECTOR_ROBOT_EX_SERIAL_TITLE);
+      if (this.voiceVar_) {
+        this.appendDummyInput('VOICE_VAR_DUMMY')
+          .appendField(Blockly.Msg.VECTOR_SAY_TEXT_EX_VOICE_OPT_TITLE)
+          .appendField(new Blockly.FieldCheckbox("TRUE"), 'VOICE_VAR');
+      }
+      if (this.speedVar_) {
+        this.appendDummyInput('SPEED_VAR_DUMMY')
+          .appendField(Blockly.Msg.VECTOR_SAY_TEXT_EX_SPEED_OPT_TITLE)
+          .appendField(new Blockly.FieldNumber(1, 0.1, 2, 0.1), "SPEED_VAR");
+    
       }
       if (this.robotVar_) {
           this.appendDummyInput('ROBOT_VAR_DUMMY')
-              // .setAlign(Blockly.ALIGN_CENTRE)
               .appendField(Blockly.Msg.VECTOR_ROBOT_EX_VARIABLE_TITLE)
               .appendField(new Blockly.FieldVariable('robot_var'), 'ROBOT_VAR');
       }
-      if (this.serialNumber_ || this.robotVar_) {
+      if (this.robotVar_ || this.speedVar_ || this.voiceVar_) {
         this.setInputsInline(false);
       }
 
+      /*
+      TODO
       if (this.robotVar_ && this.serialNumber_) {
         this.setTooltip("Use Vector %1 %2 with serial %3 %4");
       } else if (this.robotVar_ && !this.serialNumber_) {
@@ -142,6 +170,7 @@
       } else if (!this.robotVar_ && this.serialNumber_) {
         this.setTooltip("Use Vector %1 with serial %2 %3");
       }
+      */
 
     },
     /**
@@ -150,62 +179,43 @@
     rebuildShape_: function() {
 
       var extVariableConnection = null;
-      var extSerialConnection = null;
+      var extVoiceConnection = null;
+      var extSpeedConnection = null;
 
-      if (this.getInput('SERIAL_VAR')) {
-        extSerialConnection = this.getInput('SERIAL_VAR').connection.targetConnection;
+      if (this.getInput('VOICE_VAR')) {
+        extVoiceConnection = this.getInput('VOICE_VAR').connection.targetConnection;
+      }
+      if (this.getInput('SPEED_VAR')) {
+        extSpeedConnection = this.getInput('SPEED_VAR').connection.targetConnection;
       }
       if (this.getInput('ROBOT_VAR_DUMMY')) {
         extVariableConnection = this.getInput('ROBOT_VAR_DUMMY').fieldRow[1].connection.targetConnection;
       }
 
       this.updateShape_();
-      this.reconnectChildBlocks_(extVariableConnection, extSerialConnection);
+      this.reconnectChildBlocks_(extVariableConnection, extVoiceConnection, extSpeedConnection);
     },
       
     /**
      * Reconnects child blocks.
      */
-    reconnectChildBlocks_: function(extVariableConnection, extSerialConnection) {
+    reconnectChildBlocks_: function(extVariableConnection, extVoiceConnection, extSpeedConnection) {
       Blockly.Mutator.reconnect(extVariableConnection, this, 'ROBOT_VAR');
-      Blockly.Mutator.reconnect(extSerialConnection, this, 'SERIAL_VAR');
+      Blockly.Mutator.reconnect(extVoiceConnection, this, 'VOICE_VAR');
+      Blockly.Mutator.reconnect(extSpeedConnection, this, 'SPEED_VAR');
     }
 
 
   };
 
-  Blockly.Extensions.registerMutator('controls_vector_robot_ex_mutator',
-      Blockly.Constants.VectorUtils.CONTROLS_VECTOR_ROBOT_EX_MUTATOR_MIXIN, 
+  Blockly.Extensions.registerMutator('controls_vector_say_text_ex_mutator',
+      Blockly.Constants.VectorUtils.CONTROLS_VECTOR_SAY_TEXT_EX_MUTATOR_MIXIN, 
       null, //opt_helperFn
-      ['controls_vector_robot_vector_ext_variable_opt', 'controls_vector_robot_vector_ext_serial_opt']);
+      [
+        'controls_vector_robot_vector_ext_variable_opt', 
+        'controls_vector_say_text_ext_voice_opt',
+        'controls_vector_say_text_ext_speed_opt'
+      ]);
 
 
-
-
-
-
-  /**
-   * "controls_if" extension function. Adds mutator, shape updating methods, and
-   * dynamic tooltip to "controls_if" blocks.
-   * @this Blockly.Block
-   * @package
-   */
-  Blockly.Constants.VectorUtils.CONTROLS_VROBOT_TOOLTIP_EXTENSION = function() {
-
-    this.setTooltip(function() {
-      if (!this.selectCount_) {
-        return Blockly.Msg.BKY_VECTOR_ROBOT_EX_TOOLTIP;
-      // } else if (!this.elseifCount_ && this.elseCount_) {
-      //   return Blockly.Msg['BKY_VECTOR_ROBOT_EX_ROBOT_TOOLTIP'];
-      // } else if (this.elseifCount_ && !this.elseCount_) {
-      //   return Blockly.Msg['CONTROLS_IF_TOOLTIP_3'];
-      } else if (this.selectCount_) {
-        return Blockly.Msg.BKY_VECTOR_ROBOT_EX_ROBOT_TOOLTIP;
-      }
-      return '';
-    }.bind(this));
-  };
-
-  Blockly.Extensions.register('controls_vrobot_tooltip',
-      Blockly.Constants.VectorUtils.CONTROLS_VROBOT_TOOLTIP_EXTENSION);
 }());
