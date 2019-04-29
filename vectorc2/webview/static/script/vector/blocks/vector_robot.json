@@ -1,26 +1,113 @@
-[{
-  "type": "vector_robot",
-  "message0": "%{BKY_VECTOR_ROBOT_MESSAGE}",
-  "args0": [
-    {
-      "type": "field_variable",
-      "name": "robot_var",
-      "variable": "robot"
-    },
-    {
-      "type": "input_dummy"
-    },
-    {
-      "type": "input_value",
-      "name": "serial_var",
-      "check": "String"
-    },
-    {
-      "type": "input_statement",
-      "name": "wrapped_code"
-    }
-  ],
-  "colour": 240,
-  "tooltip": "%{BKY_VECTOR_ROBOT_TOOLTIP}",
-  "helpUrl": ""
-}]
+[ {
+    "type": "vector_robot",
+    "message0": "%{BKY_VECTOR_ROBOT_MESSAGE}",
+    "args0": [
+      {
+        "type": "field_variable",
+        "name": "robot_var",
+        "variable": "robot"
+      },
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "input_value",
+        "name": "serial_var",
+        "check": "String"
+      },
+      {
+        "type": "input_statement",
+        "name": "wrapped_code"
+      }
+    ],
+    "colour": 240,
+    "tooltip": "%{BKY_VECTOR_ROBOT_TOOLTIP}",
+    "helpUrl": "" 
+  },
+  {
+    "type": "vector_robot_ex",
+    "message0": "%{BKY_VECTOR_ROBOT_EX_MESSAGE}",
+    "args0": [
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "input_statement",
+        "name": "wrapped_code"
+      }
+    ],
+    "colour": 240,
+    "tooltip": "%{BKY_VECTOR_ROBOT_EX_TOOLTIP}",
+    "mutator": "controls_vector_robot_ex_mutator",
+    "extensions": [],
+    "helpUrl": ""
+  },
+  {
+    "_comment": "Block represeting mutator UI wrapper",
+    "type": "controls_vector_robot_vector_opt_wrapper",
+    "message0": "%{BKY_VECTOR_ROBOT_EX_OPT_MESSAGE}",
+    "args0": [
+      {
+        "type": "input_dummy"
+      }
+    ],
+    "nextStatement": ["controls_vector_robot_vector_ext_variable_opt", "controls_vector_robot_vector_ext_serial_opt"],
+    "colour": 240,
+    "tooltip": "%{BKY_VECTOR_ROBOT_EX_OPT_TOOLTIP}",
+    "helpUrl": "" 
+  },
+  {
+    "_comment": "Block representing mutator UI robot variable option",
+    "type": "controls_vector_robot_vector_ext_variable_opt",
+    "message0": "%{BKY_VECTOR_ROBOT_EX_VARIABLE_OPT_TITLE}",
+    "args0": [],
+    "previousStatement": null,
+    "nextStatement": null,
+    "enableContextMenu": false,
+    "colour": "240",
+    "tooltip": "%{BKY_VECTOR_ROBOT_EX_VARIABLE_OPT_TOOLTIP}"
+  },
+  {
+    "_comment": "Block representing mutator UI robot serial number option",
+    "type": "controls_vector_robot_vector_ext_serial_opt",
+    "message0": "%{BKY_VECTOR_ROBOT_EX_SERIAL_OPT_TITLE}",
+    "args0": [],
+    "previousStatement": ["controls_vector_robot_vector_opt_wrapper", "controls_vector_robot_vector_ext_variable_opt"],
+    "enableContextMenu": false,
+    "colour": "240",
+    "tooltip": "%{BKY_VECTOR_ROBOT_EX_SERIAL_OPT_TOOLTIP}"
+  },
+  {
+    "_comment": "Block representing robot variable",
+    "type": "controls_vector_robot_vector_ext_variable",
+    "message0": "%{BKY_VECTOR_ROBOT_EX_VARIABLE_TITLE}",
+    "args0": [
+      {
+        "type": "field_variable",
+        "name": "ROBOT_VAR",
+        "variable": "robot",
+        "check": "String"
+      }
+    ],
+    "nextStatement": null,
+    "enableContextMenu": false,
+    "colour": "240",
+    "tooltip": "%{BKY_VECTOR_ROBOT_EX_VARIABLE_TOOLTIP}"
+  },
+  {
+    "_comment": "Block representing robot serial number",
+    "type": "controls_vector_robot_vector_ext_serial",
+    "message0": "%{BKY_VECTOR_ROBOT_EX_SERIAL_TITLE}",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "SERIAL_VAR",
+        "check": "String"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "enableContextMenu": false,
+    "colour": "240",
+    "tooltip": "%{BKY_VECTOR_ROBOT_EX_SERIAL_TOOLTIP}"
+  }]

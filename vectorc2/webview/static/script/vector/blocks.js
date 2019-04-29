@@ -15,7 +15,7 @@
  * 
  * @author vectorc2@kruk.me
  */
-/*jshint esversion: 6 */
+/*jshint esversion: 8 */
 
 /**
  * Class used to initialize custom blocks based on the definitions in JSON
@@ -27,7 +27,7 @@ const VectorBlocks = (function(){
   const JSON_BLOCK_SPECS = {
     'vector_robot': {
       'initiazed': false,
-      'mutators': false,
+      'mutators': true,
       'constants': 'VectorUtils'
     },
     'vector_util': {
@@ -62,8 +62,12 @@ const VectorBlocks = (function(){
       } else {
         __initializeSingleBlock(data);
       }
-      JSON_BLOCK_SPECS[jsonFile].initiazed = true;
-      __isInitialized();
+      if (JSON_BLOCK_SPECS[jsonFile].mutators) {
+        __cachedScript(`/static/script/vector/blocks/${jsonFile}.js`).then(data => __isInitialized(jsonFile));
+      } else {
+        __isInitialized(jsonFile);
+      }
+
     };
   }
 
@@ -82,7 +86,9 @@ const VectorBlocks = (function(){
   /**
    * Called to check whethere all JSON files are initialized and we can initialize VectorC2
    */
-  function __isInitialized() {
+  function __isInitialized(jsonFile) {
+    JSON_BLOCK_SPECS[jsonFile].initiazed = true;
+
     if (Object.values(JSON_BLOCK_SPECS).map( o => o.initiazed ).every(Boolean)) { // if all JSON files are initialized
       VectorC2.init();
     }
@@ -116,9 +122,6 @@ const VectorBlocks = (function(){
         Blockly.Constants[ JSON_BLOCK_SPECS[jsonFile].constants ] = {};
       }
       $.getJSON(`/static/script/vector/blocks/${jsonFile}.json`, __loadCustomBlocks(jsonFile));
-      if (JSON_BLOCK_SPECS[jsonFile].mutators) {
-        __cachedScript(`/static/script/vector/blocks/${jsonFile}.js`);
-      }
     }
   }
 
