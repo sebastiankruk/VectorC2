@@ -16,15 +16,6 @@
  * @author vectorc2@kruk.me
  */
 /* jshint esversion: 6 */
-Blockly.JavaScript.vector_say_text_simple = function(block) {
-  let variable_robot_var = Blockly.JavaScript.variableDB_
-                                  .getName(VectorUtils.getRobotVar(block), 
-                                           Blockly.Variables.NAME_TYPE);
-  let value_text = Blockly.JavaScript.valueToCode(block, 'text', Blockly.JavaScript.ORDER_ATOMIC);
-  let code = `${variable_robot_var}.sayText(${value_text});\n`;
-  return code;
-};
-
 /**
  * Generator of the JavaScript code for the first block: vector_say_text
  */
@@ -33,8 +24,8 @@ Blockly.JavaScript.vector_say_text = function(block) {
                                   .getName(VectorUtils.getRobotVar(block), 
                                            Blockly.Variables.NAME_TYPE);
   let value_text = Blockly.JavaScript.valueToCode(block, 'text', Blockly.JavaScript.ORDER_ATOMIC);
-  let checkbox_use_vector_voice = block.getFieldValue('use_vector_voice') == 'TRUE';
-  let number_duration_scalar = block.getFieldValue('duration_scalar');
+  let checkbox_use_vector_voice = block.getFieldValue('VOICE_VAR') == 'TRUE';
+  let number_duration_scalar = block.getFieldValue('SPEED_VAR');
 
   let code = `${variable_robot_var}.sayText(${value_text}, ${checkbox_use_vector_voice}, ${number_duration_scalar});\n`;
 

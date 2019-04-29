@@ -455,6 +455,13 @@ Blockly.Msg["VECTOR_ROBOT_EX_VARIABLE_TOOLTIP"] = "Add, remove, or reorder secti
 Blockly.Msg["VECTOR_ROBOT_EX_SERIAL_TITLE"] = "z numerem seryjnym";
 Blockly.Msg["VECTOR_ROBOT_EX_SERIAL_TOOLTIP"] = "Add block to control which vector to use";  //TODO-i18n
 
+Blockly.Msg["VECTOR_SAY_TEXT_EX_OPT_MESSAGE"] = "Vector powiedz %1";
+Blockly.Msg["VECTOR_SAY_TEXT_EX_OPT_TOOLTIP"] = "Basic code wrapper; drop extensions from the left panel to enable more options";
+Blockly.Msg["VECTOR_SAY_TEXT_EX_VOICE_OPT_TITLE"] = "z kontrolą głosu"
+Blockly.Msg["VECTOR_SAY_TEXT_EX_VOICE_OPT_TOOLTIP"] = "Add to code wrapper to enable to control vector voice"
+Blockly.Msg["VECTOR_SAY_TEXT_EX_SPEED_OPT_TITLE"] = "z kontrolą prędkości"
+Blockly.Msg["VECTOR_SAY_TEXT_EX_SPEED_OPT_TOOLTIP"] = "Add to code wrapper to enable to control relative speed"
+
 Blockly.Msg["VECTOR_UTILS_DISTANCE_MM_MESSAGE"] = "odległość w mm %1";
 Blockly.Msg["VECTOR_UTILS_DISTANCE_MM_TOOLTIP"] = "odległość w milimetrach";
 Blockly.Msg["VECTOR_UTILS_SPEED_MMPS_MESSAGE"] = "prędkość w mm/s %1";
@@ -472,7 +479,7 @@ Blockly.Msg["VECTOR_CONST_MAX_LIFT_HEIGHT_TOOLTIP"] = "Największa wysokość na
 Blockly.Msg["VECTOR_CONST_MIN_LIFT_HEIGHT_MESSAGE"] = "MIN_LIFT_HEIGHT ";
 Blockly.Msg["VECTOR_CONST_MIN_LIFT_HEIGHT_TOOLTIP"] = "Najniższa wysokość na jaką Vector może opuścić ramiona.";
 
-Blockly.Msg["VECTOR_SAY_TEXT_MESSAGE"] = "Vector %1 powiedz: %2 swoim głosem %3 %4 z relatywną prędkością %5";
+Blockly.Msg["VECTOR_SAY_TEXT_MESSAGE"] = "Powiedz: %1";// swoim głosem %3 %4 z relatywną prędkością %5";
 Blockly.Msg["VECTOR_SAY_TEXT_TOOLTIP"] = "Vector coś powie";
 Blockly.Msg["VECTOR_SAY_TEXT_SIMPLE_MESSAGE"] = "Vector %1 powiedz %2";
 Blockly.Msg["VECTOR_SAY_TEXT_SIMPLE_TOOLTIP"] = "Vector coś powie";
