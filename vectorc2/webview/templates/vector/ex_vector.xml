@@ -17,5 +17,4 @@
 {% endcomment %}
 {% load i18n %}
 <category name="{% trans '(V) Ex' %}" colour="#00a55b">
-  <block type="vector_robot_ex"/>
 </category>

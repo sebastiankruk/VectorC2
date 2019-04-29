@@ -15,11 +15,13 @@
  * 
  * @author vectorc2@kruk.me
  */
+/* jshint esversion: 6 */
 Blockly.Python['vector_robot'] = function(block) {
-  var variable_robot_var = Blockly.Python.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
-  var value_serial_var = Blockly.Python.valueToCode(block, 'serial_var', Blockly.Python.ORDER_ATOMIC);
-  var statements_wrapped_code = Blockly.Python.statementToCode(block, 'wrapped_code');
+  let robot_var = block.getFieldValue('robot_var') || 'robot';
+  let variable_robot_var = Blockly.Python.variableDB_.getName(robot_var, Blockly.Variables.NAME_TYPE);
+  let value_serial_var = Blockly.Python.valueToCode(block, 'serial_var', Blockly.Python.ORDER_ATOMIC);
+  let statements_wrapped_code = Blockly.Python.statementToCode(block, 'wrapped_code');
 
-  var code = `import time\nimport anki_vector\nfrom anki_vector.util import degrees, distance_mm, speed_mmps\nwith anki_vector.Robot(${value_serial_var}) as ${variable_robot_var}:\n${statements_wrapped_code}`;
+  let code = `import time\nimport anki_vector\nfrom anki_vector.util import degrees, distance_mm, speed_mmps\nwith anki_vector.Robot(${value_serial_var}) as ${variable_robot_var}:\n${statements_wrapped_code}`;
   return code;
 };

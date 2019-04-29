@@ -1,5 +1,5 @@
 [ {
-    "type": "vector_robot",
+    "type": "vector_robot_old",
     "message0": "%{BKY_VECTOR_ROBOT_MESSAGE}",
     "args0": [
       {
@@ -25,7 +25,7 @@
     "helpUrl": "" 
   },
   {
-    "type": "vector_robot_ex",
+    "type": "vector_robot",
     "message0": "%{BKY_VECTOR_ROBOT_EX_MESSAGE}",
     "args0": [
       {
