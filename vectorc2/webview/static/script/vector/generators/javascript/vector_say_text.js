@@ -17,7 +17,9 @@
  */
 /* jshint esversion: 6 */
 Blockly.JavaScript.vector_say_text_simple = function(block) {
-  let variable_robot_var = Blockly.JavaScript.variableDB_.getName(VectorUtils.getFieldValue(block, 'robot_var', 'robot'), Blockly.Variables.NAME_TYPE);
+  let variable_robot_var = Blockly.JavaScript.variableDB_
+                                  .getName(VectorUtils.getRobotVar(block), 
+                                           Blockly.Variables.NAME_TYPE);
   let value_text = Blockly.JavaScript.valueToCode(block, 'text', Blockly.JavaScript.ORDER_ATOMIC);
   let code = `${variable_robot_var}.sayText(${value_text});\n`;
   return code;
@@ -28,7 +30,7 @@ Blockly.JavaScript.vector_say_text_simple = function(block) {
  */
 Blockly.JavaScript.vector_say_text = function(block) {
   let variable_robot_var = Blockly.JavaScript.variableDB_
-                                  .getName(VectorUtils.getFieldValue(block, 'robot_var', 'robot'), 
+                                  .getName(VectorUtils.getRobotVar(block), 
                                            Blockly.Variables.NAME_TYPE);
   let value_text = Blockly.JavaScript.valueToCode(block, 'text', Blockly.JavaScript.ORDER_ATOMIC);
   let checkbox_use_vector_voice = block.getFieldValue('use_vector_voice') == 'TRUE';

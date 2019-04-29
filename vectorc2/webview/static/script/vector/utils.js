@@ -30,12 +30,30 @@ const VectorUtils = (function(){
    * @param {*} varName 
    * @param {*} defaultVal 
    */
-  function getFieldValue(block, varName, defaultVal) {
+  function _getFieldValue(block, varName, defaultVal) {
     return block.getFieldValue(varName) || defaultVal;
+  }
+  /**
+   * Wrapper function to get variable by name or default text if variable not present
+   * @param {*} block 
+   * @param {*} varName 
+   * @param {*} defaultText 
+   */
+  function _getFieldText(block, varName, defaultText) {
+    return ((block.getField(varName) !== null) ? block.getField(varName).getText() : null) || defaultText;
+  }
+  /**
+   * Shortcut for getting robot var
+   * @param {*} block 
+   */
+  function _getRobotVar(block) {
+    return _getFieldText(block, 'ROBOT_VAR', 'robot')
   }
 
   return {
-    getFieldValue: getFieldValue
+    getFieldValue: _getFieldValue,
+    getFieldText: _getFieldText,
+    getRobotVar: _getRobotVar
   };
 
 })();
