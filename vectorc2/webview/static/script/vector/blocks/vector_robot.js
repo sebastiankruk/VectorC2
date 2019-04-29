@@ -2,10 +2,6 @@
 (function() {
   'use strict';
 
-  if (typeof Blockly.Constants.VectorUtils === 'undefined') {
-    Blockly.Constants.VectorUtils = {};
-  }
-
   /**
    * Mutator methods added to controls_if blocks.
    * @mixin
