@@ -15,14 +15,27 @@
  * 
  * @author vectorc2@kruk.me
  */
-/* jshint esversion: 6 */
-Blockly.JavaScript.vector_robot = function(block) {
-  let variable_robot_var = Blockly.JavaScript.variableDB_
-                                  .getName(VectorUtils.getFieldValue(block, 'robot_var', 'robot'), 
-                                           Blockly.Variables.NAME_TYPE);
-  let value_serial_var = Blockly.JavaScript.valueToCode(block, 'serial_var', Blockly.JavaScript.ORDER_ATOMIC);
-  let statements_wrapped_code = Blockly.JavaScript.statementToCode(block, 'wrapped_code');
+/*jshint esversion: 8 */
 
-  let code = `${variable_robot_var} = Vectorex;\n${variable_robot_var}.init(${value_serial_var});\n${statements_wrapped_code}\n`;
-  return code;
-};
+/**
+ * Class with utility functions
+ */
+const VectorUtils = (function(){
+
+  'use strict';
+
+  /**
+   * Wrapper function to get variable by name or default value if variable not present
+   * @param {*} block 
+   * @param {*} varName 
+   * @param {*} defaultVal 
+   */
+  function getFieldValue(block, varName, defaultVal) {
+    return block.getFieldValue(varName) || defaultVal;
+  }
+
+  return {
+    getFieldValue: getFieldValue
+  };
+
+})();

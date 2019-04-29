@@ -16,9 +16,10 @@
  * @author vectorc2@kruk.me
  */
 /* jshint esversion: 6 */
-Blockly.Python['vector_robot'] = function(block) {
-  let robot_var = block.getFieldValue('robot_var') || 'robot';
-  let variable_robot_var = Blockly.Python.variableDB_.getName(robot_var, Blockly.Variables.NAME_TYPE);
+Blockly.Python.vector_robot = function(block) {
+  let variable_robot_var = Blockly.Python.variableDB_
+                                  .getName(VectorUtils.getFieldValue(block, 'robot_var', 'robot'), 
+                                          Blockly.Variables.NAME_TYPE);
   let value_serial_var = Blockly.Python.valueToCode(block, 'serial_var', Blockly.Python.ORDER_ATOMIC);
   let statements_wrapped_code = Blockly.Python.statementToCode(block, 'wrapped_code');
 
