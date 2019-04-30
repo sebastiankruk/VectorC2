@@ -31,6 +31,23 @@
   "tooltip": "%{BKY_VECTOR_DOCK_WITH_CUBE_TOOLTIP}",
   "helpUrl": "https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html?highlight=sleep#anki_vector.behavior.BehaviorComponent.dock_with_cube"
 },
+{
+  "type": "vector_set_eye_color",
+  "message0": "%{BKY_VECTOR_SET_EYE_COLOR_MESSAGE}",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "color_rgb",
+      "check": "Colour"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 45,
+  "mutator": "vector_set_eye_color_ex_mutator",
+  "tooltip": "%{BKY_VECTOR_SET_EYE_COLOR_TOOLTIP}",
+  "helpUrl": "https://sdk-resources.anki.com/vector/docs/generated/anki_vector.behavior.html#anki_vector.behavior.BehaviorComponent.set_eye_color"
+},
 
 
 {
@@ -137,27 +154,6 @@
   "colour": 30,
   "tooltip": "%{BKY_VECTOR_BEHAVIOR_TURN_IN_PLACE_TOOLTIP}",
   "helpUrl": "https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html#anki_vector.behavior.BehaviorComponent.turn_in_place"
-},
-{
-  "type": "vector_set_eye_color",
-  "message0": "%{BKY_VECTOR_SET_EYE_COLOR_MESSAGE}",
-  "args0": [
-    {
-      "type": "field_variable",
-      "name": "robot_var",
-      "variable": "robot"
-    },
-    {
-      "type": "input_value",
-      "name": "color_rgb",
-      "check": "Colour"
-    }
-  ],
-  "previousStatement": null,
-  "nextStatement": null,
-  "colour": 45,
-  "tooltip": "%{BKY_VECTOR_SET_EYE_COLOR_TOOLTIP}",
-  "helpUrl": "https://sdk-resources.anki.com/vector/docs/generated/anki_vector.behavior.html#anki_vector.behavior.BehaviorComponent.set_eye_color"
 },
 {
   "type": "vector_set_eye_color_hue_saturation",
