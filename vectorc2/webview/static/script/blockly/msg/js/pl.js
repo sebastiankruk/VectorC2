@@ -488,19 +488,21 @@ Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_OFF_CHARGER_MESSAGE"] = "Zjedź Vectorem z ł
 Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_OFF_CHARGER_TOOLTIP"] = "Vector zjedzie z ładowarki";
 Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_ON_CHARGER_MESSAGE"] = "Wjedź Vectorem na ładowarkę";
 Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_ON_CHARGER_TOOLTIP"] = "Vector wjeżdża na ładowarkę";
+Blockly.Msg["VECTOR_DOCK_WITH_CUBE_MESSAGE"] = "Jedź z kostką do domu";
+Blockly.Msg["VECTOR_DOCK_WITH_CUBE_TOOLTIP"] = "Vector pojedzie ze świecącą kostką do domu";
 
 Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_OFF_CHARGER_EX_MESSAGE"] = "Zjedź Vectorem z ładowarki %1";
 Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_OFF_CHARGER_EX_TOOLTIP"] = "Vector zjedzie z ładowarki";
 Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_ON_CHARGER_EX_MESSAGE"] = "Wjedź Vectorem na ładowarkę %1";
 Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_ON_CHARGER_EX_TOOLTIP"] = "Vector wjeżdża na ładowarkę";
+Blockly.Msg["VECTOR_DOCK_WITH_CUBE_EX_MESSAGE"] = "Jedź z kostką do domu %1";
+Blockly.Msg["VECTOR_DOCK_WITH_CUBE_EX_TOOLTIP"] = "Vector pojedzie ze świecącą kostką do domu";
 
 
 Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_MESSAGE"] = "Jedź Vectorem %1 prosto %2 z prędkością %3 %4 i odgrywaj animację %5 Spróbuj powtórzyć %6 razy";
 Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_TOOLTIP"] = "Vector pojedzie w lini prostej.";
 Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_MESSAGE"] = "Obróć Vectora %1 o kąt %2 z prędkością %3 i przyspieszeniem %4 kończąc z tolerancją %5 %6 Podany kąt jest absolutny %7 Spróbuj powtórzyć %8 razy";
 Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_TOOLTIP"] = "Obróci Vectora w miejscu";
-Blockly.Msg["VECTOR_DOCK_WITH_CUBE_MESSAGE"] = "Jedź Vectorem %1 z kostką do domu";
-Blockly.Msg["VECTOR_DOCK_WITH_CUBE_TOOLTIP"] = "Vector pojedzie ze świecącą kostką do domu";
 Blockly.Msg["VECTOR_SET_EYE_COLOR_MESSAGE"] = "Ustaw kolor oczu Vectora %1 na %2";
 Blockly.Msg["VECTOR_SET_EYE_COLOR_TOOLTIP"] = "Ustawia kolor oczu wektora.";
 Blockly.Msg["VECTOR_SET_EYE_COLOR_HUE_SATURATION_MESSAGE"] = "Ustaw kolor oczu Vectora %1 na kolor %2 i nasycenie %3";

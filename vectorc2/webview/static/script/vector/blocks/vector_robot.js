@@ -146,7 +146,7 @@
           this.appendDummyInput('ROBOT_VAR_DUMMY')
               // .setAlign(Blockly.ALIGN_CENTRE)
               .appendField(Blockly.Msg.VECTOR_ROBOT_EX_VARIABLE_TITLE)
-              .appendField(new Blockly.FieldVariable('robot_var'), 'ROBOT_VAR');
+              .appendField(new Blockly.FieldVariable('robot'), 'ROBOT_VAR');
       }
       if (this.serialNumber_ || this.robotVar_) {
         this.setInputsInline(false);

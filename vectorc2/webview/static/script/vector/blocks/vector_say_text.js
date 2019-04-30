@@ -172,7 +172,7 @@
       if (this.robotVar_) {
           this.appendDummyInput('ROBOT_VAR_DUMMY')
               .appendField(Blockly.Msg.VECTOR_ROBOT_EX_VARIABLE_TITLE)
-              .appendField(new Blockly.FieldVariable('robot_var'), 'ROBOT_VAR');
+              .appendField(new Blockly.FieldVariable('robot'), 'ROBOT_VAR');
       }
       if (this.robotVar_ || this.speedVar_ || this.voiceVar_) {
         this.setInputsInline(false);

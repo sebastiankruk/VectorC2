@@ -144,7 +144,7 @@ const VectorMutator = (function(){
         if (this.robotVar_) {
             this.appendDummyInput(__ROBOT_VAR_DUMMY)
                 .appendField(Blockly.Msg.VECTOR_ROBOT_EX_VARIABLE_TITLE)
-                .appendField(new Blockly.FieldVariable('robot_var'), __ROBOT_VAR_U);
+                .appendField(new Blockly.FieldVariable('robot'), __ROBOT_VAR_U);
         }
         if (this.robotVar_) {
           this.setInputsInline(false);
@@ -174,13 +174,13 @@ const VectorMutator = (function(){
         }
   
         this.updateShape_();
-        this.reconnectChildBlocks_(extVariableConnection, extVoiceConnection, extSpeedConnection);
+        this.reconnectChildBlocks_(extVariableConnection);
       },
         
       /**
        * Reconnects child blocks.
        */
-      reconnectChildBlocks_: function(extVariableConnection, extVoiceConnection, extSpeedConnection) {
+      reconnectChildBlocks_: function(extVariableConnection) {
         Blockly.Mutator.reconnect(extVariableConnection, this, __ROBOT_VAR_U);
       }
   
