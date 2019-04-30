@@ -17,9 +17,7 @@
  */
 /* jshint esversion: 6 */
 Blockly.JavaScript.vector_robot = function(block) {
-  let variable_robot_var = Blockly.JavaScript.variableDB_
-                                  .getName(VectorUtils.getRobotVar(block), 
-                                           Blockly.Variables.NAME_TYPE);
+  let variable_robot_var = VectorUtils.getRobotVar(block);
   let value_serial_var = Blockly.JavaScript.valueToCode(block, 'SERIAL_VAR', Blockly.JavaScript.ORDER_ATOMIC);
   let statements_wrapped_code = Blockly.JavaScript.statementToCode(block, 'wrapped_code');
 

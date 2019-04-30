@@ -16,11 +16,11 @@
  * @author vectorc2@kruk.me
  */
 /* jshint esversion: 6 */
-Blockly.Python.vector_robot = function(block) {
-  let variable_robot_var = VectorUtils.getRobotVar(block);
-  let value_serial_var = Blockly.Python.valueToCode(block, 'SERIAL_VAR', Blockly.Python.ORDER_ATOMIC);
-  let statements_wrapped_code = Blockly.Python.statementToCode(block, 'wrapped_code');
+(function() {
+  'use strict';
 
-  let code = `import time\nimport anki_vector\nfrom anki_vector.util import degrees, distance_mm, speed_mmps\nwith anki_vector.Robot(${value_serial_var}) as ${variable_robot_var}:\n${statements_wrapped_code}`;
-  return code;
-};
+  VectorMutator.init('vector_behavior_drive_off_charger_ex');
+  VectorMutator.init('vector_behavior_drive_on_charger_ex');
+
+
+}());

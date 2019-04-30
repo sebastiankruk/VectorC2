@@ -20,9 +20,7 @@
  * Generator of the JavaScript code for the first block: vector_say_text
  */
 Blockly.JavaScript.vector_say_text = function(block) {
-  let variable_robot_var = Blockly.JavaScript.variableDB_
-                                  .getName(VectorUtils.getRobotVar(block), 
-                                           Blockly.Variables.NAME_TYPE);
+  let variable_robot_var = VectorUtils.getRobotVar(block);
   let value_text = Blockly.JavaScript.valueToCode(block, 'text', Blockly.JavaScript.ORDER_ATOMIC);
   let checkbox_use_vector_voice = block.getFieldValue('VOICE_VAR') == 'TRUE';
   let number_duration_scalar = block.getFieldValue('SPEED_VAR');

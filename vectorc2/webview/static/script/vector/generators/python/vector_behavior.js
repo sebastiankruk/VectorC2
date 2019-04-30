@@ -16,13 +16,13 @@
  * @author vectorc2@kruk.me
  */
 Blockly.Python['vector_behavior_drive_off_charger'] = function(block) {
-  var variable_robot_var = Blockly.Python.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
+  var variable_robot_var = VectorUtils.getRobotVar(block);
   var code = `${variable_robot_var}.behavior.drive_off_charger()\n`;
   return code;
 };
 
 Blockly.Python['vector_behavior_drive_on_charger'] = function(block) {
-  var variable_robot_var = Blockly.Python.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
+  var variable_robot_var = VectorUtils.getRobotVar(block);
   var code = `${variable_robot_var}.behavior.drive_on_charger()\n`;
   return code;
 };

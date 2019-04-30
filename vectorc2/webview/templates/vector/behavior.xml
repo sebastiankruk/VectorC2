@@ -18,12 +18,8 @@
 {% load i18n %}
 <category name="{% trans '(V) Behavior' %}" colour="#80a55b">
   <block type="vector_say_text"></block>
-  <block type="vector_behavior_drive_off_charger">
-    <field name="robot_var" id="mm-K_3;;D5xLp(_Em[/S" variabletype="">robot</field>
-  </block>
-  <block type="vector_behavior_drive_on_charger">
-    <field name="robot_var" id="mm-K_3;;D5xLp(_Em[/S" variabletype="">robot</field>
-  </block>
+  <block type="vector_behavior_drive_off_charger"></block>
+  <block type="vector_behavior_drive_on_charger"></block>
   <block type="vector_behavior_drive_straight">
     <field name="robot_var" id="mm-K_3;;D5xLp(_Em[/S" variabletype="">robot</field>
     <field name="should_play_anim">TRUE</field>

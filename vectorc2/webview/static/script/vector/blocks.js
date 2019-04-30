@@ -42,7 +42,7 @@ const VectorBlocks = (function(){
     },
     'vector_behavior': {
       'initiazed': false,
-      'mutators': false,
+      'mutators': true,
       'constants': 'VectorBehavior'
     }
   };

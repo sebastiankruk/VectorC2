@@ -47,7 +47,8 @@ const VectorUtils = (function(){
    * @param {*} block 
    */
   function _getRobotVar(block) {
-    return _getFieldText(block, 'ROBOT_VAR', 'robot')
+    return Blockly.JavaScript.variableDB_.getName(_getFieldText(block, 'ROBOT_VAR', 'robot'), 
+                                                  Blockly.Variables.NAME_TYPE)
   }
 
   return {

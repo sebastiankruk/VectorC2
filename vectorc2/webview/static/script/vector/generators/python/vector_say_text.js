@@ -17,9 +17,7 @@
  */
 /* jshint esversion: 6 */
 Blockly.Python.vector_say_text = function(block) {
-  let variable_robot_var = Blockly.Python.variableDB_
-                                  .getName(VectorUtils.getRobotVar(block), 
-                                           Blockly.Variables.NAME_TYPE);
+  let variable_robot_var = VectorUtils.getRobotVar(block);
 
   let value_text = Blockly.Python.valueToCode(block, 'text', Blockly.Python.ORDER_ATOMIC);
   let checkbox_use_vector_voice = GeneratorUtils.getPythonBooleanValue(block, 'VOICE_VAR');
