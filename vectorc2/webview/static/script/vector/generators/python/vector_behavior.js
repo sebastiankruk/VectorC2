@@ -27,6 +27,12 @@ Blockly.Python['vector_behavior_drive_on_charger'] = function(block) {
   return code;
 };
 
+Blockly.Python['vector_dock_with_cube'] = function(block) {
+  var variable_robot_var = VectorUtils.getRobotVar(block);
+  var code = `${variable_robot_var}.world.connect_cube()\nif ${variable_robot_var}.world.connected_light_cube:\n  ${variable_robot_var}.behavior.dock_with_cube(${variable_robot_var}.world.connected_light_cube)\n`;
+  return code;
+};
+
 Blockly.Python['vector_behavior_drive_straight'] = function(block) {
   var variable_robot_var = Blockly.Python.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
   var value_distance = Blockly.Python.valueToCode(block, 'distance', Blockly.Python.ORDER_ATOMIC);
@@ -64,12 +70,6 @@ Blockly.Python['vector_set_eye_color_hue_saturation'] = function(block) {
   var angle_hue = block.getFieldValue('hue');
   var number_saturation = block.getFieldValue('saturation');
   var code = `${variable_robot_var}.behavior.set_eye_color(hue=${angle_hue/360}, saturation=${number_saturation})\n`;
-  return code;
-};
-
-Blockly.Python['vector_dock_with_cube'] = function(block) {
-  var variable_robot_var = Blockly.Python.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
-  var code = `${variable_robot_var}.world.connect_cube()\nif ${variable_robot_var}.world.connected_light_cube:\n  ${variable_robot_var}.behavior.dock_with_cube(${variable_robot_var}.world.connected_light_cube)\n`;
   return code;
 };
 

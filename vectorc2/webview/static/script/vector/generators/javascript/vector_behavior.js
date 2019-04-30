@@ -27,6 +27,12 @@ Blockly.JavaScript['vector_behavior_drive_on_charger'] = function(block) {
   return code;
 };
 
+Blockly.JavaScript['vector_dock_with_cube'] = function(block) {
+  var variable_robot_var = VectorUtils.getRobotVar(block);
+  var code = `${variable_robot_var}.behavior.dockWithCube();\n`;
+  return code;
+};
+
 Blockly.JavaScript['vector_behavior_drive_straight'] = function(block) {
   var variable_robot_var = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
   var value_distance = Blockly.JavaScript.valueToCode(block, 'distance', Blockly.JavaScript.ORDER_ATOMIC);
@@ -61,12 +67,6 @@ Blockly.JavaScript['vector_set_eye_color_hue_saturation'] = function(block) {
   var angle_hue = block.getFieldValue('hue');
   var number_saturation = block.getFieldValue('saturation');
   var code = `${variable_robot_var}.behavior.setEyeColorHS(${angle_hue/360}, ${number_saturation});\n`;
-  return code;
-};
-
-Blockly.JavaScript['vector_dock_with_cube'] = function(block) {
-  var variable_robot_var = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
-  var code = `${variable_robot_var}.behavior.dockWithCube();\n`;
   return code;
 };
 
