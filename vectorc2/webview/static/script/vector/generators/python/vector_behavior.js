@@ -33,6 +33,13 @@ Blockly.Python['vector_dock_with_cube'] = function(block) {
   return code;
 };
 
+Blockly.Python['vector_set_eye_color'] = function(block) {
+  var variable_robot_var = VectorUtils.getRobotVar(block);
+  var value_color_rgb = Blockly.Python.valueToCode(block, 'color_rgb', Blockly.Python.ORDER_ATOMIC);
+  var code = `${variable_robot_var}.behavior.set_eye_color(**rgb_to_hs(${value_color_rgb}))\n`;
+  return code;
+};
+
 Blockly.Python['vector_behavior_drive_straight'] = function(block) {
   var variable_robot_var = Blockly.Python.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
   var value_distance = Blockly.Python.valueToCode(block, 'distance', Blockly.Python.ORDER_ATOMIC);
@@ -55,13 +62,6 @@ Blockly.Python['vector_behavior_turn_in_place'] = function(block) {
   // var code = `${variable_robot_var}.behavior.turn_in_place(${value_angle}${value_speed}${value_accel}${value_angle_tolerance}, ${checkbox_is_absolute}, ${number_num_retries});\n`;
   var code = `${variable_robot_var}.behavior.turn_in_place(${value_angle}${value_speed}${value_accel}${value_angle_tolerance});\n`;
 
-  return code;
-};
-
-Blockly.Python['vector_set_eye_color'] = function(block) {
-  var variable_robot_var = Blockly.Python.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
-  var value_color_rgb = Blockly.Python.valueToCode(block, 'color_rgb', Blockly.Python.ORDER_ATOMIC);
-  var code = `${variable_robot_var}.behavior.set_eye_color(**rgb_to_hs(${value_color_rgb}))\n`;
   return code;
 };
 

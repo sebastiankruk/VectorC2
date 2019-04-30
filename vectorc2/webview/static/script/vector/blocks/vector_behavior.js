@@ -22,6 +22,7 @@
   VectorMutator.init('vector_behavior_drive_off_charger_ex');
   VectorMutator.init('vector_behavior_drive_on_charger_ex');
   VectorMutator.init('vector_dock_with_cube_ex');
+  VectorMutator.init('vector_set_eye_color_ex');
 
 
 }());
