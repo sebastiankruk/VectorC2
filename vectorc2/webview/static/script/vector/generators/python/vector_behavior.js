@@ -41,7 +41,7 @@ Blockly.Python['vector_set_eye_color'] = function(block) {
 };
 
 Blockly.Python['vector_behavior_drive_straight'] = function(block) {
-  var variable_robot_var = Blockly.Python.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
+  var variable_robot_var = VectorUtils.getRobotVar(block);
   var value_distance = Blockly.Python.valueToCode(block, 'distance', Blockly.Python.ORDER_ATOMIC);
   var value_speed = Blockly.Python.valueToCode(block, 'speed', Blockly.Python.ORDER_ATOMIC);
   var checkbox_should_play_anim = GeneratorUtils.getPythonBooleanValue(block, 'should_play_anim');
@@ -51,7 +51,7 @@ Blockly.Python['vector_behavior_drive_straight'] = function(block) {
 };
 
 Blockly.Python['vector_behavior_turn_in_place'] = function(block) {
-  var variable_robot_var = Blockly.Python.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
+  var variable_robot_var = VectorUtils.getRobotVar(block);
   var value_angle = Blockly.Python.valueToCode(block, 'angle', Blockly.Python.ORDER_ATOMIC);
   var value_speed = GeneratorUtils.getNamedValueOrNothing(block, Blockly.Python, 'speed');
   var value_accel = GeneratorUtils.getNamedValueOrNothing(block, Blockly.Python, 'accel');
