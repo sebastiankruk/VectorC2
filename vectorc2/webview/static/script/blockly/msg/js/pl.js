@@ -484,10 +484,17 @@ Blockly.Msg["VECTOR_SAY_TEXT_TOOLTIP"] = "Vector coś powie";
 Blockly.Msg["VECTOR_SAY_TEXT_SIMPLE_MESSAGE"] = "Vector %1 powiedz %2";
 Blockly.Msg["VECTOR_SAY_TEXT_SIMPLE_TOOLTIP"] = "Vector coś powie";
 
-Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_OFF_CHARGER_MESSAGE"] = "Zjedź Vectorem %1 z ładowarki";
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_OFF_CHARGER_MESSAGE"] = "Zjedź Vectorem z ładowarki";
 Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_OFF_CHARGER_TOOLTIP"] = "Vector zjedzie z ładowarki";
-Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_ON_CHARGER_MESSAGE"] = "Wjedź Vectorem %1 na ładowarkę";
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_ON_CHARGER_MESSAGE"] = "Wjedź Vectorem na ładowarkę";
 Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_ON_CHARGER_TOOLTIP"] = "Vector wjeżdża na ładowarkę";
+
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_OFF_CHARGER_EX_MESSAGE"] = "Zjedź Vectorem z ładowarki %1";
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_OFF_CHARGER_EX_TOOLTIP"] = "Vector zjedzie z ładowarki";
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_ON_CHARGER_EX_MESSAGE"] = "Wjedź Vectorem na ładowarkę %1";
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_ON_CHARGER_EX_TOOLTIP"] = "Vector wjeżdża na ładowarkę";
+
+
 Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_MESSAGE"] = "Jedź Vectorem %1 prosto %2 z prędkością %3 %4 i odgrywaj animację %5 Spróbuj powtórzyć %6 razy";
 Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_TOOLTIP"] = "Vector pojedzie w lini prostej.";
 Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_MESSAGE"] = "Obróć Vectora %1 o kąt %2 z prędkością %3 i przyspieszeniem %4 kończąc z tolerancją %5 %6 Podany kąt jest absolutny %7 Spróbuj powtórzyć %8 razy";

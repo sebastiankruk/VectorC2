@@ -484,10 +484,18 @@ Blockly.Msg["VECTOR_SAY_TEXT_TOOLTIP"] = "Vector will say something";
 Blockly.Msg["VECTOR_SAY_TEXT_SIMPLE_MESSAGE"] = "Vector %1 say %2";
 Blockly.Msg["VECTOR_SAY_TEXT_SIMPLE_TOOLTIP"] = "Vector will say something";
 
-Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_OFF_CHARGER_MESSAGE"] = "Drive %1 off charger";
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_OFF_CHARGER_MESSAGE"] = "Drive off charger";
 Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_OFF_CHARGER_TOOLTIP"] = "Drive Vector off the charger";
-Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_ON_CHARGER_MESSAGE"] = "Drive %1 on charger";
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_ON_CHARGER_MESSAGE"] = "Drive on charger";
 Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_ON_CHARGER_TOOLTIP"] = "Drive Vector onto the charger";
+
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_OFF_CHARGER_EX_MESSAGE"] = "Drive off charger %1";
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_OFF_CHARGER_EX_TOOLTIP"] = "Drive Vector off the charger";
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_ON_CHARGER_EX_MESSAGE"] = "Drive on charger %1";
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_ON_CHARGER_EX_TOOLTIP"] = "Drive Vector onto the charger";
+
+
+
 Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_MESSAGE"] = "Vector %1 drives straight %2 at speed %3 %4 and plays animation %5 Repeat attempts %6 times";
 Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_TOOLTIP"] = "Tells Vector to drive in a straight line.";
 Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_MESSAGE"] = "Rotate %1 by %2 angle at speed %3 with acceleration %4 complete at toleration %5 %6 Angle is absolute %7 Repeat attempts %8 times";
