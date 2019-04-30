@@ -63,7 +63,7 @@ Blockly.JavaScript['vector_behavior_turn_in_place'] = function(block) {
 };
 
 Blockly.JavaScript['vector_set_eye_color_hue_saturation'] = function(block) {
-  var variable_robot_var = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
+  var variable_robot_var = VectorUtils.getRobotVar(block);
   var angle_hue = block.getFieldValue('hue');
   var number_saturation = block.getFieldValue('saturation');
   var code = `${variable_robot_var}.behavior.setEyeColorHS(${angle_hue/360}, ${number_saturation});\n`;
@@ -71,14 +71,14 @@ Blockly.JavaScript['vector_set_eye_color_hue_saturation'] = function(block) {
 };
 
 Blockly.JavaScript['vector_set_head_angle'] = function(block) {
-  var variable_robot_var = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
+  var variable_robot_var = VectorUtils.getRobotVar(block);
   var value_angle = Blockly.JavaScript.valueToCode(block, 'angle', Blockly.JavaScript.ORDER_ATOMIC);
   var code = `${variable_robot_var}.behavior.setHeadAngle(${value_angle});\n`;
   return code;
 };
 
 Blockly.JavaScript['vector_set_lift_height'] = function(block) {
-  var variable_robot_var = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('robot_var'), Blockly.Variables.NAME_TYPE);
+  var variable_robot_var = VectorUtils.getRobotVar(block);
   var value_height = Blockly.JavaScript.valueToCode(block, 'height', Blockly.JavaScript.ORDER_ATOMIC);
   var code = `${variable_robot_var}.behavior.setLiftHeight(${value_height});\n`;
   return code;

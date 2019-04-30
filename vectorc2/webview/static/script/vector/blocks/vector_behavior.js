@@ -25,6 +25,9 @@
   VectorMutator.init('vector_set_eye_color_ex');
   VectorMutator.init('vector_behavior_drive_straight_ex'); //TODO make speed, animation, repeat
   VectorMutator.init('vector_behavior_turn_in_place_ex'); //TODO make speed, acceleration, complete toleration, absolute, repeat
+  VectorMutator.init('vector_set_eye_color_hue_saturation_ex'); 
+  VectorMutator.init('vector_set_head_angle_ex'); 
+  VectorMutator.init('vector_set_lift_height_ex'); 
 
 
 }());
