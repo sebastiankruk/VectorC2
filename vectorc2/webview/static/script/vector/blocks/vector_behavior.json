@@ -48,18 +48,11 @@
   "tooltip": "%{BKY_VECTOR_SET_EYE_COLOR_TOOLTIP}",
   "helpUrl": "https://sdk-resources.anki.com/vector/docs/generated/anki_vector.behavior.html#anki_vector.behavior.BehaviorComponent.set_eye_color"
 },
-
-
 {
   "type": "vector_behavior_drive_straight",
   "message0": "%{BKY_VECTOR_BEHAVIOR_DRIVE_STRAIGHT_MESSAGE}",
   "lastDummyAlign0": "RIGHT",
   "args0": [
-    {
-      "type": "field_variable",
-      "name": "robot_var",
-      "variable": "robot"
-    },
     {
       "type": "input_value",
       "name": "distance",
@@ -93,6 +86,7 @@
   "previousStatement": null,
   "nextStatement": null,
   "colour": 30,
+  "mutator": "vector_behavior_drive_straight_ex_mutator",
   "tooltip": "%{BKY_VECTOR_BEHAVIOR_DRIVE_STRAIGHT_TOOLTIP}",
   "helpUrl": "https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html#anki_vector.behavior.BehaviorComponent.drive_straight"
 },
@@ -101,11 +95,6 @@
   "message0": "%{BKY_VECTOR_BEHAVIOR_TURN_IN_PLACE_MESSAGE}",
   "lastDummyAlign0": "RIGHT",
   "args0": [
-    {
-      "type": "field_variable",
-      "name": "robot_var",
-      "variable": "robot"
-    },
     {
       "type": "input_value",
       "name": "angle",
@@ -152,6 +141,7 @@
   "previousStatement": null,
   "nextStatement": null,
   "colour": 30,
+  "mutator": "vector_behavior_turn_in_place_ex_mutator",
   "tooltip": "%{BKY_VECTOR_BEHAVIOR_TURN_IN_PLACE_TOOLTIP}",
   "helpUrl": "https://developer.anki.com/vector/docs/generated/anki_vector.behavior.html#anki_vector.behavior.BehaviorComponent.turn_in_place"
 },

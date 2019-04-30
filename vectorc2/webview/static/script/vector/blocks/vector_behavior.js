@@ -23,6 +23,8 @@
   VectorMutator.init('vector_behavior_drive_on_charger_ex');
   VectorMutator.init('vector_dock_with_cube_ex');
   VectorMutator.init('vector_set_eye_color_ex');
+  VectorMutator.init('vector_behavior_drive_straight_ex'); //TODO make speed, animation, repeat
+  VectorMutator.init('vector_behavior_turn_in_place_ex'); //TODO make speed, acceleration, complete toleration, absolute, repeat
 
 
 }());
