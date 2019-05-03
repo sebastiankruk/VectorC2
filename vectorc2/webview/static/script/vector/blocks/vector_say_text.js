@@ -21,9 +21,11 @@
 
   VectorMutator.init('vector_say_text_ex', {
     voice: {
+      align: Blockly.ALIGN_RIGHT,
       blockFieldFunction: () => new Blockly.FieldCheckbox("TRUE")
     },
     speed: {
+      align: Blockly.ALIGN_RIGHT,
       blockFieldFunction: () => new Blockly.FieldNumber(1, 0.1, 2, 0.1)
     }
   });

@@ -455,13 +455,6 @@ Blockly.Msg["VECTOR_ROBOT_EX_VARIABLE_TOOLTIP"] = "Add, remove, or reorder secti
 Blockly.Msg["VECTOR_ROBOT_EX_SERIAL_TITLE"] = "with serial number";
 Blockly.Msg["VECTOR_ROBOT_EX_SERIAL_TOOLTIP"] = "Add block to control which vector to use";  
 
-Blockly.Msg["VECTOR_SAY_TEXT_EX_OPT_MESSAGE"] = "Vector say %1";
-Blockly.Msg["VECTOR_SAY_TEXT_EX_OPT_TOOLTIP"] = "Basic code wrapper; drop extensions from the left panel to enable more options";
-Blockly.Msg["VECTOR_SAY_TEXT_EX_VOICE_OPT_TITLE"] = "with voice control"
-Blockly.Msg["VECTOR_SAY_TEXT_EX_VOICE_OPT_TOOLTIP"] = "Add to code wrapper to enable to control vector voice"
-Blockly.Msg["VECTOR_SAY_TEXT_EX_SPEED_OPT_TITLE"] = "with speed control"
-Blockly.Msg["VECTOR_SAY_TEXT_EX_SPEED_OPT_TOOLTIP"] = "Add to code wrapper to enable to control relative speed"
-
 Blockly.Msg["VECTOR_UTILS_DISTANCE_MM_MESSAGE"] = "distance in mm %1";
 Blockly.Msg["VECTOR_UTILS_DISTANCE_MM_TOOLTIP"] = "distance in millimeters";
 Blockly.Msg["VECTOR_UTILS_SPEED_MMPS_MESSAGE"] = "speed in mm/s %1";
@@ -483,6 +476,15 @@ Blockly.Msg["VECTOR_SAY_TEXT_MESSAGE"] = "Say: %1"; // with vector voice %3 %4 a
 Blockly.Msg["VECTOR_SAY_TEXT_TOOLTIP"] = "Vector will say something";
 Blockly.Msg["VECTOR_SAY_TEXT_SIMPLE_MESSAGE"] = "Vector %1 say %2";
 Blockly.Msg["VECTOR_SAY_TEXT_SIMPLE_TOOLTIP"] = "Vector will say something";
+Blockly.Msg["VECTOR_SAY_TEXT_EX_MESSAGE"] = "Vector say %1";
+Blockly.Msg["VECTOR_SAY_TEXT_EX_TOOLTIP"] = "Basic code wrapper; drop extensions from the left panel to enable more options";
+Blockly.Msg["VECTOR_SAY_TEXT_EX_VOICE_OPT_PRE_TITLE"] = "with Vector voice"
+Blockly.Msg["VECTOR_SAY_TEXT_EX_VOICE_OPT_TITLE"] = "with voice control"
+Blockly.Msg["VECTOR_SAY_TEXT_EX_VOICE_OPT_TOOLTIP"] = "Add to code wrapper to enable to control vector voice"
+Blockly.Msg["VECTOR_SAY_TEXT_EX_SPEED_OPT_PRE_TITLE"] = "at speed"
+Blockly.Msg["VECTOR_SAY_TEXT_EX_SPEED_OPT_TITLE"] = "with speed control"
+Blockly.Msg["VECTOR_SAY_TEXT_EX_SPEED_OPT_TOOLTIP"] = "Add to code wrapper to enable to control relative speed"
+
 
 Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_OFF_CHARGER_MESSAGE"] = "Drive off charger";
 Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_OFF_CHARGER_TOOLTIP"] = "Drive Vector off the charger";
@@ -492,10 +494,34 @@ Blockly.Msg["VECTOR_DOCK_WITH_CUBE_MESSAGE"] = "Dock with cube";
 Blockly.Msg["VECTOR_DOCK_WITH_CUBE_TOOLTIP"] = "Tells Vector to dock with a light cube, optionally using a given approach angle and distance.";
 Blockly.Msg["VECTOR_SET_EYE_COLOR_MESSAGE"] = "Set eye color to %1";
 Blockly.Msg["VECTOR_SET_EYE_COLOR_TOOLTIP"] = "Set Vector’s eye color.";
+
 Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_MESSAGE"] = "Drive straight %1";
 Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_TOOLTIP"] = "Tells Vector to drive in a straight line.";
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_EX_MESSAGE"] = "Drive straight %1";
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_EX_TOOLTIP"] = "Tells Vector to drive in a straight line.";
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_EX_OPT_MESSAGE"] = "Drive straight %1";
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_EX_SPEED_OPT_POST_TITLE"] = "at the speed";
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_EX_SPEED_OPT_TITLE"] = "with speed control";
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_EX_SHOULD_PLAY_ANIM_OPT_PRE_TITLE"] = "with animation played";
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_EX_SHOULD_PLAY_ANIM_OPT_TITLE"] = "with control if animation is played";
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_EX_NUM_RETRIES_OPT_PRE_TITLE"] = "Repeat attempts";
+Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_EX_NUM_RETRIES_OPT_TITLE"] = "with attempt times control";
+
 Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_MESSAGE"] = "Rotate by %1 angle";
 Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_TOOLTIP"] = "Turn the robot around its current position.";
+Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_MESSAGE"] = "Rotate %1";
+Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_TOOLTIP"] = "Turn the robot around its current position.";
+Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_OPT_MESSAGE"] = "Rotate %1";
+Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_SPEED_OPT_POST_TITLE"] = "with speed"; 
+Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_SPEED_OPT_TITLE"] = "with speed control"; 
+Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_ACCEL_OPT_POST_TITLE"] = "with acceleration";
+Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_ACCEL_OPT_TITLE"] = "with acceleration control";
+Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_ANGLE_TOLERANCE_OPT_POST_TITLE"] = "with angle tolerance";
+Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_ANGLE_TOLERANCE_OPT_TITLE"] = "with angle tolerance control";
+Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_IS_ABSOLUTE_OPT_PRE_TITLE"] = "with angle given as absolute";
+Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_IS_ABSOLUTE_OPT_TITLE"] = "with control if angle given as absolute";
+Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_NUM_RETRIES_OPT_PRE_TITLE"] = "Repeat attempts";
+Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_NUM_RETRIES_OPT_TITLE"] = "with attempt times control";
 
 Blockly.Msg["VECTOR_SET_EYE_COLOR_HUE_SATURATION_MESSAGE"] = "Set eye color with hue %1 saturation %2";
 Blockly.Msg["VECTOR_SET_EYE_COLOR_HUE_SATURATION_TOOLTIP"] = "Set Vector’s eye color.";
@@ -512,22 +538,6 @@ Blockly.Msg["VECTOR_DOCK_WITH_CUBE_EX_MESSAGE"] = "Dock with cube %1";
 Blockly.Msg["VECTOR_DOCK_WITH_CUBE_EX_TOOLTIP"] = "Tells Vector to dock with a light cube, optionally using a given approach angle and distance.";
 Blockly.Msg["VECTOR_SET_EYE_COLOR_EX_MESSAGE"] = "Set eye color %1";
 Blockly.Msg["VECTOR_SET_EYE_COLOR_EX_TOOLTIP"] = "Set Vector’s eye color.";
-
-Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_EX_MESSAGE"] = "Drive straight %1";
-Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_EX_TOOLTIP"] = "Tells Vector to drive in a straight line.";
-Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_EX_OPT_MESSAGE"] = "Drive straight %1";
-Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_EX_SPEED_OPT_TITLE"] = "with speed control";
-Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_EX_SHOULD_PLAY_ANIM_OPT_TITLE"] = "with control if animation is played";
-Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_EX_NUM_RETRIES_OPT_TITLE"] = "with attempt times control";
-
-Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_MESSAGE"] = "Rotate %1";
-Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_TOOLTIP"] = "Turn the robot around its current position.";
-Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_OPT_MESSAGE"] = "Rotate %1";
-Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_SPEED_OPT_TITLE"] = "with speed control"; 
-Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_ACCEL_OPT_TITLE"] = "with acceleration control";
-Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_ANGLE_TOLERANCE_OPT_TITLE"] = "with angle tolerance";
-Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_IS_ABSOLUTE_OPT_TITLE"] = "with angle given as absolute";
-Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_NUM_RETRIES_OPT_TITLE"] = "with attempt times control";
 
 Blockly.Msg["VECTOR_SET_EYE_COLOR_HUE_SATURATION_EX_MESSAGE"] = "Set eye color %1";
 Blockly.Msg["VECTOR_SET_EYE_COLOR_HUE_SATURATION_EX_TOOLTIP"] = "Set Vector’s eye color.";
