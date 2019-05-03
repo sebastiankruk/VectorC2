@@ -215,11 +215,6 @@ const VectorMutator = (function(){
               })
 
         //recreate
-        if (this.robotVar_) {
-            this.appendDummyInput(__ROBOT_VAR_DUMMY)
-                .appendField(Blockly.Msg.VECTOR_ROBOT_EX_VARIABLE_TITLE)
-                .appendField(new Blockly.FieldVariable('robot'), __ROBOT_VAR_U);
-        }
         Object.entries(this.exVars_)
               .filter(entry => entry[1].status)
               .filter(entry => typeof entry[1].blockCreateFunction !== 'undefined')
@@ -232,7 +227,12 @@ const VectorMutator = (function(){
                     .appendField(Blockly.Msg[`${id}_${entry[0]}_OPT_TITLE`.toUpperCase()])
                     .appendField(entry[1].blockFieldFunction(this), entry[1].varU);
               });
-
+        if (this.robotVar_) {
+          this.appendDummyInput(__ROBOT_VAR_DUMMY)
+              .appendField(Blockly.Msg.VECTOR_ROBOT_EX_VARIABLE_TITLE)
+              .appendField(new Blockly.FieldVariable('robot'), __ROBOT_VAR_U);
+        }
+    
         if (this.robotVar_ ||
             Object.values(this.exVars_)
                   .map(value => value.status)
@@ -248,15 +248,15 @@ const VectorMutator = (function(){
   
         let extVariableConnection = {};
   
-        if (this.getInput(__ROBOT_VAR_DUMMY)) {
-          extVariableConnection[__ROBOT_VAR_U] = this.getInput(__ROBOT_VAR_DUMMY).fieldRow[1].connection.targetConnection;
-        }
         Object.values(this.exVars_)
               .filter(v => this.getInput(v.varU))
               .forEach(v => { 
                 extVariableConnection[v.varU] = this.getInput(v.varU).connection.targetConnection
               })
-  
+        if (this.getInput(__ROBOT_VAR_DUMMY)) {
+          extVariableConnection[__ROBOT_VAR_U] = this.getInput(__ROBOT_VAR_DUMMY).fieldRow[1].connection.targetConnection;
+        }
+        
         this.updateShape_();
         this.reconnectChildBlocks_(extVariableConnection);
       },
