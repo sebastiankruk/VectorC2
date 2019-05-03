@@ -55,31 +55,13 @@ const VectorBlocks = (function(){
    */
   function __loadCustomBlocks(jsonFile) {
     return function(data) {
-      if (Array.isArray(data)) {
-        for ( let block of data ) {
-          __initializeSingleBlock(block);
-        }
-      } else {
-        __initializeSingleBlock(data);
-      }
+      VectorUtils.initializeBlocks(...data);
       if (JSON_BLOCK_SPECS[jsonFile].mutators) {
         __cachedScript(`/static/script/vector/blocks/${jsonFile}.js`).then(data => __isInitialized(jsonFile));
       } else {
         __isInitialized(jsonFile);
       }
 
-    };
-  }
-
-  /**
-   * Initializes a single custom Blockly block
-   * @param {JSON Object} block 
-   */
-  function __initializeSingleBlock(block) {
-    Blockly.Blocks[block.type] = {
-      init: function() {
-        this.jsonInit(block);
-      }
     };
   }
 
