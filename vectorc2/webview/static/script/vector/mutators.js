@@ -54,6 +54,18 @@ const VectorMutator = (function(){
 
     return {
       robotVar_: false,
+      ex_: {
+        /*
+        someName: {
+          status: false, //default value
+
+
+
+
+
+        }
+        */
+      },
   
       /**
        * Create XML to represent the vector_say_text mutations
@@ -62,11 +74,13 @@ const VectorMutator = (function(){
        */
       mutationToDom: function() {
   
-        if (!this.robotVar_) {
+        if (!this.robotVar_ && 
+            Object.values(this.ex_).map( o => o.status).every(Boolean)) {
           return null;
         }
         let container = document.createElement('mutation');
         container.setAttribute(__ROBOTVAR, this.robotVar_);
+        Object.entries(this.ex_).map( entry => container.setAttribute(`${entry[0]}var`, entry[1].status) )
         return container;
       },
       /**
@@ -76,6 +90,7 @@ const VectorMutator = (function(){
        */
       domToMutation: function(xmlElement) {
         this.robotVar_ = xmlElement.getAttribute(__ROBOTVAR) === 'true';
+        Object.entries(this.ex_).map( entry =>  entry[1].status = xmlElement.getAttribute(`${entry[0]}var`) === 'true' )
         this.rebuildShape_();
       },
       /**
@@ -96,6 +111,14 @@ const VectorMutator = (function(){
           connection.connect(robotVarBlock.previousConnection);
           connection = robotVarBlock.nextConnection;
         }
+        Object.entries(ex_)
+              .filter( entry => entry[1].status )
+              .map( entry => {
+                let exVarBlock = workspace.newBlock(`${id}_${entry[0]}_opt`);
+                exVarBlock.initSvg();
+                connection.connect(exVarBlock.previousConnection);
+                connection = exVarBlock.nextConnection;
+              })
   
         return topBlock;
       },
