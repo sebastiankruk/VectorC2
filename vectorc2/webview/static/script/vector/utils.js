@@ -51,10 +51,25 @@ const VectorUtils = (function(){
                                                   Blockly.Variables.NAME_TYPE)
   }
 
+  /**
+   * Initializes one or more custom Blockly block
+   * @param {JSON Object} ...blocks 
+   */
+  function _initializeBlocks(...blocks) {
+    for ( let block of blocks ) { 
+      Blockly.Blocks[block.type] = {
+        init: function() {
+          this.jsonInit(block);
+        }
+      };
+    };
+  }  
+
   return {
     getFieldValue: _getFieldValue,
     getFieldText: _getFieldText,
-    getRobotVar: _getRobotVar
+    getRobotVar: _getRobotVar,
+    initializeBlocks: _initializeBlocks
   };
 
 })();
