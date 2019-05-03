@@ -41,7 +41,7 @@ const VectorMutator = (function(){
       {
         _comment: "Block representing mutator UI wrapper",
         type: `${id}_wrapper`,
-        message0: `%{BKY_${id.toUpperCase()}_OPT_MESSAGE}`,
+        message0: `%{BKY_${id.toUpperCase()}_MESSAGE}`,
         args0: [
           {
             type: "input_dummy"
@@ -53,7 +53,7 @@ const VectorMutator = (function(){
           __RVEVAROPT
         ].filter(el => true), */
         colour: 150,
-        tooltip: `%{BKY_${id.toUpperCase()}_OPT_TOOLTIP}`,
+        tooltip: `%{BKY_${id.toUpperCase()}_TOOLTIP}`,
         helpUrl: "" 
       },
       // and optional list of other extensions
@@ -87,10 +87,10 @@ const VectorMutator = (function(){
           var: `${entry[0]}var`,
           varDummy: `${entry[0].toUpperCase()}_VAR_DUMMY`,
           varU: `${entry[0].toUpperCase()}_VAR`,
+          appendFunction: entry[1].appendFunction,
+          checkType: entry[1].checkType,
           blockCreateFunction: entry[1].blockCreateFunction,
           blockFieldFunction: entry[1].blockFieldFunction,
-          isPreLabel: typeof entry[1].isPreLabel === 'undefined' || entry[1].isPreLabel,
-          isPostLabel: entry[1].isPostLabel || false,
           align: entry[1].align
         };
         return exVars;
@@ -222,23 +222,25 @@ const VectorMutator = (function(){
         //recreate
         Object.entries(this.exVars_)
               .filter(entry => entry[1].status)
-              .filter(entry => typeof entry[1].blockCreateFunction !== 'undefined')
+              .filter(entry => typeof entry[1].blockCreateFunction === 'function')
               .forEach(entry => entry[1].blockCreateFunction(this));
         Object.entries(this.exVars_)
               .filter(entry => entry[1].status)
-              .filter(entry => typeof entry[1].blockFieldFunction !== 'undefined')
+              .filter(entry => entry[1].appendFunction ||
+                               typeof entry[1].blockFieldFunction === 'function')
               .forEach(entry => {
-                let input = this.appendDummyInput(entry[1].varDummy);
+                let input = this[entry[1].appendFunction || 'appendDummyInput'](entry[1].varDummy);
                 if (entry[1].align) {
                   input.setAlign(entry[1].align);
                 };
-                if (entry[1].isPreLabel) {
-                  input.appendField(Blockly.Msg[`${id}_${entry[0]}_OPT_TITLE`.toUpperCase()]);
-                };
-                input.appendField(entry[1].blockFieldFunction(this), entry[1].varU);
-                if (entry[1].isPostLabel) {
-                  input.appendField(Blockly.Msg[`${id}_${entry[0]}_OPT_POST_TITLE`.toUpperCase()]);
-                };
+                if (entry[1].checkType) {
+                  input.setCheck(entry[1].checkType);
+                }
+                input.appendField(Blockly.Msg[`${id}_${entry[0]}_OPT_PRE_TITLE`.toUpperCase()]);
+                if (typeof entry[1].blockFieldFunction === 'function') {
+                  input.appendField(entry[1].blockFieldFunction(this), entry[1].varU);
+                }
+                input.appendField(Blockly.Msg[`${id}_${entry[0]}_OPT_POST_TITLE`.toUpperCase()]);
               });
         if (this.robotVar_) {
           this.appendDummyInput(__ROBOT_VAR_DUMMY)
