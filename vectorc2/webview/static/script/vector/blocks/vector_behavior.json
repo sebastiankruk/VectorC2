@@ -57,29 +57,6 @@
       "type": "input_value",
       "name": "distance",
       "check": "Distance"
-    },
-    {
-      "type": "input_value",
-      "name": "speed",
-      "check": "Speed",
-      "align": "RIGHT"
-    },
-    {
-      "type": "field_checkbox",
-      "name": "should_play_anim",
-      "checked": true
-    },
-    {
-      "type": "input_dummy",
-      "align": "RIGHT"
-    },
-    {
-      "type": "field_number",
-      "name": "num_retries",
-      "value": 0,
-      "min": 0,
-      "max": 10,
-      "precision": 1
     }
   ],
   "inputsInline": false,

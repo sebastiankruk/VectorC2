@@ -24,7 +24,6 @@ const VectorMutator = (function(){
   'use strict';
 
   const __RVEVAROPT = 'controls_vector_robot_vector_ext_variable_opt';
-  const __EXTVAROPTS = {};
   const __ROBOTVAR  = 'robotvar'
   const __ROBOT_VAR_DUMMY = 'ROBOT_VAR_DUMMY';
   const __ROBOT_VAR_U = 'ROBOT_VAR';
@@ -36,7 +35,7 @@ const VectorMutator = (function(){
    * @param {Blockly array} id 
    * @param {JSON Object} extensions (optional) definition of extensions to this mutator
    */
-  function __mutatorBlocks(id, extensions=[]) {
+  function __mutatorBlocks(id, _extVarOpts, extensions=[]) {
     return [
       // each mutator will have vector robot variable
       {
@@ -50,7 +49,7 @@ const VectorMutator = (function(){
         ],
         nextStatement: null, /*[
           // potential optional extensions
-          ...Object.keys(__EXTVAROPTS),
+          ...Object.keys(_extVarOpts),
           __RVEVAROPT
         ].filter(el => true), */
         colour: 150,
@@ -78,7 +77,7 @@ const VectorMutator = (function(){
    * @param {String} id e.g., 'vector_say_text_ex'
    * @param {JSON Object} extensions (optional) definition of extensions to this mutator
    */
-  function __mixim(id, extensions=[]) {
+  function __mixim(id, _extVarOpts, extensions=[]) {
 
     return {
       robotVar_: false,
@@ -89,12 +88,15 @@ const VectorMutator = (function(){
           varDummy: `${entry[0].toUpperCase()}_VAR_DUMMY`,
           varU: `${entry[0].toUpperCase()}_VAR`,
           blockCreateFunction: entry[1].blockCreateFunction,
-          blockFieldFunction: entry[1].blockFieldFunction
+          blockFieldFunction: entry[1].blockFieldFunction,
+          isPreLabel: typeof entry[1].isPreLabel === 'undefined' || entry[1].isPreLabel,
+          isPostLabel: entry[1].isPostLabel || false,
+          align: entry[1].align
         };
         return exVars;
       }, {}),
+      extVarOpts: _extVarOpts,
 
-  
       /**
        * Create XML to represent the vector_say_text mutations
        * @return {Element} XML storage element.
@@ -178,8 +180,8 @@ const VectorMutator = (function(){
                 extVariableConnection[__ROBOT_VAR_U] = clauseBlock.statementConnection_;
               } 
           } else
-          if (clauseBlock.type in __EXTVAROPTS) {
-            let exVar = this.exVars_[ __EXTVAROPTS[clauseBlock.type] ];
+          if (clauseBlock.type in this.extVarOpts) {
+            let exVar = this.exVars_[ this.extVarOpts[clauseBlock.type] ];
             if (!exVar.status) {
               exVar.status = true;
               extVariableConnection[exVar.varU] = clauseBlock.statementConnection_
@@ -212,6 +214,9 @@ const VectorMutator = (function(){
                 if (this.getInput(value.varDummy)) {
                   this.removeInput(value.varDummy);
                 }
+                if (this.getInput(value.varU)) {
+                  this.removeInput(value.varU);
+                }
               })
 
         //recreate
@@ -223,9 +228,17 @@ const VectorMutator = (function(){
               .filter(entry => entry[1].status)
               .filter(entry => typeof entry[1].blockFieldFunction !== 'undefined')
               .forEach(entry => {
-                this.appendDummyInput(entry[1].varDummy)
-                    .appendField(Blockly.Msg[`${id}_${entry[0]}_OPT_TITLE`.toUpperCase()])
-                    .appendField(entry[1].blockFieldFunction(this), entry[1].varU);
+                let input = this.appendDummyInput(entry[1].varDummy);
+                if (entry[1].align) {
+                  input.setAlign(entry[1].align);
+                };
+                if (entry[1].isPreLabel) {
+                  input.appendField(Blockly.Msg[`${id}_${entry[0]}_OPT_TITLE`.toUpperCase()]);
+                };
+                input.appendField(entry[1].blockFieldFunction(this), entry[1].varU);
+                if (entry[1].isPostLabel) {
+                  input.appendField(Blockly.Msg[`${id}_${entry[0]}_OPT_POST_TITLE`.toUpperCase()]);
+                };
               });
         if (this.robotVar_) {
           this.appendDummyInput(__ROBOT_VAR_DUMMY)
@@ -278,23 +291,25 @@ const VectorMutator = (function(){
    * @param {*} id e.g., 'controls_vector_say_text_opt'
    */
   function _init(id, extensions={}) {
-    Object.keys(extensions)
-          .forEach(ex => __EXTVAROPTS[`${id}_${ex}_opt`] = ex ); 
-
-    const blocks_ = __mutatorBlocks(id, extensions);
+    const extVarOpts_ = Object.keys(extensions)
+                               .reduce( (vars, ex) => {
+                                 vars[`${id}_${ex}_opt`] = ex;
+                                 return vars
+                               }, {} ); 
+    const blocks_ = __mutatorBlocks(id, extVarOpts_, extensions);
     const mutator_ = `${id}_mutator`;
     const mixin_ = `${mutator_.toUpperCase()}_MIXIN`;
 
     VectorUtils.initializeBlocks(...blocks_)
 
-    Blockly.Constants.VectorUtils[mixin_] = __mixim(id, extensions);
+    Blockly.Constants.VectorUtils[mixin_] = __mixim(id, extVarOpts_, extensions);
 
     Blockly.Extensions.registerMutator(mutator_,
       Blockly.Constants.VectorUtils[mixin_], 
       null, //opt_helperFn
       [ 
         // potential optional extensions
-        ...Object.keys(__EXTVAROPTS),
+        ...Object.keys(extVarOpts_),
         __RVEVAROPT
       ].filter(el => true)
     );
