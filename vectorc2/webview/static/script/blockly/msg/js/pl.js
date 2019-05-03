@@ -494,7 +494,7 @@ Blockly.Msg["VECTOR_SET_EYE_COLOR_MESSAGE"] = "Ustaw kolor oczu Vectora %1";
 Blockly.Msg["VECTOR_SET_EYE_COLOR_TOOLTIP"] = "Ustawia kolor oczu wektora.";
 Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_MESSAGE"] = "Jedź prosto %1 ";
 Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_TOOLTIP"] = "Vector pojedzie w lini prostej.";
-Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_MESSAGE"] = "Obróć się o kąt %1 z prędkością %2 i przyspieszeniem %3 kończąc z tolerancją %4 %5 Podany kąt jest absolutny %6 Spróbuj powtórzyć %7 razy";
+Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_MESSAGE"] = "Obróć się o kąt %1";
 Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_TOOLTIP"] = "Obróci Vectora w miejscu";
 Blockly.Msg["VECTOR_SET_EYE_COLOR_HUE_SATURATION_MESSAGE"] = "Ustaw kolor oczu na %1 i nasycenie %2";
 Blockly.Msg["VECTOR_SET_EYE_COLOR_HUE_SATURATION_TOOLTIP"] = "Ustawia kolor oczu wektora.";
@@ -520,6 +520,14 @@ Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_EX_NUM_RETRIES_OPT_MESSAGE"] = "kont
 
 Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_MESSAGE"] = "Obróć Vectora %1";
 Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_TOOLTIP"] = "Obróci Vectora w miejscu";
+Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_OPT_MESSAGE"] = "Obróć Vectora %1"; // z prędkością %2 i przyspieszeniem %3 kończąc z tolerancją %4 %5 Podany kąt jest absolutny %6 Spróbuj powtórzyć %7 razy
+Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_SPEED_OPT_TITLE"] = "kontroluj prędkość"; 
+Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_ACCEL_OPT_TITLE"] = "kontroluj przyspieszenie";
+Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_ANGLE_TOLERANCE_OPT_TITLE"] = "ustal tolerancję zakończenia";
+Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_IS_ABSOLUTE_OPT_TITLE"] = "podaj kąt absolutny";
+Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_NUM_RETRIES_OPT_TITLE"] = "kontroluj ilość prób";
+
+
 Blockly.Msg["VECTOR_SET_EYE_COLOR_HUE_SATURATION_EX_MESSAGE"] = "Ustaw kolor oczu %1";
 Blockly.Msg["VECTOR_SET_EYE_COLOR_HUE_SATURATION_EX_TOOLTIP"] = "Ustawia kolor oczu wektora.";
 Blockly.Msg["VECTOR_SET_HEAD_ANGLE_EX_MESSAGE"] = "Obróć głowę %1";

@@ -77,41 +77,6 @@
       "name": "angle",
       "check": "Angle",
       "align": "RIGHT"
-    },
-    {
-      "type": "input_value",
-      "name": "speed",
-      "check": "Angle",
-      "align": "RIGHT"
-    },
-    {
-      "type": "input_value",
-      "name": "accel",
-      "check": "Angle",
-      "align": "RIGHT"
-    },
-    {
-      "type": "input_value",
-      "name": "angle_tolerance",
-      "check": "Angle",
-      "align": "RIGHT"
-    },
-    {
-      "type": "field_checkbox",
-      "name": "is_absolute",
-      "checked": true
-    },
-    {
-      "type": "input_dummy",
-      "align": "RIGHT"
-    },
-    {
-      "type": "field_number",
-      "name": "num_retries",
-      "value": 0,
-      "min": 0,
-      "max": 10,
-      "precision": 1
     }
   ],
   "inputsInline": false,
