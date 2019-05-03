@@ -32,7 +32,7 @@ const VectorMutator = (function(){
   
   /**
    * Returns an array of one or multiple Blockly JSON object definitions 
-   * that should be pre-initilized before initilizing the rest of the mutator
+   * that should be pre-initialized before initializing the rest of the mutator
    * @param {Blockly array} id 
    * @param {JSON Object} extensions (optional) definition of extensions to this mutator
    */
@@ -42,19 +42,19 @@ const VectorMutator = (function(){
       {
         _comment: "Block representing mutator UI wrapper",
         type: `${id}_wrapper`,
-        message0: `%{BKY_${id.toUpperCase()}_MESSAGE}`,
+        message0: `%{BKY_${id.toUpperCase()}_OPT_MESSAGE}`,
         args0: [
           {
             type: "input_dummy"
           }
         ],
-        nextStatement: [
+        nextStatement: null, /*[
           // potential optional extensions
           ...Object.keys(__EXTVAROPTS),
           __RVEVAROPT
-        ].filter(el => true),
+        ].filter(el => true), */
         colour: 150,
-        tooltip: `%{BKY_${id.toUpperCase()}_TOOLTIP}`,
+        tooltip: `%{BKY_${id.toUpperCase()}_OPT_TOOLTIP}`,
         helpUrl: "" 
       },
       // and optional list of other extensions
@@ -75,7 +75,7 @@ const VectorMutator = (function(){
   }
 
   /**
-   * @param {String} id 'controls_vector_say_text_opt'
+   * @param {String} id e.g., 'vector_say_text_ex'
    * @param {JSON Object} extensions (optional) definition of extensions to this mutator
    */
   function __mixim(id, extensions=[]) {
@@ -85,11 +85,11 @@ const VectorMutator = (function(){
       exVars_: Object.entries(extensions).reduce( (exVars, entry) => {
         exVars[entry[0]] = {
           status: false,
-          var: `${name}var`,
-          varDummy: `${name.toUpperCase()}_VAR_DUMMY`,
-          varU: `${name.toUpperCase()}_VAR`,
-          blockCreateFunction: blockCreateFunction,
-          blockFieldFunction: blockFieldFunction
+          var: `${entry[0]}var`,
+          varDummy: `${entry[0].toUpperCase()}_VAR_DUMMY`,
+          varU: `${entry[0].toUpperCase()}_VAR`,
+          blockCreateFunction: entry[1].blockCreateFunction,
+          blockFieldFunction: entry[1].blockFieldFunction
         };
         return exVars;
       }, {}),
@@ -103,16 +103,16 @@ const VectorMutator = (function(){
       mutationToDom: function() {
   
         if (!this.robotVar_ && 
-            Object.values(this.exVars_)
-                  .map( o => o.status)
-                  .every(Boolean)) {
+            !Object.values(this.exVars_)
+                   .map( o => o.status)
+                   .some(Boolean)) {
           return null;
         }
         let container = document.createElement('mutation');
         container.setAttribute(__ROBOTVAR, this.robotVar_);
         // map extensions
-        Object.entries(this.exVars_)
-              .forEach( entry => container.setAttribute(`${entry[0]}var`, entry[1].status) )
+        Object.values(this.exVars_)
+              .forEach( entry => container.setAttribute(entry.var, entry.status) )
         return container;
       },
       /**
@@ -123,8 +123,8 @@ const VectorMutator = (function(){
       domToMutation: function(xmlElement) {
         this.robotVar_ = xmlElement.getAttribute(__ROBOTVAR) === 'true';
         // map extensions
-        Object.entries(this.exVars_)
-              .forEach( entry =>  entry[1].status = xmlElement.getAttribute(`${entry[0]}var`) === 'true' )
+        Object.values(this.exVars_)
+              .forEach( entry =>  entry.status = xmlElement.getAttribute(entry.var) === 'true' )
         this.rebuildShape_();
       },
       /**
@@ -180,7 +180,7 @@ const VectorMutator = (function(){
           } else
           if (clauseBlock.type in __EXTVAROPTS) {
             let exVar = this.exVars_[ __EXTVAROPTS[clauseBlock.type] ];
-            if (exVar.status) {
+            if (!exVar.status) {
               exVar.status = true;
               extVariableConnection[exVar.varU] = clauseBlock.statementConnection_
             }
@@ -229,7 +229,7 @@ const VectorMutator = (function(){
               .filter(entry => typeof entry[1].blockFieldFunction !== 'undefined')
               .forEach(entry => {
                 this.appendDummyInput(entry[1].varDummy)
-                    .appendField(Blockly.Msg[`${id}_${ex}_OPT_TITLE`.toUpperCase()])
+                    .appendField(Blockly.Msg[`${id}_${entry[0]}_OPT_TITLE`.toUpperCase()])
                     .appendField(entry[1].blockFieldFunction(this), entry[1].varU);
               });
 
@@ -252,7 +252,10 @@ const VectorMutator = (function(){
           extVariableConnection[__ROBOT_VAR_U] = this.getInput(__ROBOT_VAR_DUMMY).fieldRow[1].connection.targetConnection;
         }
         Object.values(this.exVars_)
-              .forEach(value => extVariableConnection[value.varU] = this.getInput(value.varU).connection.targetConnection)
+              .filter(v => this.getInput(v.varU))
+              .forEach(v => { 
+                extVariableConnection[v.varU] = this.getInput(v.varU).connection.targetConnection
+              })
   
         this.updateShape_();
         this.reconnectChildBlocks_(extVariableConnection);
@@ -272,11 +275,11 @@ const VectorMutator = (function(){
   }
 
   /**
-   * @param {*} id 'controls_vector_say_text_opt'
+   * @param {*} id e.g., 'controls_vector_say_text_opt'
    */
   function _init(id, extensions={}) {
     Object.keys(extensions)
-          .forEach(ex => __EXTVAROPTS.push( `${id}_${ex}_opt` )); 
+          .forEach(ex => __EXTVAROPTS[`${id}_${ex}_opt`] = ex ); 
 
     const blocks_ = __mutatorBlocks(id, extensions);
     const mutator_ = `${id}_mutator`;
