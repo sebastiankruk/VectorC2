@@ -146,7 +146,7 @@ const VectorMutator = (function(){
           connection = robotVarBlock.nextConnection;
         }
         // decompose active extensions
-        Object.entries(ex_)
+        Object.entries(this.exVars_)
               .filter( entry => entry[1].status )
               .forEach( entry => {
                 let exVarBlock = workspace.newBlock(`${id}_${entry[0]}_opt`);
@@ -274,7 +274,7 @@ const VectorMutator = (function(){
   /**
    * @param {*} id 'controls_vector_say_text_opt'
    */
-  function _init(id, extensions) {
+  function _init(id, extensions={}) {
     Object.keys(extensions)
           .forEach(ex => __EXTVAROPTS.push( `${id}_${ex}_opt` )); 
 
