@@ -83,6 +83,7 @@
         let voiceVarBlock = workspace.newBlock('controls_vector_say_text_ext_voice_opt');
         voiceVarBlock.initSvg();
         connection.connect(voiceVarBlock.previousConnection);
+        connection = voiceVarBlock.nextConnection; //CHECK
       }
       if (this.speedVar_) {
         let speedVarBlock = workspace.newBlock('controls_vector_say_text_ext_speed_opt');
