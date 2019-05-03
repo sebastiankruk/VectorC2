@@ -82,21 +82,18 @@ const VectorMutator = (function(){
 
     return {
       robotVar_: false,
-      exVars_: { //TODO generate base on extensions
-        /*
-        someName: {
-          status: false, //default value
+      exVars_: Object.entries(extensions).reduce( (exVars, entry) => {
+        exVars[entry[0]] = {
+          status: false,
           var: `${name}var`,
           varDummy: `${name.toUpperCase()}_VAR_DUMMY`,
-          varU: `${name.toUpperCase()}_VAR'
-          
+          varU: `${name.toUpperCase()}_VAR`,
+          blockCreateFunction: blockCreateFunction,
+          blockFieldFunction: blockFieldFunction
+        };
+        return exVars;
+      }, {}),
 
-
-
-
-        }
-        */
-      },
   
       /**
        * Create XML to represent the vector_say_text mutations
@@ -254,6 +251,8 @@ const VectorMutator = (function(){
         if (this.getInput(__ROBOT_VAR_DUMMY)) {
           extVariableConnection[__ROBOT_VAR_U] = this.getInput(__ROBOT_VAR_DUMMY).fieldRow[1].connection.targetConnection;
         }
+        Object.values(this.exVars_)
+              .forEach(value => extVariableConnection[value.varU] = this.getInput(value.varU).connection.targetConnection)
   
         this.updateShape_();
         this.reconnectChildBlocks_(extVariableConnection);
@@ -290,7 +289,11 @@ const VectorMutator = (function(){
     Blockly.Extensions.registerMutator(mutator_,
       Blockly.Constants.VectorUtils[mixin_], 
       null, //opt_helperFn
-      [ __RVEVAROPT ]
+      [ 
+        __RVEVAROPT,
+        // potential optional extensions
+        ...Object.keys(__EXTVAROPTS)
+      ]
     );
   }
 
