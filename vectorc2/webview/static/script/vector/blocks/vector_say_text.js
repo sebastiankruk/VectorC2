@@ -72,13 +72,6 @@
       topBlock.initSvg();
 
       var connection = topBlock.nextConnection;
-      if (this.robotVar_) {
-        let robotVarBlock = workspace.newBlock('controls_vector_robot_vector_ext_variable_opt');
-        robotVarBlock.setColour('#5ba580');
-        robotVarBlock.initSvg();
-        connection.connect(robotVarBlock.previousConnection);
-        connection = robotVarBlock.nextConnection;
-      }
       if (this.voiceVar_) {
         let voiceVarBlock = workspace.newBlock('controls_vector_say_text_ext_voice_opt');
         voiceVarBlock.initSvg();
@@ -89,6 +82,13 @@
         let speedVarBlock = workspace.newBlock('controls_vector_say_text_ext_speed_opt');
         speedVarBlock.initSvg();
         connection.connect(speedVarBlock.previousConnection);
+      }
+      if (this.robotVar_) {
+        let robotVarBlock = workspace.newBlock('controls_vector_robot_vector_ext_variable_opt');
+        robotVarBlock.setColour('#5ba580');
+        robotVarBlock.initSvg();
+        connection.connect(robotVarBlock.previousConnection);
+        connection = robotVarBlock.nextConnection;
       }
 
       return topBlock;
@@ -230,9 +230,9 @@
       Blockly.Constants.VectorUtils.CONTROLS_VECTOR_SAY_TEXT_EX_MUTATOR_MIXIN, 
       null, //opt_helperFn
       [
-        'controls_vector_robot_vector_ext_variable_opt', 
         'controls_vector_say_text_ext_voice_opt',
-        'controls_vector_say_text_ext_speed_opt'
+        'controls_vector_say_text_ext_speed_opt',
+        'controls_vector_robot_vector_ext_variable_opt'
       ]);
 
 

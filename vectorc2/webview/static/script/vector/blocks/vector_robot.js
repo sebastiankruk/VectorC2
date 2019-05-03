@@ -67,18 +67,17 @@
       topBlock.initSvg();
 
       var connection = topBlock.nextConnection;
+      if (this.serialNumber_) {
+        let serialNumberBlock = workspace.newBlock('controls_vector_robot_vector_ext_serial_opt');
+        serialNumberBlock.initSvg();
+        connection.connect(serialNumberBlock.previousConnection);
+      }
       if (this.robotVar_) {
         let robotVarBlock = workspace.newBlock('controls_vector_robot_vector_ext_variable_opt');
         robotVarBlock.initSvg();
         connection.connect(robotVarBlock.previousConnection);
         connection = robotVarBlock.nextConnection;
       }
-      if (this.serialNumber_) {
-        let serialNumberBlock = workspace.newBlock('controls_vector_robot_vector_ext_serial_opt');
-        serialNumberBlock.initSvg();
-        connection.connect(serialNumberBlock.previousConnection);
-      }
-
 
       return topBlock;
     },
@@ -194,7 +193,10 @@
   Blockly.Extensions.registerMutator('controls_vector_robot_ex_mutator',
       Blockly.Constants.VectorUtils.CONTROLS_VECTOR_ROBOT_EX_MUTATOR_MIXIN, 
       null, //opt_helperFn
-      ['controls_vector_robot_vector_ext_variable_opt', 'controls_vector_robot_vector_ext_serial_opt']);
+      [
+        'controls_vector_robot_vector_ext_serial_opt', 
+        'controls_vector_robot_vector_ext_variable_opt'
+      ]);
 
 
 
