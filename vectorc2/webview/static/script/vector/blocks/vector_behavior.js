@@ -24,27 +24,77 @@
   VectorMutator.init('vector_dock_with_cube_ex');
   VectorMutator.init('vector_set_eye_color_ex');
   VectorMutator.init('vector_behavior_drive_straight_ex', {
-/*
-    {
-      "type": "input_value",
-      "name": "speed",
-      "check": "Speed",
-      "align": "RIGHT"
-    },
-*/
     speed: {
       blockCreateFunction: (context) =>  context.appendValueInput("SPEED_VAR")
                                                 .setCheck("Speed")
                                                 .setAlign(Blockly.ALIGN_RIGHT)
                                                 .appendField("at speed")     
     },
-/*    {
+    should_play_anim: {
+      align: Blockly.ALIGN_RIGHT,
+      isPreLabel: false,
+      isPostLabel: true,
+      blockFieldFunction: () => new Blockly.FieldCheckbox("TRUE")
+    },
+    num_retries: {
+      align: Blockly.ALIGN_RIGHT,
+      isPostLabel: true,
+      blockFieldFunction: () => new Blockly.FieldNumber(0, 0, 10, 1)
+    }
+  }); 
+  VectorMutator.init('vector_behavior_turn_in_place_ex', {
+/*
+,
+    {
+      "type": "input_value",
+      "name": "speed",
+      "check": "Angle",
+      "align": "RIGHT"
+    },
+*/
+    speed: {
+      blockCreateFunction: (context) =>  context.appendValueInput("SPEED_VAR")
+                                                .setCheck("Angle")
+                                                .setAlign(Blockly.ALIGN_RIGHT)
+                                                .appendField("angle at speed")     
+    },
+
+/*
+    {
+      "type": "input_value",
+      "name": "accel",
+      "check": "Angle",
+      "align": "RIGHT"
+    },
+*/
+    accel: {
+      blockCreateFunction: (context) =>  context.appendValueInput("ACCEL_VAR")
+                                                .setCheck("Angle")
+                                                .setAlign(Blockly.ALIGN_RIGHT)
+                                                .appendField("with acceleration")     
+    },
+/*
+    {
+      "type": "input_value",
+      "name": "angle_tolerance",
+      "check": "Angle",
+      "align": "RIGHT"
+    },
+*/
+    angle_tolerance: {
+      blockCreateFunction: (context) =>  context.appendValueInput("ANGLE_TOLERANCE_VAR")
+                                                .setCheck("Angle")
+                                                .setAlign(Blockly.ALIGN_RIGHT)
+                                                .appendField("complete at toleration")     
+    },
+/*
+    {
       "type": "field_checkbox",
-      "name": "should_play_anim",
+      "name": "is_absolute",
       "checked": true
     },
 */
-    should_play_anim: {
+    is_absolute: {
       align: Blockly.ALIGN_RIGHT,
       isPreLabel: false,
       isPostLabel: true,
@@ -63,14 +113,14 @@
       "max": 10,
       "precision": 1
     }
-*/
+*/    
     num_retries: {
       align: Blockly.ALIGN_RIGHT,
       isPostLabel: true,
       blockFieldFunction: () => new Blockly.FieldNumber(0, 0, 10, 1)
     }
-}); //TODO make speed, animation, repeat
-  VectorMutator.init('vector_behavior_turn_in_place_ex'); //TODO make speed, acceleration, complete toleration, absolute, repeat
+
+  }); //TODO make speed, acceleration, complete toleration, absolute, repeat
   VectorMutator.init('vector_set_eye_color_hue_saturation_ex'); 
   VectorMutator.init('vector_set_head_angle_ex'); 
   VectorMutator.init('vector_set_lift_height_ex'); 
