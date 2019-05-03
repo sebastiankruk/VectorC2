@@ -49,10 +49,10 @@ const VectorMutator = (function(){
           }
         ],
         nextStatement: [
-          __RVEVAROPT,
           // potential optional extensions
-          ...Object.keys(__EXTVAROPTS)
-        ],
+          ...Object.keys(__EXTVAROPTS),
+          __RVEVAROPT
+        ].filter(el => true),
         colour: 150,
         tooltip: `%{BKY_${id.toUpperCase()}_TOOLTIP}`,
         helpUrl: "" 
@@ -138,13 +138,6 @@ const VectorMutator = (function(){
         topBlock.initSvg();
   
         var connection = topBlock.nextConnection;
-        if (this.robotVar_) {
-          let robotVarBlock = workspace.newBlock(__RVEVAROPT);
-          robotVarBlock.setColour('#5ba580');
-          robotVarBlock.initSvg();
-          connection.connect(robotVarBlock.previousConnection);
-          connection = robotVarBlock.nextConnection;
-        }
         // decompose active extensions
         Object.entries(this.exVars_)
               .filter( entry => entry[1].status )
@@ -154,7 +147,14 @@ const VectorMutator = (function(){
                 connection.connect(exVarBlock.previousConnection);
                 connection = exVarBlock.nextConnection;
               })
-  
+        if (this.robotVar_) {
+          let robotVarBlock = workspace.newBlock(__RVEVAROPT);
+          robotVarBlock.setColour('#5ba580');
+          robotVarBlock.initSvg();
+          connection.connect(robotVarBlock.previousConnection);
+          connection = robotVarBlock.nextConnection;
+        }
+        
         return topBlock;
       },
       /**
@@ -290,10 +290,10 @@ const VectorMutator = (function(){
       Blockly.Constants.VectorUtils[mixin_], 
       null, //opt_helperFn
       [ 
-        __RVEVAROPT,
         // potential optional extensions
-        ...Object.keys(__EXTVAROPTS)
-      ]
+        ...Object.keys(__EXTVAROPTS),
+        __RVEVAROPT
+      ].filter(el => true)
     );
   }
 
