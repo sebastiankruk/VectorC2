@@ -44,11 +44,19 @@ const VectorUtils = (function(){
   }
   /**
    * Shortcut for getting robot var
-   * @param {*} block 
+   * @param {Blockly.Block} block 
    */
-  function _getRobotVar(block) {
-    return Blockly.JavaScript.variableDB_.getName(_getFieldText(block, 'ROBOT_VAR', 'robot'), 
-                                                  Blockly.Variables.NAME_TYPE)
+  function _getRobotVar(block, context=Blockly.JavaScript) {
+    return context.variableDB_.getName(_getFieldText(block, 'ROBOT_VAR', 'robot'), 
+                                       Blockly.Variables.NAME_TYPE)
+  }
+
+  /**
+   * Returns true if robot variable is defined
+   * @param {Blockly.Block} block 
+   */
+  function _isRobotVar(block) {
+    return block.getField('ROBOT_VAR') !== null
   }
 
   /**
@@ -69,6 +77,7 @@ const VectorUtils = (function(){
     getFieldValue: _getFieldValue,
     getFieldText: _getFieldText,
     getRobotVar: _getRobotVar,
+    isRobotVar: _isRobotVar,
     initializeBlocks: _initializeBlocks
   };
 

@@ -18,9 +18,10 @@
 /* jshint esversion: 6 */
 Blockly.JavaScript.vector_robot = function(block) {
   let variable_robot_var = VectorUtils.getRobotVar(block);
+  let is_robot_var = VectorUtils.isRobotVar(block);
   let value_serial_var = Blockly.JavaScript.valueToCode(block, 'SERIAL_VAR', Blockly.JavaScript.ORDER_ATOMIC);
   let statements_wrapped_code = Blockly.JavaScript.statementToCode(block, 'wrapped_code');
 
-  let code = `${variable_robot_var} = Vectorex;\n${variable_robot_var}.init(${value_serial_var});\n${statements_wrapped_code}\n`;
+  let code = `${(is_robot_var) ? '' : 'var '}${variable_robot_var} = Vectorex;\n${variable_robot_var}.init(${value_serial_var});\n${statements_wrapped_code}\n`;
   return code;
 };
