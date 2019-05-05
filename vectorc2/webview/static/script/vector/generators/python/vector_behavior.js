@@ -43,10 +43,16 @@ Blockly.Python['vector_set_eye_color'] = function(block) {
 Blockly.Python['vector_behavior_drive_straight'] = function(block) {
   var variable_robot_var = VectorUtils.getRobotVar(block);
   var value_distance = Blockly.Python.valueToCode(block, 'distance', Blockly.Python.ORDER_ATOMIC);
-  var value_speed = Blockly.Python.valueToCode(block, 'speed', Blockly.Python.ORDER_ATOMIC);
-  var checkbox_should_play_anim = GeneratorUtils.getPythonBooleanValue(block, 'should_play_anim');
-  var number_num_retries = block.getFieldValue('num_retries');
-  var code = `${variable_robot_var}.behavior.drive_straight(${value_distance}, ${value_speed}, ${checkbox_should_play_anim}, ${number_num_retries})\n`;
+
+  let param_retries = VectorUtils.getNumberFieldAsParam(block, 'NUM_RETRIES_VAR');
+  let param_anim = VectorUtils.getBoolFieldAsPythonParam(block, 'SHOULD_PLAY_ANIM_VAR', (param_retries !== '') ? 'TRUE': null);
+  let param_speed = VectorUtils.getNumberBlockAsParam(block, 'SPEED_VAR', Blockly.Python, (param_retries !== '' || param_anim !== '') ? '1': null);
+
+  // var value_speed = Blockly.Python.valueToCode(block, 'speed', Blockly.Python.ORDER_ATOMIC);
+  // var checkbox_should_play_anim = GeneratorUtils.getPythonBooleanValue(block, 'should_play_anim');
+  // var number_num_retries = block.getFieldValue('num_retries');
+
+  var code = `${variable_robot_var}.behavior.drive_straight(${value_distance}${param_speed}${param_anim}${param_retries})\n`;
   return code;
 };
 
