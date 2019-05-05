@@ -507,7 +507,7 @@ Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_EX_SHOULD_PLAY_ANIM_OPT_TITLE"] = "w
 Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_EX_NUM_RETRIES_OPT_PRE_TITLE"] = "Repeat attempts";
 Blockly.Msg["VECTOR_BEHAVIOR_DRIVE_STRAIGHT_EX_NUM_RETRIES_OPT_TITLE"] = "with attempt times control";
 
-Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_MESSAGE"] = "Rotate by %1 angle";
+Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_MESSAGE"] = "Rotate by %1";
 Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_TOOLTIP"] = "Turn the robot around its current position.";
 Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_MESSAGE"] = "Rotate %1";
 Blockly.Msg["VECTOR_BEHAVIOR_TURN_IN_PLACE_EX_TOOLTIP"] = "Turn the robot around its current position.";
