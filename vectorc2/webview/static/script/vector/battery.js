@@ -83,7 +83,7 @@ const VectorBattery = (function(){
    * Logs detailed information from Vector sate
    */
   function __logState() {
-
+    //TODO i18n
     let log = `<h3>Vector state:</h3>\n` +
     `<b>are_motors_moving</b>: ${__stateData.current.are_motors_moving}\n` + 
     `<b>are_wheels_moving</b>: ${__stateData.current.are_wheels_moving}\n` + 

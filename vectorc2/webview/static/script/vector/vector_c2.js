@@ -354,6 +354,7 @@ const VectorC2 = (function(){
       init: __init__,
       testJavaScript: _testJavaScript,
       cleanupWorkspace: _cleanupWorkspace,
+      updateWorkspaceBlocks: __updateWorkspaceBlocks,
       resizeArea: _onAreaResize
   }
 
