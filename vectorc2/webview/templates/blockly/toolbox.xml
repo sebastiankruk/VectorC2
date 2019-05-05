@@ -311,5 +311,4 @@
     <sep></sep>
     {% include "vector/utils.xml" %}
     {% include "vector/behavior.xml" %}
-    {% include "vector/ex_vector.xml" %}
 </xml>
