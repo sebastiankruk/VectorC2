@@ -59,34 +59,23 @@ const VectorSafe = (function(){
    * Starts the download process
    */
   function __startDownload() {
-    var fileName = prompt('Please enter file name to save', 'Untitled.txt');
+    var fileName = prompt('Please enter file name to save', 'vector_workspace.xml');
     if (fileName) {
-      var textToWrite = $('#exampleTextarea').val().replace(/n/g, 'rn');
-      var textFileAsBlob = new Blob([textToWrite], { type: 'text/plain' });
-
-      if ('msSaveOrOpenBlob' in navigator) {
-        navigator.msSaveOrOpenBlob(textFileAsBlob, fileName);
-      } else {
-        var downloadLink = document.createElement('a');
-        downloadLink.download = fileName;
-        downloadLink.innerHTML = 'Download File';
-		
-        if ('webkitURL' in window) {
-          // Chrome allows the link to be clicked without actually adding it to the DOM.
-          downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
-        } else {
-          // Firefox requires the link to be added to the DOM before it can be clicked.
-          downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
-          downloadLink.click(function(){
-          	document.body.removeChild(event.target);
-          }); 
-		  
-          downloadLink.style.display = 'none';
-          document.body.appendChild(downloadLink);
-        }
-        downloadLink.click();
-      }
+      __dowloadFile(VectorC2.getWorkspaceXML(), fileName);
     }
+  }
+  /**
+   * 
+   * @param {XML} workspaceXML 
+   * @param {String} fileName 
+   */
+  function __dowloadFile(workspaceXML, fileName) {
+    let blob = new Blob([workspaceXML], {type: "text/xml"});
+    let url = window.URL.createObjectURL(blob);
+    let a = document.createElement("a");
+        a.href = url;
+        a.download = fileName;
+        a.click();
   }
   /**
    * Starts the upload process
