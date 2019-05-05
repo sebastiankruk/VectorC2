@@ -60,6 +60,54 @@ const VectorUtils = (function(){
   }
 
   /**
+   * Renders given variable value as a Python boolean parameter or empty string if given variable is not set
+   * @param {Blockly.Block} block 
+   * @param {String} varName 
+   * @param {String} defaultVal 'TRUE' or 'FAlSE'
+   */
+  function _getBoolFieldAsPythonParam(block, varName, defaultVal=null) {
+    let value = _getFieldValue(block, varName, defaultVal);
+    return (value !== null) ? `, ${(value === 'TRUE') ? 'True': 'False'}`: '';
+  }
+
+  /**
+   * Renders given variable value as a JavaScript boolean parameter or empty string if given variable is not set
+   * @param {Blockly.Block} block 
+   * @param {String} varName 
+   * @param {String} defaultVal true or false
+   */
+  function _getBoolFieldAsParam(block, varName, defaultVal=null) {
+    let value = _getFieldValue(block, varName, defaultVal);
+    return (value !== null) ? `, ${value === 'TRUE'}`: '';
+  }
+
+  /**
+   * Renders given variable value as a number parameter or empty string if given variable is not set
+   * @param {Blockly.Block} block 
+   * @param {String} varName 
+   * @param {String} defaultVal 
+   */
+  function _getNumberFieldAsParam(block, varName, defaultVal=null) {
+    let value = _getFieldValue(block, varName, defaultVal);
+    return (value !== null) ? `, ${value}` : ''
+  }
+
+  /**
+   * Renders given variable value as a number parameter or empty string if given variable is not set
+   * @param {Blockly.Block} block 
+   * @param {String} varName 
+   * @param {String} defaultVal 
+   */
+  function _getNumberBlockAsParam(block, varName, context=Blockly.JavaScript, defaultVal=null) {
+
+    let value = context.valueToCode(block, varName, context.ORDER_ATOMIC) ||
+                context.valueToCode(block, `${varName}_DUMMY`, context.ORDER_ATOMIC) || 
+                defaultVal;
+
+    return (value !== null) ? `, ${value}` : ''
+  }
+
+  /**
    * Initializes one or more custom Blockly block
    * @param {JSON Object} ...blocks 
    */
@@ -78,6 +126,10 @@ const VectorUtils = (function(){
     getFieldText: _getFieldText,
     getRobotVar: _getRobotVar,
     isRobotVar: _isRobotVar,
+    getBoolFieldAsParam: _getBoolFieldAsParam,
+    getBoolFieldAsPythonParam: _getBoolFieldAsPythonParam,
+    getNumberFieldAsParam: _getNumberFieldAsParam,
+    getNumberBlockAsParam: _getNumberBlockAsParam,
     initializeBlocks: _initializeBlocks
   };
 

@@ -21,11 +21,12 @@
  */
 Blockly.JavaScript.vector_say_text = function(block) {
   let variable_robot_var = VectorUtils.getRobotVar(block);
-  let value_text = Blockly.JavaScript.valueToCode(block, 'text', Blockly.JavaScript.ORDER_ATOMIC);
-  let checkbox_use_vector_voice = block.getFieldValue('VOICE_VAR') == 'TRUE';
-  let number_duration_scalar = block.getFieldValue('SPEED_VAR');
 
-  let code = `${variable_robot_var}.sayText(${value_text}, ${checkbox_use_vector_voice}, ${number_duration_scalar});\n`;
+  let value_text = Blockly.JavaScript.valueToCode(block, 'text', Blockly.JavaScript.ORDER_ATOMIC);
+  let param_speed = VectorUtils.getNumberFieldAsParam(block, 'SPEED_VAR');
+  let param_voice = VectorUtils.getBoolFieldAsParam(block, 'VOICE_VAR',  (param_speed !== '') ? 'TRUE' : null);
+
+  let code = `${variable_robot_var}.sayText(${value_text}${param_voice}${param_speed});\n`;
 
   return code;
 };
