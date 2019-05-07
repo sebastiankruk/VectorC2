@@ -75,7 +75,7 @@ const VectorBattery = (function(){
    * Call to check the current Vector state
    */
   async function _checkState() {
-    VectorStatus.readStatus();
+    VectorStatus.readStatus(null, VectorConfiguration.getStatusInterval());
   }
 
   /**

@@ -32,11 +32,16 @@ class VectorStatus(metaclass=Singleton):
   The class used to read Vector's status
   """
   def __init__(self):
-    self._robot = None #TODO #25 anki_vector.AsyncRobot()
+    self._robot = anki_vector.AsyncRobot()
     self._state = None
     self._rnd = random.random()
     self._countdown = 10
-    threading.Timer(10.0, self._check_state).start()
+    self._frequency = 0
+    self._timer = None
+
+    # checking is not inited by default    
+    # threading.Timer(10.0, self._check_state)
+    # self._timer.start()
 
   def _check_state(self, _from_init=True):
     """
@@ -46,6 +51,7 @@ class VectorStatus(metaclass=Singleton):
       self._countdown = -1
       return
 
+    print("Checking status")
     try:
       self._connect()
       state = {
@@ -111,14 +117,27 @@ class VectorStatus(metaclass=Singleton):
         }
       self._state = state
     except Exception:
-      self._countdown = -1
+        self._stop_refresh()
+
     finally:
-      if _from_init and self._countdown > 0:
+      if _from_init and self._countdown > 0 and self._frequency > 0:
         self._countdown -= 1
-        threading.Timer(30.0, self._check_state).start()
+        self._timer = threading.Timer(self._frequency, self._check_state)
+        self._timer.start()
 
       if not self._disconnect():
-        self._countdown = -1
+        self._stop_refresh()
+
+  def _stop_refresh(self):
+    """
+    Will stop refreshing, set frequency to 0, and remove timer
+    """
+    self._countdown = -1
+    self._frequency = 0
+    if self._timer is not None:
+      self._timer.cancel()
+      self._timer = None
+
 
   def _connect(self):
     try:
@@ -133,17 +152,23 @@ class VectorStatus(metaclass=Singleton):
     """
     try:
       self._robot.disconnect()
-    except Exception as ex:
+    except Exception:
       return False
 
     return True
 
-  def read(self, consumer, states):
+  def read(self, consumer, states, frequency):
     """
     Will read Vector status and 
     #TODO implement support for selective 'states'
     """
+    if frequency is not None:
+      self._frequency = frequency
+
     if self._state is None:
       self._check_state(_from_init=False)
+      self._timer = threading.Timer(self._frequency, self._check_state)
+      self._timer.start()
+
     self._countdown = 10
     consumer.send_status(self._state)

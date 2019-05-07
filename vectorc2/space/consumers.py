@@ -112,20 +112,23 @@ class StateConsumer(WebsocketConsumer):
   def receive(self, text_data):
     text_data_json = json.loads(text_data)
     statuses = text_data_json.get('statuses', [])
+    frequency = text_data_json.get('frequency', [])
 
     # Send message to room group
     async_to_sync(self.channel_layer.group_send)(
       self.space_group_name,
       {
         'type': 'space_message',
-        'statuses': statuses
+        'statuses': statuses,
+        'frequency': frequency
       }
     )
 
   # Receive message from room group
   def space_message(self, event):
-    statuses = event['statuses']
-    self.vector_status.read(self, statuses)
+    statuses = event.get('statuses', None)
+    frequency = event.get('frequency', 0)
+    self.vector_status.read(self, statuses, frequency)
 
   def send_status(self, status):
     try:

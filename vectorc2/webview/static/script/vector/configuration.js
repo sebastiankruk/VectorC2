@@ -43,7 +43,6 @@ const VectorConfiguration = (function(){
     __statusIntervalSlider = $('#statusCheckInterval');
 
     $('#configModal .modal-footer button.btn-primary').mouseup(__onConfigSave);
-    // TODO #25 _startStateChecking();
   }
 
   /**
@@ -54,14 +53,18 @@ const VectorConfiguration = (function(){
     __statusInterval = __statusIntervalSlider.slider('getValue');
 
     if (__statusInterval) {
-      VectorBattery.startStateChecking(1000*__statusInterval);
+      // checking 5x more often than actually reading from Vector
+      // to make sure we don't have to wait twice as long
+      // make sure we don't check more often than 10x
+      VectorBattery.startStateChecking(200*__statusInterval); 
     } else {
       VectorBattery.stopStateChecking();
+      VectorBattery.checkState();
     }
   }
 
   /**
-   * Returns current status checking interval
+   * Returns current status checking interval in seconds
    */
   function _getStatusInterval() {
     return __statusInterval;

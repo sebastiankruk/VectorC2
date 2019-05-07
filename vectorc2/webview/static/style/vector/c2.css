@@ -144,3 +144,7 @@ pre code {
 #configModal .modal-body {
   height: 150px;
 }
+#configModal .slider .slider-handle[aria-valuenow='0'] {
+  background-color: red;
+  background-image: none; 
+}
