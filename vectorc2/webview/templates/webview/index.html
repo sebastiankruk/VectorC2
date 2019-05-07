@@ -67,6 +67,9 @@
     <link href="{% static 'style/vector/log-panel.css' %}" rel="stylesheet">
     <link href="{% static 'style/vector/battery.css' %}" rel="stylesheet">
 
+    <script src="{% static 'script/bootstrap/bootstrap-slider.min.js' %}"></script>
+    <link href="{% static 'style/bootstrap/bootstrap-slider.min.css' %}" rel="stylesheet">
+
     <script src="{% static 'script/vector/local_storage.js' %}"></script>
     <script src="{% static 'script/vector/log_panel.js' %}"></script>
     <script src="{% static 'script/vector/battery.js' %}"></script>
@@ -91,6 +94,8 @@
     {% include "webview/footer.html" %}
 
     {% include "blockly/toolbox.xml" %}
+
+    {% include "webview/configuration.html" %}
 
   </body>
 </html>

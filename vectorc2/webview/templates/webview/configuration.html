@@ -1,0 +1,43 @@
+{% load i18n %}
+{% load static %}
+{% load octicons %}
+
+{# Modal #}
+
+<div class="modal fade" id="configModal" tabindex="-1" role="dialog" aria-labelledby="configModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="configModalTitle">{% trans 'Configuration' %}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="statusCheckInterval">{% trans 'Status frequency check' %}</label>
+              <div class="slider-wrapper">
+                <input id="statusCheckInterval" type="text"
+                      data-provide="slider"
+                      data-slider-ticks="[0, 30, 60, 300, 600, 900, 1800]"
+                      data-slider-ticks-labels='["off", "30s", "1min", "5min", "10min", "15min", "30min"]'
+                      data-slider-ticks-snap-bounds="30"
+                      data-slider-ticks-tooltip="true" 
+                      data-slider-ticks-positions="[0, 10, 20, 40, 60, 80, 100]"
+                      data-slider-min="0"
+                      data-slider-max="1800"
+                      data-slider-step="30"
+                      data-slider-value="60" />
+              </div>
+              <small id="statusCheckIntervalHelp" class="form-text text-muted">{% trans 'Don\'t check too often or Vector gets anxious' %}</small>
+            </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans 'Close' %}</button>
+        <button type="button" class="btn btn-primary">{% trans 'Save' %}</button>
+      </div>
+    </div>
+  </div>
+</div>
