@@ -15,12 +15,11 @@
  * 
  * @author vectorc2@kruk.me
  */
-'use strict';
-
 /**
  * Main class for managing UI for Vector Remote Control
  */
 const VectorBattery = (function(){
+  'use strict';
 
   /**
    * Reference to the battery HTML wrapper element
