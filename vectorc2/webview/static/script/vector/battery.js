@@ -83,6 +83,13 @@ const VectorBattery = (function(){
    */
   function __logState() {
 
+    Object.entries(Object.assign(
+              __stateData.current,
+              ))
+          .map( entry => [ $(`#batteryModal sv_${entry[0]}`), entry[1] ])
+          .filter( entry => entry[0] )
+          .forEach( entry => entry[0].text(entry[1]) );
+
     let log = `<h3>Vector state:</h3>\n` +
     `<b>are_motors_moving</b>: ${__stateData.current.are_motors_moving}\n` + 
     `<b>are_wheels_moving</b>: ${__stateData.current.are_wheels_moving}\n` + 
