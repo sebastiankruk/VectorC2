@@ -47,9 +47,10 @@ class VectorStatus(metaclass=Singleton):
     """
     Used to call update Vector state
     """
-    if not self._robot:
-      self._countdown = -1
-      return
+    if not self._robot or self._frequency <= 0:
+      self._stop_refresh()  
+      if not self._robot:
+        return
 
     print("Checking status (%d)" % self._frequency)
     try:
@@ -121,8 +122,6 @@ class VectorStatus(metaclass=Singleton):
         self._countdown -= 1
         self._timer = threading.Timer(self._frequency, self._check_state)
         self._timer.start()
-      elif self._countdown <= 0 or self._frequency <= 0:
-        self._stop_refresh()  
 
       if not self._disconnect():
         self._stop_refresh()
@@ -165,11 +164,12 @@ class VectorStatus(metaclass=Singleton):
       print("Changing frequency to %d" % frequency)
       self._frequency = frequency
 
-    if self._state is None or self._timer is None:
+    if self._state is None:
       self._check_state(_from_init=False)
-      if frequency > 0:
-        self._timer = threading.Timer(self._frequency, self._check_state)
-        self._timer.start()
+      
+    if frequency > 0:
+      self._timer = threading.Timer(self._frequency, self._check_state)
+      self._timer.start()
 
     if self._state is not None and frequency is not None:
       self._state['_meta']['frequency'] = frequency
