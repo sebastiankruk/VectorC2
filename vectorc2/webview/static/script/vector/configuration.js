@@ -50,16 +50,29 @@ const VectorConfiguration = (function(){
    */
   function __onConfigSave(e) {
     __configModal.modal('hide');
-    __statusInterval = __statusIntervalSlider.slider('getValue');
+    _setStatusInterval(__statusIntervalSlider.slider('getValue'));
+  }
+  /**
+   * New status checking interval
+   * @param {int} interval 
+   */
+  async function _setStatusInterval(interval, updateSlider=false) {
+    if (__statusInterval != interval) {
+      __statusInterval = interval;
 
-    if (__statusInterval) {
-      // checking 5x more often than actually reading from Vector
-      // to make sure we don't have to wait twice as long
-      // make sure we don't check more often than 10x
-      VectorBattery.startStateChecking(200*__statusInterval); 
-    } else {
-      VectorBattery.stopStateChecking();
-      VectorBattery.checkState();
+      if (updateSlider) {
+        __statusIntervalSlider.slider('setValue', interval);
+      }
+
+      if (__statusInterval) {
+        // checking 5x (we multiply by 200 instead of 1000) more often than actually reading from Vector
+        // to make sure we don't have to wait twice as long
+        // make sure we don't check more often than 10x
+        VectorBattery.startStateChecking(200*__statusInterval); 
+      } else {
+        VectorBattery.stopStateChecking();
+        VectorBattery.checkState();
+      }
     }
   }
 
@@ -72,7 +85,8 @@ const VectorConfiguration = (function(){
 
   return {
     init: __init__,
-    getStatusInterval: _getStatusInterval
+    getStatusInterval: _getStatusInterval,
+    setStatusInterval: _setStatusInterval
   }
 })()
 

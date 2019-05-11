@@ -62,7 +62,7 @@ const VectorBattery = (function(){
 
     VectorStatus.init(__onStateChecked);
 
-    // TODO #25 _startStateChecking();
+    _startStateChecking();
   }
 
   /**
@@ -79,8 +79,8 @@ const VectorBattery = (function(){
   /**
    * Call to check the current Vector state
    */
-  async function _checkState() {
-    VectorStatus.readStatus(null, VectorConfiguration.getStatusInterval());
+  async function _checkState(interval=VectorConfiguration.getStatusInterval()) {
+    VectorStatus.readStatus(null, interval);
   }
 
   /**
@@ -89,7 +89,9 @@ const VectorBattery = (function(){
   function __updateStateModal(event) {
 
     Object.entries(
-      Object.assign(...Object.values(__stateData)))
+      Object.assign(...Object.entries(__stateData)
+                             .filter(entry => !entry[0].startsWith('_'))
+                             .map(entry => entry[1])))
             .filter(entry => typeof entry[1] !== 'object')
             .map( entry => [ $(`#batteryModal td.sv_${entry[0]}`), entry[1] ])
             .filter( entry => entry[0] )
@@ -122,6 +124,8 @@ const VectorBattery = (function(){
     } catch (e) {
       console.warn('Could not retrieve Vector state');
     }
+
+    VectorConfiguration.setStatusInterval(data._meta.frequency, true);
   }
 
   /**
@@ -145,16 +149,17 @@ const VectorBattery = (function(){
    * Will close previous state checking interval if present
    * @param {Number} frequency in ms
    */
-  function _startStateChecking(frequency) {
+  function _startStateChecking(frequency=0) {
     if ( !$.isEmptyObject(__stateCheckerInterval) ) {
       _stopStateChecking()
     } else {
       setTimeout(_checkState, 500);
     }
 
-    let _freq = frequency || 60000;
-    __stateCheckerInterval = setInterval(_checkState, _freq);
-    console.info(`Starting periodical Vector state checking at frequency every ${_freq/1000}s`)
+    if (frequency) {
+      __stateCheckerInterval = setInterval(_checkState, frequency);
+      console.info(`Starting periodical Vector state checking at frequency every ${frequency/1000}s`)
+    }
   }
 
   /**

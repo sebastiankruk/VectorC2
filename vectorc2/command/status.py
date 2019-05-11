@@ -80,6 +80,9 @@ class VectorStatus(metaclass=Singleton):
           'pose_pitch_rad': self._robot.pose_pitch_rad,
           'right_wheel_speed_mmps': self._robot.right_wheel_speed_mmps,
           'x_y_z': self._robot.gyro.x_y_z,
+        },
+        '_meta': {
+          'frequency': self._frequency
         }
       }
 

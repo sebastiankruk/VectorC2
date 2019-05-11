@@ -60,7 +60,7 @@ const VectorStatus = (function(commander){
    * @param {String} message 
    * @param {int} checking frequency in seconds
    */
-  async function _readStatus(statuses, frequency=300) {
+  async function _readStatus(statuses, frequency=60) {
     if ( [WebSocket.CLOSED, WebSocket.CLOSING].includes(__chatSocket.readyState) ) {
       await __onClose();
     } else if ( __chatSocket.readyState === WebSocket.CONNECTING ) {
