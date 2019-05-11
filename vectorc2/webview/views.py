@@ -14,7 +14,11 @@
 from django.http import Http404
 from django.shortcuts import render
 
+from command.models import Configuration
+
 # from .models import Question
 # ...
 def home(request):
-    return render(request, 'webview/index.html')    
+    frequency = Configuration.objects.get(id=1).status_checking_frequency
+    
+    return render(request, 'webview/index.html', {'frequency': frequency})    
