@@ -87,12 +87,10 @@ class VectorStatus(metaclass=Singleton):
       }
 
       future_battery_state = self._robot.get_battery_state()
-      future_network_state = self._robot.get_network_state()
       future_version_state = self._robot.get_version_state()
       
       (fdone, fnot_done) = futures.wait([
                                           future_battery_state,
-                                          future_network_state,
                                           future_version_state
                                         ], 
                                         timeout=1.5, 
@@ -107,10 +105,6 @@ class VectorStatus(metaclass=Singleton):
           'is_on_charger_platform': battery_state.is_on_charger_platform, 
           'suggested_charger_sec': battery_state.suggested_charger_sec, 
         }
-
-      # if future_network_state in fdone:
-      #   network_state = future_network_state.result()
-      #   state['network'] = str(network_state.network_stats)
 
       if future_version_state in fdone:
         version_state = future_version_state.result()
