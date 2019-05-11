@@ -125,7 +125,8 @@ const VectorBattery = (function(){
       console.warn('Could not retrieve Vector state');
     }
 
-    VectorConfiguration.setStatusInterval(data._meta.frequency, true);
+    let freq = (data != null) ? data._meta.frequency : 0;
+    VectorConfiguration.setStatusInterval(freq, true);
   }
 
   /**

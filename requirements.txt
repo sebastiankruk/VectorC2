@@ -3,4 +3,5 @@ django-bootstrap4==0.0.7
 channels==2.1.7
 channels-redis==2.3.3
 django-compressor==2.2
-anki-vector==0.5.1
+anki-vector==0.6.0
+zeroconf==0.22.0

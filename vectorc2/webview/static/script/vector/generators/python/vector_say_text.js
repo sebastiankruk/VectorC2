@@ -23,6 +23,6 @@ Blockly.Python.vector_say_text = function(block) {
   let param_speed = VectorUtils.getNumberFieldAsParam(block, 'SPEED_VAR');
   let param_voice = VectorUtils.getBoolFieldAsPythonParam(block, 'VOICE_VAR', (param_speed !== '') ? 'TRUE' : null);
 
-  let code = `${variable_robot_var}.say_text(${value_text}${param_voice}${param_speed})\n`;
+  let code = `${variable_robot_var}.behavior.say_text(${value_text}${param_voice}${param_speed})\n`;
   return code;
 };

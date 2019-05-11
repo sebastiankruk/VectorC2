@@ -447,6 +447,8 @@ Blockly.Msg["VECTOR_ROBOT_EX_VARIABLE_OPT_TITLE"] = "with vector robot variable"
 Blockly.Msg["VECTOR_ROBOT_EX_VARIABLE_OPT_TOOLTIP"] = "Add to code wrapper to enable to define own Vector robot variable";  
 Blockly.Msg["VECTOR_ROBOT_EX_SERIAL_OPT_TITLE"] = "with serial number";
 Blockly.Msg["VECTOR_ROBOT_EX_SERIAL_OPT_TOOLTIP"] = "Add to code wrapper to enable to define a custom serial number";  
+Blockly.Msg["VECTOR_ROBOT_EX_NAME_OPT_TITLE"] = "with Vector name for autodiscovery";
+Blockly.Msg["VECTOR_ROBOT_EX_NAME_OPT_TOOLTIP"] = "Add to code wrapper to enable to define a custom name for autodiscovery";  
 
 Blockly.Msg["VECTOR_ROBOT_EX_MESSAGE"] = "Use Vector %1 %2";
 Blockly.Msg["VECTOR_ROBOT_EX_TOOLTIP"] = "Wrap all Vector calls around";
@@ -454,6 +456,8 @@ Blockly.Msg["VECTOR_ROBOT_EX_VARIABLE_TITLE"] = "as variable";
 Blockly.Msg["VECTOR_ROBOT_EX_VARIABLE_TOOLTIP"] = "Add, remove, or reorder sections to reconfigure this if block.";  
 Blockly.Msg["VECTOR_ROBOT_EX_SERIAL_TITLE"] = "with serial number";
 Blockly.Msg["VECTOR_ROBOT_EX_SERIAL_TOOLTIP"] = "Add block to control which vector to use";  
+Blockly.Msg["VECTOR_ROBOT_EX_NAME_TITLE"] = "with Vector name";
+Blockly.Msg["VECTOR_ROBOT_EX_NAME_TOOLTIP"] = "Add block to control which vector to use";  
 
 Blockly.Msg["VECTOR_UTILS_DISTANCE_MM_MESSAGE"] = "distance in mm %1";
 Blockly.Msg["VECTOR_UTILS_DISTANCE_MM_TOOLTIP"] = "distance in millimeters";

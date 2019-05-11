@@ -29,6 +29,7 @@
   Blockly.Constants.VectorUtils.CONTROLS_VECTOR_ROBOT_EX_MUTATOR_MIXIN = {
     robotVar_: false,
     serialNumber_: false,
+    robotName_: false,
 
     /**
      * Create XML to represent the vector_robot mutations
@@ -37,12 +38,15 @@
      */
     mutationToDom: function() {
 
-      if (!this.robotVar_ && !this.serialNumber_) {
+      if (!this.robotVar_ && 
+          !this.serialNumber_ &&
+          !this.robotName_) {
         return null;
       }
       let container = document.createElement('mutation');
       container.setAttribute('robotvar', this.robotVar_);
       container.setAttribute('serialnumber', this.serialNumber_);
+      container.setAttribute('robotname', this.robotName_);
       return container;
     },
     /**
@@ -53,6 +57,7 @@
     domToMutation: function(xmlElement) {
       this.robotVar_ = xmlElement.getAttribute('robotvar') === 'true';
       this.serialNumber_ = xmlElement.getAttribute('serialnumber') === 'true';
+      this.robotName_ = xmlElement.getAttribute('robotname') === 'true';
 
       this.rebuildShape_();
     },
@@ -71,6 +76,11 @@
         let serialNumberBlock = workspace.newBlock('controls_vector_robot_vector_ext_serial_opt');
         serialNumberBlock.initSvg();
         connection.connect(serialNumberBlock.previousConnection);
+      }
+      if (this.robotName_) {
+        let robotNameBlock = workspace.newBlock('controls_vector_robot_vector_ext_name_opt');
+        robotNameBlock.initSvg();
+        connection.connect(robotNameBlock.previousConnection);
       }
       if (this.robotVar_) {
         let robotVarBlock = workspace.newBlock('controls_vector_robot_vector_ext_variable_opt');
@@ -92,6 +102,7 @@
       // Reset and detect options
       this.robotVar_ = false;
       this.serialNumber_ = false;
+      this.robotName_ = false;
 
       var extVariableConnection = null;
       var extSerialConnection = null;
@@ -107,6 +118,12 @@
           case 'controls_vector_robot_vector_ext_serial_opt':
             if (!this.serialNumber_) {
               this.serialNumber_ = true;
+              extSerialConnection = clauseBlock.statementConnection_;
+            }
+            break;
+          case 'controls_vector_robot_vector_ext_name_opt':
+            if (!this.robotName_) {
+              this.robotName_ = true;
               extSerialConnection = clauseBlock.statementConnection_;
             }
             break;
@@ -135,11 +152,19 @@
       if (this.getInput('SERIAL_VAR')) {
         this.removeInput('SERIAL_VAR');
       }
+      if (this.getInput('NAME_VAR')) {
+        this.removeInput('NAME_VAR');
+      }
 
       if (this.serialNumber_) {
         this.appendValueInput('SERIAL_VAR')
             .setCheck('String')
             .appendField(Blockly.Msg.VECTOR_ROBOT_EX_SERIAL_TITLE);
+      }
+      if (this.robotName_) {
+        this.appendValueInput('NAME_VAR')
+            .setCheck('String')
+            .appendField(Blockly.Msg.VECTOR_ROBOT_EX_NAME_TITLE);
       }
       if (this.robotVar_) {
           this.appendDummyInput('ROBOT_VAR_DUMMY')
@@ -147,7 +172,9 @@
               .appendField(Blockly.Msg.VECTOR_ROBOT_EX_VARIABLE_TITLE)
               .appendField(new Blockly.FieldVariable('robot'), 'ROBOT_VAR');
       }
-      if (this.serialNumber_ || this.robotVar_) {
+      if (this.serialNumber_ || 
+          this.robotName_ ||
+          this.robotVar_) {
         this.setInputsInline(false);
       }
 
@@ -171,6 +198,9 @@
       if (this.getInput('SERIAL_VAR')) {
         extSerialConnection = this.getInput('SERIAL_VAR').connection.targetConnection;
       }
+      if (this.getInput('NAME_VAR')) {
+        extSerialConnection = this.getInput('NAME_VAR').connection.targetConnection;
+      }
       if (this.getInput('ROBOT_VAR_DUMMY')) {
         extVariableConnection = this.getInput('ROBOT_VAR_DUMMY').fieldRow[1].connection.targetConnection;
       }
@@ -185,6 +215,7 @@
     reconnectChildBlocks_: function(extVariableConnection, extSerialConnection) {
       Blockly.Mutator.reconnect(extVariableConnection, this, 'ROBOT_VAR');
       Blockly.Mutator.reconnect(extSerialConnection, this, 'SERIAL_VAR');
+      Blockly.Mutator.reconnect(extSerialConnection, this, 'NAME_VAR');
     }
 
 
@@ -195,6 +226,7 @@
       null, //opt_helperFn
       [
         'controls_vector_robot_vector_ext_serial_opt', 
+        'controls_vector_robot_vector_ext_name_opt',
         'controls_vector_robot_vector_ext_variable_opt'
       ]);
 
