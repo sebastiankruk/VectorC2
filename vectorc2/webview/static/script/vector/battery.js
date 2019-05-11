@@ -104,7 +104,6 @@ const VectorBattery = (function(){
    */
   function __onStateChecked(data) {
     __stateData = data;
-    console.log(data);
 
     let state = 'unknown';
     try {

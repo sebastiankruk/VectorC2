@@ -64,7 +64,7 @@ const VectorConfiguration = (function(){
         __statusIntervalSlider.slider('setValue', interval);
       }
 
-      if (__statusInterval) {
+      if (__statusInterval > 0) {
         // checking 5x (we multiply by 200 instead of 1000) more often than actually reading from Vector
         // to make sure we don't have to wait twice as long
         // make sure we don't check more often than 10x
