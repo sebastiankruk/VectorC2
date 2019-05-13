@@ -19,6 +19,6 @@ from command.models import Configuration
 # from .models import Question
 # ...
 def home(request):
-    frequency = Configuration.objects.get(id=1).status_checking_frequency
+    frequency = Configuration.objects.first().status_checking_frequency if Configuration.objects.count() > 0 else 0
     
     return render(request, 'webview/index.html', {'frequency': frequency})    
