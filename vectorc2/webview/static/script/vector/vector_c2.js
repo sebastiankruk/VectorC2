@@ -124,7 +124,7 @@ const VectorC2 = (function(){
   function __afterLoad(event) {
     let workspaceBlocks = LocalStorage.getItem(__LOCAL_STORAGE_KEY);
     if (workspaceBlocks) {
-      __updateWorkspaceBlocks(workspaceBlocks);
+      _updateWorkspaceBlocks(workspaceBlocks);
     } else {
       console.log(gettext('No previously saved workspace was found')); 
     }
@@ -200,7 +200,7 @@ const VectorC2 = (function(){
   /**
    * Updates blocks definitions from given source
    */
-  function __updateWorkspaceBlocks(workspaceBlocks) {
+  function _updateWorkspaceBlocks(workspaceBlocks) {
     let xmlDom = null;
     try {
       xmlDom = Blockly.Xml.textToDom(workspaceBlocks);
@@ -217,15 +217,22 @@ const VectorC2 = (function(){
   };
 
   /**
+   * Returns current workspace as XML
+   */
+  function _getWorkspaceXML() {
+    let xmlDom = Blockly.Xml.workspaceToDom(__workspace);
+    let xmlText = Blockly.Xml.domToPrettyText(xmlDom);
+    return xmlText;
+  }
+
+  /**
    * Populate the currently selected pane with content generated from the blocks.
    */
   function __renderContent() {
     $(__sourceCode[__selectedView]).removeClass('prettyprinted')
     switch(__selectedView) {
       case 'xml':
-        let xmlDom = Blockly.Xml.workspaceToDom(__workspace);
-        let xmlText = Blockly.Xml.domToPrettyText(xmlDom);
-        __sourceCode.xml.textContent = xmlText;
+        __sourceCode.xml.textContent = _getWorkspaceXML();
         __pretifyCode(__sourceCode.xml);
         break;
       case 'python':
@@ -354,6 +361,8 @@ const VectorC2 = (function(){
       init: __init__,
       testJavaScript: _testJavaScript,
       cleanupWorkspace: _cleanupWorkspace,
+      updateWorkspaceBlocks: _updateWorkspaceBlocks,
+      getWorkspaceXML: _getWorkspaceXML,
       resizeArea: _onAreaResize
   }
 

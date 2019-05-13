@@ -101,19 +101,23 @@ pre code {
   /*max-height: 600px;*/
 }
 
-.nav-item.active .octicon {
+.nav-item.active .octicon,
+.nav-item.active .nonicon {
   fill: #ccc;  
 }
-.nav-item.active:hover .octicon {
+.nav-item.active:hover .octicon,
+.nav-item.active:hover .nonicon {
   fill: white;  
 }
-.nav-item.disabled .octicon {
+.nav-item.disabled .octicon,
+.nav-item.disabled .nonicon {
   fill: #999;  
 }
 .nav-item.disabled .octicon.octicon-flame {
   fill: red;
 }
-.octicon {
+.octicon,
+.nonicon {
   vertical-align: text-bottom;
 }
 .nav-item.active .nav-link.a-button-test .octicon-flame,
