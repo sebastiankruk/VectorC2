@@ -18,6 +18,8 @@ import random
 import datetime
 from concurrent import futures
 
+from command.models import Configuration
+
 class Singleton(type):
     _instances = {}
     def __call__(cls, *args, **kwargs):
@@ -32,19 +34,26 @@ class VectorStatus(metaclass=Singleton):
   The class used to read Vector's status
   """
   def __init__(self):
-    self._robot = None #TODO #25 anki_vector.AsyncRobot()
+    self._robot = anki_vector.AsyncRobot()
     self._state = None
     self._rnd = random.random()
     self._countdown = 10
-    threading.Timer(10.0, self._check_state).start()
+    self._frequency = int(Configuration.get_value('status_checking_frequency', 0))
+    self._timer = None
+
+    if self._frequency > 0:
+      self._update_refresh()
 
   def _check_state(self, _from_init=True):
     """
     Used to call update Vector state
     """
-    if not self._robot:
-      self._countdown = -1
-      return
+    if not self._robot or self._frequency <= 0:
+      self._stop_refresh()  
+      if not self._robot:
+        return
+
+    print("Checking status (%d)" % self._frequency)
 
     try:
       self._connect()
@@ -74,16 +83,17 @@ class VectorStatus(metaclass=Singleton):
           'pose_pitch_rad': self._robot.pose_pitch_rad,
           'right_wheel_speed_mmps': self._robot.right_wheel_speed_mmps,
           'x_y_z': self._robot.gyro.x_y_z,
+        },
+        '_meta': {
+          'frequency': self._frequency
         }
       }
 
       future_battery_state = self._robot.get_battery_state()
-      future_network_state = self._robot.get_network_state()
       future_version_state = self._robot.get_version_state()
       
       (fdone, fnot_done) = futures.wait([
                                           future_battery_state,
-                                          future_network_state,
                                           future_version_state
                                         ], 
                                         timeout=1.5, 
@@ -99,10 +109,6 @@ class VectorStatus(metaclass=Singleton):
           'suggested_charger_sec': battery_state.suggested_charger_sec, 
         }
 
-      # if future_network_state in fdone:
-      #   network_state = future_network_state.result()
-      #   state['network'] = str(network_state.network_stats)
-
       if future_version_state in fdone:
         version_state = future_version_state.result()
         state['version'] = {
@@ -111,14 +117,38 @@ class VectorStatus(metaclass=Singleton):
         }
       self._state = state
     except Exception:
-      self._countdown = -1
-    finally:
-      if _from_init and self._countdown > 0:
-        self._countdown -= 1
-        threading.Timer(30.0, self._check_state).start()
+        self._stop_refresh()
 
-      if not self._disconnect():
-        self._countdown = -1
+    finally:
+      if _from_init:
+        self._update_refresh()
+      
+      if  self._countdown > 0 and self._frequency > 0:
+        self._countdown -= 1
+
+      if not self._disconnect() or self._frequency <= 0 or self._countdown <= 0:
+        self._stop_refresh()
+
+  def _stop_refresh(self):
+    """
+    Will stop refreshing, set frequency to 0, and remove timer
+    """
+    print("Stopping auto-refresh")
+    self._countdown = -1
+    self._frequency = 0
+    if self._timer is not None:
+      self._timer.cancel()
+      self._timer = None
+
+  def _update_refresh(self):
+    """
+    Will update refreshing timer
+    """
+    print("Will auto-refresh in %d" % self._frequency)
+    if self._timer is not None:
+      self._timer.cancel()
+    self._timer = threading.Timer(self._frequency, self._check_state)
+    self._timer.start()
 
   def _connect(self):
     try:
@@ -133,17 +163,31 @@ class VectorStatus(metaclass=Singleton):
     """
     try:
       self._robot.disconnect()
-    except Exception as ex:
+    except Exception:
       return False
 
     return True
 
-  def read(self, consumer, states):
+  def read(self, consumer, states, frequency):
     """
     Will read Vector status and 
     #TODO implement support for selective 'states'
     """
     if self._state is None:
       self._check_state(_from_init=False)
+      
+    if frequency is not None and int(frequency) != self._frequency:
+      print("Changing frequency to %d" % frequency)
+      self._frequency = int(frequency)
+      Configuration.set_value('status_checking_frequency', self._frequency)
+
+      if frequency > 0:
+        self._update_refresh()
+      else:
+        self._stop_refresh()
+
+    if self._state is not None and frequency is not None:
+      self._state['_meta']['frequency'] = frequency
+
     self._countdown = 10
     consumer.send_status(self._state)

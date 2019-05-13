@@ -89,7 +89,7 @@ const VectorUtils = (function(){
    */
   function _getNumberFieldAsParam(block, varName, defaultVal=null) {
     let value = _getFieldValue(block, varName, defaultVal);
-    return (value !== null) ? `, ${value}` : ''
+    return (value !== null) ? `, ${value}` : '';
   }
 
   /**

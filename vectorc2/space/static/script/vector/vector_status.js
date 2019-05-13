@@ -58,16 +58,18 @@ const VectorStatus = (function(commander){
   /**
    * Send given message over WebSocket channel
    * @param {String} message 
+   * @param {int} checking frequency in seconds
    */
-  async function _readStatus(statuses) {
+  async function _readStatus(statuses, frequency=60) {
     if ( [WebSocket.CLOSED, WebSocket.CLOSING].includes(__chatSocket.readyState) ) {
       await __onClose();
     } else if ( __chatSocket.readyState === WebSocket.CONNECTING ) {
       console.warn('Delaying _readStatus by 100ms until WebSocket is ready');
-      setTimeout(_readStatus, 100, statuses);
+      setTimeout(_readStatus, 100, statuses, frequency);
     } else {
       __chatSocket.send(JSON.stringify({
-        'statuses': statuses
+        'statuses': statuses,
+        'frequency': frequency
       }));    
     }
   }

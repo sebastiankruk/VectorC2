@@ -82,7 +82,7 @@ class Commander(object):
     """
     Call to run code    
     """
-    # TODO: add protection against imports, __* type of stuff
+    #TODO: #29 add protection against imports, __* type of stuff
 
     with self._stdoutIO() as (sout, serr):
       try:

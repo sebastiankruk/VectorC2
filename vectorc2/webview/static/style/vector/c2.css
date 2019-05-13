@@ -103,11 +103,15 @@ pre code {
 
 .nav-item.active .octicon,
 .nav-item.active .nonicon {
+  fill: #ccc;  
+}
+.nav-item.active:hover .octicon,
+.nav-item.active:hover .nonicon {
   fill: white;  
 }
 .nav-item.disabled .octicon,
 .nav-item.disabled .nonicon {
-  fill: gray;  
+  fill: #999;  
 }
 .nav-item.disabled .octicon.octicon-flame {
   fill: red;
@@ -121,4 +125,30 @@ pre code {
 .nav-item.disabled .nav-link.a-button-test .octicon-beaker,
 .nav-item.disabled .nav-link.a-button-run .octicon-rocket {
   display: none;
+}
+
+/* -- configuration -- */
+
+#configModal .slider.slider-horizontal {
+    width: 400px !important;
+    margin-bottom: 28px !important;
+}
+#configModal .slider-wrapper {
+  padding: 5px 0px 5px 20px;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+}
+#configModal .slider .slider-tick-label {
+  width: 71.6667px !important; 
+  margin-left: -35.8333px !important;
+}
+#statusCheckInterval {
+  height: 80px;
+}
+#configModal .modal-body {
+  height: 150px;
+}
+#configModal .slider .slider-handle[aria-valuenow='0'] {
+  background-color: red;
+  background-image: none; 
 }

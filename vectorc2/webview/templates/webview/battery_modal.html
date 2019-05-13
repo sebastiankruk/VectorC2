@@ -1,0 +1,159 @@
+{% load i18n %}
+{% load static %}
+{% load octicons %}
+
+{# Modal #}
+
+<div class="modal fade" 
+     id="batteryModal" 
+     tabindex="-1" 
+     role="dialog" 
+     aria-labelledby="batteryModalTitle" 
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="batteryModalTitle">{% trans 'Vector status' %}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="{% trans 'Close' %}">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+          <table class="table table-sm">
+              <thead>
+                <tr>
+                  <th scope="col">{% trans 'State' %}</th>
+                  <th scope="col">{% trans 'Current value' %}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">{% trans 'are_motors_moving' %}</th>
+                  <td class="sv_are_motors_moving"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'are_wheels_moving' %}</th>
+                  <td class="sv_are_wheels_moving"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'is_animating' %}</th>
+                  <td class="sv_is_animating"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'is_being_held' %}</th>
+                  <td class="sv_is_being_held"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'is_button_pressed' %}</th>
+                  <td class="sv_is_button_pressed"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'is_carrying_block' %}</th>
+                  <td class="sv_is_carrying_block"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'is_charging' %}</th>
+                  <td class="sv_is_charging"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'is_cliff_detected' %}</th>
+                  <td class="sv_is_cliff_detected"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'is_docking_to_marker' %}</th>
+                  <td class="sv_is_docking_to_marker"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'is_falling' %}</th>
+                  <td class="sv_is_falling"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'is_head_in_pos' %}</th>
+                  <td class="sv_is_head_in_pos"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'is_in_calm_power_mode' %}</th>
+                  <td class="sv_is_in_calm_power_mode"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'is_on_charger' %}</th>
+                  <td class="sv_is_on_charger"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'is_pathing' %}</th>
+                  <td class="sv_is_pathing"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'is_picked_up' %}</th>
+                  <td class="sv_is_picked_up"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'is_robot_moving' %}</th>
+                  <td class="sv_is_robot_moving"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'head_angle_rad' %}</th>
+                  <td class="sv_head_angle_rad"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'lift_height_mm' %}</th>
+                  <td class="sv_lift_height_mm"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'pose_angle_rad' %}</th>
+                  <td class="sv_pose_angle_rad"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'pose_pitch_rad' %}</th>
+                  <td class="sv_pose_pitch_rad"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'right_wheel_speed_mmps' %}</th>
+                  <td class="sv_right_wheel_speed_mmps"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'x_y_z' %}</th>
+                  <td class="sv_x_y_z"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'battery_volts' %}</th>
+                  <td class="sv_battery_volts"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'battery_level' %}</th>
+                  <td class="sv_battery_level"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'is_charging' %}</th>
+                  <td class="sv_is_charging"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'is_on_charger_platform' %}</th>
+                  <td class="sv_is_on_charger_platform"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'suggested_charger_sec' %}</th>
+                  <td class="sv_suggested_charger_sec"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'network' %}</th>
+                  <td class="sv_network"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'os_version' %}</th>
+                  <td class="sv_os_version"></td>
+                </tr>
+                <tr>
+                  <th scope="row">{% trans 'engine_build_id' %}</th>
+                  <td class="sv_engine_build_id"></td>
+                </tr>
+              </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">{% trans 'Close' %}</button>
+      </div>
+    </div>
+  </div>
+</div>
