@@ -18,7 +18,6 @@ class Configuration(models.Model):
             Configuration.set_value(key, default_value)
         
         return config.value
-        
 
     @staticmethod
     def set_value(key, value):

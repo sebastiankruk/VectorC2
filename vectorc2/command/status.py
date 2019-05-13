@@ -18,6 +18,8 @@ import random
 import datetime
 from concurrent import futures
 
+from command.models import Configuration
+
 class Singleton(type):
     _instances = {}
     def __call__(cls, *args, **kwargs):
@@ -36,12 +38,11 @@ class VectorStatus(metaclass=Singleton):
     self._state = None
     self._rnd = random.random()
     self._countdown = 10
-    self._frequency = 0
+    self._frequency = int(Configuration.get_value('status_checking_frequency', 0))
     self._timer = None
 
-    # checking is not inited by default    
-    # threading.Timer(10.0, self._check_state)
-    # self._timer.start()
+    if self._frequency > 0:
+      self._update_refresh()
 
   def _check_state(self, _from_init=True):
     """
@@ -53,6 +54,7 @@ class VectorStatus(metaclass=Singleton):
         return
 
     print("Checking status (%d)" % self._frequency)
+
     try:
       self._connect()
       state = {
@@ -118,24 +120,35 @@ class VectorStatus(metaclass=Singleton):
         self._stop_refresh()
 
     finally:
-      if _from_init and self._countdown > 0 and self._frequency > 0:
+      if _from_init:
+        self._update_refresh()
+      
+      if  self._countdown > 0 and self._frequency > 0:
         self._countdown -= 1
-        self._timer = threading.Timer(self._frequency, self._check_state)
-        self._timer.start()
 
-      if not self._disconnect():
+      if not self._disconnect() or self._frequency <= 0 or self._countdown <= 0:
         self._stop_refresh()
 
   def _stop_refresh(self):
     """
     Will stop refreshing, set frequency to 0, and remove timer
     """
+    print("Stopping auto-refresh")
     self._countdown = -1
     self._frequency = 0
     if self._timer is not None:
       self._timer.cancel()
       self._timer = None
 
+  def _update_refresh(self):
+    """
+    Will update refreshing timer
+    """
+    print("Will auto-refresh in %d" % self._frequency)
+    if self._timer is not None:
+      self._timer.cancel()
+    self._timer = threading.Timer(self._frequency, self._check_state)
+    self._timer.start()
 
   def _connect(self):
     try:
@@ -160,16 +173,18 @@ class VectorStatus(metaclass=Singleton):
     Will read Vector status and 
     #TODO implement support for selective 'states'
     """
-    if frequency is not None and frequency != self._frequency:
-      print("Changing frequency to %d" % frequency)
-      self._frequency = frequency
-
     if self._state is None:
       self._check_state(_from_init=False)
       
-    if frequency > 0:
-      self._timer = threading.Timer(self._frequency, self._check_state)
-      self._timer.start()
+    if frequency is not None and int(frequency) != self._frequency:
+      print("Changing frequency to %d" % frequency)
+      self._frequency = int(frequency)
+      Configuration.set_value('status_checking_frequency', self._frequency)
+
+      if frequency > 0:
+        self._update_refresh()
+      else:
+        self._stop_refresh()
 
     if self._state is not None and frequency is not None:
       self._state['_meta']['frequency'] = frequency

@@ -41,6 +41,7 @@ const VectorConfiguration = (function(){
   function __init__() {
     __configModal = $('#configModal');
     __statusIntervalSlider = $('#statusCheckInterval');
+    __statusInterval = __statusIntervalSlider.slider('getValue');
 
     $('#configModal .modal-footer button.btn-primary').mouseup(__onConfigSave);
   }
