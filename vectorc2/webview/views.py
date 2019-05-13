@@ -16,9 +16,7 @@ from django.shortcuts import render
 
 from command.models import Configuration
 
-# from .models import Question
-# ...
 def home(request):
-    frequency = Configuration.objects.first().status_checking_frequency if Configuration.objects.count() > 0 else 0
+    frequency = Configuration.get_value('status_checking_frequency', 0)
     
     return render(request, 'webview/index.html', {'frequency': frequency})    
