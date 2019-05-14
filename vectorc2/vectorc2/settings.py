@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'octicons',
     'nonicons',
+    'blocks',
     'webview.apps.WebviewConfig',
     'django.contrib.admin',
     'django.contrib.auth',
