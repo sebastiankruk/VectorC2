@@ -31,6 +31,17 @@ The idea behind Vector C2 project emerged when I realized that although Anki Vec
     pip install -r requirements.txt
     ```
 
+1. Prepare DB and populate it with current animation names and triggers. Run 
+    ```bash
+    ./manage.py migrate
+    ```
+1. In case you would like to update animation names and triggers list, run:
+    ```bash
+    ./manage.py migrate --fake blocks 0001_initial
+    ./manage.py migrate blocks 0002_initialize_data
+    ```
+
+
 1. Install [redis](https://redis.io/).
 1. [Run Redis](https://redis.io/topics/quickstart):
 
