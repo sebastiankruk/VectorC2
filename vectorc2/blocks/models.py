@@ -30,7 +30,7 @@ class AnimationTags(models.Model):
                     tag=t.lower(), 
                     defaults={'tag': t.lower()}
                   ) for t in tag_strings 
-                ] if created ]
+                ] ]
 
     return tags
 
@@ -40,15 +40,15 @@ class AnimationTags(models.Model):
     Objects are ordered by number of tags match between object and query
     """
     def __compare_vectors(entry_tags, tags):
-      return 0
+      return len( set(entry_tags) & set(tags) )
 
-    entries = source.objects.filter(tags__tag__in=tags)
-    entries_weighted = [ (entry, __compare_vectors(entry.tags, tags)) for entry in entries ]
-    entries_weighted.sort(key=lambda x: x[1])
+    entries = set(source.objects.filter(tags__tag__in=tags))
+    entries_weighted = [ (entry, __compare_vectors(entry.get_tags(), tags)) for entry in entries ]
+    entries_weighted.sort(key=lambda x: x[1], reverse=True)
 
     return [ entry for (entry, weight) in entries_weighted ]
 
-    
+
   def __str__(self):
     return self.tag
 
@@ -61,6 +61,9 @@ class AnimationName(models.Model):
   active = models.BooleanField('Is active', default=True, null=False)
   tags = models.ManyToManyField(AnimationTags)
 
+  def get_tags(self):
+    return [ tag.tag for tag in self.tags.all() ]
+
   def __str__(self):
     return self.name
 
@@ -71,6 +74,9 @@ class AnimationTrigger(models.Model):
   name = models.CharField('Animation trigger', max_length=50, unique=True, null=False, db_index=True)
   active = models.BooleanField('Is active', default=True, null=False)
   tags = models.ManyToManyField(AnimationTags)
+
+  def get_tags(self):
+    return [ tag.tag for tag in self.tags.all() ]
 
   def __str__(self):
     return self.name
