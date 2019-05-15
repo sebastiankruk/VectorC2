@@ -34,8 +34,24 @@ class AnimationTags(models.Model):
 
     return tags
 
+  def find_objects_ordered(source, *tags):
+    """
+    Returns list of objects from given source that where tagged with a least one of given tags.
+    Objects are ordered by number of tags match between object and query
+    """
+    def __compare_vectors(entry_tags, tags):
+      return 0
+
+    entries = source.objects.filter(tags__tag__in=tags)
+    entries_weighted = [ (entry, __compare_vectors(entry.tags, tags)) for entry in entries ]
+    entries_weighted.sort(key=lambda x: x[1])
+
+    return [ entry for (entry, weight) in entries_weighted ]
+
+    
   def __str__(self):
     return self.tag
+
 
 class AnimationName(models.Model):
   """
