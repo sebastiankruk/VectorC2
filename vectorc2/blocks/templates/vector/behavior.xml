@@ -30,4 +30,12 @@
   </block>
   <block type="vector_set_head_angle"></block>
   <block type="vector_set_lift_height"></block>
+  <block type="play_animation">
+    <field name="selection_algorithm">select_best</field>
+    <field name="loop_animation">1</field>
+    <field name="ignore_body_track">FALSE</field>
+    <field name="ignore_head_track">FALSE</field>
+    <field name="ignore_lift_track">FALSE</field>
+    <field name="debug_animations_list">TRUE</field>
+  </block>  
 </category>

@@ -44,6 +44,11 @@ const VectorBlocks = (function(){
       'initiazed': false,
       'mutators': true,
       'constants': 'VectorBehavior'
+    },
+    'vector_animations': {
+      'initiazed': false,
+      'mutators': true,
+      'constants': 'VectorBehavior'
     }
   };
 

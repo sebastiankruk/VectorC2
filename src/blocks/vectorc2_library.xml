@@ -1175,4 +1175,156 @@
         <field name="HUE">195</field>
       </block>
     </value>
+  </block><block type="factory_base" id="xB],g.t15RwJsevwv38X" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">play_animation</field>
+    <field name="INLINE">EXT</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_value" id="~da/aK6O3tUx+B:9Ho)P">
+        <field name="INPUTNAME">animation</field>
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="uQ$vq.S+pKr7{S`(V#hU">
+            <field name="TEXT">Play animation</field>
+          </block>
+        </statement>
+        <value name="TYPE">
+          <shadow type="type_null" id="B%C%ydalAv_gzej0%5ko"></shadow>
+          <block type="type_string" id="|E|ym$X7;]ZaF6O#se_G"></block>
+        </value>
+        <next>
+          <block type="input_dummy" id="bAz,ser+7d;YjJjFiQez">
+            <field name="ALIGN">RIGHT</field>
+            <statement name="FIELDS">
+              <block type="field_dropdown" id="}8.c_=?K]T(?PXoW3iZ%">
+                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
+                <field name="FIELDNAME">selection_algorithm</field>
+                <field name="USER0">best matching</field>
+                <field name="CPU0">select_best</field>
+                <field name="USER1">weighted random</field>
+                <field name="CPU1">select_weighted</field>
+                <field name="USER2">random</field>
+                <field name="CPU2">select_random</field>
+              </block>
+            </statement>
+            <next>
+              <block type="input_dummy" id="x5X|}abKtFPqlWj-dp{?">
+                <field name="ALIGN">RIGHT</field>
+                <statement name="FIELDS">
+                  <block type="field_static" id="g,(x.Ayl:?9w=`!EG=Rd">
+                    <field name="TEXT">repeat</field>
+                    <next>
+                      <block type="field_number" id="9nkGu~6:G]0GNbqy2iPa">
+                        <field name="VALUE">0</field>
+                        <field name="FIELDNAME">loop_animation</field>
+                        <field name="MIN">1</field>
+                        <field name="MAX">10</field>
+                        <field name="PRECISION">1</field>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <next>
+                  <block type="input_dummy" id="y7NK?vP~Hk)nk)HgqS|+">
+                    <field name="ALIGN">LEFT</field>
+                    <statement name="FIELDS">
+                      <block type="field_static" id="CKw]B(4E=:iu@p/yJS2L">
+                        <field name="TEXT">but ignore:</field>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="input_dummy" id="ls`[TH%v8LG$I}M}K|O0">
+                        <field name="ALIGN">RIGHT</field>
+                        <statement name="FIELDS">
+                          <block type="field_static" id="c-B@?GJfGDu!;|ouf$/;">
+                            <field name="TEXT">body movements</field>
+                            <next>
+                              <block type="field_checkbox" id="!@|JhJlYz;*a;eF!M#Ca">
+                                <field name="CHECKED">FALSE</field>
+                                <field name="FIELDNAME">ignore_body_track</field>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="input_dummy" id="Ywkr-hDCN0@Z;s7NTc,P">
+                            <field name="ALIGN">RIGHT</field>
+                            <statement name="FIELDS">
+                              <block type="field_static" id="?hQBlIOjC$d:?JW$qR!4">
+                                <field name="TEXT">head movements</field>
+                                <next>
+                                  <block type="field_checkbox" id="sUpABlai7$N(087WIB57">
+                                    <field name="CHECKED">FALSE</field>
+                                    <field name="FIELDNAME">ignore_head_track</field>
+                                  </block>
+                                </next>
+                              </block>
+                            </statement>
+                            <next>
+                              <block type="input_dummy" id="=c2P[~JQP^`SxHN`!b/^">
+                                <field name="ALIGN">RIGHT</field>
+                                <statement name="FIELDS">
+                                  <block type="field_static" id="wlC(O9mwcu%lZm:#*D,,">
+                                    <field name="TEXT">lift movements</field>
+                                    <next>
+                                      <block type="field_checkbox" id=").TsclQPoH*}PiPj}74-">
+                                        <field name="CHECKED">FALSE</field>
+                                        <field name="FIELDNAME">ignore_lift_track</field>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </statement>
+                                <next>
+                                  <block type="input_dummy" id="E(:+k){l2R0Seg1Q*VCf">
+                                    <field name="ALIGN">RIGHT</field>
+                                    <statement name="FIELDS">
+                                      <block type="field_static" id="+vlcF^lwnx3Xh=WzWNc0">
+                                        <field name="TEXT">and list matching animations</field>
+                                        <next>
+                                          <block type="field_checkbox" id="1StbHaqjsD`4q4nAya29">
+                                            <field name="CHECKED">TRUE</field>
+                                            <field name="FIELDNAME">debug_animations_list</field>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </statement>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="Al3Ty$DU/OqH2#GQLLl:" deletable="false" movable="false">
+        <field name="TEXT">Starts an animation playing on a robot.  Vector must be off of the charger to play an animation.</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="vA9$jNxwM_?kF50E$[RS" deletable="false" movable="false">
+        <field name="TEXT">https://sdk-resources.anki.com/vector/docs/generated/anki_vector.animation.html#anki_vector.animation.AnimationComponent.play_animation</field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="$=*XQws`tCNwVr4SOAi3"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="([eN?W}N8oQU+1$dF.ij"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="HPWa7Wu$O0|?MbIRX;2M">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
   </block></xml>

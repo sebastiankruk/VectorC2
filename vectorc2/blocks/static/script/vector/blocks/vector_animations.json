@@ -1,0 +1,89 @@
+[
+  {
+    "type": "play_animation",
+    "lastDummyAlign0": "RIGHT",
+    "message0": "Play animation %1 %2 %3 repeat %4 %5 but ignore: %6 body movements %7 %8 head movements %9 %10 lift movements %11 %12 and list matching animations %13",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "animation",
+        "check": "String"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "selection_algorithm",
+        "options": [
+          [
+            "best matching",
+            "select_best"
+          ],
+          [
+            "weighted random",
+            "select_weighted"
+          ],
+          [
+            "random",
+            "select_random"
+          ]
+        ]
+      },
+      {
+        "type": "input_dummy",
+        "align": "RIGHT"
+      },
+      {
+        "type": "field_number",
+        "name": "loop_animation",
+        "value": 0,
+        "min": 1,
+        "max": 10,
+        "precision": 1
+      },
+      {
+        "type": "input_dummy",
+        "align": "RIGHT"
+      },
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "field_checkbox",
+        "name": "ignore_body_track",
+        "checked": false
+      },
+      {
+        "type": "input_dummy",
+        "align": "RIGHT"
+      },
+      {
+        "type": "field_checkbox",
+        "name": "ignore_head_track",
+        "checked": false
+      },
+      {
+        "type": "input_dummy",
+        "align": "RIGHT"
+      },
+      {
+        "type": "field_checkbox",
+        "name": "ignore_lift_track",
+        "checked": false
+      },
+      {
+        "type": "input_dummy",
+        "align": "RIGHT"
+      },
+      {
+        "type": "field_checkbox",
+        "name": "debug_animations_list",
+        "checked": true
+      }
+    ],
+    "inputsInline": false,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 230,
+    "tooltip": "Starts an animation playing on a robot.  Vector must be off of the charger to play an animation.",
+    "helpUrl": "https://sdk-resources.anki.com/vector/docs/generated/anki_vector.animation.html#anki_vector.animation.AnimationComponent.play_animation"
+  }
+]
