@@ -21,6 +21,10 @@
   <block type="vector_utils_distance_mm"></block>
   <block type="vector_utils_speed_mmps"></block>
   <block type="vector_utils_degrees"></block>
+  <block type="find_animation">
+    <field name="search_source">animation_name</field>
+    <field name="search_type">best_matching</field>
+  </block>
   <block type="vector_const_min_head_angle"></block>
   <block type="vector_const_max_head_angle"></block>
   <block type="vector_const_max_lift_height"></block>

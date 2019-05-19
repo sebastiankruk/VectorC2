@@ -28,6 +28,13 @@ def rgb_to_hs(rgbstr):
 
   return {'hue':h, 'saturation':s2}
 
+def find_animation(query_tags, dropdown_search_type='best_matching', is_trigger=False):
+  """
+  Returns a single animation name that is currently available
+  """
+  #TODO implement
+  return 'anim_holiday_hny_fireworks_01'
+
 class OuputProxy(object):
   """
   Proxy object wrapping outputing to given stream, stringIO, and WS consumer

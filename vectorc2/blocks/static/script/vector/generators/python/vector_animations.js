@@ -20,9 +20,20 @@ Blockly.Python.play_animation = function(block) {
   let variable_robot_var = VectorUtils.getRobotVar(block);
 
   let value_text = Blockly.Python.valueToCode(block, 'animation', Blockly.Python.ORDER_ATOMIC);
+  let trigger = (block.getFieldValue('animation_type') === 'trigger') ? '_trigger' : '';
   // let param_speed = VectorUtils.getNumberFieldAsParam(block, 'SPEED_VAR');
   // let param_voice = VectorUtils.getBoolFieldAsPythonParam(block, 'VOICE_VAR', (param_speed !== '') ? 'TRUE' : null);
 
-  let code = `${variable_robot_var}.animation.play_animation(${value_text}${param_voice}${param_speed})\n`;
+  let code = `${variable_robot_var}.animation.play_animation${trigger}(${value_text})\n`;
   return code;
+};
+Blockly.Python.find_animation = function(block) {
+  let variable_robot_var = VectorUtils.getRobotVar(block);
+
+  let query_tags = Blockly.Python.valueToCode(block, 'query_tags', Blockly.Python.ORDER_ATOMIC);
+  let is_trigger = (block.getFieldValue('search_source') === 'animation_trigger');
+  let dropdown_search_type = block.getFieldValue('search_type');
+
+  let code = `find_animation(${query_tags}, ${dropdown_search_type}, ${is_trigger});\n`;
+  return [code, Blockly.Python.ORDER_NONE];
 };
