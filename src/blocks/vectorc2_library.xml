@@ -1,20 +1,4 @@
-<xml xmlns="http://www.w3.org/1999/xhtml">
-<!--
-   Copyright 2019 Sebastian Ryszard Kruk <vectorc2@kruk.me>
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-     http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
-  -->
-<block type="factory_base" id="ln]-ve{@[)wGys*XbPo^" deletable="false" movable="false" x="10" y="10">
+<xml xmlns="http://www.w3.org/1999/xhtml"><block type="factory_base" id="ln]-ve{@[)wGys*XbPo^" deletable="false" movable="false" x="10" y="10">
     <mutation connections="BOTH"></mutation>
     <field name="NAME">vector_say_text</field>
     <field name="INLINE">EXT</field>
@@ -1191,108 +1175,85 @@
         </statement>
         <value name="TYPE">
           <shadow type="type_null" id="B%C%ydalAv_gzej0%5ko"></shadow>
-          <block type="type_string" id="|E|ym$X7;]ZaF6O#se_G"></block>
+          <block type="type_group" id="ZV_L]ZBcYlP1]*dHG2~}">
+            <mutation types="2"></mutation>
+            <value name="TYPE0">
+              <block type="type_other" id="csqwFKEN`W+@zx{+~,qN">
+                <field name="TYPE">Animation</field>
+              </block>
+            </value>
+            <value name="TYPE1">
+              <block type="type_string" id="|E|ym$X7;]ZaF6O#se_G"></block>
+            </value>
+          </block>
         </value>
         <next>
-          <block type="input_dummy" id="bAz,ser+7d;YjJjFiQez">
+          <block type="input_dummy" id="x5X|}abKtFPqlWj-dp{?">
             <field name="ALIGN">RIGHT</field>
             <statement name="FIELDS">
-              <block type="field_dropdown" id="}8.c_=?K]T(?PXoW3iZ%">
-                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
-                <field name="FIELDNAME">selection_algorithm</field>
-                <field name="USER0">best matching</field>
-                <field name="CPU0">select_best</field>
-                <field name="USER1">weighted random</field>
-                <field name="CPU1">select_weighted</field>
-                <field name="USER2">random</field>
-                <field name="CPU2">select_random</field>
+              <block type="field_static" id="g,(x.Ayl:?9w=`!EG=Rd">
+                <field name="TEXT">repeat</field>
+                <next>
+                  <block type="field_number" id="9nkGu~6:G]0GNbqy2iPa">
+                    <field name="VALUE">0</field>
+                    <field name="FIELDNAME">loop_animation</field>
+                    <field name="MIN">1</field>
+                    <field name="MAX">10</field>
+                    <field name="PRECISION">1</field>
+                  </block>
+                </next>
               </block>
             </statement>
             <next>
-              <block type="input_dummy" id="x5X|}abKtFPqlWj-dp{?">
-                <field name="ALIGN">RIGHT</field>
+              <block type="input_dummy" id="y7NK?vP~Hk)nk)HgqS|+">
+                <field name="ALIGN">LEFT</field>
                 <statement name="FIELDS">
-                  <block type="field_static" id="g,(x.Ayl:?9w=`!EG=Rd">
-                    <field name="TEXT">repeat</field>
-                    <next>
-                      <block type="field_number" id="9nkGu~6:G]0GNbqy2iPa">
-                        <field name="VALUE">0</field>
-                        <field name="FIELDNAME">loop_animation</field>
-                        <field name="MIN">1</field>
-                        <field name="MAX">10</field>
-                        <field name="PRECISION">1</field>
-                      </block>
-                    </next>
+                  <block type="field_static" id="CKw]B(4E=:iu@p/yJS2L">
+                    <field name="TEXT">but ignore:</field>
                   </block>
                 </statement>
                 <next>
-                  <block type="input_dummy" id="y7NK?vP~Hk)nk)HgqS|+">
-                    <field name="ALIGN">LEFT</field>
+                  <block type="input_dummy" id="ls`[TH%v8LG$I}M}K|O0">
+                    <field name="ALIGN">RIGHT</field>
                     <statement name="FIELDS">
-                      <block type="field_static" id="CKw]B(4E=:iu@p/yJS2L">
-                        <field name="TEXT">but ignore:</field>
+                      <block type="field_static" id="c-B@?GJfGDu!;|ouf$/;">
+                        <field name="TEXT">body movements</field>
+                        <next>
+                          <block type="field_checkbox" id="!@|JhJlYz;*a;eF!M#Ca">
+                            <field name="CHECKED">FALSE</field>
+                            <field name="FIELDNAME">ignore_body_track</field>
+                          </block>
+                        </next>
                       </block>
                     </statement>
                     <next>
-                      <block type="input_dummy" id="ls`[TH%v8LG$I}M}K|O0">
+                      <block type="input_dummy" id="Ywkr-hDCN0@Z;s7NTc,P">
                         <field name="ALIGN">RIGHT</field>
                         <statement name="FIELDS">
-                          <block type="field_static" id="c-B@?GJfGDu!;|ouf$/;">
-                            <field name="TEXT">body movements</field>
+                          <block type="field_static" id="?hQBlIOjC$d:?JW$qR!4">
+                            <field name="TEXT">head movements</field>
                             <next>
-                              <block type="field_checkbox" id="!@|JhJlYz;*a;eF!M#Ca">
+                              <block type="field_checkbox" id="sUpABlai7$N(087WIB57">
                                 <field name="CHECKED">FALSE</field>
-                                <field name="FIELDNAME">ignore_body_track</field>
+                                <field name="FIELDNAME">ignore_head_track</field>
                               </block>
                             </next>
                           </block>
                         </statement>
                         <next>
-                          <block type="input_dummy" id="Ywkr-hDCN0@Z;s7NTc,P">
+                          <block type="input_dummy" id="=c2P[~JQP^`SxHN`!b/^">
                             <field name="ALIGN">RIGHT</field>
                             <statement name="FIELDS">
-                              <block type="field_static" id="?hQBlIOjC$d:?JW$qR!4">
-                                <field name="TEXT">head movements</field>
+                              <block type="field_static" id="wlC(O9mwcu%lZm:#*D,,">
+                                <field name="TEXT">lift movements</field>
                                 <next>
-                                  <block type="field_checkbox" id="sUpABlai7$N(087WIB57">
+                                  <block type="field_checkbox" id=").TsclQPoH*}PiPj}74-">
                                     <field name="CHECKED">FALSE</field>
-                                    <field name="FIELDNAME">ignore_head_track</field>
+                                    <field name="FIELDNAME">ignore_lift_track</field>
                                   </block>
                                 </next>
                               </block>
                             </statement>
-                            <next>
-                              <block type="input_dummy" id="=c2P[~JQP^`SxHN`!b/^">
-                                <field name="ALIGN">RIGHT</field>
-                                <statement name="FIELDS">
-                                  <block type="field_static" id="wlC(O9mwcu%lZm:#*D,,">
-                                    <field name="TEXT">lift movements</field>
-                                    <next>
-                                      <block type="field_checkbox" id=").TsclQPoH*}PiPj}74-">
-                                        <field name="CHECKED">FALSE</field>
-                                        <field name="FIELDNAME">ignore_lift_track</field>
-                                      </block>
-                                    </next>
-                                  </block>
-                                </statement>
-                                <next>
-                                  <block type="input_dummy" id="E(:+k){l2R0Seg1Q*VCf">
-                                    <field name="ALIGN">RIGHT</field>
-                                    <statement name="FIELDS">
-                                      <block type="field_static" id="+vlcF^lwnx3Xh=WzWNc0">
-                                        <field name="TEXT">and list matching animations</field>
-                                        <next>
-                                          <block type="field_checkbox" id="1StbHaqjsD`4q4nAya29">
-                                            <field name="CHECKED">TRUE</field>
-                                            <field name="FIELDNAME">debug_animations_list</field>
-                                          </block>
-                                        </next>
-                                      </block>
-                                    </statement>
-                                  </block>
-                                </next>
-                              </block>
-                            </next>
                           </block>
                         </next>
                       </block>
@@ -1323,6 +1284,80 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="HPWa7Wu$O0|?MbIRX;2M">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="E1jurj]+Zv4pywmPLQVA" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="LEFT"></mutation>
+    <field name="NAME">find_animation</field>
+    <field name="INLINE">INT</field>
+    <field name="CONNECTIONS">LEFT</field>
+    <statement name="INPUTS">
+      <block type="input_value" id="RJ1b9XFc=t%l|~V2-{1L">
+        <field name="INPUTNAME">NAME</field>
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="5,td0tW8d|ridE.jd.YB">
+            <field name="TEXT">Find animation</field>
+            <next>
+              <block type="field_dropdown" id="Ouum1_[MXn;Irm4d1jmY">
+                <mutation options="[&quot;text&quot;,&quot;text&quot;]"></mutation>
+                <field name="FIELDNAME">search_source</field>
+                <field name="USER0">name</field>
+                <field name="CPU0">animation_name</field>
+                <field name="USER1">trigger</field>
+                <field name="CPU1">animation_trigger</field>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <value name="TYPE">
+          <shadow type="type_null" id="j,@f66@X7#G-h=EJ3nr["></shadow>
+          <block type="type_string" id="`h/iA@J3puZ0-.$.Z6rG"></block>
+        </value>
+        <next>
+          <block type="input_dummy" id="Rz_PLr/Xs]@lWL/Gk{Q9">
+            <field name="ALIGN">LEFT</field>
+            <statement name="FIELDS">
+              <block type="field_dropdown" id="0c5u1^`tQemOVWx4)3JF">
+                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
+                <field name="FIELDNAME">search_type</field>
+                <field name="USER0">best</field>
+                <field name="CPU0">best_matching</field>
+                <field name="USER1">randomly</field>
+                <field name="CPU1">randomly_matching</field>
+                <field name="USER2">randomly (weighted)</field>
+                <field name="CPU2">weighted_matching</field>
+                <next>
+                  <block type="field_static" id="B}g8!w]!SY(FSyW-I2:-">
+                    <field name="TEXT">matching</field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="5g.lQjg*P91vf=O|Bep6" deletable="false" movable="false">
+        <field name="TEXT">Returns animation name or trigger that best matches given tags (or is randomly selected)</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id=".mOSAUq@;C/jl9dwwYHQ" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="OUTPUTTYPE">
+      <shadow type="type_null" id="y[bsj]NiE;vsozWhf~uX"></shadow>
+      <block type="type_other" id="%ZU2PwXpL^^rO%fHwq1#">
+        <field name="TYPE">Animation</field>
+      </block>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="5vxO^^E1gfZ{sFwK(o/o">
         <mutation colour="#5b67a5"></mutation>
         <field name="HUE">230</field>
       </block>
