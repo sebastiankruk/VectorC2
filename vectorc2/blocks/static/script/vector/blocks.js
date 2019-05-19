@@ -24,30 +24,42 @@ const VectorBlocks = (function(){
 
   'use strict';
 
+  /*
+   * initialized:
+   *  0 - we have to initialize both mutators and generators
+   *  1 - we need to initialize generators (two js generator files to be loaded)
+   *  2 - we need to initialize mutators (only one js files to be loaded)
+   *  3 - we don't need to do anything
+   */
   const JSON_BLOCK_SPECS = {
     'vector_robot': {
-      'initiazed': false,
+      'initiazed': 0, 
       'mutators': true,
+      'generators': true,
       'constants': 'VectorUtils'
     },
     'vector_util': {
-      'initiazed': false,
+      'initiazed': 1,
       'mutators': false,
+      'generators': true,
       'constants': 'VectorUtils'
     },
     'vector_say_text': {
-      'initiazed': false,
+      'initiazed': 0,
       'mutators': true,
+      'generators': true,
       'constants': 'VectorBehavior'
     },
     'vector_behavior': {
-      'initiazed': false,
+      'initiazed': 0,
       'mutators': true,
+      'generators': true,
       'constants': 'VectorBehavior'
     },
     'vector_animations': {
-      'initiazed': false,
+      'initiazed': 2,
       'mutators': true,
+      'generators': true,
       'constants': 'VectorBehavior'
     }
   };
@@ -61,10 +73,16 @@ const VectorBlocks = (function(){
   function __loadCustomBlocks(jsonFile) {
     return function(data) {
       VectorUtils.initializeBlocks(...data);
-      if (JSON_BLOCK_SPECS[jsonFile].mutators) {
-        __cachedScript(`/static/script/vector/blocks/${jsonFile}.js`).then(data => __isInitialized(jsonFile));
-      } else {
+      if (!JSON_BLOCK_SPECS[jsonFile].mutators && !JSON_BLOCK_SPECS[jsonFile].generators) {
         __isInitialized(jsonFile);
+      } else {
+        if (JSON_BLOCK_SPECS[jsonFile].mutators) {
+          __cachedScript(`/static/script/vector/blocks/${jsonFile}.js`).then(data => __isInitialized(jsonFile));
+        }
+        if (JSON_BLOCK_SPECS[jsonFile].generators) {
+          __cachedScript(`/static/script/vector/generators/javascript/${jsonFile}.js`).then(data => __isInitialized(jsonFile));
+          __cachedScript(`/static/script/vector/generators/python/${jsonFile}.js`).then(data => __isInitialized(jsonFile));
+        }
       }
 
     };
@@ -74,9 +92,9 @@ const VectorBlocks = (function(){
    * Called to check whethere all JSON files are initialized and we can initialize VectorC2
    */
   function __isInitialized(jsonFile) {
-    JSON_BLOCK_SPECS[jsonFile].initiazed = true;
+    JSON_BLOCK_SPECS[jsonFile].initiazed++;
 
-    if (Object.values(JSON_BLOCK_SPECS).map( o => o.initiazed ).every(Boolean)) { // if all JSON files are initialized
+    if (Object.values(JSON_BLOCK_SPECS).map( o => (o.initiazed >= 3) ).every(Boolean)) { // if all JSON files are initialized
       VectorC2.init();
     }
   }

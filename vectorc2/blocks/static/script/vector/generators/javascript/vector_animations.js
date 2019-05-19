@@ -16,17 +16,26 @@
  * @author vectorc2@kruk.me
  */
 /* jshint esversion: 6 */
-/**
- * Generator of the JavaScript code for the first block: vector_say_text
- */
 Blockly.JavaScript.play_animation = function(block) {
   let variable_robot_var = VectorUtils.getRobotVar(block);
 
   let value_text = Blockly.JavaScript.valueToCode(block, 'animation', Blockly.JavaScript.ORDER_ATOMIC);
+  let trigger = (block.getFieldValue('animation_type') === 'animation_trigger') ? 'Trigger' : '';
   // let param_speed = VectorUtils.getNumberFieldAsParam(block, 'SPEED_VAR');
   // let param_voice = VectorUtils.getBoolFieldAsParam(block, 'VOICE_VAR',  (param_speed !== '') ? 'TRUE' : null);
 
-  let code = `${variable_robot_var}.playAnimation(${value_text});\n`;
+  let code = `${variable_robot_var}.playAnimation${trigger}(${value_text});\n`;
 
   return code;
+};
+Blockly.JavaScript.find_animation = function(block) {
+  let variable_robot_var = VectorUtils.getRobotVar(block);
+
+  let query_tags = Blockly.JavaScript.valueToCode(block, 'query_tags', Blockly.JavaScript.ORDER_ATOMIC);
+  let is_trigger = (block.getFieldValue('search_source') === 'animation_trigger');
+  let dropdown_search_type = block.getFieldValue('search_type');
+
+  let code = `${variable_robot_var}.findAnimation(${query_tags}, ${dropdown_search_type}, ${is_trigger});\n`;
+
+  return [code, Blockly.Python.ORDER_NONE];
 };

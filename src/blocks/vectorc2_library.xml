@@ -1170,7 +1170,22 @@
         <field name="ALIGN">LEFT</field>
         <statement name="FIELDS">
           <block type="field_static" id="uQ$vq.S+pKr7{S`(V#hU">
-            <field name="TEXT">Play animation</field>
+            <field name="TEXT">Play animation (</field>
+            <next>
+              <block type="field_dropdown" id="bZ5TKTIs+jt:Bf?fy/Ow">
+                <mutation options="[&quot;text&quot;,&quot;text&quot;]"></mutation>
+                <field name="FIELDNAME">animation_type</field>
+                <field name="USER0">name</field>
+                <field name="CPU0">animation_name</field>
+                <field name="USER1">trigger</field>
+                <field name="CPU1">animation_trigger</field>
+                <next>
+                  <block type="field_static" id=".0+e}v};Ka`cw6W[IVZQ">
+                    <field name="TEXT">)</field>
+                  </block>
+                </next>
+              </block>
+            </next>
           </block>
         </statement>
         <value name="TYPE">
@@ -1284,8 +1299,8 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="HPWa7Wu$O0|?MbIRX;2M">
-        <mutation colour="#5b67a5"></mutation>
-        <field name="HUE">230</field>
+        <mutation colour="#5ba580"></mutation>
+        <field name="HUE">150</field>
       </block>
     </value>
   </block><block type="factory_base" id="E1jurj]+Zv4pywmPLQVA" deletable="false" movable="false" x="10" y="10">
@@ -1295,7 +1310,7 @@
     <field name="CONNECTIONS">LEFT</field>
     <statement name="INPUTS">
       <block type="input_value" id="RJ1b9XFc=t%l|~V2-{1L">
-        <field name="INPUTNAME">NAME</field>
+        <field name="INPUTNAME">query_tags</field>
         <field name="ALIGN">LEFT</field>
         <statement name="FIELDS">
           <block type="field_static" id="5,td0tW8d|ridE.jd.YB">
