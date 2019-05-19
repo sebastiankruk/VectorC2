@@ -18,9 +18,9 @@
 /* jshint esversion: 6 */
 Blockly.JavaScript.play_animation = function(block) {
   let variable_robot_var = VectorUtils.getRobotVar(block);
-
+  
   let value_text = Blockly.JavaScript.valueToCode(block, 'animation', Blockly.JavaScript.ORDER_ATOMIC);
-  let trigger = (block.getFieldValue('animation_type') === 'animation_trigger') ? 'Trigger' : '';
+  let trigger = (block.getFieldValue('animation_type') === 'Consts.Animation.TRIGGER') ? 'Trigger' : '';
   // let param_speed = VectorUtils.getNumberFieldAsParam(block, 'SPEED_VAR');
   // let param_voice = VectorUtils.getBoolFieldAsParam(block, 'VOICE_VAR',  (param_speed !== '') ? 'TRUE' : null);
 
@@ -32,7 +32,7 @@ Blockly.JavaScript.find_animation = function(block) {
   let variable_robot_var = VectorUtils.getRobotVar(block);
 
   let query_tags = Blockly.JavaScript.valueToCode(block, 'query_tags', Blockly.JavaScript.ORDER_ATOMIC);
-  let is_trigger = (block.getFieldValue('search_source') === 'animation_trigger');
+  let is_trigger = (block.getFieldValue('search_source') === 'Consts.Animation.TRIGGER');
   let dropdown_search_type = block.getFieldValue('search_type');
 
   let code = `${variable_robot_var}.findAnimation(${query_tags}, ${dropdown_search_type}, ${is_trigger});\n`;

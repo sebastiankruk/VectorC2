@@ -1176,9 +1176,9 @@
                 <mutation options="[&quot;text&quot;,&quot;text&quot;]"></mutation>
                 <field name="FIELDNAME">animation_type</field>
                 <field name="USER0">name</field>
-                <field name="CPU0">animation_name</field>
+                <field name="CPU0">Consts.Animation.NAME</field>
                 <field name="USER1">trigger</field>
-                <field name="CPU1">animation_trigger</field>
+                <field name="CPU1">Consts.Animation.TRIGGER</field>
                 <next>
                   <block type="field_static" id=".0+e}v};Ka`cw6W[IVZQ">
                     <field name="TEXT">)</field>
@@ -1320,9 +1320,9 @@
                 <mutation options="[&quot;text&quot;,&quot;text&quot;]"></mutation>
                 <field name="FIELDNAME">search_source</field>
                 <field name="USER0">name</field>
-                <field name="CPU0">animation_name</field>
+                <field name="CPU0">Consts.Animation.NAME</field>
                 <field name="USER1">trigger</field>
-                <field name="CPU1">animation_trigger</field>
+                <field name="CPU1">Consts.Animation.TRIGGER</field>
               </block>
             </next>
           </block>
@@ -1339,11 +1339,11 @@
                 <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
                 <field name="FIELDNAME">search_type</field>
                 <field name="USER0">best</field>
-                <field name="CPU0">best_matching</field>
+                <field name="CPU0">Consts.Matching.BEST</field>
                 <field name="USER1">randomly</field>
-                <field name="CPU1">randomly_matching</field>
+                <field name="CPU1">Consts.Matching.RANDOM</field>
                 <field name="USER2">randomly (weighted)</field>
-                <field name="CPU2">weighted_matching</field>
+                <field name="CPU2">Consts.Matching.WEIGHTED</field>
                 <next>
                   <block type="field_static" id="B}g8!w]!SY(FSyW-I2:-">
                     <field name="TEXT">matching</field>
