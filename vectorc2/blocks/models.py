@@ -44,7 +44,7 @@ class AnimationTags(models.Model):
       return len( set(entry_tags) & set(tags) )
 
     entries = set(source.objects.filter(tags__tag__in=tags))
-    entries_weighted = { entry: __compare_vectors(entry.get_tags(), tags) for entry in entries }
+    entries_weighted = { str(entry): __compare_vectors(entry.get_tags(), tags) for entry in entries }
 
     return entries_weighted
 
