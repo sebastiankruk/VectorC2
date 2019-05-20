@@ -43,19 +43,10 @@
     <script src="{% static 'script/blockly/generators/javascript_compressed.js' %}"></script>
     <script src="{% static 'script/blockly/generators/python_compressed.js' %}"></script>
 
+    <script src="{% static 'script/vector/msg/' %}{{ lang.code }}.js"></script>
     <script src="{% static 'script/vector/utils.js' %}"></script>
     <script src="{% static 'script/vector/mutators.js' %}"></script>
     <script src="{% static 'script/vector/blocks.js' %}"></script>
-
-    {% comment %} <script src="{% static 'script/vector/generators/javascript/vector_robot.js' %}"></script>
-    <script src="{% static 'script/vector/generators/javascript/vector_say_text.js' %}"></script>
-    <script src="{% static 'script/vector/generators/javascript/vector_behavior.js' %}"></script>
-    <script src="{% static 'script/vector/generators/javascript/vector_util.js' %}"></script>
-
-    <script src="{% static 'script/vector/generators/python/vector_robot.js' %}"></script>
-    <script src="{% static 'script/vector/generators/python/vector_say_text.js' %}"></script>
-    <script src="{% static 'script/vector/generators/python/vector_behavior.js' %}"></script>
-    <script src="{% static 'script/vector/generators/python/vector_util.js' %}"></script> {% endcomment %}
 
     <link href="{% static 'style/prettify/prettify.css' %}" rel="stylesheet">
     <link href="{% static 'style/prettify/atelier-seaside-light.min.css' %}" rel="stylesheet">
