@@ -57,7 +57,7 @@ const VectorBlocks = (function(){
       'constants': 'VectorBehavior'
     },
     'vector_animations': {
-      'initiazed': 2,
+      'initiazed': 0,
       'mutators': true,
       'generators': true,
       'constants': 'VectorBehavior'
@@ -95,6 +95,7 @@ const VectorBlocks = (function(){
     JSON_BLOCK_SPECS[jsonFile].initiazed++;
 
     if (Object.values(JSON_BLOCK_SPECS).map( o => (o.initiazed >= 3) ).every(Boolean)) { // if all JSON files are initialized
+      console.log(JSON_BLOCK_SPECS);
       VectorC2.init();
     }
   }

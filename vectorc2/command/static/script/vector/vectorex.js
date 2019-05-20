@@ -25,7 +25,7 @@ const Consts = {
     WEIGHTED: gettext('weighted randomly selected')
   },
   Animation: {
-    NAME: '',
+    NAME: gettext('name'),
     TRIGGER: gettext('trigger')
   }
 }
@@ -124,22 +124,41 @@ const Vectorex = (function(){
    * @param {Boolean} is_trigger Should we look for an animation name or an animation trigger
    */
   function _findAnimation(query_tags, dropdown_search_type, is_trigger) {
-    let msg = gettext('Found %{type}s following animation%{trigger}s for %{query}s query: %{results}s');
-    let selection = gettext();
-
+    let msg = gettext('Found %(type)s following animation %(trigger)s for query "%(query)s": %(results)s');
+    let result = (is_trigger) ? 'ReactToObstacle' : 'anim_weather_sunny_01';
 
     let params = {
       type: dropdown_search_type,
-      trigger: (is_trigger) ? gettext(' trigger') : '',
+      trigger: (is_trigger) ? Consts.Animation.TRIGGER : Consts.Animation.NAME,
       query: query_tags,
-      results: (is_trigger) ? 'ReactToObstacle' : 'anim_weather_sunny_01'
+      results: result
     }
 
-
     LogPanel.logText(interpolate(msg, params, true));
-  }
-  function _playAnimation() {
 
+    return result;
+  }
+  /**
+   * 
+   * @param {String} anim name or trigger of the animation to play
+   * @param {int} loop_count number of loops
+   * @param {Boolean} ignore_body_track should we ignore body movement parts
+   * @param {Boolean} ignore_head_track should we ignore head movement parts
+   * @param {Boolean} ignore_lift_track should we ignore lift movement parts 
+   * @param {Boolean} is_trigger is that a trigger animation 
+   */
+  function _playAnimation(is_trigger, anim, loop_count=1, ignore_body_track=false, ignore_head_track=false, ignore_lift_track=false) {
+    let msg = gettext('Playing animation %(trigger)s "%(anim)s" %(loop_count)s times; ignoring body (%(body)s), head (%(head)s), and lift (%(lift)s).');
+    let params = {
+      trigger: (is_trigger) ? Consts.Animation.TRIGGER : Consts.Animation.NAME,
+      anim: anim,
+      loop_count: loop_count,
+      body: ignore_body_track,
+      head: ignore_head_track,
+      lift: ignore_lift_track
+    };
+
+    LogPanel.logText(interpolate(msg, params, true))
   }
 
 
@@ -173,6 +192,11 @@ const Vectorex = (function(){
       dockWithCube: _dockWithCube,
       setHeadAngle: _setHeadAngle,
       setLiftHeight: _setLiftHeight
+    },
+    animation: {
+      findAnimation: _findAnimation,
+      playAnimation: (...args) => _playAnimation(false, ...Object.values(args)),
+      playAnimationTrigger:  (...args) => _playAnimation(true, ...Object.values(args))
     },
     const: {
       MIN_HEAD_ANGLE: -22.0,
