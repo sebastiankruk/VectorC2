@@ -9,11 +9,11 @@
         "name": "animation_type",
         "options": [
           [
-            "name",
+            "%{BKY_VECTOR_PLAY_ANIMATION_TYPE_NAME}",
             "consts.animation.NAME"
           ],
           [
-            "trigger",
+            "%{BKY_VECTOR_PLAY_ANIMATION_TYPE_TRIGGER}",
             "consts.animation.TRIGGER"
           ]
         ]
@@ -38,18 +38,18 @@
   },
   {
     "type": "vector_find_animation",
-    "message0": "Find animation %1 %2 %3 matching",
+    "message0": "%{BKY_VECTOR_FIND_ANIMATION_MESSAGE}",
     "args0": [
       {
         "type": "field_dropdown",
         "name": "search_source",
         "options": [
           [
-            "name",
+            "%{BKY_VECTOR_FIND_ANIMATION_TYPE_NAME}",
             "consts.animation.NAME"
           ],
           [
-            "trigger",
+            "%{BKY_VECTOR_FIND_ANIMATION_TYPE_TRIGGER}",
             "consts.animation.TRIGGER"
           ]
         ]
@@ -64,15 +64,15 @@
         "name": "search_type",
         "options": [
           [
-            "best",
+            "%{BKY_VECTOR_FIND_ANIMATION_TYPE_BEST}",
             "consts.matching.BEST"
           ],
           [
-            "randomly",
+            "%{BKY_VECTOR_FIND_ANIMATION_TYPE_RANDOM}",
             "consts.matching.RANDOM"
           ],
           [
-            "randomly (weighted)",
+            "%{BKY_VECTOR_FIND_ANIMATION_TYPE_WEIGHTED}",
             "consts.matching.WEIGHTED"
           ]
         ]
@@ -81,7 +81,7 @@
     "inputsInline": true,
     "output": "Animation",
     "colour": 230,
-    "tooltip": "Returns animation name or trigger that best matches given tags (or is randomly selected)",
+    "tooltip": "%{BKY_VECTOR_FIND_ANIMATION_TOOLTIP}",
     "helpUrl": ""
   }
 ]

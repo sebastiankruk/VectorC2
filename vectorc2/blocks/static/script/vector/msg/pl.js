@@ -132,8 +132,10 @@ Blockly.Msg["VECTOR_SET_HEAD_ANGLE_EX_TOOLTIP"] = "Obraca głowę Vectora do pod
 Blockly.Msg["VECTOR_SET_LIFT_HEIGHT_EX_MESSAGE"] = "Podnieś ramiona %1";
 Blockly.Msg["VECTOR_SET_LIFT_HEIGHT_EX_TOOLTIP"] = "Podnosi ramiona Vectora to podanej wysokości.";
 
-Blockly.Msg["VECTOR_PLAY_ANIMATION_MESSAGE"] = "Animuj wg podanej %1 %2"; //repeat %3 %4 but ignore: %5 body movements %6 %7 head movements %8 %9 lift movements %10
+Blockly.Msg["VECTOR_PLAY_ANIMATION_MESSAGE"] = "Animuj wg %1 %2"; //repeat %3 %4 but ignore: %5 body movements %6 %7 head movements %8 %9 lift movements %10
 Blockly.Msg["VECTOR_PLAY_ANIMATION_TOOLTIP"] = "Vector odegra animację o podanej nazwie lub odpowiadającą podanemu celowi. Vector musi być poza ładowarką żeby odegrać animację.";
+Blockly.Msg["VECTOR_PLAY_ANIMATION_TYPE_NAME"] = "podanej nazwy"
+Blockly.Msg["VECTOR_PLAY_ANIMATION_TYPE_TRIGGER"] = "podanego celu"
 Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_MESSAGE"] = "Animuj %1";
 Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_TOOLTIP"] = "Podstawowy blok; dorzuć rozszerzenia z lewego panelu";
 Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_LOOP_ANIMATION_OPT_PRE_TITLE"] = "powtórz"
@@ -151,3 +153,11 @@ Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_IGNORE_LIFT_TRACK_OPT_TOOLTIP"] = "Dodaj d
 Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_USE_LIFT_SAFE_OPT_PRE_TITLE"] = "zabezpieczaj ruchy podnośnika"
 Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_USE_LIFT_SAFE_OPT_TITLE"] = "z kontrolą bezpieczeństwa ruchów podnośnika"
 Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_USE_LIFT_SAFE_OPT_TOOLTIP"] = "Dodaj do podstawowego kodu możliwość kontrolowania zabezpieczeń ruchów podnośnika"
+
+Blockly.Msg["VECTOR_FIND_ANIMATION_MESSAGE"] = "Znajdź animację o %1 %2 pasująca do %3";
+Blockly.Msg["VECTOR_FIND_ANIMATION_TOOLTIP"] = "Zwraca animację wg nazwy lub celu która najlepiej (lub losowo) odpowiada podanym słowom kluczowym";
+Blockly.Msg["VECTOR_FIND_ANIMATION_TYPE_NAME"] = "podanej nazwie"
+Blockly.Msg["VECTOR_FIND_ANIMATION_TYPE_TRIGGER"] = "podanym celu"
+Blockly.Msg["VECTOR_FIND_ANIMATION_TYPE_BEST"] = "najlepiej"
+Blockly.Msg["VECTOR_FIND_ANIMATION_TYPE_RANDOM"] = "losowo"
+Blockly.Msg["VECTOR_FIND_ANIMATION_TYPE_WEIGHTED"] = "losowo (ważony)"
