@@ -21,7 +21,7 @@
   <block type="vector_utils_distance_mm"></block>
   <block type="vector_utils_speed_mmps"></block>
   <block type="vector_utils_degrees"></block>
-  <block type="find_animation">
+  <block type="vector_find_animation">
     <field name="search_source">consts.animation.NAME</field>
     <field name="search_type">consts.matching.BEST</field>
   </block>
