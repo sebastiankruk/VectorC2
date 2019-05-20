@@ -36,5 +36,6 @@
     <field name="ignore_body_track">FALSE</field>
     <field name="ignore_head_track">FALSE</field>
     <field name="ignore_lift_track">FALSE</field>
+    <field name="use_lift_safe">TRUE</field>
   </block>
 </category>
