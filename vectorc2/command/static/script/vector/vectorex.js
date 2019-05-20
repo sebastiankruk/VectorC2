@@ -18,13 +18,13 @@
 /**
  * Constants available in the system
  */
-const Consts = {
-  Matching: {
+const consts = {
+  matching: {
     BEST: gettext('the best matching'),
     RANDOM: gettext('radomly selected'),
     WEIGHTED: gettext('weighted randomly selected')
   },
-  Animation: {
+  animation: {
     NAME: gettext('name'),
     TRIGGER: gettext('trigger')
   }
@@ -129,7 +129,7 @@ const Vectorex = (function(){
 
     let params = {
       type: dropdown_search_type,
-      trigger: (is_trigger) ? Consts.Animation.TRIGGER : Consts.Animation.NAME,
+      trigger: (is_trigger) ? consts.animation.TRIGGER : consts.animation.NAME,
       query: query_tags,
       results: result
     }
@@ -150,7 +150,7 @@ const Vectorex = (function(){
   function _playAnimation(is_trigger, anim, loop_count=1, ignore_body_track=false, ignore_head_track=false, ignore_lift_track=false) {
     let msg = gettext('Playing animation %(trigger)s "%(anim)s" %(loop_count)s times; ignoring body (%(body)s), head (%(head)s), and lift (%(lift)s).');
     let params = {
-      trigger: (is_trigger) ? Consts.Animation.TRIGGER : Consts.Animation.NAME,
+      trigger: (is_trigger) ? consts.animation.TRIGGER : consts.animation.NAME,
       anim: anim,
       loop_count: loop_count,
       body: ignore_body_track,
@@ -193,7 +193,7 @@ const Vectorex = (function(){
       setHeadAngle: _setHeadAngle,
       setLiftHeight: _setLiftHeight
     },
-    animation: {
+    anim: {
       findAnimation: _findAnimation,
       playAnimation: (...args) => _playAnimation(false, ...Object.values(args)),
       playAnimationTrigger:  (...args) => _playAnimation(true, ...Object.values(args))
