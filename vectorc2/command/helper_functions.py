@@ -62,4 +62,4 @@ def find_animation(query_tags, dropdown_search_type=consts.matching.BEST, is_tri
   print(entries_weighted)
   print(result)
 
-  return str(result)
+  return result
