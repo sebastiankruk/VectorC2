@@ -11,7 +11,9 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
+import re
 from command import consts
+from blocks.models import AnimationTags, AnimationName, AnimationTrigger
 
 def rgb_to_hs(rgbstr):
   """
@@ -27,9 +29,37 @@ def rgb_to_hs(rgbstr):
   return {'hue':h, 'saturation':s2}
 
 
-def find_animation(query_tags, dropdown_search_type='best_matching', is_trigger=False):
+RE_FIND_TAG = re.compile(r'\w+')
+
+def find_animation(query_tags, dropdown_search_type=consts.matching.BEST, is_trigger=False):
   """
   Returns a single animation name that is currently available
   """
-  #TODO implement
-  return 'anim_holiday_hny_fireworks_01'
+  tags = RE_FIND_TAG.findall(query_tags.lower())
+  source = AnimationTrigger if is_trigger else AnimationName
+
+  entries_weighted = AnimationTags.find_weighted_objects(source, *tags)
+
+  if len(entries_weighted) == 0:
+    # default value 
+    result = 'NeutralFace' if is_trigger else 'anim_eyepose_sad_down'
+
+  elif dropdown_search_type == consts.matching.BEST:
+    import operator
+    result = sorted(entries_weighted.items(), key=operator.itemgetter(1), reverse=True)[0][0]
+
+  elif dropdown_search_type == consts.matching.RANDOM:
+    import random
+    result = random.choice(list(entries_weighted.keys()))
+
+  else: # weighted random
+    from numpy.random import choice
+    vsum = sum(entries_weighted.values())
+    result = choice(list(entries_weighted.keys()), 
+                    1,
+                    p=[float(v)/vsum for v in entries_weighted.values()])[0]
+
+  print(entries_weighted)
+  print(result)
+
+  return str(result)
