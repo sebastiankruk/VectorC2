@@ -89,7 +89,7 @@ body.panel-expanded #sourceCode .content textarea.source {
 }
 footer .panel pre {
   display: inline-block;
-  width: calc(100vw - 85px);
+  width: calc(100vw - 100px);
   margin-bottom: -5px;
   font-size: 15px;
   padding-top: 10px;  

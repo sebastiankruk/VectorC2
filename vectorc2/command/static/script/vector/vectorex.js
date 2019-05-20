@@ -15,12 +15,26 @@
  * 
  * @author vectorc2@kruk.me
  */
-'use strict';
-
 /**
+ * Constants available in the system
+ */
+const Consts = {
+  Matching: {
+    BEST: gettext('the best matching'),
+    RANDOM: gettext('radomly selected'),
+    WEIGHTED: gettext('weighted randomly selected')
+  },
+  Animation: {
+    NAME: '',
+    TRIGGER: gettext('trigger')
+  }
+}
+
+ /**
  * Class simulating Vector API in JavaScript for the purpose of running blockly algorithm tests in JavaScript 
  */
 const Vectorex = (function(){
+  'use strict';
 
   /**
    * Serial number for "fake" Vector calls
@@ -102,6 +116,32 @@ const Vectorex = (function(){
     let msg = gettext('Vector will lift to %(height)s'); 
     LogPanel.logText(interpolate(msg, { height: height }, true));
   }
+
+  /**
+   * 
+   * @param {String} query_tags Coma or space sparated tags to search for animation (trigger) name
+   * @param {Matching} dropdown_search_type Which way to select animation (trigger) when multiple found
+   * @param {Boolean} is_trigger Should we look for an animation name or an animation trigger
+   */
+  function _findAnimation(query_tags, dropdown_search_type, is_trigger) {
+    let msg = gettext('Found %{type}s following animation%{trigger}s for %{query}s query: %{results}s');
+    let selection = gettext();
+
+
+    let params = {
+      type: dropdown_search_type,
+      trigger: (is_trigger) ? gettext(' trigger') : '',
+      query: query_tags,
+      results: (is_trigger) ? 'ReactToObstacle' : 'anim_weather_sunny_01'
+    }
+
+
+    LogPanel.logText(interpolate(msg, params, true));
+  }
+  function _playAnimation() {
+
+  }
+
 
   /**
    * Implementation of the anki_vector.robot.say_text(text, use_vector_voice=True, duration_scalar=1.0)
