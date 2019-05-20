@@ -16,7 +16,7 @@
  * @author vectorc2@kruk.me
  */
 /* jshint esversion: 6 */
-Blockly.JavaScript.play_animation = function(block) {
+Blockly.JavaScript.vector_play_animation = function(block) {
   let variable_robot_var = VectorUtils.getRobotVar(block);
   
   let value_text = Blockly.JavaScript.valueToCode(block, 'animation', Blockly.JavaScript.ORDER_ATOMIC);
@@ -26,7 +26,7 @@ Blockly.JavaScript.play_animation = function(block) {
 
   return code;
 };
-Blockly.JavaScript.find_animation = function(block) {
+Blockly.JavaScript.vector_find_animation = function(block) {
   let variable_robot_var = VectorUtils.getRobotVar(block);
 
   let query_tags = Blockly.JavaScript.valueToCode(block, 'query_tags', Blockly.JavaScript.ORDER_ATOMIC);
