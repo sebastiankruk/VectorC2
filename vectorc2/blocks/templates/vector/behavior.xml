@@ -30,7 +30,7 @@
   </block>
   <block type="vector_set_head_angle"></block>
   <block type="vector_set_lift_height"></block>
-  <block type="play_animation">
+  <block type="vector_play_animation">
     <field name="animation_type">consts.animation.NAME</field>
     <field name="loop_animation">1</field>
     <field name="ignore_body_track">FALSE</field>

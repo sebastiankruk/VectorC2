@@ -1,8 +1,8 @@
 [
   {
-    "type": "play_animation",
+    "type": "vector_play_animation",
     "lastDummyAlign0": "RIGHT",
-    "message0": "Play animation ( %1 ) %2 repeat %3 %4 but ignore: %5 body movements %6 %7 head movements %8 %9 lift movements %10",
+    "message0": "%{BKY_VECTOR_PLAY_ANIMATION_MESSAGE}",
     "args0": [
       {
         "type": "field_dropdown",
@@ -25,64 +25,19 @@
           "Animation",
           "String"
         ]
-      },
-      {
-        "type": "field_number",
-        "name": "loop_animation",
-        "value": 0,
-        "min": 1,
-        "max": 10,
-        "precision": 1
-      },
-      {
-        "type": "input_dummy",
-        "align": "RIGHT"
-      },
-      {
-        "type": "input_dummy"
-      },
-      {
-        "type": "field_checkbox",
-        "name": "ignore_body_track",
-        "checked": false
-      },
-      {
-        "type": "input_dummy",
-        "align": "RIGHT"
-      },
-      {
-        "type": "field_checkbox",
-        "name": "ignore_head_track",
-        "checked": false
-      },
-      {
-        "type": "input_dummy",
-        "align": "RIGHT"
-      },
-      {
-        "type": "field_checkbox",
-        "name": "ignore_lift_track",
-        "checked": false
-      },
-      {
-        "type": "input_dummy",
-        "align": "RIGHT"
-      },
-      {
-        "type": "field_checkbox",
-        "name": "use_lift_safe",
-        "checked": true
       }
     ],
     "inputsInline": false,
     "previousStatement": null,
     "nextStatement": null,
     "colour": 150,
-    "tooltip": "Starts an animation playing on a robot.  Vector must be off of the charger to play an animation.",
+    "mutator": "vector_play_animation_ex_mutator",
+    "extensions": [],
+    "tooltip": "%{BKY_VECTOR_PLAY_ANIMATION_TOOLTIP}",
     "helpUrl": "https://sdk-resources.anki.com/vector/docs/generated/anki_vector.animation.html#anki_vector.animation.AnimationComponent.play_animation"
   },
   {
-    "type": "find_animation",
+    "type": "vector_find_animation",
     "message0": "Find animation %1 %2 %3 matching",
     "args0": [
       {

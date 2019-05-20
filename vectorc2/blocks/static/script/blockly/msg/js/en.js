@@ -551,4 +551,24 @@ Blockly.Msg["VECTOR_SET_LIFT_HEIGHT_EX_MESSAGE"] = "Set lift height %1";
 Blockly.Msg["VECTOR_SET_LIFT_HEIGHT_EX_TOOLTIP"] = "Tell Vector’s lift to move to a given height.";
 
 
+Blockly.Msg["VECTOR_PLAY_ANIMATION_MESSAGE"] = "Play animation ( %1 ) %2"; //repeat %3 %4 but ignore: %5 body movements %6 %7 head movements %8 %9 lift movements %10
+Blockly.Msg["VECTOR_PLAY_ANIMATION_TOOLTIP"] = "Vector will play given animation or react to the trigger. Vector must be off of the charger to play an animation.";
+Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_MESSAGE"] = "Play animation %1";
+Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_TOOLTIP"] = "Basic code wrapper; drop extensions from the left panel to enable more options";
 
+Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_LOOP_ANIMATION_OPT_PRE_TITLE"] = "repeat"
+Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_LOOP_ANIMATION_OPT_TITLE"] = "with repeat control"
+Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_LOOP_ANIMATION_OPT_TOOLTIP"] = "Add to code wrapper to enable to control how many times animation should be repeated"
+
+Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_IGNORE_BODY_TRACK_OPT_PRE_TITLE"] = "ignore body movements"
+Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_IGNORE_BODY_TRACK_OPT_TITLE"] = "with body movements control"
+Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_IGNORE_BODY_TRACK_OPT_TOOLTIP"] = "Add to code wrapper to enable to control if body movements should be ignored"
+Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_IGNORE_HEAD_TRACK_OPT_PRE_TITLE"] = "ignore head movements"
+Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_IGNORE_HEAD_TRACK_OPT_TITLE"] = "with head movements control"
+Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_IGNORE_HEAD_TRACK_OPT_TOOLTIP"] = "Add to code wrapper to enable to control if head movements should be ignored"
+Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_IGNORE_LIFT_TRACK_OPT_PRE_TITLE"] = "ignore lift movements"
+Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_IGNORE_LIFT_TRACK_OPT_TITLE"] = "with lift movements control"
+Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_IGNORE_LIFT_TRACK_OPT_TOOLTIP"] = "Add to code wrapper to enable to control if lift movements should be ignored"
+Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_USE_LIFT_SAFE_OPT_PRE_TITLE"] = "use lift safely"
+Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_USE_LIFT_SAFE_OPT_TITLE"] = "with lift safety control"
+Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_USE_LIFT_SAFE_OPT_TOOLTIP"] = "Add to code wrapper to enable to control if lift movements should be ignored in case Vector carries something"

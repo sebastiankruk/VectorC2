@@ -19,5 +19,77 @@
 (function() {
   'use strict';
 
+  VectorMutator.init('vector_play_animation_ex', {
+    /*
+      {
+        "type": "field_number",
+        "name": "loop_animation",
+        "value": 0,
+        "min": 1,
+        "max": 10,
+        "precision": 1
+      },
+      {
+        "type": "input_dummy",
+        "align": "RIGHT"
+      },
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "field_checkbox",
+        "name": "ignore_body_track",
+        "checked": false
+      },
+      {
+        "type": "input_dummy",
+        "align": "RIGHT"
+      },
+      {
+        "type": "field_checkbox",
+        "name": "ignore_head_track",
+        "checked": false
+      },
+      {
+        "type": "input_dummy",
+        "align": "RIGHT"
+      },
+      {
+        "type": "field_checkbox",
+        "name": "ignore_lift_track",
+        "checked": false
+      },
+      {
+        "type": "input_dummy",
+        "align": "RIGHT"
+      },
+      {
+        "type": "field_checkbox",
+        "name": "use_lift_safe",
+        "checked": true
+      }
+      */
+    loop_animation: {
+      align: Blockly.ALIGN_RIGHT,
+      blockFieldFunction: () => new Blockly.FieldNumber(1, 1, 10, 1)
+    },
+    ignore_body_track: {
+      align: Blockly.ALIGN_RIGHT,
+      blockFieldFunction: () => new Blockly.FieldCheckbox("FALSE")
+    },
+    ignore_head_track: {
+      align: Blockly.ALIGN_RIGHT,
+      blockFieldFunction: () => new Blockly.FieldCheckbox("FALSE")
+    },
+    ignore_lift_track: {
+      align: Blockly.ALIGN_RIGHT,
+      blockFieldFunction: () => new Blockly.FieldCheckbox("FALSE")
+    },
+    use_lift_safe: {
+      align: Blockly.ALIGN_RIGHT,
+      blockFieldFunction: () => new Blockly.FieldCheckbox("TRUE")
+    }
+  });
+
   
 }());
