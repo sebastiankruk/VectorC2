@@ -10,11 +10,11 @@
         "options": [
           [
             "name",
-            "Consts.Animation.NAME"
+            "consts.animation.NAME"
           ],
           [
             "trigger",
-            "Consts.Animation.TRIGGER"
+            "consts.animation.TRIGGER"
           ]
         ]
       },
@@ -82,11 +82,11 @@
         "options": [
           [
             "name",
-            "Consts.Animation.NAME"
+            "consts.animation.NAME"
           ],
           [
             "trigger",
-            "Consts.Animation.TRIGGER"
+            "consts.animation.TRIGGER"
           ]
         ]
       },
@@ -101,15 +101,15 @@
         "options": [
           [
             "best",
-            "Consts.Matching.BEST"
+            "consts.matching.BEST"
           ],
           [
             "randomly",
-            "Consts.Matching.RANDOM"
+            "consts.matching.RANDOM"
           ],
           [
             "randomly (weighted)",
-            "Consts.Matching.WEIGHTED"
+            "consts.matching.WEIGHTED"
           ]
         ]
       }

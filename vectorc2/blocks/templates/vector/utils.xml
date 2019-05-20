@@ -22,8 +22,8 @@
   <block type="vector_utils_speed_mmps"></block>
   <block type="vector_utils_degrees"></block>
   <block type="find_animation">
-    <field name="search_source">Consts.Animation.NAME</field>
-    <field name="search_type">Consts.Matching.BEST</field>
+    <field name="search_source">consts.animation.NAME</field>
+    <field name="search_type">consts.matching.BEST</field>
   </block>
   <block type="vector_const_min_head_angle"></block>
   <block type="vector_const_max_head_angle"></block>

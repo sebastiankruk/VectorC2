@@ -15,25 +15,9 @@ import sys
 from io import StringIO
 import contextlib
 
-def rgb_to_hs(rgbstr):
-  """
-  Convert RGB color to (hue, saturation)
-  """
-  import colorsys
-  import math
-  r, g, b = bytes.fromhex(rgbstr[1:])
-  h, s, v = colorsys.rgb_to_hsv(r, g, b)
+from command import consts
+from command.helper_functions import *
 
-  s2 = 0.5+(255-v)/512
-
-  return {'hue':h, 'saturation':s2}
-
-def find_animation(query_tags, dropdown_search_type='best_matching', is_trigger=False):
-  """
-  Returns a single animation name that is currently available
-  """
-  #TODO implement
-  return 'anim_holiday_hny_fireworks_01'
 
 class OuputProxy(object):
   """

@@ -20,20 +20,21 @@ Blockly.Python.play_animation = function(block) {
   let variable_robot_var = VectorUtils.getRobotVar(block);
 
   let value_text = Blockly.Python.valueToCode(block, 'animation', Blockly.Python.ORDER_ATOMIC);
-  let trigger = (block.getFieldValue('animation_type') === 'Consts.Animation.TRIGGER') ? '_trigger' : '';
+  let trigger = (block.getFieldValue('animation_type') === 'consts.animation.TRIGGER') ? '_trigger' : '';
   // let param_speed = VectorUtils.getNumberFieldAsParam(block, 'SPEED_VAR');
   // let param_voice = VectorUtils.getBoolFieldAsPythonParam(block, 'VOICE_VAR', (param_speed !== '') ? 'TRUE' : null);
 
-  let code = `${variable_robot_var}.animation.play_animation${trigger}(${value_text})\n`;
+  let code = `${variable_robot_var}.anim.play_animation${trigger}(${value_text})\n`;
   return code;
 };
+
 Blockly.Python.find_animation = function(block) {
   let variable_robot_var = VectorUtils.getRobotVar(block);
 
   let query_tags = Blockly.Python.valueToCode(block, 'query_tags', Blockly.Python.ORDER_ATOMIC);
-  let is_trigger = (block.getFieldValue('search_source') === 'Consts.Animation.TRIGGER');
+  let is_trigger = (block.getFieldValue('search_source') === 'consts.animation.TRIGGER') ? 'True' : 'False';
   let dropdown_search_type = block.getFieldValue('search_type');
 
-  let code = `find_animation(${query_tags}, ${dropdown_search_type}, ${is_trigger});\n`;
+  let code = `find_animation(${query_tags}, ${dropdown_search_type}, ${is_trigger})`;
   return [code, Blockly.Python.ORDER_NONE];
 };
