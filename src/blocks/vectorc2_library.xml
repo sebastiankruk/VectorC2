@@ -1269,6 +1269,22 @@
                                 </next>
                               </block>
                             </statement>
+                            <next>
+                              <block type="input_dummy" id="aDFfR19:ftI-6,,Fqp+V">
+                                <field name="ALIGN">RIGHT</field>
+                                <statement name="FIELDS">
+                                  <block type="field_static" id="C9LwrqsZY,Wvm3m*o[5N">
+                                    <field name="TEXT">safe lift movements</field>
+                                    <next>
+                                      <block type="field_checkbox" id="4r^U/Iq9TQA^f,BBIm-4">
+                                        <field name="CHECKED">TRUE</field>
+                                        <field name="FIELDNAME">use_lift_safe</field>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </statement>
+                              </block>
+                            </next>
                           </block>
                         </next>
                       </block>

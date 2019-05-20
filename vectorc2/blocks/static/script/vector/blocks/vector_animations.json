@@ -63,6 +63,15 @@
         "type": "field_checkbox",
         "name": "ignore_lift_track",
         "checked": false
+      },
+      {
+        "type": "input_dummy",
+        "align": "RIGHT"
+      },
+      {
+        "type": "field_checkbox",
+        "name": "use_lift_safe",
+        "checked": true
       }
     ],
     "inputsInline": false,
