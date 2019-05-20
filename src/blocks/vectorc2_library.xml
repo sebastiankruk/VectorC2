@@ -1322,7 +1322,7 @@
   </block><block type="factory_base" id="E1jurj]+Zv4pywmPLQVA" deletable="false" movable="false" x="10" y="10">
     <mutation connections="LEFT"></mutation>
     <field name="NAME">find_animation</field>
-    <field name="INLINE">INT</field>
+    <field name="INLINE">EXT</field>
     <field name="CONNECTIONS">LEFT</field>
     <statement name="INPUTS">
       <block type="input_value" id="RJ1b9XFc=t%l|~V2-{1L">
@@ -1339,6 +1339,23 @@
                 <field name="CPU0">consts.animation.NAME</field>
                 <field name="USER1">trigger</field>
                 <field name="CPU1">consts.animation.TRIGGER</field>
+                <next>
+                  <block type="field_dropdown" id="0c5u1^`tQemOVWx4)3JF">
+                    <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
+                    <field name="FIELDNAME">search_type</field>
+                    <field name="USER0">best</field>
+                    <field name="CPU0">consts.matching.BEST</field>
+                    <field name="USER1">randomly</field>
+                    <field name="CPU1">consts.matching.RANDOM</field>
+                    <field name="USER2">randomly (weighted)</field>
+                    <field name="CPU2">consts.matching.WEIGHTED</field>
+                    <next>
+                      <block type="field_static" id="B}g8!w]!SY(FSyW-I2:-">
+                        <field name="TEXT">matching</field>
+                      </block>
+                    </next>
+                  </block>
+                </next>
               </block>
             </next>
           </block>
@@ -1347,28 +1364,6 @@
           <shadow type="type_null" id="j,@f66@X7#G-h=EJ3nr["></shadow>
           <block type="type_string" id="`h/iA@J3puZ0-.$.Z6rG"></block>
         </value>
-        <next>
-          <block type="input_dummy" id="Rz_PLr/Xs]@lWL/Gk{Q9">
-            <field name="ALIGN">LEFT</field>
-            <statement name="FIELDS">
-              <block type="field_dropdown" id="0c5u1^`tQemOVWx4)3JF">
-                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
-                <field name="FIELDNAME">search_type</field>
-                <field name="USER0">best</field>
-                <field name="CPU0">consts.matching.BEST</field>
-                <field name="USER1">randomly</field>
-                <field name="CPU1">consts.matching.RANDOM</field>
-                <field name="USER2">randomly (weighted)</field>
-                <field name="CPU2">consts.matching.WEIGHTED</field>
-                <next>
-                  <block type="field_static" id="B}g8!w]!SY(FSyW-I2:-">
-                    <field name="TEXT">matching</field>
-                  </block>
-                </next>
-              </block>
-            </statement>
-          </block>
-        </next>
       </block>
     </statement>
     <value name="TOOLTIP">
