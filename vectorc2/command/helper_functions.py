@@ -59,7 +59,7 @@ def find_animation(query_tags, dropdown_search_type=consts.matching.BEST, is_tri
                     1,
                     p=[float(v)/vsum for v in entries_weighted.values()])[0]
 
-  print(entries_weighted)
-  print(result)
+  print('Found following animations: %s' % entries_weighted)
+  print('Will run animation: %s' % result)
 
   return result
