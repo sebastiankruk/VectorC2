@@ -35,31 +35,36 @@ def find_animation(query_tags, dropdown_search_type=consts.matching.BEST, is_tri
   """
   Returns a single animation name that is currently available
   """
-  tags = RE_FIND_TAG.findall(query_tags.lower())
+  import random
+
   source = AnimationTrigger if is_trigger else AnimationName
 
-  entries_weighted = AnimationTags.find_weighted_objects(source, *tags)
+  if len(query_tags.strip()) == 0 or query_tags == '*':
+    result = str(random.choice(source.objects.all()))
+  else:  
+    tags = RE_FIND_TAG.findall(query_tags.lower())
+    entries_weighted = AnimationTags.find_weighted_objects(source, *tags)
 
-  if len(entries_weighted) == 0:
-    # default value 
-    result = 'NeutralFace' if is_trigger else 'anim_eyepose_sad_down'
+    if len(entries_weighted) == 0:
+      # default value 
+      result = 'NeutralFace' if is_trigger else 'anim_eyepose_sad_down'
 
-  elif dropdown_search_type == consts.matching.BEST:
-    import operator
-    result = sorted(entries_weighted.items(), key=operator.itemgetter(1), reverse=True)[0][0]
+    elif dropdown_search_type == consts.matching.BEST:
+      import operator
+      result = sorted(entries_weighted.items(), key=operator.itemgetter(1), reverse=True)[0][0]
 
-  elif dropdown_search_type == consts.matching.RANDOM:
-    import random
-    result = random.choice(list(entries_weighted.keys()))
+    elif dropdown_search_type == consts.matching.RANDOM:
+      result = random.choice(list(entries_weighted.keys()))
 
-  else: # weighted random
-    from numpy.random import choice
-    vsum = sum(entries_weighted.values())
-    result = choice(list(entries_weighted.keys()), 
-                    1,
-                    p=[float(v)/vsum for v in entries_weighted.values()])[0]
+    else: # weighted random
+      from numpy.random import choice
+      vsum = sum(entries_weighted.values())
+      result = choice(list(entries_weighted.keys()), 
+                      1,
+                      p=[float(v)/vsum for v in entries_weighted.values()])[0]
 
-  print('Found following animations: %s' % entries_weighted)
+    print('Found following animations: %s' % entries_weighted)
+
   print('Will run animation: %s' % result)
 
   return result
