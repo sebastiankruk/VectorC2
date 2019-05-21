@@ -147,15 +147,16 @@ const Vectorex = (function(){
    * @param {Boolean} ignore_lift_track should we ignore lift movement parts 
    * @param {Boolean} is_trigger is that a trigger animation 
    */
-  function _playAnimation(is_trigger, anim, loop_count=1, ignore_body_track=false, ignore_head_track=false, ignore_lift_track=false) {
-    let msg = gettext('Playing animation %(trigger)s "%(anim)s" %(loop_count)s times; ignoring body (%(body)s), head (%(head)s), and lift (%(lift)s).');
+  function _playAnimation(is_trigger, anim, loop_count=1, ignore_body_track=false, ignore_head_track=false, ignore_lift_track=false, safe_lift=true) {
+    let msg = gettext('Playing animation %(trigger)s "%(anim)s" %(loop_count)s time(s); ignoring body (%(body)s), head (%(head)s), and lift (%(lift)s%(safe)s).');
     let params = {
       trigger: (is_trigger) ? consts.animation.TRIGGER : consts.animation.NAME,
       anim: anim,
       loop_count: loop_count,
       body: ignore_body_track,
       head: ignore_head_track,
-      lift: ignore_lift_track
+      lift: ignore_lift_track,
+      safe: (is_trigger) ? `, ${safe_lift}` : ''
     };
 
     LogPanel.logText(interpolate(msg, params, true))
