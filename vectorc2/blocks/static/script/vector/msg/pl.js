@@ -154,7 +154,7 @@ Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_USE_LIFT_SAFE_OPT_PRE_TITLE"] = "zabezpiec
 Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_USE_LIFT_SAFE_OPT_TITLE"] = "z kontrolą bezpieczeństwa ruchów podnośnika"
 Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_USE_LIFT_SAFE_OPT_TOOLTIP"] = "Dodaj do podstawowego kodu możliwość kontrolowania zabezpieczeń ruchów podnośnika"
 
-Blockly.Msg["VECTOR_FIND_ANIMATION_MESSAGE"] = "Znajdź animację o %1 %2 pasująca do %3";
+Blockly.Msg["VECTOR_FIND_ANIMATION_MESSAGE"] = "Znajdź animację o pasująca %1 do %2";
 Blockly.Msg["VECTOR_FIND_ANIMATION_TOOLTIP"] = "Zwraca animację wg nazwy lub celu która najlepiej (lub losowo) odpowiada podanym słowom kluczowym";
 Blockly.Msg["VECTOR_FIND_ANIMATION_TYPE_NAME"] = "podanej nazwie"
 Blockly.Msg["VECTOR_FIND_ANIMATION_TYPE_TRIGGER"] = "podanym celu"

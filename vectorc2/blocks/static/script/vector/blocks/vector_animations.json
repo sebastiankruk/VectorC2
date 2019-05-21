@@ -42,20 +42,6 @@
     "args0": [
       {
         "type": "field_dropdown",
-        "name": "search_source",
-        "options": [
-          [
-            "%{BKY_VECTOR_FIND_ANIMATION_TYPE_NAME}",
-            "consts.animation.NAME"
-          ],
-          [
-            "%{BKY_VECTOR_FIND_ANIMATION_TYPE_TRIGGER}",
-            "consts.animation.TRIGGER"
-          ]
-        ]
-      },
-      {
-        "type": "field_dropdown",
         "name": "search_type",
         "options": [
           [

@@ -37,7 +37,7 @@ Blockly.JavaScript.vector_find_animation = function(block) {
   let variable_robot_var = VectorUtils.getRobotVar(block);
 
   let query_tags = Blockly.JavaScript.valueToCode(block, 'query_tags', Blockly.JavaScript.ORDER_ATOMIC);
-  let is_trigger = (block.getFieldValue('search_source') === 'consts.animation.TRIGGER');
+  let is_trigger = (block.parentBlock_ && block.parentBlock_.getFieldValue('animation_type') === 'consts.animation.TRIGGER');
   let dropdown_search_type = block.getFieldValue('search_type');
 
   let code = `${variable_robot_var}.anim.findAnimation(${query_tags}, ${dropdown_search_type}, ${is_trigger})`;
