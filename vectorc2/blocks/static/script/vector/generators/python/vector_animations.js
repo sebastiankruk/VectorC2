@@ -20,11 +20,16 @@ Blockly.Python.vector_play_animation = function(block) {
   let variable_robot_var = VectorUtils.getRobotVar(block);
 
   let value_text = Blockly.Python.valueToCode(block, 'animation', Blockly.Python.ORDER_ATOMIC);
-  let trigger = (block.getFieldValue('animation_type') === 'consts.animation.TRIGGER') ? '_trigger' : '';
-  // let param_speed = VectorUtils.getNumberFieldAsParam(block, 'SPEED_VAR');
-  // let param_voice = VectorUtils.getBoolFieldAsPythonParam(block, 'VOICE_VAR', (param_speed !== '') ? 'TRUE' : null);
+  let is_trigger = block.getFieldValue('animation_type') === 'consts.animation.TRIGGER';
+  let trigger = (is_trigger) ? '_trigger' : '';
 
-  let code = `${variable_robot_var}.anim.play_animation${trigger}(${value_text})\n`;
+  let param_loop = VectorUtils.getNumberFieldAsParam(block, 'LOOP_ANIMATION_VAR', 1);
+  let param_body = VectorUtils.getBoolFieldAsPythonParam(block, 'IGNORE_BODY_TRACK_VAR',  'FALSE');
+  let param_head = VectorUtils.getBoolFieldAsPythonParam(block, 'IGNORE_HEAD_TRACK_VAR',  'FALSE');
+  let param_lift = VectorUtils.getBoolFieldAsPythonParam(block, 'IGNORE_LIFT_TRACK_VAR',  'FALSE');
+  let param_safe_lift = (is_trigger) ? VectorUtils.getBoolFieldAsPythonParam(block, 'USE_LIFT_SAFE_VAR', 'TRUE') : '';
+
+  let code = `${variable_robot_var}.anim.play_animation${trigger}(${value_text}${param_loop}${param_body}${param_head}${param_lift}${param_safe_lift})\n`;
   return code;
 };
 

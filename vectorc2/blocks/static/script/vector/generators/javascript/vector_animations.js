@@ -20,9 +20,16 @@ Blockly.JavaScript.vector_play_animation = function(block) {
   let variable_robot_var = VectorUtils.getRobotVar(block);
   
   let value_text = Blockly.JavaScript.valueToCode(block, 'animation', Blockly.JavaScript.ORDER_ATOMIC);
-  let trigger = (block.getFieldValue('animation_type') === 'consts.animation.TRIGGER') ? 'Trigger' : '';
+  let is_trigger = block.getFieldValue('animation_type') === 'consts.animation.TRIGGER';
+  let trigger = (is_trigger) ? 'Trigger' : '';
 
-  let code = `${variable_robot_var}.anim.playAnimation${trigger}(${value_text});\n`;
+  let param_loop = VectorUtils.getNumberFieldAsParam(block, 'LOOP_ANIMATION_VAR', 1);
+  let param_body = VectorUtils.getBoolFieldAsParam(block, 'IGNORE_BODY_TRACK_VAR',  'FALSE');
+  let param_head = VectorUtils.getBoolFieldAsParam(block, 'IGNORE_HEAD_TRACK_VAR',  'FALSE');
+  let param_lift = VectorUtils.getBoolFieldAsParam(block, 'IGNORE_LIFT_TRACK_VAR',  'FALSE');
+  let param_safe_lift = (is_trigger) ? VectorUtils.getBoolFieldAsParam(block, 'USE_LIFT_SAFE_VAR', 'TRUE') : '';
+
+  let code = `${variable_robot_var}.anim.playAnimation${trigger}(${value_text}${param_loop}${param_body}${param_head}${param_lift}${param_safe_lift});\n`;
 
   return code;
 };
