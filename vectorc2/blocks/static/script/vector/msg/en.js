@@ -155,10 +155,10 @@ Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_USE_LIFT_SAFE_OPT_PRE_TITLE"] = "use lift 
 Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_USE_LIFT_SAFE_OPT_TITLE"] = "with lift safety control"
 Blockly.Msg["VECTOR_PLAY_ANIMATION_EX_USE_LIFT_SAFE_OPT_TOOLTIP"] = "Add to code wrapper to enable to control if lift movements should be ignored in case Vector carries something"
 
-Blockly.Msg["VECTOR_FIND_ANIMATION_MESSAGE"] = "Find animation %1 %2 matching %3";
+Blockly.Msg["VECTOR_FIND_ANIMATION_MESSAGE"] = "Find animation %1 matching %2";
 Blockly.Msg["VECTOR_FIND_ANIMATION_TOOLTIP"] = "Returns animation name or trigger that best matches given tags (or is randomly selected)";
 Blockly.Msg["VECTOR_FIND_ANIMATION_TYPE_NAME"] = "name"
 Blockly.Msg["VECTOR_FIND_ANIMATION_TYPE_TRIGGER"] = "trigger"
 Blockly.Msg["VECTOR_FIND_ANIMATION_TYPE_BEST"] = "best"
-Blockly.Msg["VECTOR_FIND_ANIMATION_TYPE_RANDOM"] = "random"
+Blockly.Msg["VECTOR_FIND_ANIMATION_TYPE_RANDOM"] = "randomly"
 Blockly.Msg["VECTOR_FIND_ANIMATION_TYPE_WEIGHTED"] = "randomly (weighted)"
