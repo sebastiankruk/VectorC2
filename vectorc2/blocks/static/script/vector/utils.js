@@ -108,6 +108,14 @@ const VectorUtils = (function(){
   }
 
   /**
+   * Returns only first line of the given text
+   * @param {String} text Text to be analyzed
+   */
+  function _getFirstLine(text) {
+    return text.trim().split('\n').pop();
+  }
+
+  /**
    * Initializes one or more custom Blockly block
    * @param {JSON Object} ...blocks 
    */
@@ -130,6 +138,7 @@ const VectorUtils = (function(){
     getBoolFieldAsPythonParam: _getBoolFieldAsPythonParam,
     getNumberFieldAsParam: _getNumberFieldAsParam,
     getNumberBlockAsParam: _getNumberBlockAsParam,
+    getFirstLine: _getFirstLine,
     initializeBlocks: _initializeBlocks
   };
 

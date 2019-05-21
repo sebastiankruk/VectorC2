@@ -71,8 +71,8 @@ const LogPanel = (function(){
   function _logText(text) {
     let stext = $.trim(text);
     if (stext.length > 0) {
-      __panel.append(text+'\n');
-      __title.text(text.trim().split('\n').pop().replace(/<[^>]+>/g, ''));
+      __panel.append(document.createTextNode(text+'\n'));
+      __title.html(document.createTextNode(VectorUtils.getFirstLine(text)));
       console.log(text);
     }
   }
@@ -87,9 +87,8 @@ const LogPanel = (function(){
   function _logError(error) {
     let serror = $.trim(error);
     if (serror.length > 0) {
-      let herror = '<strong>'+error+'</strong>\n';
-      __panel.append(herror);
-      __title.html(herror);
+      __panel.append($('<strong>').append(document.createTextNode(error+'\n')));
+      __title.html($('<strong>').append(document.createTextNode(VectorUtils.getFirstLine(error))));
       console.error(error);
     }
   }

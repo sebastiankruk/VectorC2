@@ -78,8 +78,8 @@ class Commander(object):
     with self._stdoutIO() as (sout, serr):
       try:
         exec(code)
-      except:
-        e = sys.exc_info()[0]
-        self.consumer.send_message(e, _type="error")
+      except Exception as e:
+        # e = sys.exc_info()[0]
+        self.consumer.send_message(str(e), _type="error")
       finally:
         self.consumer.send_message("finished", _type="command")
