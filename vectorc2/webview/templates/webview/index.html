@@ -73,6 +73,7 @@
     <script src="{% static 'script/vector/vectorex.js' %}"></script>
     
     <script src="{% static 'script/vector/configuration.js' %}"></script>
+    <script src="{% static 'script/vector/photos_admin.js' %}"></script>
 
   </head>
   <body class="d-flex flex-column h-100 w-100" lang="{{ lang.code }}">
@@ -90,6 +91,7 @@
 
     {% include "webview/configuration_modal.html" %}
     {% include "webview/battery_modal.html" %}
+    {% include "photos/admin_modal.html" %}
 
   </body>
 </html>

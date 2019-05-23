@@ -45,7 +45,10 @@
         <input type="file" id="workspaceFile" accept=".xml" class="hidden" />
       </li>
       <li class="nav-item active">
-        <a class="nav-link a-button-photos" href="#">{% trans 'Photos' %} {% nonicon "photos" %}</a>
+        <a class="nav-link a-button-photos" 
+           data-toggle="modal"
+           data-target="#photosModal"
+           href="#">{% trans 'Photos' %} {% nonicon "photos" %}</a>
       </li>
      </ul>
 
@@ -61,9 +64,9 @@
     <ul class="navbar-nav mr-0">
       <li class="nav-item active">
         <a class="nav-link a-button-gear" 
-          data-toggle="modal"
-          data-target="#configModal"
-          href="#">{% octicon "gear" %}</a>
+           data-toggle="modal"
+           data-target="#configModal"
+           href="#">{% octicon "gear" %}</a>
       </li>
     </ul>
 
