@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'octicons',
     'nonicons',
     'blocks',
+    'photos',
+    'morse',
     'webview.apps.WebviewConfig',
     'django.contrib.admin',
     'django.contrib.auth',
