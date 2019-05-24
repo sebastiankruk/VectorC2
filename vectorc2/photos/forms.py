@@ -1,5 +1,5 @@
 from django import forms
 
 class UploadFileForm(forms.Form):
-    title = forms.CharField(max_length=50)
-    file = forms.ImageField()
+    image = forms.ImageField()
+    label = forms.CharField(max_length=30)

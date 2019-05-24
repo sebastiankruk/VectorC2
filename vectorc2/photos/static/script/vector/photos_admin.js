@@ -22,17 +22,44 @@ const PhotosAdmin = (function(){
   'use strict';
 
   /**
-   * References to the photos administration modal element
+   * References the photos administration modal element
    */
   let __photosModal;
+  /**
+   * References the form for uploading new photos
+   */
+  let __photosUploadForm;
 
   /**
    * Initializes the UI component
    */
   function __init__() {
     __photosModal = $('#photosModal');
+    __photosUploadForm = $('#photosModalUploadForm');
 
     $('#configModal .modal-footer button.btn-primary').mouseup(__onClose);
+
+    __photosUploadForm.submit(__uploadPhotos);
+  }
+
+  function __uploadPhotos(e) {
+    e.preventDefault();
+
+    var data = new FormData(__photosUploadForm.get(0));
+    
+    $.ajax({
+        url: $(this).attr('action'),
+        type: $(this).attr('method'),
+        data: data,
+        cache: false,
+        processData: false,
+        contentType: false,
+        success: function(data) {
+            console.log('successfully uploaded photo'); //TODO: change to Vector logger 
+            __onClose(e);
+        }
+    });
+    return false;    
   }
 
   /**
