@@ -15,8 +15,14 @@ from django.http import Http404
 from django.shortcuts import render
 
 from command.models import Configuration
+from photos.forms import UploadFileForm
 
 def home(request):
     frequency = Configuration.get_value('status_checking_frequency', 0)
-    
-    return render(request, 'webview/index.html', {'frequency': frequency})    
+    form = UploadFileForm() if request.method == 'GET' else None
+
+    return render(request, 
+                  'webview/index.html', {
+                    'frequency': frequency,
+                    'form': form
+                  })    
