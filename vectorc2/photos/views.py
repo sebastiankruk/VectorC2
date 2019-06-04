@@ -9,7 +9,7 @@ def upload(request):
   if request.method == 'POST':
     form = UploadFileForm(data=request.POST, files=request.FILES)
     if form.is_valid():
-      # form.save()
+      form.save()
       print('valid form')
     else:
       print('invalid form')
