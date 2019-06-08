@@ -1,6 +1,5 @@
 import json
 
-from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.utils.translation import gettext as _
 
