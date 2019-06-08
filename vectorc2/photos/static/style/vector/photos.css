@@ -1,0 +1,7 @@
+#photosModalUploadForm div.image-upload label {
+  display: none;
+}
+
+#photosModalUploadForm.form-inline div.image-upload .form-control {
+  width: 400px;
+}

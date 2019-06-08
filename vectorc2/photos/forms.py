@@ -3,12 +3,11 @@ from django import forms
 from photos.models import UserPhotos
 
 class UploadFileForm(forms.ModelForm):
-    image = forms.ImageField(attrs={
-
-    })
-    label = forms.CharField(max_length=30, attrs={
-        'class': 'form-control-file'
-    })
+    image = forms.ImageField()
+    label = forms.CharField(max_length=30, widget=forms.TextInput(attrs={
+        'placeholder': 'Image name',
+        'class': 'form-control'
+    }))
 
     class Meta:
         model = UserPhotos
