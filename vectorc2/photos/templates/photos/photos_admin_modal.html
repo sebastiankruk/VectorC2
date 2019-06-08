@@ -14,10 +14,20 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="form-group">
+          <div class="form-group photo-images">
             {% for photo in photos %}
-                <img src="/photos{{ MEDIA_URL }}{{ photo.image }}" style="max-width: 100px; max-height: 100px" title="{{forloop.counter}}.{{ photo.label }} [ {{img.upload_date}} ]" />
-            {% endfor %}              
+            <div class="row" id="box-image-{{forloop.counter}}">
+                <div class="thumbnail text-center">
+                    <img src="/photos{{ MEDIA_URL }}{{ photo.image }}" alt="" title="{{forloop.counter}}.{{ photo.label }} [ {{ photo.upload_date }} ]" class="photo-image img-responsive">
+                    <div class="caption">
+                        <p>{{ photo.label }}</p>
+                    </div>
+                    <button type="button" class="remove-image" data-dismiss="modal" aria-label="{% trans 'Remove' %}">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
           </div>
         </div>
         <div class="modal-footer">
