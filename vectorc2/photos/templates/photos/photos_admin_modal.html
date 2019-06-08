@@ -5,9 +5,8 @@
 {# Modal #}
 
 <div class="modal fade" id="photosModal" tabindex="-1" role="dialog" aria-labelledby="photosModalTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
     <div class="modal-content">
-      <form action="/photos/upload/" method="post" id="photosModalUploadForm" enctype="multipart/form-data"  class="form-inline"> {% csrf_token %} 
         <div class="modal-header">
           <h5 class="modal-title" id="photosModalTitle">{% trans 'Photo gallery' %}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="{% trans 'Close' %}">
@@ -22,24 +21,19 @@
           </div>
         </div>
         <div class="modal-footer">
-          <!--
-  <div class="form-group mb-2">
-    <label for="staticEmail2" class="sr-only">Email</label>
-    <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="email@example.com">
-  </div>
-  <div class="form-group mx-sm-3 mb-2">
-    <label for="inputPassword2" class="sr-only">Password</label>
-    <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
-  </div>
-          
-          
-          -->
-
-          {{ photos_form }}
-          <button type="button" class="btn btn-secondary hidden" data-dismiss="modal">{% trans 'Close' %}</button>
+        <form action="/photos/upload/" method="post" id="photosModalUploadForm" enctype="multipart/form-data"  class="form-inline"> {% csrf_token %} 
+          <div class="form-group mb-2 col-sm-5 image-upload image-upload-label">
+            {{ photos_form.label }}
+            <small id="image-label-help" class="form-text text-muted">Name by which you will reference this image in the Vector code.</small>
+          </div>
+          <div class="form-group mx-sm-3 mb-2 col-sm-5 image-upload image-upload-image">
+            {{ photos_form.image }}
+            <small id="image-file-help" class="form-text text-muted">Upload an image of ideally 23x12 ratio.</small>
+          </div>
+          <button type="button" class="btn btn-secondary sr-only" data-dismiss="modal">{% trans 'Close' %}</button>
           <button type="submit" class="btn btn-primary" aria-pressed="true" id='upload-btn'>{% trans 'Upload' %}</button>
-        </div>
+        </form>
       </div>
-    </form>
+    </div>
   </div>
 </div>

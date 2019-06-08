@@ -13,6 +13,11 @@
 1. [Prettify](https://github.com/google/code-prettify): [Apache License 2.0](https://github.com/google/code-prettify/blob/master/COPYING)
 1. [Redis](https://redis.io/): [BSD License](https://redis.io/topics/license)
 
+
+## Graphics
+
+1. [Empty icon from Feather set](https://www.iconfinder.com/iconsets/feather): [Creative Commons (Attribution 3.0 Unported)](https://creativecommons.org/licenses/by/3.0/)
+
 ## Closed source
 
 1. [Anki Vector SDK](https://developer.anki.com/vector/docs/index.html): [Terms and Conditions](https://www.anki.com/en-us/company/terms-and-conditions)
