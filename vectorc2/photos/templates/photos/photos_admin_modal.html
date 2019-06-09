@@ -4,7 +4,7 @@
 
 {# Modal #}
 
-<div class="modal fade" id="photosModal" tabindex="-1" role="dialog" aria-labelledby="photosModalTitle" aria-hidden="true">
+<div class="modal fade" id="photosModal" tabindex="-1" role="dialog" aria-labelledby="photosModalTitle" aria-hidden="true" data-backdrop="true">
   <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
     <div class="modal-content">
         <div class="modal-header">
@@ -22,7 +22,7 @@
                     <div class="caption">
                         <p>{{ photo.label }}</p>
                     </div>
-                    <button type="button" class="remove-image" data-dismiss="modal" aria-label="{% trans 'Remove' %}">
+                    <button type="button" class="remove-image" aria-label="{% trans 'Remove' %}">
                       <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
