@@ -35,3 +35,9 @@ def upload(request):
     }
 
   return HttpResponse(**response)
+
+def list(request):
+  pass
+
+def delete(request):
+  pass

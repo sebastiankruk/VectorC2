@@ -35,13 +35,34 @@ const PhotosAdmin = (function(){
    */
   function __init__() {
     __photosModal = $('#photosModal');
+    __photosModal.on('shown.bs.modal', __onModalShow);
+    __photosModal.find('.modal-footer button.btn-primary').mouseup(__onClose);
+
     __photosUploadForm = $('#photosModalUploadForm');
-
-    $('#configModal .modal-footer button.btn-primary').mouseup(__onClose);
-
     __photosUploadForm.submit(__uploadPhotos);
+
+    $(window).scroll(function() {
+      if($(window).scrollTop() == $(document).height() - $(window).height()) {
+             // ajax call get data from server and append to the div
+      }
+    });    
   }
 
+  /**
+   * Will initialize modal by loading images
+   * @param {Event} e 
+   */
+  function __onModalShow(e) {
+    let allPhotosHeight = $('.form-group.photo-images').height();
+    let shownPhotosHeight = $('#photosModal .modal-body').height();
+
+
+  }
+
+  /**
+   * Handle even of uploading photos to the server
+   * @param {Event} e 
+   */
   function __uploadPhotos(e) {
     e.preventDefault();
 

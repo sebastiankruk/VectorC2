@@ -6,6 +6,13 @@
   width: 400px;
 }
 
+#photosModal .modal-body {
+  overflow-y: auto;
+  height: calc(100vh - 300px);
+  box-sizing: border-box;  
+  max-height: 1380px;
+}
+
 .photo-images .photo-image.img-responsive {
   max-width: 185px; 
   max-height: 185px;
@@ -30,6 +37,7 @@
 .photo-images .row {
   margin: 5px;
   display: inline-flex;
+  vertical-align: top;
 }
 
 .photo-images .remove-image {
@@ -38,5 +46,12 @@
   right: 0px;
   border-radius: 15px;
   width: 30px;
-  height: 30px;    
+  height: 30px;
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  border-color: black;
+}
+
+.photo-images .remove-image:hover {
+  background-color: black;
 }
