@@ -24,7 +24,8 @@ def upload(request):
         'content': json.dumps({
           'id': form.instance.id,
           'image': form.instance.image.name,
-          'label': form.instance.label
+          'label': form.instance.label,
+          'html': render_to_string('photos/photos_in_gallery.html', { 'photos': [ form.instance ] }, request)
         }),
         "content_type": "application/json"
       }
@@ -56,7 +57,7 @@ def list_photos(request):
       'offset': $offset_requested,
       'max_count': $max_count,
       'count': $actual_count_of_photos_in_the_set,
-      'photos': 'HTML mixim'
+      'html': 'HTML mixim'
     }
     'status': $http_status_code
   } 
@@ -74,7 +75,7 @@ def list_photos(request):
         'offset': offset,
         'max_count': max_count,
         'count': qs_photos.count(),
-        'photos': photos_mixim,
+        'html': photos_mixim,
       }),
       'content_type': 'application/json',
       'status': 200
