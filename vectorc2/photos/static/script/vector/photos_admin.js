@@ -41,6 +41,8 @@ const PhotosAdmin = (function(){
     __photosUploadForm = $('#photosModalUploadForm');
     __photosUploadForm.submit(__uploadPhotos);
 
+    __loadPhotos();
+
     $(window).scroll(function() {
       if($(window).scrollTop() == $(document).height() - $(window).height()) {
              // ajax call get data from server and append to the div
@@ -57,6 +59,31 @@ const PhotosAdmin = (function(){
     let shownPhotosHeight = $('#photosModal .modal-body').height();
 
 
+
+
+  }
+
+  /**
+   * Loads given $count of photos as a ready to use HTML mixing, starting from $offset index 
+   * @param {int} offset 
+   * @param {int} count
+   */
+  function __loadPhotos(offset=0, count=20) {
+
+    $.ajax({
+      url: '/photos/list',
+      type: 'get',
+      data: {
+        offset: offset,
+        max_count: count
+      },
+      success: function(response) {
+        console.log(response);
+      },
+      error: function(xhr) {
+        console.error(xhr);
+      }
+    })
   }
 
   /**

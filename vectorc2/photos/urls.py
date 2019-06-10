@@ -5,6 +5,6 @@ from photos import views
 
 urlpatterns = [
     path('upload/', views.upload, name='imageupload'),
-    path('list', views.list, name='listimages'),
+    path('list', views.list_photos, name='listimages'),
     path('delete', views.delete, name='deleteimage'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
