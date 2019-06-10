@@ -26,6 +26,10 @@ const PhotosAdmin = (function(){
    */
   let __photosModal;
   /**
+   * References the element where collection of photos is presented
+   */
+  let __photosGallery;
+  /**
    * References the form for uploading new photos
    */
   let __photosUploadForm;
@@ -36,7 +40,9 @@ const PhotosAdmin = (function(){
   function __init__() {
     __photosModal = $('#photosModal');
     __photosModal.on('shown.bs.modal', __onModalShow);
-    __photosModal.find('.modal-footer button.btn-primary').mouseup(__onClose);
+    // __photosModal.find('.modal-footer button.btn-primary').mouseup(__onClose);
+
+    __photosGallery = __photosModal.find('.photo-images');
 
     __photosUploadForm = $('#photosModalUploadForm');
     __photosUploadForm.submit(__uploadPhotos);
@@ -78,12 +84,33 @@ const PhotosAdmin = (function(){
         max_count: count
       },
       success: function(response) {
-        console.log(response);
+        // response.offset
+        // response.max_count
+        // response.count
+        __addPhotosToGallery(response.html, offset>0)
       },
       error: function(xhr) {
-        console.error(xhr);
+        console.error(xhr); //TODO: change to Vector logger 
       }
     })
+  }
+
+  /**
+   * Adds photos given as HTML mixim to the gallery.
+   * If append is false, it will clear the gallery content 
+   * 
+   * @param {*} htmlMixim 
+   * @param {*} append 
+   */
+  function __addPhotosToGallery(htmlMixim, append=true, atBegining=false) {
+    if (!append || __photosGallery.find('#box-image-empty').length > 0) {
+      __photosGallery.empty();
+    }
+    if (atBegining) {
+      __photosGallery.prepend(htmlMixim);
+    } else {
+      __photosGallery.append(htmlMixim);
+    }
   }
 
   /**
@@ -102,9 +129,12 @@ const PhotosAdmin = (function(){
         cache: false,
         processData: false,
         contentType: false,
-        success: function(data) {
+        success: function(response) {
             console.log('successfully uploaded photo'); //TODO: change to Vector logger 
-            __onClose(e);
+            __addPhotosToGallery(response.html, true, true);
+        },
+        error: function(xhr) {
+          console.error(xhr); //TODO: change to Vector logger 
         }
     });
     return false;    
