@@ -15,19 +15,14 @@
         </div>
         <div class="modal-body">
           <div class="form-group photo-images">
-            {% for photo in photos %}
-            <div class="row" id="box-image-{{forloop.counter}}">
+            <div class="row" id="box-image-empty">
                 <div class="thumbnail text-center">
-                    <img src="/photos{{ MEDIA_URL }}{{ photo.image }}" alt="" title="{{forloop.counter}}.{{ photo.label }} [ {{ photo.upload_date }} ]" class="photo-image img-responsive">
+                    <img src="{% static 'img/empty_photo.png' %}" alt="{% trans 'No photos' %}" title="{% trans 'There are no photos present in the system. Please upload one' %}" class="photo-image img-responsive photo-missing">
                     <div class="caption">
-                        <p>{{ photo.label }}</p>
+                        <p>{% trans 'No photos' %}</p>
                     </div>
-                    <button type="button" class="remove-image" aria-label="{% trans 'Remove' %}">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
                 </div>
             </div>
-            {% endfor %}
           </div>
         </div>
         <div class="modal-footer">

@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.utils.translation import gettext as _
 
 from photos.forms import UploadFileForm
+from photos.models import UserPhotos
 
 def upload(request):
   """
@@ -37,7 +38,11 @@ def upload(request):
   return HttpResponse(**response)
 
 def list(request):
-  pass
+    return render(request, 
+                  'webview/index.html',
+                   {
+                    'photos':  UserPhotos.objects.all() 
+                  })
 
 def delete(request):
   pass
