@@ -2,9 +2,9 @@
 {% load static %}
 
 {% for photo in photos %}
-<div class="row" id="box-image-{{forloop.counter}}">
+<div class="row box-image" id="box-image-{{forloop.counter}}">
     <div class="thumbnail text-center">
-        <img src="/photos{{ MEDIA_URL }}{{ photo.image }}" alt="" title="{{forloop.counter}}.{{ photo.label }} [ {{ photo.upload_date }} ]" class="photo-image img-responsive">
+        <img src="/photos{{ MEDIA_URL }}{{ photo.image }}" alt="{{ photo.label }}" data-id="{{ photo.id }}" title="{{forloop.counter}}.{{ photo.label }} [ {{ photo.upload_date }} ]" class="photo-image img-responsive">
         <div class="caption">
             <p>{{ photo.label }}</p>
         </div>

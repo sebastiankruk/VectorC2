@@ -90,5 +90,32 @@ def list_photos(request):
   
 
 
-def delete(request):
-  pass
+def photo(request, id=None):
+  """
+  Enables to retrieve html mixin for or delete a single photo id
+  """
+  if id is not None and request.method == 'GET':
+    photo = UserPhotos.objects.filter(id=id)
+    photos_mixim = render_to_string('photos/photos_in_gallery.html', { 'photos': [ photo ] }, request)
+
+    response = {
+      'content': json.dumps({
+        'count': photo.count(),
+        'html': photos_mixim,
+      }),
+      'content_type': 'application/json',
+      'status': 200
+    }
+  elif id is not None and request.method == 'GET':
+    photo = UserPhotos.objects.filter(id=id).delete()
+    response = {
+      'content_type': 'application/json',
+      'status': 200
+    }
+  else:
+    response = {
+      'content': _('Only GET or DELETE is allowed'),
+      'status': 405
+    }
+
+  return HttpResponse(**response)
