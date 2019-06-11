@@ -111,6 +111,32 @@ const PhotosAdmin = (function(){
     } else {
       __photosGallery.append(htmlMixim);
     }
+
+    __photosGallery.find('.box-image > div > button').mouseup(__removeImage)
+  }
+
+  /**
+   * Removing image with given
+   * @param {Event} e 
+   */
+  function __removeImage(e) {
+    console.log(e);
+    let boxImage = e.currentTarget.closest('.box-image');
+    let id = $(boxImage).find('.thumbnail img').attr('data-id');
+
+    $.ajax({
+      url: `/photos/${id}`,
+      type: 'delete',
+      success: function(response) {
+        boxImage.remove()
+      },
+      error: function(xhr) {
+        console.error(xhr); //TODO: change to Vector logger 
+      }
+    })
+
+
+
   }
 
   /**
