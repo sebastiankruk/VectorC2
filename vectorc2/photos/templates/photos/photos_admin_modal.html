@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="modal-footer">
-        <form action="/photos/upload/" method="post" id="photosModalUploadForm" enctype="multipart/form-data"  class="form-inline"> {% csrf_token %} 
+        <form action="/photos/" method="post" id="photosModalUploadForm" enctype="multipart/form-data"  class="form-inline"> {% csrf_token %} 
           <div class="form-group mb-2 col-sm-5 image-upload image-upload-label">
             {{ photos_form.label }}
             <small id="image-label-help" class="form-text text-muted">Name by which you will reference this image in the Vector code.</small>
