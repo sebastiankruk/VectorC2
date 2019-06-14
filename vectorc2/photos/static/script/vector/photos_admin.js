@@ -113,34 +113,48 @@ const PhotosAdmin = (function(){
       __photosGallery.append(htmlMixim);
     }
 
-    __photosGallery.find('.box-image > div > button').mouseup(__removeImage)
+    __photosGallery.find('.box-image > div > button').mouseup(__onRemoveImage);
+  }
+
+  /**
+   * Prepares to remove a photo. 
+   * Will show confirmation dialog before
+   * @param {Event} e onMouseUp event
+   */
+  function __onRemoveImage(e) {
+    let boxImage = e.currentTarget.closest('.box-image');
+    let id = $(boxImage).find('.thumbnail > img').attr('data-id');
+    let label = $(boxImage).find('.thumbnail > div.caption > p').text()
+
+    bootbox.confirm({
+      title: "Remove photo?", //TODO -i18n
+      message: `Do you want to the remove photo "${label}"?`,  //TODO -i18n
+      buttons: {
+          cancel: {
+              label: '<i class="fa fa-times"></i> Cancel'  //TODO -i18n
+          },
+          confirm: {
+              label: '<i class="fa fa-check"></i> Confirm'  //TODO -i18n
+          }
+      },
+      callback: result => (result) ? __removeImage(boxImage, id) : console.log(`You decided not to remove the photo "${label}"`) //TODO: use VectorC2 logger
+    });    
   }
 
   /**
    * Removing image with given
    * @param {Event} e 
    */
-  function __removeImage(e) {
-    console.log(e);
-    let boxImage = e.currentTarget.closest('.box-image');
-    let id = $(boxImage).find('.thumbnail img').attr('data-id');
-
+  function __removeImage(boxImage, id) {
     $.ajax({
       url: `/photos/${id}`,
       type: 'delete',
       headers: {
         "X-CSRFToken": $("#photosModalUploadForm").find("input[name='csrfmiddlewaretoken']").attr('value'),
       },
-      success: function(response) {
-        boxImage.remove()
-      },
-      error: function(xhr) {
-        console.error(xhr); //TODO: change to Vector logger 
-      }
+      success: response => boxImage.remove(),
+      error: xhr => console.error(xhr) //TODO: change to Vector logger 
     })
-
-
-
   }
 
   /**
