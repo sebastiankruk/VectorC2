@@ -12,6 +12,7 @@
 1. [Django Octicons](https://github.com/sanketsaurav/django-octicons/): [MIT License](https://github.com/sanketsaurav/django-octicons/blob/master/LICENSE) (Used to create a derived template tag *nonicon*)
 1. [Prettify](https://github.com/google/code-prettify): [Apache License 2.0](https://github.com/google/code-prettify/blob/master/COPYING)
 1. [Redis](https://redis.io/): [BSD License](https://redis.io/topics/license)
+1. [Bootbox.js](http://bootboxjs.com/): [MIT License](https://github.com/makeusabrew/bootbox/blob/master/LICENSE.md)
 
 
 ## Graphics

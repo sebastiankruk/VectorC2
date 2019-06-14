@@ -109,6 +109,9 @@ def photo(request, id=None):
   elif id is not None and request.method == 'DELETE':
     photo = UserPhotos.objects.filter(id=id).delete()
     response = {
+      'content': json.dumps({
+        
+      }),
       'content_type': 'application/json',
       'status': 200
     }
