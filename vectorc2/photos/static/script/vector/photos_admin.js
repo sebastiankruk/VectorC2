@@ -90,6 +90,7 @@ const PhotosAdmin = (function(){
         __addPhotosToGallery(response.html, offset>0)
       },
       error: function(xhr) {
+        console.error(xhr.responseText)
         console.error(xhr); //TODO: change to Vector logger 
       }
     })
@@ -127,6 +128,9 @@ const PhotosAdmin = (function(){
     $.ajax({
       url: `/photos/${id}`,
       type: 'delete',
+      headers: {
+        "X-CSRFToken": $("#photosModalUploadForm").find("input[name='csrfmiddlewaretoken']").attr('value'),
+      },
       success: function(response) {
         boxImage.remove()
       },
