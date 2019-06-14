@@ -33,6 +33,18 @@ const PhotosAdmin = (function(){
    * References the form for uploading new photos
    */
   let __photosUploadForm;
+  /**
+   * Body of the modal with gallery
+   */
+  let __galleryBody;
+  /**
+   * Currently loaded photos count
+   */
+  let __photosOffset = 0;
+  /**
+   * 
+   */
+  let __photosDiff = 0;
 
   /**
    * Initializes the UI component
@@ -47,13 +59,12 @@ const PhotosAdmin = (function(){
     __photosUploadForm = $('#photosModalUploadForm');
     __photosUploadForm.submit(__uploadPhotos);
 
-    __loadPhotos();
+    __galleryBody = __photosModal.find('.modal-body');
 
-    $(window).scroll(function() {
-      if($(window).scrollTop() == $(document).height() - $(window).height()) {
-             // ajax call get data from server and append to the div
-      }
-    });    
+    let initialPhotos = Math.ceil(__galleryBody.height()/195)*5;
+    console.log(`initial photos: ${initialPhotos}`);
+
+    __loadPhotos(0, initialPhotos);
   }
 
   /**
@@ -63,10 +74,16 @@ const PhotosAdmin = (function(){
   function __onModalShow(e) {
     let allPhotosHeight = $('.form-group.photo-images').height();
     let shownPhotosHeight = $('#photosModal .modal-body').height();
+  }
 
-
-
-
+  /**
+   * Handles scroll events on the photo gallery
+   * @param {Event} e 
+   */
+  function __onGalleryScroll(e) {
+    if ( __galleryBody.scrollTop() >= __photosGallery.height() - __galleryBody.height() ) {
+      __loadPhotos(__photosOffset);
+    }
   }
 
   /**
@@ -74,7 +91,7 @@ const PhotosAdmin = (function(){
    * @param {int} offset 
    * @param {int} count
    */
-  function __loadPhotos(offset=0, count=20) {
+  function __loadPhotos(offset=0, count=10) {
 
     $.ajax({
       url: '/photos/',
@@ -84,9 +101,14 @@ const PhotosAdmin = (function(){
         max_count: count
       },
       success: function(response) {
-        // response.offset
-        // response.max_count
-        // response.count
+        __photosOffset = offset + count;
+        
+        if (response.total_count > __photosOffset + __photosDiff) {
+          __galleryBody.on('scroll', __onGalleryScroll);    
+        } else {
+          __galleryBody.off('scroll');
+          console.log('Will stop checking for more photos now'); 
+        }
         __addPhotosToGallery(response.html, offset>0)
       },
       error: function(xhr) {
@@ -152,7 +174,10 @@ const PhotosAdmin = (function(){
       headers: {
         "X-CSRFToken": $("#photosModalUploadForm").find("input[name='csrfmiddlewaretoken']").attr('value'),
       },
-      success: response => boxImage.remove(),
+      success: response => {
+        boxImage.remove();
+        __photosDiff--;
+      },
       error: xhr => console.error(xhr) //TODO: change to Vector logger 
     })
   }
@@ -174,8 +199,9 @@ const PhotosAdmin = (function(){
         processData: false,
         contentType: false,
         success: function(response) {
-            console.log('successfully uploaded photo'); //TODO: change to Vector logger 
-            __addPhotosToGallery(response.html, true, true);
+          __photosDiff++;
+          console.log('successfully uploaded photo'); //TODO: change to Vector logger 
+          __addPhotosToGallery(response.html, true, true);
         },
         error: function(xhr) {
           console.error(xhr); //TODO: change to Vector logger 
