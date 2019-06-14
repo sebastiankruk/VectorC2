@@ -85,14 +85,14 @@ def _list_photos(request):
   max_count = int(request.GET.get('max_count', -1))
 
   qs_photos = UserPhotos.objects.order_by('label', 'upload_date')
-  photos = qs_photos[offset:max_count] if (max_count > 0) else qs_photos[offset:]
+  photos = qs_photos[offset:offset+max_count] if (max_count > 0) else qs_photos[offset:]
   photos_mixim = render_to_string('photos/photos_in_gallery.html', { 'photos': photos }, request)
 
   return {
     'content': json.dumps({
       'offset': offset,
       'max_count': max_count,
-      'count': qs_photos.count(),
+      'total_count': qs_photos.count(),
       'html': photos_mixim,
     }),
     'content_type': 'application/json',
