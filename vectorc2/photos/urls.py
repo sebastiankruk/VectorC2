@@ -4,7 +4,6 @@ from django.conf.urls.static import static
 from photos import views
 
 urlpatterns = [
-    path('upload/', views.upload, name='imageupload'),
-    path('list', views.list_photos, name='listimages'),
-    path('<int:id>', views.photo, name='deleteimage'),
+    path('', views.photo, name='REST API for photos'),
+    path('<int:id>', views.photo, name='REST API for photos'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

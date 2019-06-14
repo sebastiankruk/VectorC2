@@ -77,7 +77,7 @@ const PhotosAdmin = (function(){
   function __loadPhotos(offset=0, count=20) {
 
     $.ajax({
-      url: '/photos/list',
+      url: '/photos/',
       type: 'get',
       data: {
         offset: offset,
