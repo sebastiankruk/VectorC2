@@ -106,7 +106,7 @@ def photo(request, id=None):
       'content_type': 'application/json',
       'status': 200
     }
-  elif id is not None and request.method == 'GET':
+  elif id is not None and request.method == 'DELETE':
     photo = UserPhotos.objects.filter(id=id).delete()
     response = {
       'content_type': 'application/json',
