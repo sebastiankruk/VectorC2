@@ -45,6 +45,10 @@ const PhotosAdmin = (function(){
    * 
    */
   let __photosDiff = 0;
+  /**
+   * URL to the default photo
+   */
+  let __defaultPhoto;
 
   /**
    * Initializes the UI component
@@ -65,6 +69,8 @@ const PhotosAdmin = (function(){
     console.log(`initial photos: ${initialPhotos}`);
 
     __loadPhotos(0, initialPhotos);
+
+    __defaultPhoto = '/static/img/empty_photo.png';
   }
 
   /**
@@ -218,7 +224,8 @@ const PhotosAdmin = (function(){
   }
 
   return {
-    init: __init__
+    init: __init__,
+    defaultPhoto: __defaultPhoto
   }
 })()
 

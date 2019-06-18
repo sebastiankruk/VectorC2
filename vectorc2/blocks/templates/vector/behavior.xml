@@ -38,4 +38,8 @@
     <field name="ignore_lift_track">FALSE</field>
     <field name="use_lift_safe">TRUE</field>
   </block>
+  <block type="vector_set_screen_image">
+    <field name="duration_sec">1.5</field>
+    <field name="interrupt_running">TRUE</field>
+  </block>
 </category>
