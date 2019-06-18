@@ -35,10 +35,9 @@
     {% bootstrap_css %}
     {% bootstrap_messages %}
 
-    <script src="{% static 'script/vector/configuration.js' %}"></script>
-    <script src="{% static 'script/vector/photos_admin.js' %}"></script>
+    <script src="{% static 'script/vector/photos.js' %}"></script>
     <script type="text/javascript">
-      PhotosAdmin.defaultPhoto = "{% static 'img/empty_photo.png' %}";  
+      VectorPhotos.init("{% static 'img/empty_photo.png' %}");  
     </script>
 
     <script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>    
@@ -80,6 +79,9 @@
     <script src="{% static 'script/vector/commander.js' %}"></script>
     <script src="{% static 'script/vector/vectorex.js' %}"></script>
     
+    <script src="{% static 'script/vector/configuration.js' %}"></script>
+    <script src="{% static 'script/vector/photos_admin.js' %}"></script>
+
   </head>
   <body class="d-flex flex-column h-100 w-100" lang="{{ lang.code }}">
 

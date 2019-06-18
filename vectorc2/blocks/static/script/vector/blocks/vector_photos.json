@@ -36,23 +36,5 @@
     "colour": 150,
     "tooltip": "Display an image on Vector’s Screen (his “face”).",
     "helpUrl": "https://sdk-resources.anki.com/vector/docs/generated/anki_vector.screen.html#anki_vector.screen.ScreenComponent.set_screen_with_image_data"
-  },
-  {
-    "type": "vector_select_photo",
-    "message0": "pick a photo %1",
-    "args0": [
-      {
-        "type": "field_image",
-        "src": "http://localhost:8000/static/img/empty_photo.png",
-        "width": 100,
-        "height": 100,
-        "alt": "photo",
-        "flipRtl": false
-      }
-    ],
-    "output": "VectorC2Photo",
-    "colour": 230,
-    "tooltip": "Enables to pick photo from Vector C2 gallery",
-    "helpUrl": ""
   }
 ]
