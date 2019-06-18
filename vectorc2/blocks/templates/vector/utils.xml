@@ -32,4 +32,5 @@
   <block type="vector_utils_sleep">
     <field name="sleep_var">5</field>
   </block>
+  <block type="vector_select_photo"></block>  
 </category>
