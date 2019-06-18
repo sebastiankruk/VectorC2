@@ -15,21 +15,37 @@
  * 
  * @author vectorc2@kruk.me
  */
-/* jshint esversion: 6 */
-(function() {
+/**
+ * Main class for Vector C2 photos use
+ */
+const VectorPhotos = (function(){
   'use strict';
 
-  Blockly.Blocks['vector_select_photo'] = {
-    init: function() {
-      this.appendDummyInput()
-          .appendField("pick a photo")
-          .appendField(new Blockly.FieldImage(VectorPhotos.getDefault(), 100, 100, "photo", VectorPhotos.selectPhoto));
-      this.setOutput(true, "VectorC2Photo");
-      this.setColour(230);
-   this.setTooltip("Enables to pick photo from Vector C2 gallery");
-   this.setHelpUrl("");
-    }
-  };  
+  /**
+   * URL to the default photo
+   */
+  let __default;
 
+  /**
+   * Initializes the UI component
+   */
+  function __init__(defaultPhoto='/static/img/empty_photo.png') {
+    __default = defaultPhoto;
+  }
 
+  /**
+   * Handles click on the vector_photo block
+   * @param {MouseEvent} e 
+   */
+  function _selectPhoto(e){
+    console.log(e);
+    PhotosAdmin.show();
+  }
+
+  return {
+    init: __init__,
+    getDefault: () => __default,
+    selectPhoto: _selectPhoto
+  }
 }());
+

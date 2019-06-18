@@ -1,5 +1,6 @@
 {% load i18n %}
 {% load static %}
+{% load octicons %}
 
 {% for photo in photos %}
 <div class="row box-image" id="box-image-{{forloop.counter}}">
@@ -9,7 +10,7 @@
             <p>{{ photo.label }}</p>
         </div>
         <button type="button" class="remove-image" aria-label="{% trans 'Remove' %}">
-          <span aria-hidden="true">&times;</span>
+          <span aria-hidden="true">&times;{% octicon "chevron-down" %}</span>
         </button>
     </div>
 </div>
