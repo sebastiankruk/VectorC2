@@ -1388,4 +1388,102 @@
         <field name="HUE">230</field>
       </block>
     </value>
+  </block><block type="factory_base" id="acR11T!3M60UO(Mx=Mv9" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">vector_set_screen_image</field>
+    <field name="INLINE">EXT</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_value" id="9N4#{MqKLP6V86Ap]60.">
+        <field name="INPUTNAME">image_ref</field>
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id=")8CXeuuUJ9fV*g-2hAJH">
+            <field name="TEXT">Set screen image</field>
+          </block>
+        </statement>
+        <value name="TYPE">
+          <shadow type="type_null" id="!loI;`:q-N|W9J-!2!iW"></shadow>
+          <block type="type_group" id="`{=bys~9|Uk~;`|,n+@T">
+            <mutation types="3"></mutation>
+            <value name="TYPE0">
+              <block type="type_number" id=";~D?-rmjHb.3+U{)!0R1"></block>
+            </value>
+            <value name="TYPE1">
+              <block type="type_string" id="dVXPws`N;VZkid]ek=L("></block>
+            </value>
+            <value name="TYPE2">
+              <block type="type_other" id="^%VQdn%^~r,IeGO?zt)3">
+                <field name="TYPE">VectorC2Photo</field>
+              </block>
+            </value>
+          </block>
+        </value>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id=".K1Z329PipT8,u77zVOE" deletable="false" movable="false">
+        <field name="TEXT">Display an image on Vector’s Screen (his “face”).</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="R@BC{-}g}zc]WZ`/P#%K" deletable="false" movable="false">
+        <field name="TEXT">https://sdk-resources.anki.com/vector/docs/generated/anki_vector.screen.html#anki_vector.screen.ScreenComponent.set_screen_with_image_data</field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="qvb`gMf^Gbn#T=C4VS^`"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="MJM*IwavAtSrovMK;T1X"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="D9%fGt7_P7x{V+b7[+vb">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="N?yW9Dw}J|7I-dj$e6hc" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="LEFT"></mutation>
+    <field name="NAME">select_vectorc2_photo</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">LEFT</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="/J={?s3^Zs^#$kUwCf:B">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="?sbs!7pDO!zh5fegC}0*">
+            <field name="TEXT">pick photo</field>
+            <next>
+              <block type="field_image" id="4e]J6[h1PC9lONL0Xxdr">
+                <field name="SRC">https://www.gstatic.com/codesite/ph/images/star_on.gif</field>
+                <field name="WIDTH">15</field>
+                <field name="HEIGHT">15</field>
+                <field name="ALT">*</field>
+                <field name="FLIP_RTL">FALSE</field>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="o/ewj$:94q^A{Py|F6)l" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="1x-NP!]B;1GD57vOiNy]" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="OUTPUTTYPE">
+      <shadow type="type_null" id="WD0a:0nXw:c7bX%h]Vw_"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="nIRI+Lc6L}7_`s1S_tCD">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
   </block></xml>
