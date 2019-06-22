@@ -40,7 +40,7 @@
   vertical-align: top;
 }
 
-.photo-images .remove-image {
+.photo-images .photo-action {
   position: absolute;
   top: 0px;
   right: 0px;
@@ -52,6 +52,20 @@
   border-color: black;
 }
 
-.photo-images .remove-image:hover {
+.photo-images .photo-action:hover {
   background-color: black;
+}
+
+.photo-images .photo-action .download .octicon {
+  fill: white;  
+  margin-top: 2px;
+}
+
+#photosModal:not(.choose) .photo-images .photo-action .download,
+#photosModal.choose .photo-images .photo-action .times {
+  display: none;
+}
+
+.blocklyWorkspace .blocklyDraggable image {
+  cursor: alias;
 }

@@ -34,12 +34,24 @@ const VectorPhotos = (function(){
   }
 
   /**
+   * Will generate callback function that should be called when photo was choosen
+   * @param {Event} e 
+   */
+  function __onPhotoSelected(blocklyImage) {
+    return function(photo) {
+
+      blocklyImage.attr('xlink:href', photo.attr('src'));
+      blocklyImage.attr('data-id', photo.attr('data-id'));
+      blocklyImage.attr('data-label', photo.attr('alt'));
+    }
+  }
+
+  /**
    * Handles click on the vector_photo block
    * @param {MouseEvent} e 
    */
   function _selectPhoto(e){
-    console.log(e);
-    PhotosAdmin.show();
+    PhotosAdmin.choosePhoto( __onPhotoSelected( $(e.target) ) );
   }
 
   return {

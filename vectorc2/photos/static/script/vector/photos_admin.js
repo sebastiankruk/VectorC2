@@ -42,9 +42,13 @@ const PhotosAdmin = (function(){
    */
   let __photosOffset = 0;
   /**
-   * 
+   * Index used to keep track of photos added/removed since load
    */
   let __photosDiff = 0;
+  /**
+   * Will be true when choosing photos for Blockly
+   */
+  let __chooseModeCallback = null;
 
   /**
    * Initializes the UI component
@@ -52,6 +56,7 @@ const PhotosAdmin = (function(){
   function __init__() {
     __photosModal = $('#photosModal');
     __photosModal.on('shown.bs.modal', __onModalShow);
+    __photosModal.on('hidden.bs.modal', __onModalHidden);
     // __photosModal.find('.modal-footer button.btn-primary').mouseup(__onClose);
 
     __photosGallery = __photosModal.find('.photo-images');
@@ -74,6 +79,14 @@ const PhotosAdmin = (function(){
   function __onModalShow(e) {
     let allPhotosHeight = $('.form-group.photo-images').height();
     let shownPhotosHeight = $('#photosModal .modal-body').height();
+  }
+
+  /**
+   * Clean up when the modal is hidden
+   * @param {Event} e 
+   */
+  function __onModalHidden(e) {
+    __chooseModeCallback = null;
   }
 
   /**
@@ -135,32 +148,41 @@ const PhotosAdmin = (function(){
       __photosGallery.append(htmlMixim);
     }
 
-    __photosGallery.find('.box-image > div > button').mouseup(__onRemoveImage);
+    __photosGallery.find('.box-image > div > button').mouseup(__onPhotoAction);
   }
 
   /**
-   * Prepares to remove a photo. 
+   * Prepares to remove a photo or select photo (if __chooseMode == true)
    * Will show confirmation dialog before
    * @param {Event} e onMouseUp event
    */
-  function __onRemoveImage(e) {
-    let boxImage = e.currentTarget.closest('.box-image');
-    let id = $(boxImage).find('.thumbnail > img').attr('data-id');
-    let label = $(boxImage).find('.thumbnail > div.caption > p').text()
+  function __onPhotoAction(e) {
 
-    bootbox.confirm({
-      title: "Remove photo?", //TODO -i18n
-      message: `Do you want to the remove photo "${label}"?`,  //TODO -i18n
-      buttons: {
-          cancel: {
-              label: '<i class="fa fa-times"></i> Cancel'  //TODO -i18n
-          },
-          confirm: {
-              label: '<i class="fa fa-check"></i> Confirm'  //TODO -i18n
-          }
-      },
-      callback: result => (result) ? __removeImage(boxImage, id) : console.log(`You decided not to remove the photo "${label}"`) //TODO: use VectorC2 logger
-    });    
+    if (__chooseModeCallback) {
+      // we will select this photo for blockly
+      let selectedImg = $(e.target).parents('button').siblings('img');
+      __chooseModeCallback(selectedImg);
+      __onClose(e);
+    } else {
+      // we will check whether we can remove this photo
+      let boxImage = e.currentTarget.closest('.box-image');
+      let id = $(boxImage).find('.thumbnail > img').attr('data-id');
+      let label = $(boxImage).find('.thumbnail > div.caption > p').text()
+  
+      bootbox.confirm({
+        title: "Remove photo?", //TODO -i18n
+        message: `Do you want to the remove photo "${label}"?`,  //TODO -i18n
+        buttons: {
+            cancel: {
+                label: '<i class="fa fa-times"></i> Cancel'  //TODO -i18n
+            },
+            confirm: {
+                label: '<i class="fa fa-check"></i> Confirm'  //TODO -i18n
+            }
+        },
+        callback: result => (result) ? __removeImage(boxImage, id) : console.log(`You decided not to remove the photo "${label}"`) //TODO: use VectorC2 logger
+      });    
+    }
   }
 
   /**
@@ -217,9 +239,19 @@ const PhotosAdmin = (function(){
     __photosModal.modal('hide');
   }
 
+  /**
+   * Opens the modal with photos gallery ready for picking up a photo
+   * @param {Function} callback 
+   */
+  function _choosePhoto(callback) {
+    __chooseModeCallback = callback;
+    __photosModal.modal('show');
+    __photosModal.addClass('choose');
+  }
+
   return {
     init: __init__,
-    show: () => __photosModal.modal('show')
+    choosePhoto: _choosePhoto
   }
 })()
 
