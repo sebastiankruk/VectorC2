@@ -9,8 +9,8 @@
         <div class="caption">
             <p>{{ photo.label }}</p>
         </div>
-        <button type="button" class="remove-image" aria-label="{% trans 'Remove' %}">
-          <span aria-hidden="true">&times;{% octicon "chevron-down" %}</span>
+        <button type="button" class="photo-action" aria-label="{% trans 'Remove' %}">
+          <span aria-hidden="true"><span class="times">&times;</span><span class="download">{% octicon "chevron-down" %}</span></span>
         </button>
     </div>
 </div>
