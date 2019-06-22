@@ -43,6 +43,8 @@ const VectorPhotos = (function(){
       blocklyImage.attr('xlink:href', photo.attr('src'));
       blocklyImage.attr('data-id', photo.attr('data-id'));
       blocklyImage.attr('data-label', photo.attr('alt'));
+
+      let block = Blockly.mainWorkspace.getBlockById($(e.target).parent('g').parent('g[data-id]').attr('data-id'));
     }
   }
 

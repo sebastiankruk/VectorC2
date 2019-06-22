@@ -87,6 +87,7 @@ const PhotosAdmin = (function(){
    */
   function __onModalHidden(e) {
     __chooseModeCallback = null;
+    __photosModal.removeClass('choose');
   }
 
   /**
