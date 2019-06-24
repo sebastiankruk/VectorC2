@@ -23,9 +23,11 @@
     init: function() {
       this.appendDummyInput()
           .appendField("pick a photo")
-          .appendField(new Blockly.FieldImage(VectorPhotos.getDefault(), 100, 100, "photo", VectorPhotos.selectPhoto))
-          .appendField(new Blockly.FieldTextInput(""), "image-id")
-          .appendField(new Blockly.FieldTextInput(""), "image-label");
+          .appendField(new Blockly.FieldImage(VectorPhotos.getDefault(), 100, 100, "photo", VectorPhotos.selectPhoto));
+       // .appendField(new Blockly.FieldTextInput(""), "image-id")
+       // .appendField(new Blockly.FieldTextInput(""), "image-label");
+      this.appendValueInput('image-id')
+      this.appendValueInput('image-label');
       this.setOutput(true, "VectorC2Photo");
       this.setColour(230);
    this.setTooltip("Enables to pick photo from Vector C2 gallery");
