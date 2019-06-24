@@ -161,8 +161,9 @@ const PhotosAdmin = (function(){
 
     if (__chooseModeCallback) {
       // we will select this photo for blockly
-      let selectedImg = $(e.target).parents('button').siblings('img');
-      __chooseModeCallback(selectedImg);
+      let selectedImg = $(e.target).parents('button').siblings('img')[0] || 
+                        $(e.target).siblings('img')[0];
+      __chooseModeCallback($(selectedImg));
       __onClose(e);
     } else {
       // we will check whether we can remove this photo

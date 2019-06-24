@@ -15,6 +15,24 @@
  * 
  * @author vectorc2@kruk.me
  */
+
+/**
+ * Class for keeping photo related metadata
+ */
+class PhotoMeta {
+  /**
+   * Constructs the metadata object
+   * @param {Object} meta metatadata to be handled
+   */
+  constructor(meta) {
+    Object.assign(this, meta);
+  }
+  
+  toString() {
+     return JSON.stringify(this);
+  }
+}
+
 /**
  * Main class for Vector C2 photos use
  */
@@ -40,11 +58,17 @@ const VectorPhotos = (function(){
   function __onPhotoSelected(blocklyImage) {
     return function(photo) {
 
-      blocklyImage.attr('xlink:href', photo.attr('src'));
-      blocklyImage.attr('data-id', photo.attr('data-id'));
-      blocklyImage.attr('data-label', photo.attr('alt'));
+      let photoData = new PhotoMeta({
+        'xlink:href': photo.attr('src'),
+        'data-id': photo.attr('data-id'),
+        'data-label': photo.attr('alt')
+      })
 
-      let block = Blockly.mainWorkspace.getBlockById($(e.target).parent('g').parent('g[data-id]').attr('data-id'));
+      let blockId = $(blocklyImage).parent('g').parent('g[data-id]').attr('data-id');
+      let block = Blockly.mainWorkspace.getBlockById(blockId);
+
+      blocklyImage.attr(photoData);
+      block.data = new PhotoMeta({...block.data, ...photoData})
     }
   }
 
