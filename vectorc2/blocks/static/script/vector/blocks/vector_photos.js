@@ -23,16 +23,39 @@
     init: function() {
       this.appendDummyInput()
           .appendField("pick a photo")
-          .appendField(new Blockly.FieldImage(VectorPhotos.getDefault(), 100, 100, "photo", VectorPhotos.selectPhoto));
-       // .appendField(new Blockly.FieldTextInput(""), "image-id")
-       // .appendField(new Blockly.FieldTextInput(""), "image-label");
-      this.appendValueInput('image-id')
-      this.appendValueInput('image-label');
+          .appendField(new Blockly.FieldImage(VectorPhotos.getDefault(), 100, 100, "photo", VectorPhotos.selectPhoto), 'photo');
+      this.appendValueInput('image-id').setVisible(false);
+      this.appendValueInput('image-label').setVisible(false);
       this.setOutput(true, "VectorC2Photo");
       this.setColour(230);
-   this.setTooltip("Enables to pick photo from Vector C2 gallery");
-   this.setHelpUrl("");
-    }
+      this.setTooltip("Enables to pick photo from Vector C2 gallery");
+      this.setHelpUrl("");
+    },
+    // Mutator functions
+    mutationToDom: function() {
+      this.getField('photo').src_ = this.data['xlink:href'];
+    },
+    domToMutation: function(xmlElement) {
+      console.log(`DATA2: ${this.data}`);
+
+        // Same as previous example
+    },
+    decompose: function(workspace) {
+      console.log(`DATA3: ${this.data}`);
+
+        // Decomposeyour block here
+    },
+    compose: function(containerBlock) {
+      console.log(`DATA4: ${this.data}`);
+
+        // Compose your block here
+    },
+    // Aux functions
+    reshape: function(param){
+      console.log(`DATA5: ${this.data}`);
+
+        // Same as previous example
+    }    
   };  
 
 

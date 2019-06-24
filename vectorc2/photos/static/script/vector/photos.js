@@ -68,7 +68,7 @@ const VectorPhotos = (function(){
       let block = Blockly.mainWorkspace.getBlockById(blockId);
 
       blocklyImage.attr(photoData);
-      block.data = new PhotoMeta({...block.data, ...photoData})
+      block.data = photoData; //new PhotoMeta({...block.data, ...photoData})
     }
   }
 
