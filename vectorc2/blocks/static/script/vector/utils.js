@@ -129,6 +129,14 @@ const VectorUtils = (function(){
     };
   }  
 
+  /**
+   * 
+   * @param {Blockly.BlockSVG} block block with data field 
+   */
+  function _unpackPhotoMeta(block) {
+    return new PhotoMeta(JSON.parse(block.data || "{}"));
+  }
+
   return {
     getFieldValue: _getFieldValue,
     getFieldText: _getFieldText,
@@ -139,7 +147,8 @@ const VectorUtils = (function(){
     getNumberFieldAsParam: _getNumberFieldAsParam,
     getNumberBlockAsParam: _getNumberBlockAsParam,
     getFirstLine: _getFirstLine,
-    initializeBlocks: _initializeBlocks
+    initializeBlocks: _initializeBlocks,
+    unpackPhotoMeta: _unpackPhotoMeta
   };
 
 })();
