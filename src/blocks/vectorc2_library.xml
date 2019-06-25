@@ -1485,52 +1485,6 @@
     </value>
   </block><block type="factory_base" id="N?yW9Dw}J|7I-dj$e6hc" deletable="false" movable="false" x="10" y="10">
     <mutation connections="LEFT"></mutation>
-    <field name="NAME">select_vectorc2_photo</field>
-    <field name="INLINE">AUTO</field>
-    <field name="CONNECTIONS">LEFT</field>
-    <statement name="INPUTS">
-      <block type="input_dummy" id="/J={?s3^Zs^#$kUwCf:B">
-        <field name="ALIGN">LEFT</field>
-        <statement name="FIELDS">
-          <block type="field_static" id="?sbs!7pDO!zh5fegC}0*">
-            <field name="TEXT">pick a photo</field>
-            <next>
-              <block type="field_image" id="4e]J6[h1PC9lONL0Xxdr">
-                <field name="SRC">http://localhost:8000/static/img/empty_photo.png</field>
-                <field name="WIDTH">100</field>
-                <field name="HEIGHT">100</field>
-                <field name="ALT">photo</field>
-                <field name="FLIP_RTL">FALSE</field>
-              </block>
-            </next>
-          </block>
-        </statement>
-      </block>
-    </statement>
-    <value name="TOOLTIP">
-      <block type="text" id="o/ewj$:94q^A{Py|F6)l" deletable="false" movable="false">
-        <field name="TEXT">Enables to pick photo from Vector C2 gallery</field>
-      </block>
-    </value>
-    <value name="HELPURL">
-      <block type="text" id="1x-NP!]B;1GD57vOiNy]" deletable="false" movable="false">
-        <field name="TEXT"></field>
-      </block>
-    </value>
-    <value name="OUTPUTTYPE">
-      <shadow type="type_null" id="WD0a:0nXw:c7bX%h]Vw_"></shadow>
-      <block type="type_other" id="-cx/4QORDV?Kci!6MpHg">
-        <field name="TYPE">VectorC2Photo</field>
-      </block>
-    </value>
-    <value name="COLOUR">
-      <block type="colour_hue" id="nIRI+Lc6L}7_`s1S_tCD">
-        <mutation colour="#5b67a5"></mutation>
-        <field name="HUE">230</field>
-      </block>
-    </value>
-  </block><block type="factory_base" id="N?yW9Dw}J|7I-dj$e6hc" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="LEFT"></mutation>
     <field name="NAME">vector_select_photo</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">LEFT</field>
