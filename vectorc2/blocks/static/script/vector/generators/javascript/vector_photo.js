@@ -16,17 +16,16 @@
  * @author vectorc2@kruk.me
  */
 Blockly.JavaScript['vector_set_screen_image'] = function(block) {
-  var value_image_ref = Blockly.JavaScript.valueToCode(block, 'image_ref', Blockly.JavaScript.ORDER_ATOMIC);
-  var number_duration_sec = block.getFieldValue('duration_sec');
-  var checkbox_interrupt_running = block.getFieldValue('interrupt_running') == 'TRUE';
-  // TODO: Assemble JavaScript into code variable.
-  var code = '...;\n';
+  let variable_robot_var = VectorUtils.getRobotVar(block); 
+  let value_image_ref = Blockly.JavaScript.valueToCode(block, 'image_ref', Blockly.JavaScript.ORDER_ATOMIC);
+  let number_duration_sec = block.getFieldValue('duration_sec');
+  let checkbox_interrupt_running = block.getFieldValue('interrupt_running') == 'TRUE';
+  let code = `${variable_robot_var}.setScreenImage('${value_image_ref}', '${number_duration_sec}', '${checkbox_interrupt_running}');\n`;
   return code;
 };
 
 Blockly.JavaScript['vector_select_photo'] = function(block) {
-  // TODO: Assemble JavaScript into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
+  let meta = VectorUtils.unpackPhotoMeta(block);
+  let code = meta.toString();
   return [code, Blockly.JavaScript.ORDER_NONE];
 };

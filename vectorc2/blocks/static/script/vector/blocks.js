@@ -63,9 +63,9 @@ const VectorBlocks = (function(){
       'constants': 'VectorBehavior'
     },
     'vector_photos': {
-      'initiazed': 2,
+      'initiazed': 0,
       'mutators': true,
-      'generators': false,
+      'generators': true,
       'constants': 'VectorBehavior'
     }
   };
