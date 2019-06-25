@@ -33,7 +33,13 @@
     },
     // Mutator functions
     mutationToDom: function() {
-      this.getField('photo').src_ = this.data['xlink:href'];
+      var photo = this.getField('photo');
+      var data = JSON.parse(this.data);
+      if (photo && data) {
+        $(photo.imageElement_).attr(data);
+        photo.setValue(data['xlink:href']);
+        photo.src_ = data['xlink:href'];
+      }
     },
     domToMutation: function(xmlElement) {
       console.log(`DATA2: ${this.data}`);
