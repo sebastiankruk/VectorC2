@@ -24,8 +24,6 @@
       this.appendDummyInput()
           .appendField("pick a photo")
           .appendField(new Blockly.FieldImage(VectorPhotos.getDefault(), 100, 100, "photo", VectorPhotos.selectPhoto), 'photo');
-      this.appendValueInput('image-id').setVisible(false);
-      this.appendValueInput('image-label').setVisible(false);
       this.setOutput(true, "VectorC2Photo");
       this.setColour(230);
       this.setTooltip("Enables to pick photo from Vector C2 gallery");
