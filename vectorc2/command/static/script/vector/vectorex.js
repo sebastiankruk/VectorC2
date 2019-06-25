@@ -162,6 +162,26 @@ const Vectorex = (function(){
     LogPanel.logText(interpolate(msg, params, true))
   }
 
+  /**
+   * Sets Vector screen image with given photo
+   * @param {Object|String|int} image Object with reference to photo id, label and URL, or photo label, or photo id from DB
+   * @param {*} duration For how long should we wait showing this image
+   * @param {*} interrupt Should other interactions be interrupted
+   */
+  function _setScreenImage(image, duration, interrupt) {
+    let msg = gettext('Showing given photo %(image)s at Vector for %(duration)s seconds; will allow to interrupt: %(interrupt)s');
+    let params = {
+      image: JSON.stringify(
+        (typeof image == 'number') ? {id: image} :
+        (typeof image == 'string') ? {label: image} :
+        {url: image['xlink:href']}
+      ),
+      duration: duration,
+      interrupt: interrupt
+    }
+    LogPanel.logText(interpolate(msg, params, true));
+  }
+
 
   /**
    * Implementation of the anki_vector.robot.say_text(text, use_vector_voice=True, duration_scalar=1.0)
@@ -192,7 +212,8 @@ const Vectorex = (function(){
       setEyeColorHS: _setEyeColorHS,
       dockWithCube: _dockWithCube,
       setHeadAngle: _setHeadAngle,
-      setLiftHeight: _setLiftHeight
+      setLiftHeight: _setLiftHeight,
+      setScreenImage: _setScreenImage
     },
     anim: {
       findAnimation: _findAnimation,

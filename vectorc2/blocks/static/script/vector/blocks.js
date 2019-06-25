@@ -116,7 +116,7 @@ const VectorBlocks = (function(){
     // Allow user to set any option except for dataType, cache, and url
     options = $.extend( options || {}, {
       dataType: "script",
-      cache: true,
+      cache: false,
       url: url
     });
    

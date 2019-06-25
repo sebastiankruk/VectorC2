@@ -20,7 +20,7 @@ Blockly.JavaScript['vector_set_screen_image'] = function(block) {
   let value_image_ref = Blockly.JavaScript.valueToCode(block, 'image_ref', Blockly.JavaScript.ORDER_ATOMIC);
   let number_duration_sec = block.getFieldValue('duration_sec');
   let checkbox_interrupt_running = block.getFieldValue('interrupt_running') == 'TRUE';
-  let code = `${variable_robot_var}.setScreenImage('${value_image_ref}', '${number_duration_sec}', '${checkbox_interrupt_running}');\n`;
+  let code = `${variable_robot_var}.behavior.setScreenImage(${value_image_ref}, ${number_duration_sec}, ${checkbox_interrupt_running});\n`;
   return code;
 };
 
