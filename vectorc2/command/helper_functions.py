@@ -12,8 +12,19 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 import re
+import sys
+
+try:
+    from PIL import Image
+except ImportError:
+    sys.exit("Cannot import from PIL: Do `pip3 install --user Pillow` to install")
+
+import anki_vector
+
 from command import consts
 from blocks.models import AnimationTags, AnimationName, AnimationTrigger
+from photos.models import UserPhotos
+
 
 def rgb_to_hs(rgbstr):
   """
@@ -69,3 +80,18 @@ def find_animation(query_tags, dropdown_search_type=consts.matching.BEST, is_tri
   print('Will run animation: %s' % result)
 
   return result
+
+
+def set_screen_image(robot, id=None, label=None, duration=2.0, interrupt=True):
+  """
+  Wrapper function to enable to call the actual 
+  """
+  photo = UserPhotos.objects.filter(id=id) if id is not None else UserPhotos.objects.filter(label=label)
+
+  image_file = Image.open('../media/%s' % photo.image.name)
+
+  print(image_file)
+
+  # Convert the image to the format used by the Screen
+  screen_data = anki_vector.screen.convert_image_to_screen_data(image_file)
+  robot.screen.set_screen_with_image_data(screen_data, duration_sec=duration, interrupt_running=interrupt)

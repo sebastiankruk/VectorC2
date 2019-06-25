@@ -16,17 +16,18 @@
  * @author vectorc2@kruk.me
  */
 Blockly.Python['vector_set_screen_image'] = function(block) {
+  let variable_robot_var = VectorUtils.getRobotVar(block); 
+
   var value_image_ref = Blockly.Python.valueToCode(block, 'image_ref', Blockly.Python.ORDER_ATOMIC);
   var number_duration_sec = block.getFieldValue('duration_sec');
   var checkbox_interrupt_running = block.getFieldValue('interrupt_running') == 'TRUE';
-  // TODO: Assemble Python into code variable.
-  var code = '...\n';
+
+  var code = `set_screen_image(${variable_robot_var}, id=13)\n`;
   return code;
 };
 
 Blockly.Python['vector_select_photo'] = function(block) {
-  // TODO: Assemble Python into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
+  let meta = VectorUtils.unpackPhotoMeta(block);
+  let code = meta.toString();
   return [code, Blockly.Python.ORDER_NONE];
 };
