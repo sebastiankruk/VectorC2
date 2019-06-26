@@ -12,6 +12,7 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 import re
+import os
 import sys
 
 try:
@@ -24,6 +25,8 @@ import anki_vector
 from command import consts
 from blocks.models import AnimationTags, AnimationName, AnimationTrigger
 from photos.models import UserPhotos
+
+from vectorc2.settings import MEDIA_ROOT
 
 
 def rgb_to_hs(rgbstr):
@@ -86,12 +89,11 @@ def set_screen_image(robot, id=None, label=None, duration=2.0, interrupt=True):
   """
   Wrapper function to enable to call the actual 
   """
-  photo = UserPhotos.objects.filter(id=id) if id is not None else UserPhotos.objects.filter(label=label)
+  photo = (UserPhotos.objects.filter(id=id) if id is not None else UserPhotos.objects.filter(label=label)).first()
+  if photo:
+    path = os.path.join(MEDIA_ROOT, photo.image.name)
+    image_file = Image.open(path)
 
-  image_file = Image.open('../media/%s' % photo.image.name)
-
-  print(image_file)
-
-  # Convert the image to the format used by the Screen
-  screen_data = anki_vector.screen.convert_image_to_screen_data(image_file)
-  robot.screen.set_screen_with_image_data(screen_data, duration_sec=duration, interrupt_running=interrupt)
+    # Convert the image to the format used by the Screen
+    screen_data = anki_vector.screen.convert_image_to_screen_data(image_file)
+    robot.screen.set_screen_with_image_data(screen_data, duration_sec=duration, interrupt_running=interrupt)
