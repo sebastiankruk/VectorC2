@@ -94,6 +94,14 @@ def set_screen_image(robot, id=None, label=None, duration=2.0, interrupt=True):
     path = os.path.join(MEDIA_ROOT, photo.image.name)
     image_file = Image.open(path)
 
+    screen_dim = anki_vector.screen.dimensions()
+    image_dim = image_file.size
+
+    resize = max( tuple( sdim/float(idim) for sdim, idim in zip( screen_dim, image_dim ) ) )
+
+    resized_image = image_file.resize( tuple(int(dim * resize) for dim in image_dim), Image.ANTIALIAS) if resize != 1 else image_file
+    ready_image = resized_image.crop((0, 0, screen_dim[0], screen_dim[1]))
+
     # Convert the image to the format used by the Screen
-    screen_data = anki_vector.screen.convert_image_to_screen_data(image_file)
+    screen_data = anki_vector.screen.convert_image_to_screen_data(ready_image)
     robot.screen.set_screen_with_image_data(screen_data, duration_sec=duration, interrupt_running=interrupt)
