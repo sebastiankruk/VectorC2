@@ -108,6 +108,36 @@ const VectorUtils = (function(){
   }
 
   /**
+   * Turns PhotoMeta object into params (id or label)
+   * @param {PhotoMeta|String|Number} meta 
+   */
+  function _getPhotoMetaAsParam(meta) {
+    let result = '';
+
+    switch( typeof meta ) {
+      case 'number': 
+        result = `id=${meta}, label=null`;
+        break;
+      case 'string': 
+        try {
+          let jmeta = JSON.parse( meta.replace(/^[(]([^)]+)[)]$/g, '$1') );
+          result = (typeof jmeta === 'number')
+                   ? `id=${jmeta}, label=null`
+                   : ('data-id' in jmeta) 
+                     ? `id=${jmeta['data-id']}, label=null`
+                     : `id=null, label='${jmeta['data-label']}'`
+        } catch (error) {
+          result = `id=null, label=${meta}` ;
+        }
+        break;
+      default:
+          result = 'id=0, label=null'
+    }
+
+    return result;
+  }
+
+  /**
    * Returns only first line of the given text
    * @param {String} text Text to be analyzed
    */
@@ -146,6 +176,7 @@ const VectorUtils = (function(){
     getBoolFieldAsPythonParam: _getBoolFieldAsPythonParam,
     getNumberFieldAsParam: _getNumberFieldAsParam,
     getNumberBlockAsParam: _getNumberBlockAsParam,
+    getPhotoMetaAsParam: _getPhotoMetaAsParam,
     getFirstLine: _getFirstLine,
     initializeBlocks: _initializeBlocks,
     unpackPhotoMeta: _unpackPhotoMeta
