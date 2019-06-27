@@ -122,16 +122,16 @@ const VectorUtils = (function(){
         try {
           let jmeta = JSON.parse( meta.replace(/^[(]([^)]+)[)]$/g, '$1') );
           result = (typeof jmeta === 'number')
-                   ? `id=${jmeta}, label=null`
+                   ? `${jmeta}, ''`
                    : ('data-id' in jmeta) 
-                     ? `id=${jmeta['data-id']}, label=null`
-                     : `id=null, label='${jmeta['data-label']}'`
+                     ? `${jmeta['data-id']}, ''`
+                     : `-1, '${jmeta['data-label']}'`
         } catch (error) {
-          result = `id=null, label=${meta}` ;
+          result = `'', ${meta}` ;
         }
         break;
       default:
-          result = 'id=0, label=null'
+          result = "0, ''"
     }
 
     return result;

@@ -171,7 +171,7 @@ const Vectorex = (function(){
    * @param {Boolean} fill Should photo fill the screen
    */
   function _setScreenImage(id, label, duration, interrupt, fill) {
-    let msg = gettext('Showing given photo %(image)s at Vector for %(duration)s seconds; will allow to interrupt: %(interrupt)s, and photo will fill screen %(fill)');
+    let msg = gettext('Showing given photo %(image)s at Vector for %(duration)s seconds; will allow to interrupt: %(interrupt)s, and photo will fill screen: %(fill)s');
     let params = {
       image: JSON.stringify({
         id: id,

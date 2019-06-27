@@ -80,5 +80,5 @@ def set_screen_image(robot, id=None, label=None, duration=2.0, interrupt=True, f
   """
   Wrapper function to enable to call the actual 
   """
-  screen_data = UserPhotos.get_vector_photo(id, label, fill)
+  screen_data = UserPhotos.get_vector_photo(id if id >= 0 else None, label if label is not '' else None, fill)
   robot.screen.set_screen_with_image_data(screen_data, duration_sec=duration, interrupt_running=interrupt)
