@@ -335,6 +335,8 @@ const VectorC2 = (function(){
   function _testJavaScript() {
     var code = Blockly.JavaScript.workspaceToCode(__workspace);
 
+    console.log(code);
+
     if (code) {
       $('.a-button-test').parent().removeClass('active').addClass('disabled');
 

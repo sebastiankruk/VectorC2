@@ -70,7 +70,7 @@ const Vectorex = (function(){
    */
   function _wait(seconds) {
     var prom = __wait(2000)  // prom, is a promise
-    let msg = gettext('Should have waited $(seconds)s'); 
+    let msg = gettext('Should have waited %(seconds)s'); 
     var showdone = ()=>LogPanel.logText(interpolate(msg, {seconds: seconds}, true))
     prom.then(showdone)
   } 
@@ -164,20 +164,22 @@ const Vectorex = (function(){
 
   /**
    * Sets Vector screen image with given photo
-   * @param {Object|String|int} image Object with reference to photo id, label and URL, or photo label, or photo id from DB
-   * @param {*} duration For how long should we wait showing this image
-   * @param {*} interrupt Should other interactions be interrupted
+   * @param {int} id Object with reference to photo id
+   * @param {Sgring} label Object with photo label
+   * @param {Number} duration For how long should we wait showing this image
+   * @param {Boolean} interrupt Should other interactions be interrupted
+   * @param {Boolean} fill Should photo fill the screen
    */
-  function _setScreenImage(image, duration, interrupt) {
-    let msg = gettext('Showing given photo %(image)s at Vector for %(duration)s seconds; will allow to interrupt: %(interrupt)s');
+  function _setScreenImage(id, label, duration, interrupt, fill) {
+    let msg = gettext('Showing given photo %(image)s at Vector for %(duration)s seconds; will allow to interrupt: %(interrupt)s, and photo will fill screen %(fill)');
     let params = {
-      image: JSON.stringify(
-        (typeof image == 'number') ? {id: image} :
-        (typeof image == 'string') ? {label: image} :
-        {url: image['xlink:href']}
-      ),
+      image: JSON.stringify({
+        id: id,
+        label: label
+      }),
       duration: duration,
-      interrupt: interrupt
+      interrupt: interrupt,
+      fill: fill
     }
     LogPanel.logText(interpolate(msg, params, true));
   }

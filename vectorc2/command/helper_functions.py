@@ -12,21 +12,12 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 import re
-import os
-import sys
-
-try:
-    from PIL import Image
-except ImportError:
-    sys.exit("Cannot import from PIL: Do `pip3 install --user Pillow` to install")
 
 import anki_vector
 
 from command import consts
 from blocks.models import AnimationTags, AnimationName, AnimationTrigger
 from photos.models import UserPhotos
-
-from vectorc2.settings import MEDIA_ROOT
 
 
 def rgb_to_hs(rgbstr):
@@ -85,23 +76,9 @@ def find_animation(query_tags, dropdown_search_type=consts.matching.BEST, is_tri
   return result
 
 
-def set_screen_image(robot, id=None, label=None, duration=2.0, interrupt=True):
+def set_screen_image(robot, id=None, label=None, duration=2.0, interrupt=True, fill=True):
   """
   Wrapper function to enable to call the actual 
   """
-  photo = (UserPhotos.objects.filter(id=id) if id is not None else UserPhotos.objects.filter(label=label)).first()
-  if photo:
-    path = os.path.join(MEDIA_ROOT, photo.image.name)
-    image_file = Image.open(path)
-
-    screen_dim = anki_vector.screen.dimensions()
-    image_dim = image_file.size
-
-    resize = max( tuple( sdim/float(idim) for sdim, idim in zip( screen_dim, image_dim ) ) )
-
-    resized_image = image_file.resize( tuple(int(dim * resize) for dim in image_dim), Image.ANTIALIAS) if resize != 1 else image_file
-    ready_image = resized_image.crop((0, 0, screen_dim[0], screen_dim[1]))
-
-    # Convert the image to the format used by the Screen
-    screen_data = anki_vector.screen.convert_image_to_screen_data(ready_image)
-    robot.screen.set_screen_with_image_data(screen_data, duration_sec=duration, interrupt_running=interrupt)
+  screen_data = UserPhotos.get_vector_photo(id, label, fill)
+  robot.screen.set_screen_with_image_data(screen_data, duration_sec=duration, interrupt_running=interrupt)

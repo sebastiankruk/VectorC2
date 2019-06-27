@@ -1455,6 +1455,22 @@
                     </next>
                   </block>
                 </statement>
+                <next>
+                  <block type="input_dummy" id="?S~h#Bw@|wZ=kN^)kZ-a">
+                    <field name="ALIGN">RIGHT</field>
+                    <statement name="FIELDS">
+                      <block type="field_static" id="hym)MO#GFZH;In/``(c5">
+                        <field name="TEXT">and fill screen with image</field>
+                        <next>
+                          <block type="field_checkbox" id="p-VJg3S9|0rLvL`YXsOv">
+                            <field name="CHECKED">TRUE</field>
+                            <field name="FIELDNAME">fill_screen</field>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
               </block>
             </next>
           </block>

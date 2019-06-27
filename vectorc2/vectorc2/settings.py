@@ -249,6 +249,8 @@ CHANNEL_LAYERS = {
     },
 }
 
+VECTOR = { }
+
 # #TODO
 # STATICFILES_FINDERS = [
 #     'compressor.finders.CompressorFinder'
