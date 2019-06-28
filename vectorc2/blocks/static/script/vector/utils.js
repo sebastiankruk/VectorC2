@@ -116,22 +116,26 @@ const VectorUtils = (function(){
 
     switch( typeof meta ) {
       case 'number': 
-        result = `id=${meta}, label=null`;
+        // if this is a number - we will pass it as ID
+        result = `${meta}, ''`;
         break;
       case 'string': 
         try {
+          // if this is a string - let's first check if it could be JSON encoded object with references to 
+          // but the object might be surrounded in brackets
           let jmeta = JSON.parse( meta.replace(/^[(]([^)]+)[)]$/g, '$1') );
+          // if it was not a JSON but a single number - JSON parser will return a number
           result = (typeof jmeta === 'number')
-                   ? `${jmeta}, ''`
+                   ? `${jmeta}, ''` // so we pass it as an ID
                    : ('data-id' in jmeta) 
-                     ? `${jmeta['data-id']}, ''`
-                     : `-1, '${jmeta['data-label']}'`
+                     ? `${jmeta['data-id']}, ''` // if there is data-id in the object-  we will pass it as ID
+                     : `-1, '${jmeta['data-label']}'` // if not, there needs to be data-label to be passed as label search
         } catch (error) {
-          result = `'', ${meta}` ;
+          result = `'', ${meta}`; //if there was an error - it must be a label and we build a query like that
         }
         break;
       default:
-          result = "0, ''"
+          result = "0, ''" // we should not land here, but just in case - we will take the first photo
     }
 
     return result;

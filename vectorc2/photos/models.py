@@ -49,7 +49,7 @@ class UserPhotos(models.Model):
             #https://jdhao.github.io/2017/11/06/resize-image-to-square-with-padding/
             resize = min( tuple( sdim/float(idim) for sdim, idim in zip( dimensions, image_dim ) ) )
             new_dimensions = tuple(int(dim * resize) for dim in image_dim) if resize != 1 else image_dim
-            delta = tuple( map(operator.sub, new_dimensions, dimensions) )
+            delta = tuple( map(operator.sub, dimensions, new_dimensions) )
             padding = (delta[0]//2, delta[1]//2, delta[0]-(delta[0]//2), delta[1]-(delta[1]//2))
             resized_image = image_file.resize( new_dimensions, Image.ANTIALIAS) if resize != 1 else image_file
             ready_image = ImageOps.expand(resized_image, padding)
