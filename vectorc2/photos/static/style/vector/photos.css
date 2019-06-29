@@ -14,24 +14,29 @@
 }
 
 .photo-images .photo-image.img-responsive {
-  max-width: 185px; 
-  max-height: 185px;
+  max-width: 260px; 
+  max-height: 136px;
 }
 
 .photo-images .thumbnail {
   position: relative;
-  width: 185px;
-  height: 185px;
+  width: 260px;
+  height: 136px;
+  border: solid 0.5px #ddd;
 }
 
 .photo-images .caption {
   position: absolute;
-  bottom: 0px;
+  bottom: -1px;
   left: 0;
   width: 100%;
   background: rgba(255,255,255,0.7);
   padding-bottom: 5px;
   padding-top: 5px;
+}
+
+.photo-images .caption p {
+  margin-bottom: 5px;
 }
 
 .photo-images .row {
