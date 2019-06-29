@@ -20,4 +20,14 @@ class Migration(migrations.Migration):
                 ('upload_date', models.DateTimeField(auto_now_add=True)),
             ],
         ),
+        migrations.CreateModel(
+            name='VectorPhotoCache',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('fill', models.BooleanField(default=True)),
+                ('dimensions', models.CharField(default='184x96', max_length=15)),
+                ('cached_path', models.CharField(max_length=250)),
+                ('photo', models.ForeignKey(on_delete=models.deletion.CASCADE, to='photos.UserPhotos')),
+            ],
+        ),
     ]
