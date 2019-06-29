@@ -20,9 +20,9 @@
 Blockly.Msg["VECTOR_ROBOT_MESSAGE"] = "Używaj Vectora %1 %2 z (opcjonalnym) numerem seryjnym %3 %4";
 Blockly.Msg["VECTOR_ROBOT_TOOLTIP"] = "Opakowuje wszystkie komendy dla Vectora";
 Blockly.Msg["VECTOR_ROBOT_VARIABLE_TITLE"] = "Używaj Vectora";
-Blockly.Msg["VECTOR_ROBOT_VARIABLE_TOOLTIP"] = "Add, remove, or reorder sections to reconfigure this if block.";  //TODO-i18n
+Blockly.Msg["VECTOR_ROBOT_VARIABLE_TOOLTIP"] = "Dodaj, usuń, lub zmień rozszerzenia tego bloku.";
 Blockly.Msg["VECTOR_ROBOT_SERIAL_TITLE"] = "[vector]";
-Blockly.Msg["VECTOR_ROBOT_SERIAL_TOOLTIP"] = "Add block to control which vector to use";  //TODO-i18n
+Blockly.Msg["VECTOR_ROBOT_SERIAL_TOOLTIP"] = "Dodaj block żeby ustalić, któremu Vectorowi wydawać polecenia";
 
 Blockly.Msg["VECTOR_ROBOT_EX_OPT_MESSAGE"] = "Używaj Vectora %1";
 Blockly.Msg["VECTOR_ROBOT_EX_OPT_TOOLTIP"] = "Podstawowe opakowanie kodu; przenieś elementy z lewego panelu żeby uaktywnić dodatkowe opcje";
@@ -161,3 +161,8 @@ Blockly.Msg["VECTOR_FIND_ANIMATION_TYPE_TRIGGER"] = "podanym celu"
 Blockly.Msg["VECTOR_FIND_ANIMATION_TYPE_BEST"] = "najlepiej"
 Blockly.Msg["VECTOR_FIND_ANIMATION_TYPE_RANDOM"] = "losowo"
 Blockly.Msg["VECTOR_FIND_ANIMATION_TYPE_WEIGHTED"] = "losowo (ważony)"
+
+Blockly.Msg["VECTOR_PHOTOS_MESSAGE"] = "Ustaw ekran %1 na %2 sekund %3 i pozwalaj na przerywanie odtwarzanych animacji %4 %5 oraz wypełnił ekran obrazem %6"
+Blockly.Msg["VECTOR_PHOTOS_TOOLTIP"] = "Pokazuje obrazek na ekranie Vectora (jego 'twarzy')."
+Blockly.Msg["VECTOR_SELECT_PHOTO_MESSAGE"] = "wybierz obrazek"
+Blockly.Msg["VECTOR_SELECT_PHOTO_TOOLTIP"] = "Umożliwia wybranie zdjęcia z galerii VectorC2"

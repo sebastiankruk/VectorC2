@@ -126,8 +126,8 @@ const PhotosAdmin = (function(){
         __addPhotosToGallery(response.html, offset>0)
       },
       error: function(xhr) {
-        console.error(xhr.responseText)
-        console.error(xhr); //TODO: change to Vector logger 
+        LogPanel.logError(xhr.responseText)
+        LogPanel.logError(xhr);
       }
     })
   }
@@ -172,17 +172,19 @@ const PhotosAdmin = (function(){
       let label = $(boxImage).find('.thumbnail > div.caption > p').text()
   
       bootbox.confirm({
-        title: "Remove photo?", //TODO -i18n
-        message: `Do you want to the remove photo "${label}"?`,  //TODO -i18n
+        title: gettext("Remove photo?"),
+        message: interpolate(gettext('Do you want to the remove photo "%(label)s"?'), {label: label}, true),
         buttons: {
             cancel: {
-                label: '<i class="fa fa-times"></i> Cancel'  //TODO -i18n
+                label: gettext('<i class="fa fa-times"></i> Cancel')
             },
             confirm: {
-                label: '<i class="fa fa-check"></i> Confirm'  //TODO -i18n
+                label: gettext('<i class="fa fa-check"></i> Confirm')
             }
         },
-        callback: result => (result) ? __removeImage(boxImage, id) : console.log(`You decided not to remove the photo "${label}"`) //TODO: use VectorC2 logger
+        callback: result => (result) 
+                         ? __removeImage(boxImage, id) 
+                         : LogPanel.logText(interpolate(gettext('You decided not to remove the photo "%(label)s"'), {}, true))
       });    
     }
   }
@@ -202,7 +204,7 @@ const PhotosAdmin = (function(){
         boxImage.remove();
         __photosDiff--;
       },
-      error: xhr => console.error(xhr) //TODO: change to Vector logger 
+      error: xhr => LogPanel.logError(xhr)
     })
   }
 
@@ -224,11 +226,11 @@ const PhotosAdmin = (function(){
         contentType: false,
         success: function(response) {
           __photosDiff++;
-          console.log('successfully uploaded photo'); //TODO: change to Vector logger 
+          LogPanel.logText('successfully uploaded photo');
           __addPhotosToGallery(response.html, true, true);
         },
         error: function(xhr) {
-          console.error(xhr); //TODO: change to Vector logger 
+          LogPanel.logError(xhr);
         }
     });
     return false;    
