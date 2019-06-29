@@ -12,36 +12,13 @@
           "String",
           "VectorC2Photo"
         ]
-      },
-      {
-        "type": "field_number",
-        "name": "duration_sec",
-        "value": 1.5,
-        "min": 0.1,
-        "precision": 0.1
-      },
-      {
-        "type": "input_dummy",
-        "align": "RIGHT"
-      },
-      {
-        "type": "field_checkbox",
-        "name": "interrupt_running",
-        "checked": true
-      },
-      {
-        "type": "input_dummy",
-        "align": "RIGHT"
-      },
-      {
-        "type": "field_checkbox",
-        "name": "fill_screen",
-        "checked": true
       }
     ],
     "inputsInline": false,
     "previousStatement": null,
     "nextStatement": null,
+    "mutator": "vector_set_screen_image_ex_mutator",
+    "extensions": [],
     "colour": 150,
     "tooltip": "%{BKY_VECTOR_PHOTOS_TOOLTIP}",
     "helpUrl": "https://sdk-resources.anki.com/vector/docs/generated/anki_vector.screen.html#anki_vector.screen.ScreenComponent.set_screen_with_image_data"
