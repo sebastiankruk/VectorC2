@@ -1513,8 +1513,8 @@
             <next>
               <block type="field_image" id="4e]J6[h1PC9lONL0Xxdr">
                 <field name="SRC">http://localhost:8000/static/img/empty_photo.png</field>
-                <field name="WIDTH">100</field>
-                <field name="HEIGHT">100</field>
+                <field name="WIDTH">184</field>
+                <field name="HEIGHT">96</field>
                 <field name="ALT">photo</field>
                 <field name="FLIP_RTL">FALSE</field>
               </block>
