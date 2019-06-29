@@ -41,5 +41,49 @@
     }   
   };  
 
+  VectorMutator.init('vector_set_screen_image_ex', {
+    /*
+,
+      {
+        "type": "field_number",
+        "name": "duration_sec",
+        "value": 1.5,
+        "min": 0.1,
+        "precision": 0.1
+      },
+      {
+        "type": "input_dummy",
+        "align": "RIGHT"
+      },
+      {
+        "type": "field_checkbox",
+        "name": "interrupt_running",
+        "checked": true
+      },
+      {
+        "type": "input_dummy",
+        "align": "RIGHT"
+      },
+      {
+        "type": "field_checkbox",
+        "name": "fill_screen",
+        "checked": true
+      }
+      */
+
+     duration_sec: {
+      align: Blockly.ALIGN_RIGHT,
+      blockFieldFunction: () => new Blockly.FieldNumber(1.5, 0.1, 120, 0.1)
+    },
+    interrupt_running: {
+      align: Blockly.ALIGN_RIGHT,
+      blockFieldFunction: () => new Blockly.FieldCheckbox("TRUE")
+    },
+    fill_screen: {
+      align: Blockly.ALIGN_RIGHT,
+      blockFieldFunction: () => new Blockly.FieldCheckbox("TRUE")
+    }
+  });
+
 
 }());

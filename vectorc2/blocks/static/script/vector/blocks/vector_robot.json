@@ -10,7 +10,7 @@
         "name": "wrapped_code"
       }
     ],
-   "colour": 240,
+    "colour": 240,
     "tooltip": "%{BKY_VECTOR_ROBOT_EX_TOOLTIP}",
     "mutator": "controls_vector_robot_ex_mutator",
     "extensions": [],

@@ -67,7 +67,7 @@ const VectorMutator = (function(){
           nextStatement: null,
           enableContextMenu: false,
           colour: 150,
-          tooltip: `%{BKY__${id}_${ex}_OPT_TOOLTIP}`.toUpperCase()
+          tooltip: `%{BKY_${id}_${ex}_OPT_TOOLTIP}`.toUpperCase()
         }) 
       ))
     ]

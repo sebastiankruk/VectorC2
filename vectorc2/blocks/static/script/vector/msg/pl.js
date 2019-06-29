@@ -162,7 +162,21 @@ Blockly.Msg["VECTOR_FIND_ANIMATION_TYPE_BEST"] = "najlepiej"
 Blockly.Msg["VECTOR_FIND_ANIMATION_TYPE_RANDOM"] = "losowo"
 Blockly.Msg["VECTOR_FIND_ANIMATION_TYPE_WEIGHTED"] = "losowo (ważony)"
 
-Blockly.Msg["VECTOR_PHOTOS_MESSAGE"] = "Ustaw ekran %1 na %2 sekund %3 i pozwalaj na przerywanie odtwarzanych animacji %4 %5 oraz wypełnił ekran obrazem %6"
+Blockly.Msg["VECTOR_PHOTOS_MESSAGE"] = "Ustaw ekran %1" // na %2 sekund %3 i pozwalaj na przerywanie odtwarzanych animacji %4 %5 oraz wypełnił ekran obrazem %6"
 Blockly.Msg["VECTOR_PHOTOS_TOOLTIP"] = "Pokazuje obrazek na ekranie Vectora (jego 'twarzy')."
 Blockly.Msg["VECTOR_SELECT_PHOTO_MESSAGE"] = "wybierz obrazek"
 Blockly.Msg["VECTOR_SELECT_PHOTO_TOOLTIP"] = "Umożliwia wybranie zdjęcia z galerii VectorC2"
+
+Blockly.Msg["VECTOR_SET_SCREEN_IMAGE_EX_MESSAGE"] = "Ustaw ekran %1"
+
+Blockly.Msg["VECTOR_SET_SCREEN_IMAGE_EX_DURATION_SEC_OPT_PRE_TITLE"] = "na (sek): "
+Blockly.Msg["VECTOR_SET_SCREEN_IMAGE_EX_DURATION_SEC_OPT_TITLE"] = "z kontrolą czasu pokazywania"
+Blockly.Msg["VECTOR_SET_SCREEN_IMAGE_EX_DURATION_SEC_OPT_TOOLTIP"] = "Umożliwia kontrolę czasu pokazywania obrazka."
+
+Blockly.Msg["VECTOR_SET_SCREEN_IMAGE_EX_INTERRUPT_RUNNING_OPT_PRE_TITLE"] = "i pozwalaj na przerywanie odtwarzanych animacji"
+Blockly.Msg["VECTOR_SET_SCREEN_IMAGE_EX_INTERRUPT_RUNNING_OPT_TITLE"] = "z kontrolą przerywania odtwarzania animacji"
+Blockly.Msg["VECTOR_SET_SCREEN_IMAGE_EX_INTERRUPT_RUNNING_OPT_TOOLTIP"] = "Umożliwia kontrolę czy animacje mają być przerywane w czasie pokazywania obrazka."
+
+Blockly.Msg["VECTOR_SET_SCREEN_IMAGE_EX_FILL_SCREEN_OPT_PRE_TITLE"] = "i wypełnij ekran obrazkiem"
+Blockly.Msg["VECTOR_SET_SCREEN_IMAGE_EX_FILL_SCREEN_OPT_TITLE"] = "z kontrolą jak ma być przeliczana wielkość obrazka"
+Blockly.Msg["VECTOR_SET_SCREEN_IMAGE_EX_FILL_SCREEN_OPT_TOOLTIP"] = "Umożliwia kontrolę czy obrazek ma wypełnić czy też wpasować się w ekran."
