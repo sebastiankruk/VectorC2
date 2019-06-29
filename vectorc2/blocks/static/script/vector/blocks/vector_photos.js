@@ -22,11 +22,11 @@
   Blockly.Blocks['vector_select_photo'] = {
     init: function() {
       this.appendDummyInput()
-          .appendField("pick a photo")
+          .appendField(Blockly.Msg.VECTOR_SELECT_PHOTO_MESSAGE)
           .appendField(new Blockly.FieldImage(VectorPhotos.getDefault(), 184, 96, "photo", VectorPhotos.selectPhoto), 'photo');
       this.setOutput(true, "VectorC2Photo");
       this.setColour(230);
-      this.setTooltip("Enables to pick photo from Vector C2 gallery");
+      this.setTooltip(Blockly.Msg.VECTOR_SELECT_PHOTO_TOOLTIP);
       this.setHelpUrl("");
     },
     // Mutator functions
@@ -38,28 +38,7 @@
         photo.setValue(data['xlink:href']);
         photo.src_ = data['xlink:href'];
       }
-    },
-    domToMutation: function(xmlElement) {
-      console.log(`DATA2: ${this.data}`);
-
-        // Same as previous example
-    },
-    decompose: function(workspace) {
-      console.log(`DATA3: ${this.data}`);
-
-        // Decomposeyour block here
-    },
-    compose: function(containerBlock) {
-      console.log(`DATA4: ${this.data}`);
-
-        // Compose your block here
-    },
-    // Aux functions
-    reshape: function(param){
-      console.log(`DATA5: ${this.data}`);
-
-        // Same as previous example
-    }    
+    }   
   };  
 
 

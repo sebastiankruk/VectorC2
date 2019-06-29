@@ -2,7 +2,7 @@
   {
     "type": "vector_set_screen_image",
     "lastDummyAlign0": "RIGHT",
-    "message0": "TODO: Set screen image %1 for %2 second(s) %3 and interrupt running any animations %4 %5 and fill screen with image %6",
+    "message0": "%{BKY_VECTOR_PHOTOS_MESSAGE}",
     "args0": [
       {
         "type": "input_value",
@@ -43,7 +43,7 @@
     "previousStatement": null,
     "nextStatement": null,
     "colour": 150,
-    "tooltip": "TODO: Display an image on Vector’s Screen (his “face”).",
+    "tooltip": "%{BKY_VECTOR_PHOTOS_TOOLTIP}",
     "helpUrl": "https://sdk-resources.anki.com/vector/docs/generated/anki_vector.screen.html#anki_vector.screen.ScreenComponent.set_screen_with_image_data"
   }
 ]
