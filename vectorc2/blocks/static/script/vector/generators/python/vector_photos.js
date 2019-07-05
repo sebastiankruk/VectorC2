@@ -23,14 +23,14 @@ Blockly.Python['vector_set_screen_image'] = function(block) {
   let checkbox_interrupt_running = VectorUtils.getBoolFieldAsPythonParam(block, 'INTERRUPT_RUNNING_VAR',  'TRUE');
   let checkbox_fill_screen       = VectorUtils.getBoolFieldAsPythonParam(block, 'FILL_SCREEN_VAR',  'TRUE');
 
-  let image_id_label = VectorUtils.getPhotoMetaAsParam(value_image_ref);
+  let image_id_label = VectorUtils.getImageMetaAsParam(value_image_ref);
 
   var code = `set_screen_image(${variable_robot_var}, ${image_id_label}${number_duration_sec}${checkbox_interrupt_running}${checkbox_fill_screen})\n`;
   return code;
 };
 
 Blockly.Python['vector_select_photo'] = function(block) {
-  let meta = VectorUtils.unpackPhotoMeta(block);
+  let meta = VectorUtils.unpackImageMeta(block);
   let code = meta.toString();
   return [code, Blockly.Python.ORDER_NONE];
 };

@@ -163,15 +163,15 @@ const Vectorex = (function(){
   }
 
   /**
-   * Sets Vector screen image with given photo
-   * @param {int} id Object with reference to photo id
-   * @param {Sgring} label Object with photo label
+   * Sets Vector screen image with given image
+   * @param {int} id Object with reference to image id
+   * @param {Sgring} label Object with image label
    * @param {Number} duration For how long should we wait showing this image
    * @param {Boolean} interrupt Should other interactions be interrupted
-   * @param {Boolean} fill Should photo fill the screen
+   * @param {Boolean} fill Should image fill the screen
    */
   function _setScreenImage(id, label, duration, interrupt, fill) {
-    let msg = gettext('Showing given photo %(image)s at Vector for %(duration)s seconds; will allow to interrupt: %(interrupt)s, and photo will fill screen: %(fill)s');
+    let msg = gettext('Showing given image %(image)s at Vector for %(duration)s seconds; will allow to interrupt: %(interrupt)s, and image will fill screen: %(fill)s');
     let params = {
       image: JSON.stringify({
         id: id,

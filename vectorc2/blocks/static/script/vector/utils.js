@@ -108,10 +108,10 @@ const VectorUtils = (function(){
   }
 
   /**
-   * Turns PhotoMeta object into params (id or label)
-   * @param {PhotoMeta|String|Number} meta 
+   * Turns ImageMeta object into params (id or label)
+   * @param {ImageMeta|String|Number} meta 
    */
-  function _getPhotoMetaAsParam(meta) {
+  function _getImageMetaAsParam(meta) {
     let result = '';
 
     switch( typeof meta ) {
@@ -135,7 +135,7 @@ const VectorUtils = (function(){
         }
         break;
       default:
-          result = "0, ''" // we should not land here, but just in case - we will take the first photo
+          result = "0, ''" // we should not land here, but just in case - we will take the first images
     }
 
     return result;
@@ -167,8 +167,8 @@ const VectorUtils = (function(){
    * 
    * @param {Blockly.BlockSVG} block block with data field 
    */
-  function _unpackPhotoMeta(block) {
-    return new PhotoMeta(JSON.parse(block.data || "{}"));
+  function _unpackImageMeta(block) {
+    return new ImageMeta(JSON.parse(block.data || "{}"));
   }
 
   return {
@@ -180,10 +180,10 @@ const VectorUtils = (function(){
     getBoolFieldAsPythonParam: _getBoolFieldAsPythonParam,
     getNumberFieldAsParam: _getNumberFieldAsParam,
     getNumberBlockAsParam: _getNumberBlockAsParam,
-    getPhotoMetaAsParam: _getPhotoMetaAsParam,
+    getImageMetaAsParam: _getImageMetaAsParam,
     getFirstLine: _getFirstLine,
     initializeBlocks: _initializeBlocks,
-    unpackPhotoMeta: _unpackPhotoMeta
+    unpackImageMeta: _unpackImageMeta
   };
 
 })();

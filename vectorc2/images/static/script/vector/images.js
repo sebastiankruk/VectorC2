@@ -17,9 +17,9 @@
  */
 
 /**
- * Class for keeping photo related metadata
+ * Class for keeping image related metadata
  */
-class PhotoMeta {
+class ImageMeta {
   /**
    * Constructs the metadata object
    * @param {Object} meta metatadata to be handled
@@ -34,13 +34,13 @@ class PhotoMeta {
 }
 
 /**
- * Main class for Vector C2 photos use
+ * Main class for Vector C2 images use
  */
-const VectorPhotos = (function(){
+const VectorImages = (function(){
   'use strict';
 
   /**
-   * URL to the default photo
+   * URL to the default image
    */
   let __default;
 
@@ -52,38 +52,38 @@ const VectorPhotos = (function(){
   }
 
   /**
-   * Will generate callback function that should be called when photo was choosen
+   * Will generate callback function that should be called when image was choosen
    * @param {Event} e 
    */
-  function __onPhotoSelected(blocklyImage) {
-    return function(photo) {
+  function __onImageSelected(blocklyImage) {
+    return function(image) {
 
-      let photoData = new PhotoMeta({
-        'xlink:href': photo.attr('src'),
-        'data-id': photo.attr('data-id'),
-        'data-label': photo.attr('alt')
+      let imageData = new ImageMeta({
+        'xlink:href': image.attr('src'),
+        'data-id': image.attr('data-id'),
+        'data-label': image.attr('alt')
       })
 
       let blockId = $(blocklyImage).parent('g').parent('g[data-id]').attr('data-id');
       let block = Blockly.mainWorkspace.getBlockById(blockId);
 
-      blocklyImage.attr(photoData);
-      block.data = photoData; //new PhotoMeta({...block.data, ...photoData})
+      blocklyImage.attr(imageData);
+      block.data = imageData; //new ImageMeta({...block.data, ...imageData})
     }
   }
 
   /**
-   * Handles click on the vector_photo block
+   * Handles click on the vector_image block
    * @param {MouseEvent} e 
    */
-  function _selectPhoto(e){
-    PhotosAdmin.choosePhoto( __onPhotoSelected( $(e.target) ) );
+  function _selectImage(e){
+    ImagesAdmin.chooseImage( __onImageSelected( $(e.target) ) );
   }
 
   return {
     init: __init__,
     getDefault: () => __default,
-    selectPhoto: _selectPhoto
+    selectImage: _selectImage
   }
 }());
 

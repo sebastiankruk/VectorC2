@@ -5,19 +5,19 @@ from django.utils.translation import gettext as _
 from django.shortcuts import render
 from django.template.loader import render_to_string
 
-from photos.forms import UploadFileForm
-from photos.models import UserPhotos
+from images.forms import UploadFileForm
+from images.models import UserPhotos
 
 
-def photo(request, id=None):
+def image(request, id=None):
   """
-  Enables to retrieve html mixin for or delete a single photo id
+  Enables to retrieve html mixin for or delete a single image id
   """
   if id is None:
     if request.method == 'GET': # /list
-      response = _list_photos(request)
+      response = _list_images(request)
     elif request.method == 'POST': # /upload
-      response = _upload_single_photo(request)
+      response = _upload_single_image(request)
     else:
       response = {
         'content': _('Only GET or POST are allowed when ID is NOT provided'),
@@ -25,9 +25,9 @@ def photo(request, id=None):
       }
   else:
     if request.method == 'GET':
-      response = _get_single_photo(request, id)
+      response = _get_single_image(request, id)
     elif request.method == 'DELETE':
-      response = _remove_single_photo(request, id)
+      response = _remove_single_image(request, id)
     else:
       response = {
         'content': _('Only GET or DELETE are allowed when ID is provided'),
@@ -37,9 +37,9 @@ def photo(request, id=None):
   return HttpResponse(**response)
 
 
-def _upload_single_photo(request):
+def _upload_single_image(request):
   '''
-  Enables to upload photo coming in the POST payload
+  Enables to upload image coming in the POST payload
   '''
   form = UploadFileForm(data=request.POST, files=request.FILES)
   if form.is_valid():
@@ -50,7 +50,7 @@ def _upload_single_photo(request):
         'id': form.instance.id,
         'image': form.instance.image.name,
         'label': form.instance.label,
-        'html': render_to_string('photos/photos_in_gallery.html', { 'photos': [ form.instance ] }, request)
+        'html': render_to_string('images/images_in_gallery.html', { 'images': [ form.instance ] }, request)
       }),
       "content_type": "application/json"
     }
@@ -63,19 +63,19 @@ def _upload_single_photo(request):
   return response
 
 
-def _list_photos(request):
+def _list_images(request):
   """
-  View function that enables to access photos.j
+  View function that enables to access images.j
   There are two parameters expected:
-  - max_count - maximum number of photos to return
-  - offset - which is the first photo index to return
+  - max_count - maximum number of images to return
+  - offset - which is the first image index to return
 
   This call will return the following JSON object:
   {
     'content': {
       'offset': $offset_requested,
       'max_count': $max_count,
-      'count': $actual_count_of_photos_in_the_set,
+      'count': $actual_count_of_images_in_the_set,
       'html': 'HTML mixim'
     }
     'status': $http_status_code
@@ -84,44 +84,44 @@ def _list_photos(request):
   offset = int(request.GET.get('offset', 0))
   max_count = int(request.GET.get('max_count', -1))
 
-  qs_photos = UserPhotos.objects.order_by('label', 'upload_date')
-  photos = qs_photos[offset:offset+max_count] if (max_count > 0) else qs_photos[offset:]
-  photos_mixim = render_to_string('photos/photos_in_gallery.html', { 'photos': photos }, request)
+  qs_images = UserPhotos.objects.order_by('label', 'upload_date')
+  images = qs_images[offset:offset+max_count] if (max_count > 0) else qs_images[offset:]
+  images_mixim = render_to_string('images/images_in_gallery.html', { 'images': images }, request)
 
   return {
     'content': json.dumps({
       'offset': offset,
       'max_count': max_count,
-      'total_count': qs_photos.count(),
-      'html': photos_mixim,
+      'total_count': qs_images.count(),
+      'html': images_mixim,
     }),
     'content_type': 'application/json',
     'status': 200
   }
   
 
-def _get_single_photo(request, id):
+def _get_single_image(request, id):
   '''
-  Returns information about a single photon in a form ready to be sent back
+  Returns information about a single image in a form ready to be sent back
   '''
-  photo = UserPhotos.objects.filter(id=id)
-  photos_mixim = render_to_string('photos/photos_in_gallery.html', { 'photos': [ photo ] }, request)
+  image = UserPhotos.objects.filter(id=id)
+  images_mixim = render_to_string('images/images_in_gallery.html', { 'images': [ image ] }, request)
 
   return {
     'content': json.dumps({
-      'count': photo.count(),
-      'html': photos_mixim,
+      'count': image.count(),
+      'html': images_mixim,
     }),
     'content_type': 'application/json',
     'status': 200
   }
 
 
-def _remove_single_photo(request, id):
+def _remove_single_image(request, id):
   '''
-  Removes photo with given id
+  Removes image with given id
   '''
-  photo = UserPhotos.objects.filter(id=id).delete()
+  image = UserPhotos.objects.filter(id=id).delete()
   return {
     'content': json.dumps({
       

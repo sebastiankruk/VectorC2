@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
                 ('fill', models.BooleanField(default=True)),
                 ('dimensions', models.CharField(default='184x96', max_length=15)),
                 ('cached_path', models.CharField(max_length=250)),
-                ('photo', models.ForeignKey(on_delete=models.deletion.CASCADE, to='photos.UserPhotos')),
+                ('photo', models.ForeignKey(on_delete=models.deletion.CASCADE, to='images.UserPhotos')),
             ],
         ),
     ]

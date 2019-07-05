@@ -10,20 +10,20 @@ from vectorc2.settings import MEDIA_ROOT, VECTOR
 
 class UserPhotos(models.Model):
     """
-    Model for keeping user uploaded photos.
+    Model for keeping user uploaded images.
     """
     image = models.ImageField(upload_to="images/")    
     label = models.CharField('Image label', max_length=30, unique=False, null=False, db_index=True)
     upload_date=models.DateTimeField(auto_now_add=True)
 
     @staticmethod
-    def get_vector_photo(id=None, label=None, fill=True, dimensions=None):
+    def get_vector_image(id=None, label=None, fill=True, dimensions=None):
         """
-        Will return existing or create a new version of photos for Vector.
+        Will return existing or create a new version of images for Vector.
         :param id get image by id
         :param label get first image matching given label
         :param dimensions new dimensions for resizes image, if not provided (184, 96) is used
-        :param fill should we fill the space or surround photo with border
+        :param fill should we fill the space or surround image with border
         """
         if id is None and label is None:
             return None
@@ -80,7 +80,7 @@ class UserPhotos(models.Model):
 
 class VectorPhotoCache(models.Model):
     """
-    Model for keeping cached versions of photos redone for Vector
+    Model for keeping cached versions of images redone for Vector
     """
     photo = models.ForeignKey(UserPhotos, on_delete=models.CASCADE)
     fill = models.BooleanField(default=True)

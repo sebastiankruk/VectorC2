@@ -16,8 +16,8 @@ from django.shortcuts import render
 from django.template.context import RequestContext
 
 from command.models import Configuration
-from photos.forms import UploadFileForm
-from photos.models import UserPhotos
+from images.forms import UploadFileForm
+from images.models import UserPhotos
 
 from django.template.context_processors import media
 
@@ -26,6 +26,6 @@ def home(request):
                   'webview/index.html',
                    {
                     'frequency': Configuration.get_value('status_checking_frequency', 0),
-                    'photos_form': UploadFileForm() if request.method == 'GET' else None,
-                    'photos':  UserPhotos.objects.all() 
+                    'images_form': UploadFileForm() if request.method == 'GET' else None,
+                    'images':  UserPhotos.objects.all() 
                   })

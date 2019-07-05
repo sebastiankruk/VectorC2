@@ -35,9 +35,9 @@
     {% bootstrap_css %}
     {% bootstrap_messages %}
 
-    <script src="{% static 'script/vector/photos.js' %}"></script>
+    <script src="{% static 'script/vector/images.js' %}"></script>
     <script type="text/javascript">
-      VectorPhotos.init("{% static 'img/empty_photo.png' %}");  
+      VectorImages.init("{% static 'img/empty_photo.png' %}");  
     </script>
 
     <script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>    
@@ -61,7 +61,7 @@
     <link href="{% static 'style/vector/log-panel.css' %}" rel="stylesheet">
     <link href="{% static 'style/vector/battery.css' %}" rel="stylesheet">
     <link href="{% static 'style/vector/safe.css' %}" rel="stylesheet">
-    <link href="{% static 'style/vector/photos.css' %}" rel="stylesheet">
+    <link href="{% static 'style/vector/images.css' %}" rel="stylesheet">
 
     <script src="{% static 'script/bootstrap/bootstrap-slider.min.js' %}"></script>
     <script src="{% static 'script/bootstrap/bootbox.all.min.js' %}"></script>
@@ -80,7 +80,7 @@
     <script src="{% static 'script/vector/vectorex.js' %}"></script>
     
     <script src="{% static 'script/vector/configuration.js' %}"></script>
-    <script src="{% static 'script/vector/photos_admin.js' %}"></script>
+    <script src="{% static 'script/vector/images_admin.js' %}"></script>
 
   </head>
   <body class="d-flex flex-column h-100 w-100" lang="{{ lang.code }}">
@@ -98,7 +98,7 @@
 
     {% include "webview/configuration_modal.html" %}
     {% include "webview/battery_modal.html" %}
-    {% include "photos/photos_admin_modal.html" %}
+    {% include "images/images_admin_modal.html" %}
 
   </body>
 </html>

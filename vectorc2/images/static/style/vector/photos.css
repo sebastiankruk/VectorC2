@@ -1,12 +1,12 @@
-#photosModalUploadForm div.image-upload label {
+#imagesModalUploadForm div.image-upload label {
   display: none;
 }
 
-#photosModalUploadForm.form-inline div.image-upload .form-control {
+#imagesModalUploadForm.form-inline div.image-upload .form-control {
   width: 400px;
 }
 
-#photosModal .modal-body {
+#imagesModal .modal-body {
   overflow-y: auto;
   height: calc(100vh - 300px);
   box-sizing: border-box;  
@@ -66,8 +66,8 @@
   margin-top: 2px;
 }
 
-#photosModal:not(.choose) .photo-images .photo-action .download,
-#photosModal.choose .photo-images .photo-action .times {
+#imagesModal:not(.choose) .photo-images .photo-action .download,
+#imagesModal.choose .photo-images .photo-action .times {
   display: none;
 }
 

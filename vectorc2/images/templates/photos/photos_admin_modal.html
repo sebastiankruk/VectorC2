@@ -4,36 +4,36 @@
 
 {# Modal #}
 
-<div class="modal fade" id="photosModal" tabindex="-1" role="dialog" aria-labelledby="photosModalTitle" aria-hidden="true" data-backdrop="true">
+<div class="modal fade" id="imagesModal" tabindex="-1" role="dialog" aria-labelledby="imagesModalTitle" aria-hidden="true" data-backdrop="true">
   <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
     <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="photosModalTitle">{% trans 'Photo gallery' %}</h5>
+          <h5 class="modal-title" id="imagesModalTitle">{% trans 'Image gallery' %}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="{% trans 'Close' %}">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
           <div class="form-group photo-images">
-            {# collection of photos to be placed here #}
+            {# collection of images to be placed here #}
             <div class="row" id="box-image-empty">
                 <div class="thumbnail text-center">
-                    <img src="{% static 'img/empty_photo.png' %}" alt="{% trans 'No photos' %}" title="{% trans 'There are no photos present in the system. Please upload one' %}" class="photo-image img-responsive photo-missing">
+                    <img src="{% static 'img/empty_photo.png' %}" alt="{% trans 'No images' %}" title="{% trans 'There are no images present in the system. Please upload one' %}" class="photo-image img-responsive photo-missing">
                     <div class="caption">
-                        <p>{% trans 'No photos' %}</p>
+                        <p>{% trans 'No images' %}</p>
                     </div>
                 </div>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-        <form action="/photos/" method="post" id="photosModalUploadForm" enctype="multipart/form-data"  class="form-inline"> {% csrf_token %} 
+        <form action="/images/" method="post" id="imagesModalUploadForm" enctype="multipart/form-data"  class="form-inline"> {% csrf_token %} 
           <div class="form-group mb-2 col-sm-5 image-upload image-upload-label">
-            {{ photos_form.label }}
+            {{ images_form.label }}
             <small id="image-label-help" class="form-text text-muted">Name by which you will reference this image in the Vector code.</small>
           </div>
           <div class="form-group mx-sm-3 mb-2 col-sm-5 image-upload image-upload-image">
-            {{ photos_form.image }}
+            {{ images_form.image }}
             <small id="image-file-help" class="form-text text-muted">Upload an image of ideally 23x12 ratio.</small>
           </div>
           <button type="button" class="btn btn-secondary sr-only" data-dismiss="modal">{% trans 'Close' %}</button>

@@ -17,7 +17,7 @@ import anki_vector
 
 from command import consts
 from blocks.models import AnimationTags, AnimationName, AnimationTrigger
-from photos.models import UserPhotos
+from images.models import UserPhotos
 
 
 def rgb_to_hs(rgbstr):

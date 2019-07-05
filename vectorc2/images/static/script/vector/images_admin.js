@@ -16,37 +16,37 @@
  * @author vectorc2@kruk.me
  */
 /**
- * Main class for Vector C2 photos administration
+ * Main class for Vector C2 images administration
  */
-const PhotosAdmin = (function(){
+const ImagesAdmin = (function(){
   'use strict';
 
   /**
-   * References the photos administration modal element
+   * References the images administration modal element
    */
-  let __photosModal;
+  let __imagesModal;
   /**
-   * References the element where collection of photos is presented
+   * References the element where collection of images is presented
    */
-  let __photosGallery;
+  let __imagesGallery;
   /**
-   * References the form for uploading new photos
+   * References the form for uploading new images
    */
-  let __photosUploadForm;
+  let __imagesUploadForm;
   /**
    * Body of the modal with gallery
    */
   let __galleryBody;
   /**
-   * Currently loaded photos count
+   * Currently loaded images count
    */
-  let __photosOffset = 0;
+  let __imagesOffset = 0;
   /**
-   * Index used to keep track of photos added/removed since load
+   * Index used to keep track of images added/removed since load
    */
-  let __photosDiff = 0;
+  let __imagesDiff = 0;
   /**
-   * Will be true when choosing photos for Blockly
+   * Will be true when choosing images for Blockly
    */
   let __chooseModeCallback = null;
 
@@ -54,22 +54,22 @@ const PhotosAdmin = (function(){
    * Initializes the UI component
    */
   function __init__() {
-    __photosModal = $('#photosModal');
-    __photosModal.on('shown.bs.modal', __onModalShow);
-    __photosModal.on('hidden.bs.modal', __onModalHidden);
-    // __photosModal.find('.modal-footer button.btn-primary').mouseup(__onClose);
+    __imagesModal = $('#imagesModal');
+    __imagesModal.on('shown.bs.modal', __onModalShow);
+    __imagesModal.on('hidden.bs.modal', __onModalHidden);
+    // __imagesModal.find('.modal-footer button.btn-primary').mouseup(__onClose);
 
-    __photosGallery = __photosModal.find('.photo-images');
+    __imagesGallery = __imagesModal.find('.photo-images');
 
-    __photosUploadForm = $('#photosModalUploadForm');
-    __photosUploadForm.submit(__uploadPhotos);
+    __imagesUploadForm = $('#imagesModalUploadForm');
+    __imagesUploadForm.submit(__uploadImages);
 
-    __galleryBody = __photosModal.find('.modal-body');
+    __galleryBody = __imagesModal.find('.modal-body');
 
     let initialPhotos = Math.ceil(__galleryBody.height()/195)*5;
-    console.log(`initial photos: ${initialPhotos}`);
+    console.log(`initial images: ${initialPhotos}`);
 
-    __loadPhotos(0, initialPhotos);
+    __loadImages(0, initialPhotos);
   }
 
   /**
@@ -78,7 +78,7 @@ const PhotosAdmin = (function(){
    */
   function __onModalShow(e) {
     let allPhotosHeight = $('.form-group.photo-images').height();
-    let shownPhotosHeight = $('#photosModal .modal-body').height();
+    let shownPhotosHeight = $('#imagesModal .modal-body').height();
   }
 
   /**
@@ -87,43 +87,43 @@ const PhotosAdmin = (function(){
    */
   function __onModalHidden(e) {
     __chooseModeCallback = null;
-    __photosModal.removeClass('choose');
+    __imagesModal.removeClass('choose');
   }
 
   /**
-   * Handles scroll events on the photo gallery
+   * Handles scroll events on the image gallery
    * @param {Event} e 
    */
   function __onGalleryScroll(e) {
-    if ( __galleryBody.scrollTop() >= __photosGallery.height() - __galleryBody.height() ) {
-      __loadPhotos(__photosOffset);
+    if ( __galleryBody.scrollTop() >= __imagesGallery.height() - __galleryBody.height() ) {
+      __loadImages(__imagesOffset);
     }
   }
 
   /**
-   * Loads given $count of photos as a ready to use HTML mixing, starting from $offset index 
+   * Loads given $count of images as a ready to use HTML mixing, starting from $offset index 
    * @param {int} offset 
    * @param {int} count
    */
-  function __loadPhotos(offset=0, count=10) {
+  function __loadImages(offset=0, count=10) {
 
     $.ajax({
-      url: '/photos/',
+      url: '/images/',
       type: 'get',
       data: {
         offset: offset,
         max_count: count
       },
       success: function(response) {
-        __photosOffset = offset + count;
+        __imagesOffset = offset + count;
         
-        if (response.total_count > __photosOffset + __photosDiff) {
+        if (response.total_count > __imagesOffset + __imagesDiff) {
           __galleryBody.on('scroll', __onGalleryScroll);    
         } else {
           __galleryBody.off('scroll');
-          console.log('Will stop checking for more photos now'); 
+          console.log('Will stop checking for more images now'); 
         }
-        __addPhotosToGallery(response.html, offset>0)
+        __addImagesToGallery(response.html, offset>0)
       },
       error: function(xhr) {
         LogPanel.logError(xhr.responseText)
@@ -133,47 +133,47 @@ const PhotosAdmin = (function(){
   }
 
   /**
-   * Adds photos given as HTML mixim to the gallery.
+   * Adds images given as HTML mixim to the gallery.
    * If append is false, it will clear the gallery content 
    * 
    * @param {*} htmlMixim 
    * @param {*} append 
    */
-  function __addPhotosToGallery(htmlMixim, append=true, atBegining=false) {
-    if (!append || __photosGallery.find('#box-image-empty').length > 0) {
-      __photosGallery.empty();
+  function __addImagesToGallery(htmlMixim, append=true, atBegining=false) {
+    if (!append || __imagesGallery.find('#box-image-empty').length > 0) {
+      __imagesGallery.empty();
     }
     if (atBegining) {
-      __photosGallery.prepend(htmlMixim);
+      __imagesGallery.prepend(htmlMixim);
     } else {
-      __photosGallery.append(htmlMixim);
+      __imagesGallery.append(htmlMixim);
     }
 
-    __photosGallery.find('.box-image > div > button').mouseup(__onPhotoAction);
+    __imagesGallery.find('.box-image > div > button').mouseup(__onPhotoAction);
   }
 
   /**
-   * Prepares to remove a photo or select photo (if __chooseMode == true)
+   * Prepares to remove a image or select image (if __chooseMode == true)
    * Will show confirmation dialog before
    * @param {Event} e onMouseUp event
    */
   function __onPhotoAction(e) {
 
     if (__chooseModeCallback) {
-      // we will select this photo for blockly
+      // we will select this image for blockly
       let selectedImg = $(e.target).parents('button').siblings('img')[0] || 
                         $(e.target).siblings('img')[0];
       __chooseModeCallback($(selectedImg));
       __onClose(e);
     } else {
-      // we will check whether we can remove this photo
+      // we will check whether we can remove this image
       let boxImage = e.currentTarget.closest('.box-image');
       let id = $(boxImage).find('.thumbnail > img').attr('data-id');
       let label = $(boxImage).find('.thumbnail > div.caption > p').text()
   
       bootbox.confirm({
-        title: gettext("Remove photo?"),
-        message: interpolate(gettext('Do you want to the remove photo "%(label)s"?'), {label: label}, true),
+        title: gettext("Remove image?"),
+        message: interpolate(gettext('Do you want to the remove image "%(label)s"?'), {label: label}, true),
         buttons: {
             cancel: {
                 label: gettext('<i class="fa fa-times"></i> Cancel')
@@ -184,7 +184,7 @@ const PhotosAdmin = (function(){
         },
         callback: result => (result) 
                          ? __removeImage(boxImage, id) 
-                         : LogPanel.logText(interpolate(gettext('You decided not to remove the photo "%(label)s"'), {}, true))
+                         : LogPanel.logText(interpolate(gettext('You decided not to remove the image "%(label)s"'), {}, true))
       });    
     }
   }
@@ -195,27 +195,27 @@ const PhotosAdmin = (function(){
    */
   function __removeImage(boxImage, id) {
     $.ajax({
-      url: `/photos/${id}`,
+      url: `/images/${id}`,
       type: 'delete',
       headers: {
-        "X-CSRFToken": $("#photosModalUploadForm").find("input[name='csrfmiddlewaretoken']").attr('value'),
+        "X-CSRFToken": $("#imagesModalUploadForm").find("input[name='csrfmiddlewaretoken']").attr('value'),
       },
       success: response => {
         boxImage.remove();
-        __photosDiff--;
+        __imagesDiff--;
       },
       error: xhr => LogPanel.logError(xhr)
     })
   }
 
   /**
-   * Handle even of uploading photos to the server
+   * Handle even of uploading images to the server
    * @param {Event} e 
    */
-  function __uploadPhotos(e) {
+  function __uploadImages(e) {
     e.preventDefault();
 
-    var data = new FormData(__photosUploadForm.get(0));
+    var data = new FormData(__imagesUploadForm.get(0));
     
     $.ajax({
         url: $(this).attr('action'),
@@ -225,9 +225,9 @@ const PhotosAdmin = (function(){
         processData: false,
         contentType: false,
         success: function(response) {
-          __photosDiff++;
-          LogPanel.logText('successfully uploaded photo');
-          __addPhotosToGallery(response.html, true, true);
+          __imagesDiff++;
+          LogPanel.logText('successfully uploaded image');
+          __addImagesToGallery(response.html, true, true);
         },
         error: function(xhr) {
           LogPanel.logError(xhr);
@@ -240,23 +240,23 @@ const PhotosAdmin = (function(){
    * Closes the modal
    */
   function __onClose(e) {
-    __photosModal.modal('hide');
+    __imagesModal.modal('hide');
   }
 
   /**
-   * Opens the modal with photos gallery ready for picking up a photo
+   * Opens the modal with images gallery ready for picking up a image
    * @param {Function} callback 
    */
-  function _choosePhoto(callback) {
+  function _chooseImage(callback) {
     __chooseModeCallback = callback;
-    __photosModal.modal('show');
-    __photosModal.addClass('choose');
+    __imagesModal.modal('show');
+    __imagesModal.addClass('choose');
   }
 
   return {
     init: __init__,
-    choosePhoto: _choosePhoto
+    chooseImage: _chooseImage
   }
 })()
 
-$( document ).ready(PhotosAdmin.init)
+$( document ).ready(ImagesAdmin.init)

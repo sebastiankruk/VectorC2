@@ -23,7 +23,7 @@
     init: function() {
       this.appendDummyInput()
           .appendField(Blockly.Msg.VECTOR_SELECT_PHOTO_MESSAGE)
-          .appendField(new Blockly.FieldImage(VectorPhotos.getDefault(), 184, 96, "photo", VectorPhotos.selectPhoto), 'photo');
+          .appendField(new Blockly.FieldImage(VectorImages.getDefault(), 184, 96, "photo", VectorImages.selectImage), 'photo');
       this.setOutput(true, "VectorC2Photo");
       this.setColour(230);
       this.setTooltip(Blockly.Msg.VECTOR_SELECT_PHOTO_TOOLTIP);

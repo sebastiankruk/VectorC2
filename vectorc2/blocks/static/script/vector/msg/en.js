@@ -165,8 +165,8 @@ Blockly.Msg["VECTOR_FIND_ANIMATION_TYPE_WEIGHTED"] = "randomly (weighted)"
 
 Blockly.Msg["VECTOR_PHOTOS_MESSAGE"] = "Set screen image %1" // for %2 second(s) %3 and interrupt running any animations %4 %5 and fill screen with image %6"
 Blockly.Msg["VECTOR_PHOTOS_TOOLTIP"] = "Display an image on Vector’s Screen (his 'face')."
-Blockly.Msg["VECTOR_SELECT_PHOTO_MESSAGE"] = "pick a photo"
-Blockly.Msg["VECTOR_SELECT_PHOTO_TOOLTIP"] = "Enables to pick photo from VectorC2 gallery"
+Blockly.Msg["VECTOR_SELECT_PHOTO_MESSAGE"] = "pick an images"
+Blockly.Msg["VECTOR_SELECT_PHOTO_TOOLTIP"] = "Enables to pick images from VectorC2 gallery"
 
 Blockly.Msg["VECTOR_SET_SCREEN_IMAGE_EX_MESSAGE"] = "Set screen image %1"
 
