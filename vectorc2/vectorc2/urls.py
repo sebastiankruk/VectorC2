@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('webview.urls')),
     path('images/', include('images.urls')),
+    path('photos/', include('photos.urls')),
     path('space/', include('space.urls')),
 ]
