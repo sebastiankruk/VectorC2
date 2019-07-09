@@ -29,7 +29,7 @@ Blockly.JavaScript['vector_set_screen_image'] = function(block) {
   return code;
 };
 
-Blockly.JavaScript['vector_select_photo'] = function(block) {
+Blockly.JavaScript['vector_select_image'] = function(block) {
   let meta = VectorUtils.unpackImageMeta(block);
   let code = meta.toString();
   return [code, Blockly.JavaScript.ORDER_NONE];

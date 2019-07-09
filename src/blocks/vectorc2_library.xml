@@ -1501,7 +1501,7 @@
     </value>
   </block><block type="factory_base" id="N?yW9Dw}J|7I-dj$e6hc" deletable="false" movable="false" x="10" y="10">
     <mutation connections="LEFT"></mutation>
-    <field name="NAME">vector_select_photo</field>
+    <field name="NAME">VECTOR_SELECT_IMAGE</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">LEFT</field>
     <statement name="INPUTS">
@@ -1512,7 +1512,7 @@
             <field name="TEXT">pick a photo</field>
             <next>
               <block type="field_image" id="4e]J6[h1PC9lONL0Xxdr">
-                <field name="SRC">http://localhost:8000/static/img/empty_photo.png</field>
+                <field name="SRC">http://localhost:8000/static/img/empty_image.png</field>
                 <field name="WIDTH">184</field>
                 <field name="HEIGHT">96</field>
                 <field name="ALT">photo</field>

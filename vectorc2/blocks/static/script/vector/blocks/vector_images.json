@@ -2,7 +2,7 @@
   {
     "type": "vector_set_screen_image",
     "lastDummyAlign0": "RIGHT",
-    "message0": "%{BKY_VECTOR_PHOTOS_MESSAGE}",
+    "message0": "%{BKY_VECTOR_IMAGES_MESSAGE}",
     "args0": [
       {
         "type": "input_value",
@@ -10,7 +10,7 @@
         "check": [
           "Number",
           "String",
-          "VectorC2Photo"
+          "VectorC2Image"
         ]
       }
     ],
@@ -20,7 +20,7 @@
     "mutator": "vector_set_screen_image_ex_mutator",
     "extensions": [],
     "colour": 150,
-    "tooltip": "%{BKY_VECTOR_PHOTOS_TOOLTIP}",
+    "tooltip": "%{BKY_VECTOR_IMAGES_TOOLTIP}",
     "helpUrl": "https://sdk-resources.anki.com/vector/docs/generated/anki_vector.screen.html#anki_vector.screen.ScreenComponent.set_screen_with_image_data"
   }
 ]

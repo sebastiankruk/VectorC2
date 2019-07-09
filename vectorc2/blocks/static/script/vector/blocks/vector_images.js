@@ -19,24 +19,24 @@
 (function() {
   'use strict';
 
-  Blockly.Blocks['vector_select_photo'] = {
+  Blockly.Blocks['vector_select_image'] = {
     init: function() {
       this.appendDummyInput()
-          .appendField(Blockly.Msg.VECTOR_SELECT_PHOTO_MESSAGE)
-          .appendField(new Blockly.FieldImage(VectorImages.getDefault(), 184, 96, "photo", VectorImages.selectImage), 'photo');
-      this.setOutput(true, "VectorC2Photo");
+          .appendField(Blockly.Msg.VECTOR_SELECT_IMAGE_MESSAGE)
+          .appendField(new Blockly.FieldImage(VectorImages.getDefault(), 184, 96, "image", VectorImages.selectImage), 'image');
+      this.setOutput(true, "VectorC2Image");
       this.setColour(230);
-      this.setTooltip(Blockly.Msg.VECTOR_SELECT_PHOTO_TOOLTIP);
+      this.setTooltip(Blockly.Msg.VECTOR_SELECT_IMAGE_TOOLTIP);
       this.setHelpUrl("");
     },
     // Mutator functions
     mutationToDom: function() {
-      var photo = this.getField('photo');
+      var image = this.getField('image');
       var data = JSON.parse(this.data);
-      if (photo && data) {
-        $(photo.imageElement_).attr(data);
-        photo.setValue(data['xlink:href']);
-        photo.src_ = data['xlink:href'];
+      if (image && data) {
+        $(image.imageElement_).attr(data);
+        image.setValue(data['xlink:href']);
+        image.src_ = data['xlink:href'];
       }
     }   
   };  

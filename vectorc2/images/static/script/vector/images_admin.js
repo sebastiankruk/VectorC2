@@ -66,10 +66,10 @@ const ImagesAdmin = (function(){
 
     __galleryBody = __imagesModal.find('.modal-body');
 
-    let initialPhotos = Math.ceil(__galleryBody.height()/195)*5;
-    console.log(`initial images: ${initialPhotos}`);
+    let initialImages = Math.ceil(__galleryBody.height()/195)*5;
+    console.log(`initial images: ${initialImages}`);
 
-    __loadImages(0, initialPhotos);
+    __loadImages(0, initialImages);
   }
 
   /**

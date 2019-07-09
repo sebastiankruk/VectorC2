@@ -47,8 +47,8 @@ const VectorImages = (function(){
   /**
    * Initializes the UI component
    */
-  function __init__(defaultPhoto='/static/img/empty_photo.png') {
-    __default = defaultPhoto;
+  function __init__(defaultImage='/static/img/empty_image.png') {
+    __default = defaultImage;
   }
 
   /**
