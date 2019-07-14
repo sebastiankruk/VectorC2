@@ -181,3 +181,24 @@ Blockly.Msg["VECTOR_SET_SCREEN_IMAGE_EX_INTERRUPT_RUNNING_OPT_TOOLTIP"] = "Enabl
 Blockly.Msg["VECTOR_SET_SCREEN_IMAGE_EX_FILL_SCREEN_OPT_PRE_TITLE"] = "and fill screen with image"
 Blockly.Msg["VECTOR_SET_SCREEN_IMAGE_EX_FILL_SCREEN_OPT_TITLE"] = "with control how image size is recalculated"
 Blockly.Msg["VECTOR_SET_SCREEN_IMAGE_EX_FILL_SCREEN_OPT_TOOLTIP"] = "Enables to control whether the image should fill or fit the screen."
+
+Blockly.Msg["VECTOR_PHOTOS_COUNT_MESSAGE"] = "photos count"; 
+Blockly.Msg["VECTOR_PHOTOS_COUNT_TOOLTIP"] = "Number of photos took by Vector";
+Blockly.Msg["VECTOR_PHOTOS_COUNT_SIMPLE_MESSAGE"] = "photos count";
+Blockly.Msg["VECTOR_PHOTOS_COUNT_SIMPLE_TOOLTIP"] = "Number of photos took by Vector";
+Blockly.Msg["VECTOR_PHOTOS_COUNT_EX_MESSAGE"] = "photos count %1"; 
+Blockly.Msg["VECTOR_PHOTOS_COUNT_EX_TOOLTIP"] = "Number of photos took by Vector";
+
+Blockly.Msg["VECTOR_SHOW_PHOTO_MESSAGE"] = "Show photo %1 in window: %2"; 
+Blockly.Msg["VECTOR_SHOW_PHOTO_TOOLTIP"] = "Shows photo with given id";
+Blockly.Msg["VECTOR_SHOW_PHOTO_SIMPLE_MESSAGE"] = "Show photo %1 in window: %2";
+Blockly.Msg["VECTOR_SHOW_PHOTO_SIMPLE_TOOLTIP"] = "Shows photo with given id";
+Blockly.Msg["VECTOR_SHOW_PHOTO_EX_MESSAGE"] = "Show photo %1"; 
+Blockly.Msg["VECTOR_SHOW_PHOTO_EX_TOOLTIP"] = "Shows photo with given id";
+
+Blockly.Msg["VECTOR_PHOTO_LIST_MESSAGE"] = "Vector photos"; 
+Blockly.Msg["VECTOR_PHOTO_LIST_TOOLTIP"] = "The information about what photos are stored on Vector.";
+Blockly.Msg["VECTOR_PHOTO_LIST_SIMPLE_MESSAGE"] = "Vector photos";
+Blockly.Msg["VECTOR_PHOTO_LIST_SIMPLE_TOOLTIP"] = "The information about what photos are stored on Vector.";
+Blockly.Msg["VECTOR_PHOTO_LIST_EX_MESSAGE"] = "Vector photos %1"; 
+Blockly.Msg["VECTOR_PHOTO_LIST_EX_TOOLTIP"] = "The information about what photos are stored on Vector.";

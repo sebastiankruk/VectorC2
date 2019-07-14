@@ -1,0 +1,74 @@
+[
+{
+  "type": "vector_photos_count",
+  "message0": "%{BKY_VECTOR_PHOTOS_COUNT_MESSAGE}",
+  "output": "Number",
+  "colour": 195,
+  "mutator": "vector_photos_count_ex_mutator",
+  "extensions": [],
+  "tooltip": "%{BKY_VECTOR_PHOTOS_COUNT_TOOLTIP}",
+  "helpUrl": "https://sdk-resources.anki.com/vector/docs/generated/anki_vector.photos.html#module-anki_vector.photos"
+},
+{
+  "type": "vector_show_photo",
+  "lastDummyAlign0": "RIGHT",
+  "message0": "%{BKY_VECTOR_SHOW_PHOTO_MESSAGE}",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "photo_id",
+      "check": "Number"
+    },
+    {
+      "type": "field_input",
+      "name": "window_name",
+      "text": "new"
+    }
+  ],
+  "inputsInline": false,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 150,
+  "mutator": "vector_show_photo_ex_mutator",
+  "extensions": [],
+  "tooltip": "%{BKY_VECTOR_SHOW_PHOTO_TOOLTIP}",
+  "helpUrl": "https://sdk-resources.anki.com/vector/docs/generated/anki_vector.photos.html#anki_vector.photos.PhotographComponent.get_photo"
+},
+{
+  "type": "vector_photo_list",
+  "message0": "%{BKY_VECTOR_PHOTO_LIST_MESSAGE}",
+  "output": "Array",
+  "colour": 195,
+  "mutator": "vector_photo_list_ex_mutator",
+  "extensions": [],
+  "tooltip": "%{BKY_VECTOR_PHOTO_LIST_TOOLTIP}",
+  "helpUrl": "https://sdk-resources.anki.com/vector/docs/generated/anki_vector.photos.html#anki_vector.photos.PhotographComponent.photo_info"
+},
+{
+  "type": "vector_get_photo_id",
+  "message0": "get id photo of %1",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "NAME"
+    }
+  ],
+  "output": "Number",
+  "colour": 230,
+  "tooltip": "Returns photo_id from the photo_info object",
+  "helpUrl": "https://sdk-resources.anki.com/vector/docs/proto.html?highlight=photoinfo#Anki.Vector.external_interface.PhotoInfo"
+},
+{
+  "type": "vector_get_photo_timestamp",
+  "message0": "get timestamp of photo %1",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "NAME"
+    }
+  ],
+  "output": "Number",
+  "colour": 230,
+  "tooltip": "Returns timestamp_utc of the photo_info object",
+  "helpUrl": "https://sdk-resources.anki.com/vector/docs/proto.html?highlight=photoinfo#Anki.Vector.external_interface.PhotoInfo"
+}]

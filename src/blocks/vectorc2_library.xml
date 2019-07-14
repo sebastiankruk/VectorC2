@@ -1414,7 +1414,7 @@
             </value>
             <value name="TYPE2">
               <block type="type_other" id="^%VQdn%^~r,IeGO?zt)3">
-                <field name="TYPE">VectorC2Photo</field>
+                <field name="TYPE">VectorC2Image</field>
               </block>
             </value>
           </block>
@@ -1499,9 +1499,217 @@
         <field name="HUE">150</field>
       </block>
     </value>
+  </block><block type="factory_base" id="YHpdT}-HDZOY-;1uZg_5" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="LEFT"></mutation>
+    <field name="NAME">vector_photos_count</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">LEFT</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="H(#4CJ0){jBrd%}C:![#">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="8pUOsM*,0.YB;D|HZ0#R">
+            <field name="TEXT">photos count</field>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="Q~NtL%SV@%KC:m:?7,1!" deletable="false" movable="false">
+        <field name="TEXT">Number of photos took by Vector</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="BA$)}B{Xx:C[IMKiq.Ey" deletable="false" movable="false">
+        <field name="TEXT">https://sdk-resources.anki.com/vector/docs/generated/anki_vector.photos.html#module-anki_vector.photos</field>
+      </block>
+    </value>
+    <value name="OUTPUTTYPE">
+      <shadow type="type_null" id="=bSVpt(79J=p#4li$Nyi"></shadow>
+      <block type="type_number" id="#m!Vc33kU,Jp7nIB|=hU"></block>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="Iz8N*:oVF{!}m`fT|ZBb">
+        <mutation colour="#5b93a5"></mutation>
+        <field name="HUE">195</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="|}29GAL;vfZ$kN!isEe4" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">vector_show_photo</field>
+    <field name="INLINE">EXT</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_value" id="!so:oa(js`nHA4CKuxiZ">
+        <field name="INPUTNAME">photo_id</field>
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="mllhHkXk}}Z2Cn;OKg:`">
+            <field name="TEXT">Show photo</field>
+          </block>
+        </statement>
+        <value name="TYPE">
+          <shadow type="type_null" id="0DSjYcV]~kA6MYW7}]-a"></shadow>
+          <block type="type_number" id="kC-n=~CU%06gUQH+v+d5"></block>
+        </value>
+        <next>
+          <block type="input_dummy" id="xW81)$lYdFpE;~_HDO_l">
+            <field name="ALIGN">RIGHT</field>
+            <statement name="FIELDS">
+              <block type="field_static" id="?/[@Qwe,5A3[4xV-h9]z">
+                <field name="TEXT">in window: </field>
+                <next>
+                  <block type="field_input" id="Q~]_NeRaph{o4k[7;V-E">
+                    <field name="TEXT">new</field>
+                    <field name="FIELDNAME">window_name</field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="*xQ^{HZ__+;z(=DqyEg#" deletable="false" movable="false">
+        <field name="TEXT">Shows photo with given id </field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id=";M6/0n_cMrKJ`Cf;78(6" deletable="false" movable="false">
+        <field name="TEXT">https://sdk-resources.anki.com/vector/docs/generated/anki_vector.photos.html#anki_vector.photos.PhotographComponent.get_photo</field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="x~-@=VcWWFG+fW-wpVaB"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="zqt8YK^WF)BqF@1/QU=y"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="0O;TGw9:x281WzM$wpLZ">
+        <mutation colour="#5ba580"></mutation>
+        <field name="HUE">150</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="YHpdT}-HDZOY-;1uZg_5" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="LEFT"></mutation>
+    <field name="NAME">vector_photo_list</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">LEFT</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="H(#4CJ0){jBrd%}C:![#">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="8pUOsM*,0.YB;D|HZ0#R">
+            <field name="TEXT">list Vector photos</field>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="Q~NtL%SV@%KC:m:?7,1!" deletable="false" movable="false">
+        <field name="TEXT">The information about what photos are stored on Vector.</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="BA$)}B{Xx:C[IMKiq.Ey" deletable="false" movable="false">
+        <field name="TEXT">https://sdk-resources.anki.com/vector/docs/generated/anki_vector.photos.html#anki_vector.photos.PhotographComponent.photo_info</field>
+      </block>
+    </value>
+    <value name="OUTPUTTYPE">
+      <shadow type="type_null" id="=bSVpt(79J=p#4li$Nyi"></shadow>
+      <block type="type_list" id="E{dOdF7#EW5GUeOf(e#m"></block>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="Iz8N*:oVF{!}m`fT|ZBb">
+        <mutation colour="#5b93a5"></mutation>
+        <field name="HUE">195</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id=":4T6DhL6)z^ANjaU,tA|" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="LEFT"></mutation>
+    <field name="NAME">vector_get_photo_id</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">LEFT</field>
+    <statement name="INPUTS">
+      <block type="input_value" id="Uhl382QZm$I$HUt2zF|l">
+        <field name="INPUTNAME">NAME</field>
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="YghK*,V*+g.DkVVsL[B?">
+            <field name="TEXT">get id photo of</field>
+          </block>
+        </statement>
+        <value name="TYPE">
+          <shadow type="type_null" id="lFQSv,fp9Tk;(*!L0Y)y"></shadow>
+          <block type="type_null" id="VbqHa!G1Ppwy@(Il}p2k"></block>
+        </value>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="m2*poS@5Goc^.zdG2k~|" deletable="false" movable="false">
+        <field name="TEXT">Returns photo_id from the photo_info object</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="k~d=$i1.QWv]0Tu2|#KV" deletable="false" movable="false">
+        <field name="TEXT">https://sdk-resources.anki.com/vector/docs/proto.html?highlight=photoinfo#Anki.Vector.external_interface.PhotoInfo</field>
+      </block>
+    </value>
+    <value name="OUTPUTTYPE">
+      <shadow type="type_null" id="C}Dt#(oG7-#Szj?uy;vR"></shadow>
+      <block type="type_number" id="sa]Q=i.^6Y8QOjg_y/+M"></block>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="FH8+%WTyBG3!gEJkwUR#">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="s~j=}|5W~xYT`|w!TakV" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="LEFT"></mutation>
+    <field name="NAME">vector_get_photo_timestamp</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">LEFT</field>
+    <statement name="INPUTS">
+      <block type="input_value" id="OY5/G1grW:OLW+8-N?){">
+        <field name="INPUTNAME">NAME</field>
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="hu%`q{C,w4}||$oz0@gg">
+            <field name="TEXT">get timestamp of photo</field>
+          </block>
+        </statement>
+        <value name="TYPE">
+          <shadow type="type_null" id="$SH-BE#c/S9LWK%x9/K("></shadow>
+          <block type="type_null" id="M]aL~hh#j3SAiRe!D$2G"></block>
+        </value>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="T^5:n-}!}O[jKmaaE_N)" deletable="false" movable="false">
+        <field name="TEXT">Returns timestamp_utc of the photo_info object</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="*Iq{:Jp`?MP-H~b:cyNt" deletable="false" movable="false">
+        <field name="TEXT">https://sdk-resources.anki.com/vector/docs/proto.html?highlight=photoinfo#Anki.Vector.external_interface.PhotoInfo</field>
+      </block>
+    </value>
+    <value name="OUTPUTTYPE">
+      <shadow type="type_null" id="Gv]0z}7hD@n;XM^6|mYU"></shadow>
+      <block type="type_number" id="zsr(MLk)VQ1CwA_)|S+/"></block>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="#8am=j,K596dhW?,@oxQ">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
   </block><block type="factory_base" id="N?yW9Dw}J|7I-dj$e6hc" deletable="false" movable="false" x="10" y="10">
     <mutation connections="LEFT"></mutation>
-    <field name="NAME">VECTOR_SELECT_IMAGE</field>
+    <field name="NAME">vector_select_image</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">LEFT</field>
     <statement name="INPUTS">
@@ -1509,10 +1717,10 @@
         <field name="ALIGN">LEFT</field>
         <statement name="FIELDS">
           <block type="field_static" id="?sbs!7pDO!zh5fegC}0*">
-            <field name="TEXT">pick a photo</field>
+            <field name="TEXT">pick an image</field>
             <next>
               <block type="field_image" id="4e]J6[h1PC9lONL0Xxdr">
-                <field name="SRC">http://localhost:8000/static/img/empty_image.png</field>
+                <field name="SRC">http://localhost:8000/static/img/empty_photo.png</field>
                 <field name="WIDTH">184</field>
                 <field name="HEIGHT">96</field>
                 <field name="ALT">photo</field>
@@ -1525,7 +1733,7 @@
     </statement>
     <value name="TOOLTIP">
       <block type="text" id="o/ewj$:94q^A{Py|F6)l" deletable="false" movable="false">
-        <field name="TEXT">Enables to pick photo from Vector C2 gallery</field>
+        <field name="TEXT">Enables to pick image from Vector C2 gallery</field>
       </block>
     </value>
     <value name="HELPURL">
@@ -1536,7 +1744,7 @@
     <value name="OUTPUTTYPE">
       <shadow type="type_null" id="WD0a:0nXw:c7bX%h]Vw_"></shadow>
       <block type="type_other" id="-cx/4QORDV?Kci!6MpHg">
-        <field name="TYPE">VectorC2Photo</field>
+        <field name="TYPE">VectorC2Image</field>
       </block>
     </value>
     <value name="COLOUR">

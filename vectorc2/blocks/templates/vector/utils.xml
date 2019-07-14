@@ -16,7 +16,7 @@
  @author vectorc2@kruk.me
 {% endcomment %}
 {% load i18n %}
-<category name="{% trans '(V) Utils' %}" colour="#00a55b">
+<category name="{% trans '(°°) Utils' %}" colour="#00a55b">
   <block type="vector_robot"></block>
   <block type="vector_utils_distance_mm"></block>
   <block type="vector_utils_speed_mmps"></block>
