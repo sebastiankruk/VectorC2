@@ -180,3 +180,33 @@ Blockly.Msg["VECTOR_SET_SCREEN_IMAGE_EX_INTERRUPT_RUNNING_OPT_TOOLTIP"] = "Umoż
 Blockly.Msg["VECTOR_SET_SCREEN_IMAGE_EX_FILL_SCREEN_OPT_PRE_TITLE"] = "i wypełnij ekran obrazkiem"
 Blockly.Msg["VECTOR_SET_SCREEN_IMAGE_EX_FILL_SCREEN_OPT_TITLE"] = "z kontrolą jak ma być przeliczana wielkość obrazka"
 Blockly.Msg["VECTOR_SET_SCREEN_IMAGE_EX_FILL_SCREEN_OPT_TOOLTIP"] = "Umożliwia kontrolę czy obrazek ma wypełnić czy też wpasować się w ekran."
+
+Blockly.Msg["VECTOR_PHOTOS_COUNT_MESSAGE"] = "liczba zdjęć"; 
+Blockly.Msg["VECTOR_PHOTOS_COUNT_TOOLTIP"] = "Liczba zdjęć wykonanych przez Vectora";
+Blockly.Msg["VECTOR_PHOTOS_COUNT_SIMPLE_MESSAGE"] = "liczba zdjęć";
+Blockly.Msg["VECTOR_PHOTOS_COUNT_SIMPLE_TOOLTIP"] = "Liczba zdjęć wykonanych przez Vectora";
+Blockly.Msg["VECTOR_PHOTOS_COUNT_EX_MESSAGE"] = "liczba zdjęć %1"; 
+Blockly.Msg["VECTOR_PHOTOS_COUNT_EX_TOOLTIP"] = "Liczba zdjęć wykonanych przez Vectora";
+
+Blockly.Msg["VECTOR_SHOW_PHOTO_MESSAGE"] = "Pokaż zdjęcie %1"; // in window: %2"; 
+Blockly.Msg["VECTOR_SHOW_PHOTO_TOOLTIP"] = "Pokazuje zdjęcie zrobione przez Vectora przez podanym ID";
+Blockly.Msg["VECTOR_SHOW_PHOTO_SIMPLE_MESSAGE"] = "Pokaż zdjęcie %1"; // in window: %2";
+Blockly.Msg["VECTOR_SHOW_PHOTO_SIMPLE_TOOLTIP"] = "Pokazuje zdjęcie zrobione przez Vectora przez podanym ID";
+Blockly.Msg["VECTOR_SHOW_PHOTO_EX_MESSAGE"] = "Pokaż zdjęcie %1"; 
+Blockly.Msg["VECTOR_SHOW_PHOTO_EX_TOOLTIP"] = "Pokazuje zdjęcie zrobione przez Vectora przez podanym ID";
+Blockly.Msg["VECTOR_SHOW_PHOTO_EX_WINDOW_NAME_OPT_PRE_TITLE"] = "w oknie przeglądarki";
+Blockly.Msg["VECTOR_SHOW_PHOTO_EX_WINDOW_NAME_OPT_TITLE"] = "w oknie przeglądarki o podanej nazwie";
+Blockly.Msg["VECTOR_SHOW_PHOTO_EX_WINDOW_NAME_OPT_TOOLTIP"] = "Umożliwia podanie własnej nazwy przeglądarki w której ma zostać wyświetlone zdjęcie";
+
+Blockly.Msg["VECTOR_PHOTO_LIST_MESSAGE"] = "Zdjęcia Vectora"; 
+Blockly.Msg["VECTOR_PHOTO_LIST_TOOLTIP"] = "Informacja o zdjęciach wykonanych i przechowywanych przez Vectora.";
+Blockly.Msg["VECTOR_PHOTO_LIST_SIMPLE_MESSAGE"] = "Zdjęcia Vectora";
+Blockly.Msg["VECTOR_PHOTO_LIST_SIMPLE_TOOLTIP"] = "Informacja o zdjęciach wykonanych i przechowywanych przez Vectora.";
+Blockly.Msg["VECTOR_PHOTO_LIST_EX_MESSAGE"] = "Zdjęcia Vectora %1"; 
+Blockly.Msg["VECTOR_PHOTO_LIST_EX_TOOLTIP"] = "Informacja o zdjęciach wykonanych i przechowywanych przez Vectora.";
+
+Blockly.Msg["VECTOR_GET_PHOTO_ID_MESSAGE"] = "id zdjęcia %1"; 
+Blockly.Msg["VECTOR_GET_PHOTO_ID_TOOLTIP"] = "Zwraca photo_id z obiektu photo_info.";
+
+Blockly.Msg["VECTOR_GET_PHOTO_TIMESTAMP_MESSAGE"] = "timestamp zdjęcia %1"; 
+Blockly.Msg["VECTOR_GET_PHOTO_TIMESTAMP_TOOLTIP"] = "Zwraca timestamp_utc z obiektu photo_info.";

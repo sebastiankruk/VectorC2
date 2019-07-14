@@ -205,3 +205,10 @@ Blockly.Msg["VECTOR_PHOTO_LIST_SIMPLE_MESSAGE"] = "Vector photos";
 Blockly.Msg["VECTOR_PHOTO_LIST_SIMPLE_TOOLTIP"] = "The information about what photos are stored on Vector.";
 Blockly.Msg["VECTOR_PHOTO_LIST_EX_MESSAGE"] = "Vector photos %1"; 
 Blockly.Msg["VECTOR_PHOTO_LIST_EX_TOOLTIP"] = "The information about what photos are stored on Vector.";
+
+Blockly.Msg["VECTOR_GET_PHOTO_ID_MESSAGE"] = "photo id of %1"; 
+Blockly.Msg["VECTOR_GET_PHOTO_ID_TOOLTIP"] = "Returns photo_id from the photo_info object.";
+
+Blockly.Msg["VECTOR_GET_PHOTO_TIMESTAMP_MESSAGE"] = "timestamp of photo %1"; 
+Blockly.Msg["VECTOR_GET_PHOTO_TIMESTAMP_TOOLTIP"] = "Returns timestamp_utc of the photo_info object.";
+
