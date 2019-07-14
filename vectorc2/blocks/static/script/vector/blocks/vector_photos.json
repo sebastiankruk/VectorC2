@@ -18,11 +18,6 @@
       "type": "input_value",
       "name": "photo_id",
       "check": "Number"
-    },
-    {
-      "type": "field_input",
-      "name": "window_name",
-      "text": "new"
     }
   ],
   "inputsInline": false,

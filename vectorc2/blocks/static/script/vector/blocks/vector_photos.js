@@ -20,7 +20,21 @@
   'use strict';
 
   VectorMutator.init('vector_photos_count_ex', {});
-  VectorMutator.init('vector_show_photo_ex', {});
   VectorMutator.init('vector_photo_list_ex', {});
+  VectorMutator.init('vector_show_photo_ex', {
+/*
+,
+    {
+      "type": "field_input",
+      "name": "window_name",
+      "text": "new"
+    }
+*/
+    window_name: {
+      appendFunction: 'appendValueInput',
+      checkType: 'String',
+      align: Blockly.ALIGN_RIGHT
+    }
+  });
 
 })();

@@ -189,12 +189,15 @@ Blockly.Msg["VECTOR_PHOTOS_COUNT_SIMPLE_TOOLTIP"] = "Number of photos took by Ve
 Blockly.Msg["VECTOR_PHOTOS_COUNT_EX_MESSAGE"] = "photos count %1"; 
 Blockly.Msg["VECTOR_PHOTOS_COUNT_EX_TOOLTIP"] = "Number of photos took by Vector";
 
-Blockly.Msg["VECTOR_SHOW_PHOTO_MESSAGE"] = "Show photo %1 in window: %2"; 
+Blockly.Msg["VECTOR_SHOW_PHOTO_MESSAGE"] = "Show photo %1"; // in window: %2"; 
 Blockly.Msg["VECTOR_SHOW_PHOTO_TOOLTIP"] = "Shows photo with given id";
-Blockly.Msg["VECTOR_SHOW_PHOTO_SIMPLE_MESSAGE"] = "Show photo %1 in window: %2";
+Blockly.Msg["VECTOR_SHOW_PHOTO_SIMPLE_MESSAGE"] = "Show photo %1"; // in window: %2";
 Blockly.Msg["VECTOR_SHOW_PHOTO_SIMPLE_TOOLTIP"] = "Shows photo with given id";
 Blockly.Msg["VECTOR_SHOW_PHOTO_EX_MESSAGE"] = "Show photo %1"; 
 Blockly.Msg["VECTOR_SHOW_PHOTO_EX_TOOLTIP"] = "Shows photo with given id";
+Blockly.Msg["VECTOR_SHOW_PHOTO_EX_WINDOW_NAME_OPT_PRE_TITLE"] = "at target window";
+Blockly.Msg["VECTOR_SHOW_PHOTO_EX_WINDOW_NAME_OPT_TITLE"] = "with target window name";
+Blockly.Msg["VECTOR_SHOW_PHOTO_EX_WINDOW_NAME_OPT_TOOLTIP"] = "Enabled to choose name for the target window where the photo should be shown.";
 
 Blockly.Msg["VECTOR_PHOTO_LIST_MESSAGE"] = "Vector photos"; 
 Blockly.Msg["VECTOR_PHOTO_LIST_TOOLTIP"] = "The information about what photos are stored on Vector.";
