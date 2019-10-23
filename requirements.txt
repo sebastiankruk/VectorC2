@@ -5,4 +5,4 @@ channels-redis==2.3.3
 django-compressor==2.2
 anki-vector==0.6.0
 zeroconf==0.22.0
-Pillow==5.4.1
+Pillow==6.2.0
