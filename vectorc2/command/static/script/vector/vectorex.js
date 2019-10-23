@@ -184,6 +184,30 @@ const Vectorex = (function(){
     LogPanel.logText(interpolate(msg, params, true));
   }
 
+  /**
+   * Implementation of the anki_vector.photos.photo_info
+   * @returns list of photo objects
+   */
+  function _photosList() {
+    return [
+      _showPhoto(0),
+      _showPhoto(1),
+      _showPhoto(2)
+    ]
+  }
+
+  /**
+   * Returns photo object for the given ID, with the current timestamp
+   * @param {int|String} id 
+   */
+  function _showPhoto(id) {
+    return {
+      id: id,
+      timestamp: new Date().getTime(),
+      thumbnail: '',  //TODO set with path to some existing, example thumbnail
+      photo: ''       //TODO set with path to some existing, example photo
+    }
+  }
 
   /**
    * Implementation of the anki_vector.robot.say_text(text, use_vector_voice=True, duration_scalar=1.0)
@@ -216,6 +240,10 @@ const Vectorex = (function(){
       setHeadAngle: _setHeadAngle,
       setLiftHeight: _setLiftHeight,
       setScreenImage: _setScreenImage
+    },
+    photos: {
+      list: _photosList,
+      show: _showPhoto
     },
     anim: {
       findAnimation: _findAnimation,

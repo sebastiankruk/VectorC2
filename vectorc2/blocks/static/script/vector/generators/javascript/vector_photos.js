@@ -16,9 +16,9 @@
  * @author vectorc2@kruk.me
  */
 Blockly.JavaScript['vector_photos_count'] = function(block) {
-  // TODO: Assemble JavaScript into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
+  let variable_robot_var = VectorUtils.getRobotVar(block); 
+  let code = `${variable_robot_var}.photos.list().length`;
+
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
