@@ -45,7 +45,7 @@
   "args0": [
     {
       "type": "input_value",
-      "name": "NAME"
+      "name": "photo_info"
     }
   ],
   "output": "Number",
@@ -59,7 +59,7 @@
   "args0": [
     {
       "type": "input_value",
-      "name": "NAME"
+      "name": "photo_info"
     }
   ],
   "output": "Number",

@@ -15,40 +15,39 @@
  * 
  * @author vectorc2@kruk.me
  */
-Blockly.JavaScript['vector_photos_count'] = function(block) {
-  let variable_robot_var = VectorUtils.getRobotVar(block); 
-  let code = `${variable_robot_var}.photos.list().length`;
+Blockly.JavaScript.vector_photos_count = function(block) {
+  let variable_robot_var = VectorUtils.getRobotVar(block);
+  let code = `${variable_robot_var}.photos.count()`;
+  //let code = `${variable_robot_var}.photos.list().length`;
 
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
-Blockly.JavaScript['vector_show_photo'] = function(block) {
-  var value_photo_id = Blockly.JavaScript.valueToCode(block, 'photo_id', Blockly.JavaScript.ORDER_ATOMIC);
-  var text_window_name = block.getFieldValue('window_name');
-  // TODO: Assemble JavaScript into code variable.
-  var code = '...;\n';
+Blockly.JavaScript.vector_show_photo = function(block) {
+  let window_name = VectorUtils.getFieldText(block, 'WINDOW_NAME_VAR', '_blank');
+  let photo_id = Blockly.JavaScript.valueToCode(block, 'photo_id', Blockly.JavaScript.ORDER_ATOMIC);
+  let code = `Vectorex.photos.showPhoto(${photo_id}, '${window_name}');\n`;
+
   return code;
 };
 
-Blockly.JavaScript['vector_photo_list'] = function(block) {
-  // TODO: Assemble JavaScript into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
+Blockly.JavaScript.vector_photo_list = function(block) {
+  let variable_robot_var = VectorUtils.getRobotVar(block);
+  let code = `${variable_robot_var}.photos.list()`;
+
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
-Blockly.JavaScript['vector_get_photo_id'] = function(block) {
-  var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
-  // TODO: Assemble JavaScript into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
+Blockly.JavaScript.vector_get_photo_id = function(block) {
+  let photo_info = Blockly.JavaScript.valueToCode(block, 'photo_info', Blockly.JavaScript.ORDER_ATOMIC);
+
+  let code = `${photo_info}.photo_id`;
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
-Blockly.JavaScript['vector_get_photo_timestamp'] = function(block) {
-  var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
-  // TODO: Assemble JavaScript into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
+Blockly.JavaScript.vector_get_photo_timestamp = function(block) {
+  let photo_info = Blockly.JavaScript.valueToCode(block, 'photo_info', Blockly.JavaScript.ORDER_ATOMIC);
+
+  let code = `${photo_info}.timestamp_utc`;
   return [code, Blockly.JavaScript.ORDER_NONE];
 };

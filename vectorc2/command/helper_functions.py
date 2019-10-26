@@ -82,3 +82,22 @@ def set_screen_image(robot, id=None, label=None, duration=2.0, interrupt=True, f
   """
   screen_data = UserPhotos.get_vector_image(id if id >= 0 else None, label if label is not '' else None, fill)
   robot.screen.set_screen_with_image_data(screen_data, duration_sec=duration, interrupt_running=interrupt)
+
+
+
+def show_photo(id, window=None):
+  """
+  Helper function that should tell VectorC2 javascript part to show a photo with given ID at given window.
+  """
+  from websocket import create_connection
+  
+  from channels import Group
+  import json
+
+  Group('vector_reverse_controller').send({
+    'text': json.dumps({
+      'command': 'show_photo',
+      'id': id,
+      'window': window
+    })
+  })

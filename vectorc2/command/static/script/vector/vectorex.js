@@ -44,7 +44,20 @@ const Vectorex = (function(){
    * Delays execution by given number of milliseconds
    * @param {Number} ms 
    */  
-  const __wait = ms => new Promise((r, j)=>setTimeout(r, ms))
+  const __wait = ms => new Promise((r, j)=>setTimeout(r, ms));
+  /**
+   * List of photo_info for testing
+   */
+  const __photoInfos = [
+    {
+      'photo_id': 0,
+      'timestamp_utc': 1563204478
+    },
+    {
+      'photo_id': 2,
+      'timestamp_utc': 1531668478
+    }
+  ];
 
   /**
    * Initializes Vectorex
@@ -184,7 +197,7 @@ const Vectorex = (function(){
     LogPanel.logText(interpolate(msg, params, true));
   }
 
-  /**
+    /**
    * Implementation of the anki_vector.photos.photo_info
    * @returns list of photo objects
    */
@@ -220,6 +233,17 @@ const Vectorex = (function(){
     }
   }
 
+  /**
+   * Shows photo infomration in given window
+   * @param {Number} photo_id 
+   * @param {String} window_name 
+   */
+  function _showPhoto(photo_id, window_name) {
+    let photo_info = __photoInfos.find( e => e.photo_id == photo_id);
+    let new_window = window.open(name=window_name);
+    new_window.document.write(JSON.stringify(photo_info));
+  }
+
   // -----------------------------------
 
   /**
@@ -242,8 +266,13 @@ const Vectorex = (function(){
       setScreenImage: _setScreenImage
     },
     photos: {
-      list: _photosList,
-      show: _showPhoto
+      // list: _photosList,
+      // show: _showPhoto
+      count: () => __photoInfos.length,
+      showPhoto: _showPhoto,
+      list: () => __photoInfos,
+      getId: photo_info => photo_info.photo_id,
+      getTimestamp: photo_info => photo_info.timestamp_utc
     },
     anim: {
       findAnimation: _findAnimation,

@@ -139,3 +139,57 @@ class StateConsumer(WebsocketConsumer):
       import traceback
       print(sys.exc_info()[0])
       traceback.print_exc()
+
+
+class ReverseControllerConsumer(WebsocketConsumer):
+  '''
+  WebSocket consumer dedicated for sending control commands back to JS code 
+  '''
+  def __init__(self, *args, **kwargs):
+    super().__init__(*args, **kwargs)
+
+  def connect(self):
+    self.space_group_name = 'vector_reverse_controller'
+
+    async_to_sync(self.channel_layer.group_add)(
+      self.space_group_name,
+      self.channel_name
+    )
+
+    self.accept()
+
+  def disconnect(self, close_code):
+    async_to_sync(self.channel_layer.group_discard)(
+      self.space_group_name,
+      self.channel_name
+    )
+
+  # Receive message from WebSocket
+  def receive(self, text_data):
+    text_data_json = json.loads(text_data)
+    # statuses = text_data_json.get('statuses', [])
+    # frequency = text_data_json.get('frequency', [])
+
+    text_data_json.update({'type': 'space_message'})
+
+    # # Send message to room group
+    async_to_sync(self.channel_layer.group_send)(
+      self.space_group_name,
+      text_data_json
+    )
+    pass
+
+  # Receive message from room group
+  def space_message(self, event):
+    # statuses = event.get('statuses', None)
+    pass
+
+  def send_command(self, command):
+    try:
+      text_data = json.dumps(command)
+      # Send message to WebSocket
+      self.send(text_data=text_data)
+    except:
+      import traceback
+      print(sys.exc_info()[0])
+      traceback.print_exc()

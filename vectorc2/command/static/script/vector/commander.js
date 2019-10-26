@@ -72,7 +72,7 @@ const Commander = (function(){
    * Initializes Commander by starting WebSocket 
    */
   function __init__() {
-    _vectorSocket = VectorSocket('c2');
+    _vectorSocket = VectorSocket('c2', Commander);
   }
 
   /**

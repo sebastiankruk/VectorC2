@@ -66,9 +66,16 @@ const VectorSocket = function(spaceName, commander){
    * @param {String} message 
    */
   async function _sendMessage(message) {
-    __chatSocket.send(JSON.stringify({
-      'message': message
-    }));    
+    if ( [WebSocket.CLOSED, WebSocket.CLOSING].includes(__chatSocket.readyState) ) {
+      await __onClose();
+    } else if ( __chatSocket.readyState === WebSocket.CONNECTING ) {
+      console.warn('Delaying _readStatus by 100ms until WebSocket is ready');
+      setTimeout(_sendMessage, 100, message);
+    } else {
+      __chatSocket.send(JSON.stringify({
+        'message': message
+      }));    
+    }
   }
 
   /**
