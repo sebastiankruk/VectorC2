@@ -6,7 +6,6 @@ The idea behind Vector C2 project emerged when I realized that although Anki Vec
 
 ## Installing Vector C2
 
-1. You will need Python 3.7+.
 1. Checkout out source code from [github](https://github.com/sebastiankruk/vectorc2):
 
     ```bash
@@ -25,22 +24,34 @@ The idea behind Vector C2 project emerged when I realized that although Anki Vec
     source .env/bin/activate
     ```
 
+1. You will need Vector SDK and Python 3.7+.
+You can follow [Initial Setup](https://sdk-resources.anki.com/vector/docs/initial.html#initial) to get that ready. In case of problems with Python and Brew (on macOS), [here is some way to fix it](https://stackoverflow.com/questions/46179672/python-bash-usr-local-bin-python-no-such-file-or-directory)
+
+    ```bash
+    python3 -m pip install anki_vector
+    python3 -m pip install --upgrade anki_vector
+    python3 -m anki_vector.configure
+    ```
+
 1. Install requirements:
 
     ```bash
     pip install -r requirements.txt
     ```
 
-1. Prepare DB and populate it with current animation names and triggers. Run 
+1. Prepare DB and populate it with current animation names and triggers. Run
+
     ```bash
+    cd vectorc2
     ./manage.py migrate
     ```
+
 1. In case you would like to update animation names and triggers list, run:
+
     ```bash
     ./manage.py migrate --fake blocks 0001_initial
     ./manage.py migrate blocks 0002_initialize_data
     ```
-
 
 1. Install [redis](https://redis.io/).
 1. [Run Redis](https://redis.io/topics/quickstart):

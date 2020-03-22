@@ -23,7 +23,9 @@
 
 <form action="{% url 'set_language' %}" method="post" class="form-inline mt-2 mt-md-0">
   {% csrf_token %}
+  {% if redirect_to %}
   <input name="next" type="hidden" value="{{ redirect_to }}" />
+  {% endif %}
   <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       {{ lang.name_local }}
