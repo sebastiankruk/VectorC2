@@ -61,6 +61,9 @@ class UserPhotos(models.Model):
                 ready_image = ImageOps.expand(resized_image, padding)
 
             name_parts = os.path.splitext(os.path.basename(photo.image.name))
+            cache_dir = cached_path = os.path.join(MEDIA_ROOT, 'images', 'cache')
+            if not os.path.exists(cache_dir):
+                os.makedirs(cache_dir)
             cached_path = os.path.join(MEDIA_ROOT, 'images', 'cache', '%s-%dx%d-%s%s' % (
                 name_parts[0], *dimensions, fill, name_parts[1]
             ))
