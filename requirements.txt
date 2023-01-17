@@ -9,4 +9,4 @@ django-compressor
 anki-vector==0.6.0
 zeroconf
 Pillow==9.3.0
-protobuf<=3.20
+protobuf==3.20.2
