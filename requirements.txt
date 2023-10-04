@@ -8,5 +8,5 @@ channels-redis
 django-compressor
 anki-vector==0.6.0
 zeroconf
-Pillow==9.3.0
+Pillow==10.0.1
 protobuf==3.20.2
